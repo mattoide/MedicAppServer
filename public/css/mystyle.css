@@ -1,0 +1,70 @@
+html { 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%; 
+    margin: 0;
+}
+
+body{
+    height: 100%; 
+}
+
+.container{
+    margin-left: 7%!important;
+    margin-right: 7%!important;
+    max-width: 90%!important;
+}
+
+hr{
+    border-width: 2px;
+    border-color: black;
+    border-radius: 100px;
+}
+
+.lateralnav{
+    float: left;
+    background-color: #333333;
+    height: 100%;
+    width: 7%; 
+}
+
+.formrow{
+    margin-bottom: 1%;
+}
+
+.flex-column {
+    height: 100%; 
+}
+.navtext{
+    color: #9b8e6e;
+}
+
+a:hover { 
+    color: yellow;
+}
+
+.form-control {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+}
+
+.table{
+width: 100%;
+background-color:white;
+
+}
+
+.tablecontainer{
+    margin-left: 4%;
+    padding-left: 4%;
+    padding-right: 2%;
+    padding-top: 2%;
+}
+
+.datetd{
+    width: 10%;
+}
