@@ -23,6 +23,10 @@ class CreateRecapitiPaziente extends Migration
             $table->string("cap");
             $table->string("tel1");
             $table->string("tel2");
+            $table->string("email");
+
+            $table->timestamps();
+
         });
     }
 

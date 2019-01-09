@@ -9,14 +9,12 @@ class Paziente extends Model
     protected $table = 'paziente';
 
     public function recapitiPaziente() {
-        return $this->hasOne('App\RecapitiPaziente', "id_paziente");
+        return $this->hasOne('MedicAppServer\RecapitiPaziente', "id_paziente");
     }
 
     protected $fillable = [
-        'nome', 'cognome', 'indirizzo'
+        'nome', 'cognome'
     ];
 
-    protected $attributes = [
-        'nome' => "nome"
-    ];
+    protected $attributes = [];
 }
