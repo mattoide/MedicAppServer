@@ -11,31 +11,17 @@ use Validator;
 
 class PazienteController extends Controller
 {
+
+
     public function create()
     {
         return view('pazienti.nuovopaziente');
-        //return view('welcome');
-
     }
 
     public function store(Request $request)
     {
 
-        $validazione = array(
-            'regole' => array(
-                'nome' => 'required|max:32',
-                'cognome' => 'required|max:32',
-                'sesso' => 'required|max:1',
-                'indirizzo' => 'required|max:64',
-                'citta' => 'required|max:64',
-                'paese' => 'required|max:64',
-            ),
-            'messaggi' => array(
-                'max' => 'Il campo :attribute non deve contenere più di :max caratteri.'
-            )
-        );
-
-        $validator = Validator::make($request->all(), $validazione['regole'], $validazione['messaggi']);
+        $validator = $this->getValidatore($request);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -67,6 +53,25 @@ class PazienteController extends Controller
         $pazienti = Paziente::all();
         return view('patients.allpatients', array('patients' => $pazienti));
 
+    }
+
+    private function getValidatore($request)
+    {
+        $validazione = array(
+            'regole' => array(
+                'nome' => 'required|max:32',
+                'cognome' => 'required|max:32',
+                'sesso' => 'required|max:1',
+                'indirizzo' => 'required|max:64',
+                'citta' => 'required|max:64',
+                'paese' => 'required|max:64',
+                ),
+            'messaggi' => array(
+                'max' => 'Il campo :attribute non deve contenere più di :max caratteri.'
+            )
+        );
+
+        return Validator::make($request->all(), $validazione['regole'], $validazione['messaggi']);
     }
 
 }
