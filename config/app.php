@@ -174,6 +174,7 @@ return [
         // MedicAppServer\Providers\BroadcastServiceProvider::class,
         MedicAppServer\Providers\EventServiceProvider::class,
         MedicAppServer\Providers\RouteServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 

@@ -15,15 +15,15 @@ class CreateRecapitiPaziente extends Migration
     {
         Schema::create('recapiti_paziente', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("id_paziente");
+            $table->unsignedInteger('paziente_id')->nullable();
 
-            $table->string("indirizzo");
-            $table->string("citta");
-            $table->string("paese");
-            $table->string("cap");
-            $table->string("tel1");
-            $table->string("tel2");
-            $table->string("email");
+            $table->string("indirizzo", 64);
+            $table->string("citta",64);
+            $table->string("paese",64);
+            $table->string("cap", 16)->nullable();
+            $table->string("tel1",16)->nullable();
+            $table->string("tel2",16)->nullable();
+            $table->string("email",32)->nullable();
 
             $table->timestamps();
 

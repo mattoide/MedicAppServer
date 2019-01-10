@@ -15,15 +15,12 @@ class CreatePaziente extends Migration
     {
         Schema::create('paziente', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_recapiti_paziente')->nullable();
-            $table->foreign('id_recapiti_paziente')
-                ->references('id')->on('recapiti_paziente')
-                ->onDelete('cascade');
+//            $table->unsignedInteger('recapiti_paziente_id')->nullable();
 
-            $table->string("nome")->nullable();
-            $table->string("cognome")->nullable();
-            $table->string("sesso")->nullable();
-            $table->date("data di nascita")->nullable();
+            $table->string('nome', 32);
+            $table->string('cognome', 32);
+            $table->string('sesso', 1);
+            $table->date('datadinascita')->nullable();
 
             $table->timestamps();
 
