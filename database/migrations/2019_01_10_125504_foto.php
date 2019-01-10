@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddReferences extends Migration
+class Foto extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class AddReferences extends Migration
      */
     public function up()
     {
-        Schema::table('recapiti_paziente', function (Blueprint $table){
-            $table->foreign('paziente_id')
-                ->references('id')->on('paziente')->onDelete('cascade');
+        Schema::create('foto', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('paziente_id')->nullable();
+
+            $table->binary("foto")->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ class AddReferences extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('foto');
     }
 }

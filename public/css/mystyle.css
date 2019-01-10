@@ -26,8 +26,7 @@ hr{
 .lateralnav{
     float: left;
     background-color: #333333;
-    height: 100%;
-    width: 7%; 
+    height: auto;
 }
 
 .formrow{
@@ -39,6 +38,10 @@ hr{
 }
 .navtext{
     color: #9b8e6e;
+}
+
+.nav .nav-item > .nav-link.active  {
+    color:green;
 }
 
 a:hover { 

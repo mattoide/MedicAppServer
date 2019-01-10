@@ -25,19 +25,20 @@
 </head>
 
 <body>
-
+<div class="row" style="height: 100%; margin-right: 0">
+  <div class="col-1" style="padding-right: 0">
 <ul class="nav flex-column lateralnav">
 
   <li class="nav-item">
-    <a class="nav-link navtext active" href="/allpatients"><i class="fas fa-bed"></i> Pazienti </a>
+    <a class="nav-link navtext" href="/pazienti"><i class="fas fa-bed"></i> Pazienti </a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link navtext" href="/diagnosis"><i class="far fa-address-card"></i> Diagnosi</a>
+    <a class="nav-link navtext" href="/pazienti"><i class="far fa-address-card"></i> Diagnosi</a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link navtext" href="/medicines"><i class="fas fa-pills"></i> Medicinali </a>
+    <a class="nav-link navtext" href="/medicine"><i class="fas fa-pills"></i> Medicinali </a>
   </li>
 
   <li class="nav-item">
@@ -45,10 +46,11 @@
   </li>
 
 </ul>
-
+</div>
+<div class="col-11">
  @yield('content')
-
-
+</div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>

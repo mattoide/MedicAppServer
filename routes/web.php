@@ -15,5 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/pazienti', 'PazienteController@index');
+
 Route::get('/nuovopaziente', 'PazienteController@create');
 Route::post('/nuovopaziente', 'PazienteController@store');

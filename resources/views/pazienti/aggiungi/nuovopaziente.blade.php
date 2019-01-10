@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="container" style="margin-left: 10%!important;">
+    @include('layouts.errors')
 
     <form method="POST" action="/nuovopaziente">
         {{ csrf_field() }}
@@ -24,7 +25,7 @@
                 <div class="col">
                     {{--<input type="text" class="form-control" placeholder="M/F" name="sesso" value="{{old('sesso')}}" maxlength="1"
                         required>--}}
-                    <select class="form-control" id="exampleFormControlSelect1" name="sesso" required>
+                    <select class="form-control" id="sesso" name="sesso" required>
                             <option disabled selected value> -- seleziona il sesso -- </option>
                             <option>F</option>
                             <option>M</option>
@@ -60,11 +61,11 @@
             <div class="row formrow">
 
                 <div class="col">
-                    <input type="tel" class="form-control" placeholder="Tel 1" name="tel1" value="{{old('tel1')}}">
+                    <input type="tel" class="form-control" placeholder="Tel 1" name="tel1" value="{{old('tel1')}}" maxlength="11">
                 </div>
 
                 <div class="col">
-                    <input type="tel" class="form-control" placeholder="Tel 2" name="tel2" value="{{old('tel2')}}">
+                    <input type="tel" class="form-control" placeholder="Tel 2" name="tel2" value="{{old('tel2')}}" maxlength="11">
                 </div>
 
                 <div class="col">
@@ -79,8 +80,15 @@
                 </div>
 
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Tipo documento" name="tipodocumento" value="{{old('tipodocumento')}}">
+                    <!--<input type="text" class="form-control" placeholder="Tipo documento" name="tipodocumento" value="{{old('tipodocumento')}}">-->
+                    <select class="form-control" id="tipodocumento" name="tipodocumento" required>
+                        <option disabled selected value> -- seleziona tipo di documento -- </option>
+                        <option>Carta d' Identità</option>
+                        <option>Patente</option>
+                        <option>Codice Fiscale</option>
+                    </select>
                 </div>
+
 
                 <div class="col">
                     <input type="text" class="form-control" placeholder="ID documento" name="iddocumento" value="{{old('iddocumento')}}">
@@ -117,20 +125,10 @@
 
         </div>
 
-    @include('layouts.tabs')
+    @include('pazienti.aggiungi.tabs')
 
         <button type="submit" class="btn btn-success">Aggiungi</button>
 
     </form>
-    
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
 </div>
 @endsection

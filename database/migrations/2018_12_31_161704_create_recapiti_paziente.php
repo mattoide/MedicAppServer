@@ -24,6 +24,8 @@ class CreateRecapitiPaziente extends Migration
             $table->string("tel1",16)->nullable();
             $table->string("tel2",16)->nullable();
             $table->string("email",32)->nullable();
+            $table->string("tipodocumento",32)->nullable();
+            $table->string("iddocumento",32)->nullable();
 
             $table->timestamps();
 
