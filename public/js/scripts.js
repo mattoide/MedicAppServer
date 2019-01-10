@@ -1,0 +1,3 @@
+function allerta(){
+    alert("we")
+}    
