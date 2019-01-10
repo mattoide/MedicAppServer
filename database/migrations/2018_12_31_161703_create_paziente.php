@@ -20,7 +20,9 @@ class CreatePaziente extends Migration
             $table->string('nome', 32);
             $table->string('cognome', 32);
             $table->string('sesso', 1);
-            $table->date('datadinascita')->nullable();
+            $table->date('datadinascita');
+            $table->string('password');
+
 
             $table->timestamps();
 

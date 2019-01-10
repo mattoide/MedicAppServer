@@ -6,16 +6,14 @@ use Illuminate\Http\Request;
 use MedicAppServer\Medico;
 use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
-use MedicAppServer\Foto;
-use MedicAppServer\Intervento;
 use MedicAppServer\StoriaClinica;
-use MedicAppServer\Radiografia;
-
 use Validator;
+use Illuminate\Support\Facades\Hash;
+
 
 class PazienteController extends Controller {
 
-    public function index(){
+    public function index() {
         $pazienti = Paziente::with('recapitiPaziente')->get();
         return view('pazienti.listapazienti')->with('pazienti', $pazienti);
 
@@ -38,6 +36,7 @@ class PazienteController extends Controller {
             'cognome'       => $request['cognome'],
             'sesso'         => $request['sesso'],
             'datadinascita' => $request['datadinascita'],
+            'password'      => Hash::make($request['password']),
         ]);
 
         $recapitiPaziente = new RecapitiPaziente([
@@ -60,15 +59,22 @@ class PazienteController extends Controller {
         ]);
 
         $storiaClinica = new StoriaClinica([
-            'data'     => $request['datastoriaclinica'],
-            'storiaclinica'     => $request['storiaclinica'],
+            'data'          => $request['datastoriaclinica'],
+            'storiaclinica' => $request['storiaclinica'],
         ]);
 
         $paziente->save();
         $paziente->recapitiPaziente()->save($recapitiPaziente);
-        $paziente->medico()->save($medico);
-        $paziente->storiaClinica()->save($storiaClinica);
 
+        if ($medico->nome || $medico->cognome || $medico->contatto || $medico->recapito) {
+            $paziente->medico()->save($medico);
+        }
+
+        if ($storiaClinica->data || $storiaClinica->storiaclinica) {
+            $paziente->storiaClinica()->save($storiaClinica);
+        }
+
+        return redirect('/pazienti');
     }
 
     public function indexAll() {
@@ -81,24 +87,31 @@ class PazienteController extends Controller {
 
         $validazione = array(
             'regole'   => array(
-                'nome'      => 'required|max:32',
-                'cognome'   => 'required|max:32',
-                'sesso'     => 'required|max:1',
-                'indirizzo' => 'required|max:64',
-                'citta'     => 'required|max:64',
-                'paese'     => 'required|max:64',
-                'tel1'      => 'numeric',
-                'tel2'      => 'numeric',
-                'email'     => 'nullable|unique:recapiti_paziente,email',
-                'iddocumento'     => 'nullable|unique:recapiti_paziente,iddocumento',
+                'nome'          => 'required|max:32',
+                'cognome'       => 'required|max:32',
+                'sesso'         => 'required|max:1',
+                'datadinascita' => 'required|date',
+                'indirizzo'     => 'required|max:64',
+                'citta'         => 'required|max:64',
+                'paese'         => 'required|max:64',
+                'tel1'          => 'required|numeric|unique:recapiti_paziente,tel1',
+                'tel2'          => 'nullable|numeric|unique:recapiti_paziente,tel2',
+                'email'         => 'required|unique:recapiti_paziente,email',
+                'centrovisita'  => 'required|max:64',
+                'tipodocumento' => 'required',
+                'iddocumento'   => 'required|unique:recapiti_paziente,iddocumento',
+                'password'      => 'required|same:repassword|min:4|max:16',
             ),
             'messaggi' => array(
-                'required' => 'Il campo :attribute è richiesto.',
-                'max'      => 'Il campo :attribute non deve contenere più di :max caratteri.',
-                'numeric'  => 'Il campo :attribute deve essere un numero valido.',
-                'email'    => 'Il campo :attribute deve essere una :attribute valida.',
-                'email.unique'   => 'Questa :attribute è già stata usata.',
-                'iddocumento.unique'   => 'Questo :attribute è già stato usato.',
+                'required'           => 'Il campo :attribute è richiesto.',
+                'max'                => 'Il campo :attribute non deve contenere più di :max caratteri.',
+                'numeric'            => 'Il campo :attribute deve essere un numero valido.',
+                'email'              => 'Il campo :attribute deve essere una :attribute valida.',
+                'email.unique'       => 'Questa :attribute è già stata usata.',
+                'iddocumento.unique' => 'Questo :attribute è già stato usato.',
+                'tel1.unique'        => 'Questo :attribute è già stato usato.',
+                'tel2.unique'        => 'Questo :attribute è già stato usato.',
+                'password.same'      => 'Le :attribute non coincidono.',
             ),
         );
 

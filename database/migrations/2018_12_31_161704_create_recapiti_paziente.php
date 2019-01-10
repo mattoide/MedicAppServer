@@ -20,12 +20,12 @@ class CreateRecapitiPaziente extends Migration
             $table->string("indirizzo", 64);
             $table->string("citta",64);
             $table->string("paese",64);
-            $table->string("cap", 16)->nullable();
-            $table->string("tel1",16)->nullable();
+            $table->string("cap", 16);
+            $table->string("tel1",16);
             $table->string("tel2",16)->nullable();
-            $table->string("email",32)->nullable();
-            $table->string("tipodocumento",32)->nullable();
-            $table->string("iddocumento",32)->nullable();
+            $table->string("email",32);
+            $table->string("tipodocumento",32);
+            $table->string("iddocumento",32);
 
             $table->timestamps();
 

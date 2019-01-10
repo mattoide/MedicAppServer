@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect('/pazienti');
 });
 
 Route::get('/pazienti', 'PazienteController@index');

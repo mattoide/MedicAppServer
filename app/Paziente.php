@@ -31,8 +31,12 @@ class Paziente extends Model
     }
 
     protected $fillable = [
-        'nome', 'cognome', 'sesso', 'datadinascita'
+        'nome', 'cognome', 'sesso', 'datadinascita', 'password'
     ];
 
     protected $attributes = [];
+
+    protected $hidden = [
+        'password'
+    ];
 }

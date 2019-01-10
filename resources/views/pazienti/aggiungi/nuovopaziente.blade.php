@@ -1,7 +1,7 @@
 @extends('layouts.standard') 
 @section('content')
 
-<div class="container" style="margin-left: 10%!important;">
+<div class="container">
     @include('layouts.errors')
 
     <form method="POST" action="/nuovopaziente">
@@ -34,7 +34,12 @@
 
 
                 <div class="col">
-                    <input type="date" class="form-control" placeholder="Data di nascita" name="datadinascita" value="{{old('datadinascita')}}">
+                    <input type="date" class="form-control" placeholder="Data di nascita" name="datadinascita" value="{{old('datadinascita')}}"
+                        onchange="calcolaEta(this.value)" required>
+                </div>
+
+                <div class="col">
+                    <input id='eta' type="number" class="form-control" placeholder="Età" name="eta" value="{{old('eta')}}" min="0" disabled>
                 </div>
             </div>
 
@@ -53,7 +58,7 @@
                 </div>
 
                 <div class="col">
-                    <input type="number" class="form-control" placeholder="Zip" name="cap" value="{{old('cap')}}">
+                    <input type="number" class="form-control" placeholder="Zip" name="cap" value="{{old('cap')}}" min="0" required>
                 </div>
             </div>
 
@@ -61,22 +66,29 @@
             <div class="row formrow">
 
                 <div class="col">
-                    <input type="tel" class="form-control" placeholder="Tel 1" name="tel1" value="{{old('tel1')}}" maxlength="11">
+                    <input type="tel" class="form-control" placeholder="Tel 1" name="tel1" value="{{old('tel1')}}" maxlength="11" required>
                 </div>
 
                 <div class="col">
                     <input type="tel" class="form-control" placeholder="Tel 2" name="tel2" value="{{old('tel2')}}" maxlength="11">
                 </div>
-
-                <div class="col">
-                    <input type="email" class="form-control" placeholder="E-mail" name="email" value="{{old('email')}}">
-                </div>
             </div>
-
 
             <div class="row formrow">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Centro visita" name="centrovisita" value="{{old('centrovisita')}}">
+                    <input type="email" class="form-control" placeholder="E-mail" name="email" value="{{old('email')}}" required>
+                </div>
+                <div class="col">
+                    <input id='pass' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4" maxlength="16" required>
+                </div>
+                <div class="col">
+                    <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()" minlength="4" maxlength="16" required>
+                </div>
+            </div>
+
+            <div class="row formrow">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Centro visita" name="centrovisita" value="{{old('centrovisita')}}" required>
                 </div>
 
                 <div class="col">
@@ -91,7 +103,7 @@
 
 
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="ID documento" name="iddocumento" value="{{old('iddocumento')}}">
+                    <input type="text" class="form-control" placeholder="ID documento" name="iddocumento" value="{{old('iddocumento')}}" required>
                 </div>
             </div>
 
@@ -124,7 +136,6 @@
             </div>
 
         </div>
-
     @include('pazienti.aggiungi.tabs')
 
         <button type="submit" class="btn btn-success">Aggiungi</button>

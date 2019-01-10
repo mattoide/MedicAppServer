@@ -1,8 +1,25 @@
-
 $('.nav .nav-link').click(function(){
     $('.navbar-nav .nav-link').removeClass('active');
     $(this).addClass('active');
 })
+
+function calcolaEta(data){
+
+    let datanascita = new Date(data);
+    let oggi = new Date();
+    let eta = oggi.getFullYear() - datanascita.getFullYear();
+
+    eta < 0 ? $('#eta').val(0) : $('#eta').val(eta);
+}
+
+function verificaPass(){
+
+    if($('#pass').val() != $('#repass').val()){
+        
+    }
+
+    
+}
 
     $(document).ready(function () {
 
