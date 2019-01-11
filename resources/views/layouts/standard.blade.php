@@ -25,24 +25,24 @@
 </head>
 
 <body>
-<div class="row" style="height: 100%; margin-right: 0">
+<div class="row" style="height: 100%; margin-right: 0; position: relative">
   <div class="col-1" style="padding-right: 0">
 <ul class="nav flex-column lateralnav">
 
   <li class="nav-item">
-    <a class="nav-link navtext" href="/pazienti"><i class="fas fa-bed"></i> Pazienti </a>
+    <a id='pazienti' class="nav-link navtext" href="/pazienti"><i class="fas fa-bed"></i> Pazienti </a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link navtext" href="/pazienti"><i class="far fa-address-card"></i> Diagnosi</a>
+    <a id='diagnosi' class="nav-link navtext" href="/diagnosi"><i class="far fa-address-card"></i> Diagnosi</a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link navtext" href="/medicine"><i class="fas fa-pills"></i> Medicinali </a>
+    <a id='medicinali' class="nav-link navtext" href="/medicinali"><i class="fas fa-pills"></i> Medicinali </a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link navtext" href="/reminder"><i class="far fa-clock"></i> Reminder</a>
+    <a id='reminder' class="nav-link navtext" href="/reminder"><i class="far fa-clock"></i> Reminder</a>
   </li>
 
 </ul>

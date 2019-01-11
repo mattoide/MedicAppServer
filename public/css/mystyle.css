@@ -69,6 +69,7 @@ background-color:white;
 .custom-active{
     background-color: red;
 }
+
 .nav-tabs .nav-link.active {
     background-color: #a42c48;
     color: white;

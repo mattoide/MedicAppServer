@@ -12,5 +12,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+
+        factory(MedicAppServer\Paziente::class, 3)->create()->each(function ($user) {
+            $user->recapitiPaziente()->save(factory(MedicAppServer\RecapitiPaziente::class)->make());
+        });
     }
 }

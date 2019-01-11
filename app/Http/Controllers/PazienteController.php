@@ -3,13 +3,12 @@
 namespace MedicAppServer\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use MedicAppServer\Medico;
 use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
 use MedicAppServer\StoriaClinica;
 use Validator;
-use Illuminate\Support\Facades\Hash;
-
 
 class PazienteController extends Controller {
 
@@ -77,10 +76,10 @@ class PazienteController extends Controller {
         return redirect('/pazienti');
     }
 
-    public function indexAll() {
+    public function delete(Request $request) {
 
-        $pazienti = Paziente::all();
-        return view('patients.allpatients', array('patients' => $pazienti));
+        Paziente::destroy($request["idpaziente"]);
+        return redirect('/pazienti');
     }
 
     public function getValidatore($request) {
