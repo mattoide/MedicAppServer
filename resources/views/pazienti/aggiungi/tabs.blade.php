@@ -122,8 +122,8 @@
             <br>
 
             <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control custominputnotifica" placeholder="orari esercizi" name="oraesercizio">
+                <div class="col-3">
+                    <input type="time" class="form-control custominputnotifica" placeholder="orari esercizi" name="oraesercizio">
                 </div>
                 <div class="col">
                     <input type="text" class="form-control custominputnotifica" placeholder="testo" name="esercizio">

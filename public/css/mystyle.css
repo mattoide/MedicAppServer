@@ -67,12 +67,12 @@ background-color:white;
 }
 
 .custom-active{
-    background-color: red;
+    background-color: green;
 }
 
 .nav-tabs .nav-link.active {
     background-color: #a42c48;
-    color: white;
+    color: white !important;
 }
 
 .navtext-tab{

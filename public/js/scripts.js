@@ -19,7 +19,7 @@ function verificaPass() {
 $(document).ready(function () {
     
     let path = window.location.pathname.replace('/', '#');
-    $(path.toString()).addClass('active');
+    $(path.toString()).addClass('custom-active');
 
     $('#tablepazienti').DataTable({
         "oLanguage": {
