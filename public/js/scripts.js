@@ -4,7 +4,7 @@ function calcolaEta(data) {
     let oggi = new Date();
     let eta = oggi.getFullYear() - datanascita.getFullYear();
 
-    eta < 0 ? $('#eta').val(0) : $('#eta').val(eta);
+    eta < 0 ? $('#eta').text(0 + ' anni') : $('#eta').text(eta + ' anni');
 }
 
 function verificaPass() {
@@ -17,27 +17,36 @@ function verificaPass() {
 }
 
 $(document).ready(function () {
-    
+
     let path = window.location.pathname.replace('/', '#');
     $(path.toString()).addClass('custom-active');
 
     $('#tablepazienti').DataTable({
-        "oLanguage": {
-            "sLengthMenu": "Mostra _MENU_ risultati per pagina",
-            "sZeroRecords": "Nessun risultato",
-            "sInfo": "Showing _START_ to _END_ of _TOTAL_ records",
-            "sInfo": "",
-            "sInfoEmpty": "Showing 0 to 0 of 0 records",
-            "sInfoEmpty": "",
-            "sInfoFiltered": "(filtered from _MAX_ total records)",
-            "sInfoFiltered": "",
-            "sSearch": "Cerca",
 
+        /*"language": {
+            "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Italian.json"
+        },*/ 
+        "oLanguage": {
+            "sEmptyTable": "Nessun dato presente nella tabella",
+            "sInfo": "Vista da _START_ a _END_ di _TOTAL_ elementi",
+            "sInfoEmpty": "Vista da 0 a 0 di 0 elementi",
+            "sInfoFiltered": "(filtrati da _MAX_ elementi totali)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ",",
+            "sLengthMenu": "Visualizza _MENU_ elementi",
+            "sLoadingRecords": "Caricamento...",
+            "sProcessing": "Elaborazione...",
+            "sSearch": "Cerca:",
+            "sZeroRecords": "La ricerca non ha portato alcun risultato.",
             "oPaginate": {
-                "sFirst": "Prima pagina",
+                "sFirst": "Inizio",
                 "sPrevious": "Precedente",
                 "sNext": "Successivo",
-                "sLast": "Ultima pagina"
+                "sLast": "Fine"
+            },
+            "oAria": {
+                "sSortAscending": ": attiva per ordinare la colonna in ordine crescente",
+                "sSortDescending": ": attiva per ordinare la colonna in ordine decrescente"
             }
         }
     });
@@ -46,11 +55,11 @@ $(document).ready(function () {
 
 $('#exampleModal').on('show.bs.modal', function (event) {
     console.log("qui")
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('New message to ' + recipient)
+    modal.find('.modal-body input').val(recipient)
 })

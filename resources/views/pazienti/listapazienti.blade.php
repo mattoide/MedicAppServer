@@ -9,10 +9,12 @@
     <table id="tablepazienti" class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Cognome</th>
-                <th scope="col">Tipo Documento</th>
-                <th scope="col">Id Documento</th>
+                <th scope="col">Paziente</th>
+                <th scope="col">Diagnosi primaria</th>
+                <th scope="col">Diagnosi secondara</th>
+                <th scope="col">Sede visita</th>
+                <th scope="col">ID Documento</th>
+                <th scope="col">Creazione paziente</th>
                 <th scope="col">#</th>
 
 
@@ -24,11 +26,13 @@
             @foreach($pazienti as $paziente)
 
             <tr>
-                <td>{{$paziente->nome}}</td>
-                <td>{{$paziente->cognome}}</td>
-                <td>{{$paziente->recapitiPaziente->tipodocumento}}</td>
+                <td>{{$paziente->nome}} {{$paziente->cognome}}</td>
+                <th>{{$paziente->diagnosi1->diagnosi}}</th>
+                <td>{{$paziente->diagnosi2->diagnosi}}</td>
+                <td>{{$paziente->recapitiPaziente->centrovisita}}</td>
                 <td>{{$paziente->recapitiPaziente->iddocumento}}</td>
-
+                <td>{{$paziente->created_at->formatLocalized('%d %B %Y')}}</td>
+               
                 <td>
                     <form method="POST" action="/modificapaziente" style="display: inline">
                         {{ csrf_field() }}

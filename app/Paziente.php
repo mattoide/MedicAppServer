@@ -16,8 +16,16 @@ class Paziente extends Model
         return $this->hasOne('MedicAppServer\Medico');
     }
 
-    public function diagnosi() {
-        return $this->hasMany('MedicAppServer\Diagnosi');
+    public function diagnosi1() {
+        return $this->hasOne('MedicAppServer\Diagnosi1');
+    }
+
+    public function diagnosi2() {
+        return $this->hasOne('MedicAppServer\Diagnosi2');
+    }
+
+    public function diagnosi3() {
+        return $this->hasOne('MedicAppServer\Diagnosi3');
     }
 
     public function medicinale() {

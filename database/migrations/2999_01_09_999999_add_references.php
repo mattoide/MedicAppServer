@@ -23,7 +23,15 @@ class AddReferences extends Migration
                 ->references('id')->on('paziente')->onDelete('cascade');
         });
 
-        Schema::table('diagnosi', function (Blueprint $table){
+        Schema::table('diagnosi1', function (Blueprint $table){
+            $table->foreign('paziente_id')
+                ->references('id')->on('paziente')->onDelete('cascade');
+        });
+                Schema::table('diagnosi2', function (Blueprint $table){
+            $table->foreign('paziente_id')
+                ->references('id')->on('paziente')->onDelete('cascade');
+        });  
+              Schema::table('diagnosi3', function (Blueprint $table){
             $table->foreign('paziente_id')
                 ->references('id')->on('paziente')->onDelete('cascade');
         });

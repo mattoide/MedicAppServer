@@ -26,6 +26,7 @@ class CreateRecapitiPaziente extends Migration
             $table->string("email",32);
             $table->string("tipodocumento",32);
             $table->string("iddocumento",32);
+            $table->string("centrovisita");
 
             $table->timestamps();
 

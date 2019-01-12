@@ -25,7 +25,8 @@
 </head>
 
 <body>
-<div class="row" style="height: 100%; margin-right: 0; position: relative">
+  
+<div class="row" style="height: 100%">
   <div class="col-1" style="padding-right: 0">
 <ul class="nav flex-column lateralnav">
 
@@ -47,7 +48,7 @@
 
 </ul>
 </div>
-<div class="col-11">
+<div class="col">
  @yield('content')
 </div>
 </div>

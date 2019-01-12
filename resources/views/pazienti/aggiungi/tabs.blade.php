@@ -122,7 +122,7 @@
             <br>
 
             <div class="row">
-                <div class="col-3">
+                <div class="col-2">
                     <input type="time" class="form-control custominputnotifica" placeholder="orari esercizi" name="oraesercizio">
                 </div>
                 <div class="col">

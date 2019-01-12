@@ -4,6 +4,9 @@ namespace MedicAppServer\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use MedicAppServer\Diagnosi1;
+use MedicAppServer\Diagnosi2;
+use MedicAppServer\Diagnosi3;
 use MedicAppServer\Medico;
 use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
@@ -23,6 +26,8 @@ class PazienteController extends Controller {
     }
 
     public function store(Request $request) {
+
+        
 
         $validator = $this->getValidatore($request);
 
@@ -48,6 +53,7 @@ class PazienteController extends Controller {
             'email'         => $request['email'],
             'tipodocumento' => $request['tipodocumento'],
             'iddocumento'   => $request['iddocumento'],
+            'centrovisita'  => $request['centrovisita'],
         ]);
 
         $medico = new Medico([
@@ -62,6 +68,18 @@ class PazienteController extends Controller {
             'storiaclinica' => $request['storiaclinica'],
         ]);
 
+        $diagnosi1 = new Diagnosi1([
+            'diagnosi' => $request['diagnosi1'],
+        ]);
+
+        $diagnosi2 = new Diagnosi2([
+            'diagnosi' => $request['diagnosi2'],
+        ]);
+
+        $diagnosi3 = new Diagnosi3([
+            'diagnosi' => $request['diagnosi3'],
+        ]);
+
         $paziente->save();
         $paziente->recapitiPaziente()->save($recapitiPaziente);
 
@@ -71,6 +89,18 @@ class PazienteController extends Controller {
 
         if ($storiaClinica->data || $storiaClinica->storiaclinica) {
             $paziente->storiaClinica()->save($storiaClinica);
+        }
+
+        if ($diagnosi1->diagnosi) {
+            $paziente->diagnosi1()->save($diagnosi1);
+        }
+
+        if ($diagnosi2->diagnosi) {
+            $paziente->diagnosi2()->save($diagnosi2);
+        }
+
+        if ($diagnosi3->diagnosi) {
+            $paziente->diagnosi3()->save($diagnosi3);
         }
 
         return redirect('/pazienti');

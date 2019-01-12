@@ -1,7 +1,7 @@
 @extends('layouts.standard') 
 @section('content')
 
-<div class="container">
+<div class="container-fluid" style="margin-top: 2%">
     @include('layouts.errors')
 
     <form method="POST" action="/nuovopaziente">
@@ -10,8 +10,6 @@
         <h6>ANAGRAFICA</h6>
 
         <hr>
-
-        <div class="container" style="margin-left: 3%!important;">
 
             <div class="row formrow">
                 <div class="col">
@@ -22,11 +20,11 @@
                     <input type="text" class="form-control" placeholder="Cognome" name="cognome" value="{{old('cognome')}}" maxlength="32" required>
                 </div>
 
-                <div class="col">
+                <div class="col-1">
                     {{--<input type="text" class="form-control" placeholder="M/F" name="sesso" value="{{old('sesso')}}" maxlength="1"
                         required>--}}
                     <select class="form-control" id="sesso" name="sesso" required>
-                            <option disabled selected value> -- seleziona il sesso -- </option>
+                            <option disabled selected value> -- M/F -- </option>
                             <option>F</option>
                             <option>M</option>
                         </select>
@@ -38,8 +36,10 @@
                         onchange="calcolaEta(this.value)" required>
                 </div>
 
-                <div class="col">
-                    <input id='eta' type="number" class="form-control" placeholder="Età" name="eta" value="{{old('eta')}}" min="0" disabled>
+                <div class="col-1">
+                   <!-- <input id='eta' type="number" class="form-control" placeholder="Età" name="eta" value="{{old('eta')}}" min="0" disabled>-->
+                    <p id='eta'>anni</p>
+
                 </div>
             </div>
 
@@ -79,10 +79,12 @@
                     <input type="email" class="form-control" placeholder="E-mail" name="email" value="{{old('email')}}" required>
                 </div>
                 <div class="col">
-                    <input id='pass' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4" maxlength="16" required>
+                    <input id='pass' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
+                        maxlength="16" required>
                 </div>
                 <div class="col">
-                    <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()" minlength="4" maxlength="16" required>
+                    <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
+                        minlength="4" maxlength="16" required>
                 </div>
             </div>
 
@@ -121,7 +123,6 @@
                     <input type="text" class="form-control" placeholder="Contatto medico curante" name="contattomedicocurante" value="{{old('contattomedicocurante')}}">
                 </div>
             </div>
-        </div>
 
         <h6>DIAGNOSI</h6>
         <hr>

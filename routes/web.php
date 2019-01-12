@@ -24,3 +24,7 @@ Route::get('/reminder', 'ReminderController@index');
 Route::get('/nuovopaziente', 'PazienteController@create');
 Route::post('/nuovopaziente', 'PazienteController@store');
 Route::post('/eliminapaziente', 'PazienteController@delete');
+
+Route::get('/nuovadiagnosi', 'DiagnosiController@create');
+Route::post('/nuovadiagnosi', 'DiagnosiController@store');
+Route::post('/modificadiagnosi', 'DiagnosiController@update');
