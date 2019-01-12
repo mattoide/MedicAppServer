@@ -1,12 +1,12 @@
 @extends('layouts.standard') 
 @section('content')
-    @include('layouts.modal')
+    @include('pazienti.modaleliminapaziente')
 
 <div class="row" style="float:left">
     <button onclick="location.href = '/nuovopaziente';" type="button" class="btn btn-success">+ aggiungi paziente </button>
 </div>
 <div class="container-fluid" style="width: 100%; float: right; margin-top: 2%">
-    <table id="tablepazienti" class="table table-striped">
+    <table id="datatable" class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Paziente</th>

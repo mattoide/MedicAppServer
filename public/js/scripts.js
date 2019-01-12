@@ -21,7 +21,7 @@ $(document).ready(function () {
     let path = window.location.pathname.replace('/', '#');
     $(path.toString()).addClass('custom-active');
 
-    $('#tablepazienti').DataTable({
+    $('#datatable').DataTable({
 
         /*"language": {
             "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Italian.json"

@@ -30,7 +30,7 @@
       var button = $(event.relatedTarget) // Button that triggered the modal
       var titolo = button.data('titolo') // Extract info from data-* attributes
       var diagnosi = button.data('diagnosi') // Extract info from data-* attributes
-console.log(diagnosi)
+
       var modal = $(this)
     
       modal.find('.modal-title').text(titolo)

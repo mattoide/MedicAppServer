@@ -17,9 +17,9 @@ class CreateMedicinale extends Migration
             $table->increments('id');
             $table->unsignedInteger('paziente_id')->nullable();
             $table->string("nome")->nullable();
-            $table->string("quantita")->nullable();
-            $table->string("voltealgiorno")->nullable();
-            $table->string("durata")->nullable();
+            $table->string("dosaggio")->nullable();
+            $table->string("posologia")->nullable();
+            $table->string("durata_terapia")->nullable();
             $table->timestamps();
         });
     }

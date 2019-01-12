@@ -36,10 +36,16 @@ class DiagnosiController extends Controller {
         }
 
         $diagnosi = Diagnosi::find($request['id']);
-        
+
         $diagnosi->diagnosi = $request['diagnosi'];
         $diagnosi->save();
 
+        return redirect('/diagnosi');
+    }
+
+    public function delete(Request $request) {
+
+        Diagnosi::destroy($request["iddiagnosi"]);
         return redirect('/diagnosi');
     }
 

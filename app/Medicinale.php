@@ -9,7 +9,7 @@ class Medicinale extends Model
     protected $table = 'medicinale';
 
     protected $fillable = [
-        'nome', 'quantita', 'voltealgiorno', 'durata'
+        'nome', 'dosaggio', 'posologia', 'durata_terapia'
     ];
 
     protected $attributes = [];
