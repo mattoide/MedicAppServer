@@ -27,16 +27,16 @@
 
             <tr>
                 <td>{{$paziente->nome}} {{$paziente->cognome}}</td>
-                <th>{{$paziente->diagnosi1->diagnosi}}</th>
-                <td>{{$paziente->diagnosi2->diagnosi}}</td>
+                <th> @if($paziente->diagnosi1){{$paziente->diagnosi1->diagnosi}}@endif </th>
+                <td> @if($paziente->diagnosi2){{$paziente->diagnosi2->diagnosi}}@endif </td>
                 <td>{{$paziente->recapitiPaziente->centrovisita}}</td>
                 <td>{{$paziente->recapitiPaziente->iddocumento}}</td>
                 <td>{{$paziente->created_at->formatLocalized('%d %B %Y')}}</td>
-               
+
                 <td>
-                    <form method="POST" action="/modificapaziente" style="display: inline">
+                    <form method="GET" action="/modificapaziente" style="display: inline">
                         {{ csrf_field() }}
-                        <button id="{{$paziente->id}}" onclick="" type="button" class="btn btn-warning"><i class="far fa-edit"></i></button>
+                        <button name='id' value="{{$paziente->id}}" onclick="" type="submit" class="btn btn-warning"><i class="far fa-edit"></i></button>
                     </form>
 
                     <button id="{{$paziente->id}}" type="submit" name="idpaziente" value="{{$paziente->id}}" onclick="" type="button" class="btn btn-danger"

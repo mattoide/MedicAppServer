@@ -12,11 +12,12 @@ use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
 use MedicAppServer\StoriaClinica;
 use Validator;
+use Illuminate\Support\Facades\Input;
 
 class PazienteController extends Controller {
 
     public function index() {
-        $pazienti = Paziente::with('recapitiPaziente')->get();
+        $pazienti = Paziente::with('recapitiPaziente')->with('diagnosi1')->with('diagnosi2')->get();
         return view('pazienti.listapazienti')->with('pazienti', $pazienti);
 
     }
@@ -27,7 +28,13 @@ class PazienteController extends Controller {
 
     public function store(Request $request) {
 
-        
+        $quantities = Input::get('prova');
+
+        print_r($quantities);
+        foreach($quantities as $quan) {
+          print_r($quan);
+        }
+   
 
         $validator = $this->getValidatore($request);
 
@@ -106,6 +113,45 @@ class PazienteController extends Controller {
         return redirect('/pazienti');
     }
 
+    public function edit(Request $request) {
+        $paziente = Paziente::find($request['id']);
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente);
+    }
+
+    public function update(Request $request) {
+
+        $validator = $this->getValidatore($request);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $paziente = Paziente::with('recapitiPaziente')->find($request['idpaz']);
+
+       
+        $paziente->nome          = $request['nome'];
+        $paziente->cognome       = $request['cognome'];
+        $paziente->sesso         = $request['sesso'];
+        $paziente->datadinascita = $request['datadinascita'];
+        $paziente->recapitiPaziente->indirizzo     = $request['indirizzo'];
+           
+        $paziente->recapitiPaziente->citta         = $request['citta'];
+        $paziente->recapitiPaziente->paese         = $request['paese'];
+        $paziente->recapitiPaziente->cap           = $request['cap'];
+        $paziente->recapitiPaziente->tel1          = $request['tel1'];
+        $paziente->recapitiPaziente->tel2          = $request['tel2'];
+        $paziente->recapitiPaziente->email         = $request['email'];
+        $paziente->recapitiPaziente->tipodocumento = $request['tipodocumento'];
+        $paziente->recapitiPaziente->iddocumento   = $request['iddocumento'];
+        $paziente->recapitiPaziente->centrovisita  = $request['centrovisita'];
+     
+        $paziente->save();
+        $paziente->recapitiPaziente()->save($paziente->recapitiPaziente);
+
+
+        return redirect('/pazienti');
+    }
+
     public function delete(Request $request) {
 
         Paziente::destroy($request["idpaziente"]);
@@ -129,7 +175,7 @@ class PazienteController extends Controller {
                 'centrovisita'  => 'required|max:64',
                 'tipodocumento' => 'required',
                 'iddocumento'   => 'required|unique:recapiti_paziente,iddocumento',
-                'password'      => 'required|same:repassword|min:4|max:16',
+                'password'      => 'required|same:repassword|min:4',
             ),
             'messaggi' => array(
                 'required'           => 'Il campo :attribute è richiesto.',

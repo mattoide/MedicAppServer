@@ -137,7 +137,13 @@
             </div>
 
         </div>
+        <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val1">
+        <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val2">
+        <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val3">
     @include('pazienti.aggiungi.tabs')
+
+
+
 
         <button type="submit" class="btn btn-success">Aggiungi</button>
 

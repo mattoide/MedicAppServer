@@ -1,27 +1,24 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link navtext-tab active" id="storiaclinica-tab" data-toggle="tab" href="#storiaclinica" role="tab"
-           aria-controls="storiaclinica" aria-selected="true">Storia Clinica</a>
+        <a class="nav-link navtext-tab active" id="storiaclinica-tab" data-toggle="tab" href="#storiaclinica" role="tab" aria-controls="storiaclinica"
+            aria-selected="true">Storia Clinica</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="interventi-tab" data-toggle="tab" href="#interventi" role="tab"
-           aria-controls="interventi" aria-selected="false">Interventi</a>
+        <a class="nav-link navtext-tab" id="interventi-tab" data-toggle="tab" href="#interventi" role="tab" aria-controls="interventi"
+            aria-selected="false">Interventi</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto"
-           aria-selected="false">Foto</a>
+        <a class="nav-link navtext-tab" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto" aria-selected="false">Foto</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="rx-tab" data-toggle="tab" href="#rx" role="tab" aria-controls="rx"
-           aria-selected="false">Rx</a>
+        <a class="nav-link navtext-tab" id="rx-tab" data-toggle="tab" href="#rx" role="tab" aria-controls="rx" aria-selected="false">Rx</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app"
-           aria-selected="false">App</a>
+        <a class="nav-link navtext-tab" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app" aria-selected="false">App</a>
     </li>
 </ul>
 
@@ -35,16 +32,17 @@
             <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tablestoriaclinica">
-                    <tr>
-                        <td class="datetd">
-                            <input class="form-control" type="date" name="datastoriaclinica" value="{{old('datastoriaclinica')}}">
-                        </td>
+                        <tr>
+                            <td class="datetd">
+                                <input class="form-control" type="date" id="date-input" name="datastoriaclinica" value="@if($paziente->storiaClinica[0]->data){{$paziente->storiaClinica[0]->data}}@endif">
+                            </td>
 
-                        <td>
-                            <textarea class="form-control"  rows="3"
-                                      name="storiaclinica"  value="{{old('storiaclinica')}}"></textarea>
-                        </td>
-                    </tr>
+                            <td>
+                                <textarea class="form-control" rows="3" name="storiaclinica">
+                                      @if($paziente->storiaClinica){{$paziente->storiaClinica[0]->storiaclinica}}@endif
+                                    </textarea>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -59,15 +57,15 @@
             <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tableinterventi">
-                    <tr>
-                        <td class="datetd">
-                                <input class="form-control" type="date"  name="dataintervento"  value="{{old('dataintervento')}}">
-                        </td>
+                        <tr>
+                            <td class="datetd">
+                                <input class="form-control" type="date" id="date-input" name="dataintervento" value="">
+                            </td>
 
-                        <td>
-                                    <textarea class="form-control" rows="3" name="intervento"  value="{{old('intervento')}}"></textarea>
-                        </td>
-                    </tr>
+                            <td>
+                                <textarea class="form-control" id="clinic-story-input" rows="3" name="intervento" value=""></textarea>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -80,7 +78,7 @@
 
             <div class="form-group">
                 <label class="btn btn-success">
-                    Aggiungi immagini <input type="file" class="form-control-file" id="foto" name="foto"
+                    Aggiungi immagini <input type="file" class="form-control-file" id="image" name="foto"
                                              multiple accept="image/x-png ,image/jpeg" style="display:none;"
                                              onchange="$('#upload-file-info').html(this.files.length + ' File' )">
                 </label>
@@ -97,7 +95,7 @@
 
             <div class="form-group">
                 <label class="btn btn-success">
-                    Aggiungi radiografie<input type="file" class="form-control-file" id="rx" name="radiografia"
+                    Aggiungi radiografie<input type="file" class="form-control-file" id="image" name="radiografia"
                                                multiple accept="image/x-png ,image/jpeg" style="display:none;"
                                                onchange="$('#upload-file-info').html(this.files.length + ' File' )">
                 </label>
