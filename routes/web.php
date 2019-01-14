@@ -36,3 +36,5 @@ Route::get('/nuovomedicinale', 'MedicinaleController@create');
 Route::post('/nuovomedicinale', 'MedicinaleController@store');
 Route::post('/modificamedicinale', 'MedicinaleController@update');
 Route::post('/eliminamedicinale', 'MedicinaleController@delete');
+
+Route::post('/aggiungistoriaclinica', 'PazienteController@createClinicStory');

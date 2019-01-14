@@ -23,29 +23,37 @@
 </ul>
 
 <div class="container tabcontent-custom">
-    <div class="tab-content" id="myTabContent">
+        <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria" data-titolo="Aggiungi nuova storia clinica"
+        data-idpaziente="{{$paziente->id}}" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+
+    <div class="tab-content" style="height: 23em; overflow-y: scroll" id="myTabContent">
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 
-            <br>
+            
+
+            <div id='nuovastoria'></div>
+            @foreach ($paziente->storiaClinica as $storiaclinica)
 
             <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tablestoriaclinica">
                         <tr>
                             <td class="datetd">
-                                <input class="form-control" type="date" id="date-input" name="datastoriaclinica" value="@if($paziente->storiaClinica[0]->data){{$paziente->storiaClinica[0]->data}}@endif">
+                                <input class="form-control" type="date" id="date-input" name="datastoriaclinicaa" value="@if($storiaclinica->data){{$storiaclinica->data}}@endif">
                             </td>
 
                             <td>
-                                <textarea class="form-control" rows="3" name="storiaclinica">
-                                      @if($paziente->storiaClinica){{$paziente->storiaClinica[0]->storiaclinica}}@endif
+                                <textarea class="form-control" rows="3" name="storiaclinicaa">
+                                      @if($storiaclinica){{$storiaclinica->storiaclinica}}@endif
                                     </textarea>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            @endforeach
         </div>
 
         <!-- TAB INTERVENTI-->
@@ -133,3 +141,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    function nuovastoria(){
+        var storia = '<div style="width: 90%"><table class="table table-bordered"><tbody id="tablestoriaclinica"><tr><td class="datetd"><input class="form-control" type="date" name="datastoriaclinica[]" value="" required></td><td><textarea class="form-control" rows="3" name="storiaclinica[]"  value="" required></textarea></td></tr></tbody></table></div>';
+    $('#nuovastoria').append(storia);
+
+}
+
+</script>

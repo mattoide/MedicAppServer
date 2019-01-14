@@ -1,5 +1,7 @@
 @extends('layouts.standard') 
 @section('content')
+@include('pazienti.modifica.modalaggiungistoriaclincia')
+
 
 <div class="container-fluid" style="margin-top: 2%">
     @include('layouts.errors')
@@ -153,8 +155,8 @@
 
 
         <button type="button" onclick="abilitaTutto()" class="btn btn-success">Modifica</button>
-
         <button name="idpaz" id="idpaz" value="{{$paziente->id}}" type="submit" class="btn btn-warning" disabled>Salva modifiche</button>
+        <button type="button" onclick="refresh()" class="btn btn-danger">Annulla modifiche</button>
 
     </form>
 </div>
@@ -164,6 +166,10 @@
     disabilitaTutto();
 })
 
+function refresh(){
+    location.reload();
+
+}
 
     function abilitaTutto(){
 
@@ -186,6 +192,8 @@ $('#idpaz').removeAttr('disabled');
 
 $('#pass').attr('disabled','disabled');
 $('#repass').attr('disabled','disabled');
+$('#nuovastoria').removeAttr('disabled');
+
 
 }
     function disabilitaTutto(){
@@ -208,6 +216,7 @@ let b = a.replace('&#039;', '\'')
 
 $('#tipodocumento').val(b)
 $('#sesso').val("{{$paziente->sesso}}")
+$('#nuovastoria').attr('disabled', 'disabled');
     }
 
 </script>

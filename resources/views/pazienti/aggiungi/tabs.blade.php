@@ -1,27 +1,24 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link navtext-tab active" id="storiaclinica-tab" data-toggle="tab" href="#storiaclinica" role="tab"
-           aria-controls="storiaclinica" aria-selected="true">Storia Clinica</a>
+        <a class="nav-link navtext-tab active" id="storiaclinica-tab" data-toggle="tab" href="#storiaclinica" role="tab" aria-controls="storiaclinica"
+            aria-selected="true">Storia Clinica</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="interventi-tab" data-toggle="tab" href="#interventi" role="tab"
-           aria-controls="interventi" aria-selected="false">Interventi</a>
+        <a class="nav-link navtext-tab" id="interventi-tab" data-toggle="tab" href="#interventi" role="tab" aria-controls="interventi"
+            aria-selected="false">Interventi</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto"
-           aria-selected="false">Foto</a>
+        <a class="nav-link navtext-tab" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto" aria-selected="false">Foto</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="rx-tab" data-toggle="tab" href="#rx" role="tab" aria-controls="rx"
-           aria-selected="false">Rx</a>
+        <a class="nav-link navtext-tab" id="rx-tab" data-toggle="tab" href="#rx" role="tab" aria-controls="rx" aria-selected="false">Rx</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app"
-           aria-selected="false">App</a>
+        <a class="nav-link navtext-tab" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app" aria-selected="false">App</a>
     </li>
 </ul>
 
@@ -35,16 +32,15 @@
             <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tablestoriaclinica">
-                    <tr>
-                        <td class="datetd">
-                            <input class="form-control" type="date" name="datastoriaclinica" value="{{old('datastoriaclinica')}}">
-                        </td>
+                        <tr>
+                            <td class="datetd">
+                                <input class="form-control" type="date" id="datastoriaclinica" name="datastoriaclinica" value="{{old('datastoriaclinica')}}">
+                            </td>
 
-                        <td>
-                            <textarea class="form-control"  rows="3"
-                                      name="storiaclinica"  value="{{old('storiaclinica')}}"></textarea>
-                        </td>
-                    </tr>
+                            <td>
+                                <textarea class="form-control" rows="3" name="storiaclinica" value="{{old('storiaclinica')}}" onchange="insertdate(this.value)"></textarea>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -59,15 +55,15 @@
             <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tableinterventi">
-                    <tr>
-                        <td class="datetd">
-                                <input class="form-control" type="date"  name="dataintervento"  value="{{old('dataintervento')}}">
-                        </td>
+                        <tr>
+                            <td class="datetd">
+                                <input class="form-control" type="date" name="dataintervento" value="{{old('dataintervento')}}">
+                            </td>
 
-                        <td>
-                                    <textarea class="form-control" rows="3" name="intervento"  value="{{old('intervento')}}"></textarea>
-                        </td>
-                    </tr>
+                            <td>
+                                <textarea class="form-control" rows="3" name="intervento" value="{{old('intervento')}}"></textarea>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -135,3 +131,16 @@
         </div>
     </div>
 </div>
+<script>
+    function insertdate(val){
+       let testo = $.trim(val)
+       if(testo.length > 0){
+        var date = new Date();
+        var currentDate = date.toISOString().slice(0,10);
+        $('#datastoriaclinica').val(currentDate);
+       } else {
+        $('#datastoriaclinica').val('');
+       }
+    }
+
+</script>
