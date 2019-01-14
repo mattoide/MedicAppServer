@@ -15,12 +15,11 @@
                             <tbody id="tablestoriaclinica">
                                 <tr>
                                     <td class="datetd">
-                                        <input class="form-control" type="date" id="datastoriaclinica" name="datastoriaclinica" value="{{old('datastoriaclinica')}}"
-                                            required>
+                                        <input class="form-control" type="date" id="datastoriaclinicam" name="datastoriaclinicam" value="">
                                     </td>
 
                                     <td>
-                                        <textarea class="form-control" rows="3" name="storiaclinica" value="{{old('storiaclinica')}}" required></textarea>
+                                        <textarea class="form-control" rows="3" id="storiaclinicam" name="storiaclinicam" value=""></textarea>
                                     </td>
                                 </tr>
                             </tbody>
@@ -54,7 +53,11 @@
 
     var date = new Date();
     var currentDate = date.toISOString().slice(0,10);
-    $('#datastoriaclinica').val(currentDate);
+
+    $('#datastoriaclinicam').removeAttr('disabled');
+    $('#storiaclinicam').removeAttr('disabled');
+
+    $('#datastoriaclinicam').val(currentDate);
       
     })
 

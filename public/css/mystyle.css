@@ -98,3 +98,9 @@ textarea{
     width: 100%;
     height: 100%;
 }
+
+.customdate{
+    color: black !important;
+    background: green !important;
+    border-radius: 20px !important;
+}

@@ -35,16 +35,16 @@
             <div id='nuovastoria'></div>
             @foreach ($paziente->storiaClinica as $storiaclinica)
 
-            <div style="width: 90%">
+            <div style="width: 95%">
                 <table class="table table-bordered">
                     <tbody id="tablestoriaclinica">
                         <tr>
                             <td class="datetd">
-                                <input class="form-control" type="date" id="date-input" name="datastoriaclinicaa" value="@if($storiaclinica->data){{$storiaclinica->data}}@endif">
+                                <input id="datastoriaclinica" class="form-control customdate" type="text" name="datastoriaclinicaa" value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%B %Y')}}@endif">
                             </td>
 
                             <td>
-                                <textarea class="form-control" rows="3" name="storiaclinicaa">
+                                <textarea id="storiaclinica" class="form-control" rows="3" name="storiaclinicaa">
                                       @if($storiaclinica){{$storiaclinica->storiaclinica}}@endif
                                     </textarea>
                             </td>

@@ -122,8 +122,8 @@ class PazienteController extends Controller {
         $paziente = Paziente::with('storiaClinica')->find($request['idpaz']);
 
         $storiaClinica = new StoriaClinica([
-            'data'          => $request['datastoriaclinica'],
-            'storiaclinica' => $request['storiaclinica'],
+            'data'          => $request['datastoriaclinicam'],
+            'storiaclinica' => $request['storiaclinicam'],
         ]);
 
         $paziente->storiaClinica()->save($storiaClinica);

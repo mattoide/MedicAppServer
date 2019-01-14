@@ -1,6 +1,6 @@
 @extends('layouts.standard') 
 @section('content')
-@include('pazienti.modifica.modalaggiungistoriaclincia')
+    @include('pazienti.modifica.modalaggiungistoriaclincia')
 
 
 <div class="container-fluid" style="margin-top: 2%">
@@ -87,15 +87,15 @@
                     required>
             </div>
             <div class="col">
-                    <input id='pass' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
+                <input id='pass' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
                     maxlength="16" required value="{{$paziente->password}}">
-                    <input id='passv' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
+                <input id='passv' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
                     maxlength="16" required value="{{$paziente->password}}" hidden>
             </div>
             <div class="col">
-                    <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
-                    minlength="4" maxlength="16" required value="{{$paziente->password}}" >
-                    <input id='repassv' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
+                <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
+                    minlength="4" maxlength="16" required value="{{$paziente->password}}">
+                <input id='repassv' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
                     minlength="4" maxlength="16" required value="{{$paziente->password}}" hidden>
             </div>
         </div>
@@ -175,6 +175,8 @@ function refresh(){
 
     var inputs = document.getElementsByTagName("input");
         for (var i = 0; i < inputs.length; i++) {
+
+           // if(inputs[i].id != 'datastoriaclinica')
     inputs[i].removeAttribute('disabled');
 }
 
@@ -185,6 +187,8 @@ var inputs = document.getElementsByTagName("select");
 
 var inputs = document.getElementsByTagName("textarea");
         for (var i = 0; i < inputs.length; i++) {
+
+           // if(inputs[i].id != 'storiaclinica')
             inputs[i].removeAttribute('disabled');
 }
 
@@ -192,13 +196,15 @@ $('#idpaz').removeAttr('disabled');
 
 $('#pass').attr('disabled','disabled');
 $('#repass').attr('disabled','disabled');
-$('#nuovastoria').removeAttr('disabled');
+//$('#nuovastoria').removeAttr('disabled');
 
 
 }
     function disabilitaTutto(){
         var inputs = document.getElementsByTagName("input");
         for (var i = 0; i < inputs.length; i++) {
+            
+           // if(inputs[i].id != 'datastoriaclinicam')
     inputs[i].setAttribute("disabled", "disabled");
 }
 
@@ -209,6 +215,8 @@ var inputs = document.getElementsByTagName("select");
 
 var inputs = document.getElementsByTagName("textarea");
         for (var i = 0; i < inputs.length; i++) {
+
+           // if(inputs[i].id != 'storiaclinicam')
     inputs[i].setAttribute("disabled", "disabled");
 }
 let a = "{{$paziente->recapitiPaziente->tipodocumento}}";
@@ -216,7 +224,7 @@ let b = a.replace('&#039;', '\'')
 
 $('#tipodocumento').val(b)
 $('#sesso').val("{{$paziente->sesso}}")
-$('#nuovastoria').attr('disabled', 'disabled');
+//$('#nuovastoria').attr('disabled', 'disabled');
     }
 
 </script>
