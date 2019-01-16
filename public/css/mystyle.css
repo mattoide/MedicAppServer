@@ -104,3 +104,11 @@ textarea{
     background: green !important;
     border-radius: 20px !important;
 }
+
+.btn-icn{
+    background-color: transparent;
+}
+
+.cstm-icn{
+    color: #a5956d;
+}

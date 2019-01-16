@@ -145,9 +145,30 @@
         <div class="container" style="margin-left: 3%!important;">
 
             <div class="row formrow">
-                <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi1" value="@if($paziente->diagnosi1){{$paziente->diagnosi1->diagnosi}}@endif">
+
+                <select class="form-control" id="diagnosi1" name="diagnosi1">
+                            <option disabled selected> diagnosi 1 </option>
+                            @foreach ($diagnosi as $a)
+                            <option>{{$a->diagnosi}}</option>
+                            @endforeach
+                        </select>
+
+                <select class="form-control" id="diagnosi2" name="diagnosi2">
+                                <option disabled selected value> diagnosi 2 </option>
+                                @foreach ($diagnosi as $a)
+                                <option>{{$a->diagnosi}}</option>
+                                @endforeach
+                            </select>
+
+                <select class="form-control" id="diagnosi3" name="diagnosi3">
+                                    <option disabled selected> diagnosi 3 </option>
+                                    @foreach ($diagnosi as $a)
+                                    <option>{{$a->diagnosi}}</option>
+                                    @endforeach
+                                </select> {{-- <input type="text" class="form-control" placeholder="Diagnosi principale"
+                    name="diagnosi1" value="@if($paziente->diagnosi1){{$paziente->diagnosi1->diagnosi}}@endif">
                 <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi2" value="@if($paziente->diagnosi2){{$paziente->diagnosi2->diagnosi}}@endif">
-                <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi3" value="@if($paziente->diagnosi3){{$paziente->diagnosi3->diagnosi}}@endif">
+                <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi3" value="@if($paziente->diagnosi3){{$paziente->diagnosi3->diagnosi}}@endif">                --}}
             </div>
 
         </div>
@@ -162,8 +183,26 @@
 </div>
 
 <script>
+
+   
+
     $(document).ready(function () {
     disabilitaTutto();
+    @if ($paziente->diagnosi1)
+        var dia1 ='{{$paziente->diagnosi1->diagnosi}}'
+        $('#diagnosi1').val(dia1)
+    @endif
+
+    @if ($paziente->diagnosi2)
+        var dia2 ='{{$paziente->diagnosi2->diagnosi}}'
+        $('#diagnosi2').val(dia2)
+    @endif
+
+    @if ($paziente->diagnosi3)
+        var dia3 ='{{$paziente->diagnosi3->diagnosi}}'
+        $('#diagnosi3').val(dia3)
+    @endif
+
 })
 
 function refresh(){

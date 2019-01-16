@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use MedicAppServer\Diagnosi1;
 use MedicAppServer\Diagnosi2;
 use MedicAppServer\Diagnosi3;
+use MedicAppServer\Diagnosi;
 use MedicAppServer\Medico;
 use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
@@ -22,7 +23,8 @@ class PazienteController extends Controller {
     }
 
     public function create() {
-        return view('pazienti.aggiungi.nuovopaziente');
+        $diagnosi = Diagnosi::all();
+        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi);
     }
 
     public function store(Request $request) {
@@ -117,7 +119,7 @@ class PazienteController extends Controller {
         return redirect('/pazienti');
     }
 
-    public function createClinicStory(Request $request){
+    public function createClinicStory(Request $request) {
 
         $paziente = Paziente::with('storiaClinica')->find($request['idpaz']);
 
@@ -133,7 +135,8 @@ class PazienteController extends Controller {
 
     public function edit(Request $request) {
         $paziente = Paziente::find($request['id']);
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente);
+        $diagnosi = Diagnosi::all();
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi);
     }
 
     public function update(Request $request) {
@@ -221,7 +224,8 @@ class PazienteController extends Controller {
                 'tel2.unique'                       => 'Questo :attribute è già stato usato.',
                 'password.same'                     => 'Le :attribute non coincidono.',
                 'datastoriaclinica.*.required_with' => 'Il campo :attribute è richiesto quando il campo :values è presente.',
-                'storiaclinica.*.required_with' => 'Il campo :attribute è richiesto quando il campo :values è presente.',
+                'storiaclinica.*.required_with'     => 'Il campo :attribute è richiesto quando il campo :values è presente.',
+                'diagnosi1.different'                         => 'Il campo :attribute e il campo :other devono essere differenti.',
             ),
         );
 
@@ -260,7 +264,7 @@ class PazienteController extends Controller {
                 'tel2.unique'                       => 'Questo :attribute è già stato usato.',
                 'password.same'                     => 'Le :attribute non coincidono.',
                 'datastoriaclinica.*.required_with' => 'Il campo :attribute è richiesto quando il campo :values è presente.',
-                'storiaclinica.*.required_with' => 'Il campo :attribute è richiesto quando il campo :values è presente.',
+                'storiaclinica.*.required_with'     => 'Il campo :attribute è richiesto quando il campo :values è presente.',
             ),
         );
 

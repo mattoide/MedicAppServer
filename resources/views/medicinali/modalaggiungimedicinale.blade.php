@@ -1,5 +1,5 @@
 <div class="modal fade" id="modalaggiungimedicinale" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -11,36 +11,47 @@
                 {{ csrf_field() }}
                 <div class="modal-body">
 
-                    <input type="text" class="form-control" name="medicinale" placeholder="Nome medicinale" maxlength="32" required>
 
-                    <div class="row formrow">
-                        <div class="col">
-                            <input type="number" class="form-control" name="dosaggio" placeholder="Dosaggio" min="0" maxlength="10" required>
-                        </div>
-                        <div class="col">
-                            <select class="form-control" id="unitadosaggio" name="unitadosaggio" required>
-                                        <option disabled selected value> -- unità -- </option>
-                                        <option>ml</option>
-                                        <option>mg</option>
-                                        <option>UI</option>
-                                    </select>
+                    <div class="form-group row">
+                        <label for="nomemed" class="col-sm-2 col-form-label">nome</label>
+                        <div class="col-sm-10">
+                            <input id="nomemed" type="text" class="form-control" name="medicinale" placeholder="" maxlength="32" required>
                         </div>
                     </div>
 
-                    <div class="row formrow">
-                        <div class="col">
-                            <input type="number" class="form-control" name="posologia" placeholder="Posologia" min="0" maxlength="10">
+
+                    <div class="form-group row">
+                        <label for="dosamed" class="col-sm-2 col-form-label">dosaggio</label>
+                        <div class="col-7">
+                            <input id="dosamed" type="number" class="form-control" name="dosaggio" placeholder="" min="0" maxlength="10" required>
                         </div>
-                        <div class="col">                           
-                             <p>volte al giorno</p>
+                        <div class="col">
+                            <select class="form-control" id="unitadosaggio" name="unitadosaggio" required>
+                                                <option disabled selected value>unità</option>
+                                                <option>ml</option>
+                                                <option>mg</option>
+                                                <option>UI</option>
+                                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="posomed" class="col-sm-2 col-form-label">posologia</label>
+                        <div class="col-8">
+                            <input id="posomed" type="number" class="form-control" name="posologia" placeholder="" min="0" maxlength="10" required>
+                        </div>
+                        <div class="col">
+                            <p>die</p>
                             <input value="volte al giorno" name='volte' id='posologia' hidden>
                         </div>
                     </div>
 
 
-                    <div class="row formrow">
-                        <div class="col">
-                            <input type="number" class="form-control" name="durata" placeholder="Durata terapia" min="0" maxlength="10">
+                    <div class="form-group row">
+                        <label for="duratamed" class="col-sm-2 col-form-label">durata</label>
+                        <div class="col-8">
+                            <input id="duratamed" type="number" class="form-control" name="durata" placeholder="" min="0" maxlength="10" required>
                         </div>
                         <div class="col">
                             <p>giorni</p>
@@ -48,13 +59,19 @@
                         </div>
                     </div>
 
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button>
-                    <button id="aggiungi" type="submit" class="btn btn-success">Aggiungi</button>
-            </form>
+                    <div class="col">
+                        <button style="width: 100%" type="button" class="btn btn-danger" data-dismiss="modal">Cancella</button>
+                    </div>
+                    <div class="col">
+                        <button style="width: 100%" id="aggiungi" type="submit" class="btn btn-success">Aggiungi</button>
+                    </div>
 
+            </form>
             </div>
+
         </div>
     </div>
 </div>

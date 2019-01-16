@@ -8,7 +8,7 @@
 <div class="row" style="float:left">
 
     <button id="nuovomedicinale" name="nuovomedicinale" onclick="" type="button" class="btn btn-success"
-        data-toggle="modal" data-target="#modalaggiungimedicinale" data-titolo="Aggiungi nuovo medicinale">+ aggiungi medicinale
+        data-toggle="modal" data-target="#modalaggiungimedicinale" data-titolo="Nuovo Medicinale">+ aggiungi medicinale
     </button>
 </div>
 
@@ -37,14 +37,14 @@
                 <td>{{$medicinale->durata_terapia}}</td>
 
                 <td>
-                        <button id="modalmodificamedicinale" onclick="" type="button" class="btn btn-warning" data-toggle="modal"
-                        data-target="#modalmodificamedicinale" data-titolo="Modifica medicinale" data-medicinale="{{$medicinale}}">>
+                        <button id="modalmodificamedicinale" onclick="" type="button" class="btn btn-icn" data-toggle="modal"
+                        data-target="#modalmodificamedicinale" data-titolo="Modifica medicinale" data-medicinale="{{$medicinale}}"><i class="far fa-edit cstm-icn"></i>
                     </button>
 
-                    <button id="{{$medicinale->id}}" type="submit" onclick="" type="button" class="btn btn-danger"
+                    <button id="{{$medicinale->id}}" type="submit" onclick="" type="button" class="btn btn-icn"
                         data-toggle="modal" data-target="#modaleliminamedicinale" data-titolo="Conferma eliminazione medicinale" data-messaggioinizio="Vuoi eliminare il medicinale"
                     data-messaggiometa="{{$medicinale->nome}}" data-messaggiofine="?" data-idmedicinale="{{$medicinale->id}}">
-                         <i class="fas fa-times"></i>
+                         <i class="fas fa-times cstm-icn"></i>
                         </button>
                 </td>
 
