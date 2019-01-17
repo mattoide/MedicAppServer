@@ -1,5 +1,5 @@
 <div class="modal fade" id="modaleliminadiagnosi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -12,11 +12,15 @@
                     <p class="messaggioFine" style="display: inline"></p>
                 </div>
                 <div class="modal-footer">
+                    <div class="col">
                     <form method="POST" action="/eliminadiagnosi" style="display: inline">
                         {{ csrf_field() }}
-                        <button id="conferma" name="iddiagnosi" type="submit" class="btn btn-danger">Conferma</button>
+                        <button style="width: 100%" id="conferma" name="iddiagnosi" type="submit" class="btn btn-danger">Conferma</button>
                     </form>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Allunna</button>
+                </div>
+                <div class="col">
+                    <button style="width: 100%" type="button" class="btn btn-success" data-dismiss="modal">Annulla</button>
+                </div>
             </div>
         </div>
     </div>

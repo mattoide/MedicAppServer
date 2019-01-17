@@ -1,6 +1,6 @@
 @extends('layouts.standard') 
 @section('content')
-    @include('pazienti.modaleliminapaziente')
+@include('pazienti.modaleliminapaziente')
 
 <div class="row" style="float:left">
     <button onclick="location.href = '/nuovopaziente';" type="button" class="btn btn-success">+ aggiungi paziente </button>
@@ -33,17 +33,18 @@
                 <td>{{$paziente->recapitiPaziente->iddocumento}}</td>
                 <td>{{$paziente->created_at->formatLocalized('%d %B %Y')}}</td>
 
-                <td>
-                    <form method="GET" action="/modificapaziente" style="display: inline">
+                <td style="display: inline">
+                    <form style="display: inline" method="GET" action="/modificapaziente">
                         {{ csrf_field() }}
-                        <button name='id' value="{{$paziente->id}}" onclick="" type="submit" class="btn btn-warning"><i class="far fa-edit"></i></button>
+                        <button name='id' value="{{$paziente->id}}"  type="submit" class="btn btn-icn"><i class="far fa-edit cstm-icn"></i></button>
                     </form>
 
-                    <button id="{{$paziente->id}}" type="submit" name="idpaziente" value="{{$paziente->id}}" onclick="" type="button" class="btn btn-danger"
+                    <button id="{{$paziente->id}}" name="idpaziente" value="{{$paziente->id}}"  type="button" class="btn btn-icn"
                         data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione paziente" data-messaggioinizio="Vuoi eliminare il paziente"
                         data-messaggiometa="{{$paziente->nome}} {{$paziente->cognome}}" data-messaggiofine="?" data-idpaziente="{{$paziente->id}}">
-                         <i class="fas fa-times"></i>
+                         <i class="fas fa-times  cstm-icn"></i>
                         </button>
+                        
                 </td>
 
             </tr>

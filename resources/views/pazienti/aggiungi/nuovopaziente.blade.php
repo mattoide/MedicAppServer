@@ -131,23 +131,44 @@
         <div class="container" style="margin-left: 3%!important;">
 
             <div class="row formrow">
-                <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi1" value="{{old('diagnosi1')}}">
+
+                <select class="form-control" id="diagnosi1" name="diagnosi1" >
+                            <option disabled selected> diagnosi 1 </option>
+                            @foreach ($diagnosi as $a)
+                            <option>{{$a->diagnosi}}</option>
+                            @endforeach
+                        </select>
+
+                        <select class="form-control" id="diagnosi2" name="diagnosi2" >
+                                <option disabled selected value> diagnosi 2 </option>
+                                @foreach ($diagnosi as $a)
+                                <option>{{$a->diagnosi}}</option>
+                                @endforeach
+                            </select>
+
+                            <select class="form-control" id="diagnosi3" name="diagnosi3" >
+                                    <option disabled selected> diagnosi 3 </option>
+                                    @foreach ($diagnosi as $a)
+                                    <option>{{$a->diagnosi}}</option>
+                                    @endforeach
+                                </select>
+                         {{-- <input type="text" class="form-control" placeholder="Diagnosi principale"
+                    name="diagnosi1" value="{{old('diagnosi1')}}">
                 <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi2" value="{{old('diagnosi2')}}">
-                <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi3" value="{{old('diagnosi3')}}">
+                <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi3" value="{{old('diagnosi3')}}"> --}}
             </div>
 
         </div>
         {{-- <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val1"> --}} {{--
-        <input
-            type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val2"> --}} {{-- <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val3"> --}}
+        <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val2"> --}} {{-- <input type="text"
+            class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val3"> --}}
     @include('pazienti.aggiungi.tabs')
 
 
 
 
-            <button type="submit" class="btn btn-success">Aggiungi</button>
+        <button type="submit" class="btn btn-success">Aggiungi</button>
 
     </form>
 </div>
 @endsection
-

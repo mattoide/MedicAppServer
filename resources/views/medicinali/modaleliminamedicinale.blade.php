@@ -1,5 +1,5 @@
 <div class="modal fade" id="modaleliminamedicinale" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -8,15 +8,22 @@
             </button>
             </div>
             <div class="modal-body">
-                    <p class="messaggioInizio" style="display: inline"></p><strong class="messaggioMeta" style="display: inline"></strong>
-                    <p class="messaggioFine" style="display: inline"></p>
-                </div>
-                <div class="modal-footer">
+                <p class="messaggioInizio" style="display: inline"></p><strong class="messaggioMeta" style="display: inline"></strong>
+                <p class="messaggioFine" style="display: inline"></p>
+            </div>
+            <div class="modal-footer">
+
+                <div class="col">
                     <form method="POST" action="/eliminamedicinale" style="display: inline">
                         {{ csrf_field() }}
-                        <button id="conferma" name="idmedicinale" type="submit" class="btn btn-danger">Conferma</button>
+                        <button style="width: 100%" type="submit" id="idmedicinale" name="idmedicinale" class="btn btn-danger">Conferma</button>
                     </form>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Allunna</button>
+                </div>
+                <div class="col">
+                    <button style="width: 100%" type="button" class="btn btn-success" data-dismiss="modal">Annulla</button>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -38,8 +45,9 @@
   modal.find('.modal-body .messaggioInizio').text(messaggioInizio + ' ')
   modal.find('.modal-body .messaggioMeta').text(messaggioMeta + ' ')
   modal.find('.modal-body .messaggioFine').text(messaggioFine)
-  
-  $('#conferma').val(idmedicinale)
+
+  $('#idmedicinale').val(idmedicinale)
+
     })
 
 </script>

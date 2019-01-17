@@ -26,7 +26,7 @@
         <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria" data-titolo="Aggiungi nuova storia clinica"
         data-idpaziente="{{$paziente->id}}" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
 
-    <div class="tab-content" style="height: 23em; overflow-y: scroll" id="myTabContent">
+    <div class="tab-content" style="max-height: 23em; overflow-y: scroll" id="myTabContent">
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 

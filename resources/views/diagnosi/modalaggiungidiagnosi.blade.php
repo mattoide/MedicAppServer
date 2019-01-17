@@ -1,5 +1,5 @@
 <div class="modal fade" id="modalaggiungidiagnosi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -13,8 +13,12 @@
                     <input type="text" class="form-control" name="diagnosi" placeholder="Nome diagnosi">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button>
-                    <button id="aggiungi" type="submit" class="btn btn-success">Aggiungi</button>
+                    <div class="col">
+                    <button style="width: 100%" type="button" class="btn btn-danger" data-dismiss="modal">Cancella</button>
+                </div>
+                <div class="col">
+                    <button style="width: 100%" id="aggiungi" type="submit" class="btn btn-success">Aggiungi</button>
+                </div>
             </form>
 
             </div>

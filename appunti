@@ -7,3 +7,6 @@ impedire di creare storie cliniche con date prima di oggi
 User	root
 Password	b7NFbRiLJWJddPuqvbjP
 
+mysql root_pass1234
+
+ssh root@appdev.novus.cc -p 20722
