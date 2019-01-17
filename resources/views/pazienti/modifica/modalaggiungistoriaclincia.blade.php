@@ -15,11 +15,23 @@
                             <tbody id="tablestoriaclinica">
                                 <tr>
                                     <td class="datetd">
-                                        <input class="form-control" type="date" id="datastoriaclinicam" name="datastoriaclinicam" value="">
+                                        <input class="form-control" type="date" id="datastoriaclinicam" name="datastoriaclinicam" required>
+                                        <select class="form-control" id="scdiagnosi1m" name="scdiagnosi1m">
+                                            <option disabled selected> diagnosi 1 </option>
+                                            @foreach ($diagnosi as $a)
+                                            <option>{{$a->diagnosi}}</option>
+                                            @endforeach
+                                        </select> 
+                                        <select class="form-control" id="scdiagnosi2m" name="scdiagnosi2m">
+                                            <option disabled selected> diagnosi 2 </option>
+                                            @foreach ($diagnosi as $a)
+                                            <option>{{$a->diagnosi}}</option>
+                                            @endforeach
+                                        </select> 
                                     </td>
 
                                     <td>
-                                        <textarea class="form-control" rows="3" id="storiaclinicam" name="storiaclinicam" value=""></textarea>
+                                        <textarea class="form-control" rows="3" id="storiaclinicam" name="storiaclinicam" required></textarea>
                                     </td>
                                 </tr>
                             </tbody>
@@ -28,7 +40,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Annulla</button>
-                    <input type="text" class="form-control idpaziente" name="idpaz" id="idpaziente" value="" hidden>
+                    <input type="text" class="form-control idpaziente" name="idpaz" id="idpaziente"  hidden>
                     <button id="aggiungi" type="submit" class="btn btn-success">Aggiungi</button>
             </form>
 
@@ -54,8 +66,10 @@
     var date = new Date();
     var currentDate = date.toISOString().slice(0,10);
 
-    $('#datastoriaclinicam').removeAttr('disabled');
-    $('#storiaclinicam').removeAttr('disabled');
+    // $('#datastoriaclinicam').removeAttr('disabled');
+    // $('#storiaclinicam').removeAttr('disabled');
+    // $('#scdiagnosi1m').removeAttr('disabled');
+    // $('#scdiagnosi2m').removeAttr('disabled');
 
     $('#datastoriaclinicam').val(currentDate);
       

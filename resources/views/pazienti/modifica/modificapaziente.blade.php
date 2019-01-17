@@ -183,11 +183,11 @@
 </div>
 
 <script>
-
-   
-
     $(document).ready(function () {
+
     disabilitaTutto();
+    calcolaEta('{{$paziente->datadinascita}}');
+    
     @if ($paziente->diagnosi1)
         var dia1 ='{{$paziente->diagnosi1->diagnosi}}'
         $('#diagnosi1').val(dia1)
@@ -203,6 +203,27 @@
         $('#diagnosi3').val(dia3)
     @endif
 
+
+@foreach($paziente->storiaClinica as $sc)
+    @if ($sc->diagnosi1)
+        var scdia1 ='{{$sc->diagnosi1}}'
+        var scc1 =  '{{$sc->id}}'+'scdiagnosi1disbld';
+        console.log(scc1)
+        $('#'+scc1).text(scdia1)   
+    @endif
+
+    @if ($sc->diagnosi2)
+        var scdia2 ='{{$sc->diagnosi2}}'
+        var scc2 =  '{{$sc->id}}'+'scdiagnosi2disbld';
+        console.log(scdia2)
+        $('#'+scc2).text(scdia2)   
+    @endif
+
+
+@endforeach
+
+   
+
 })
 
 function refresh(){
@@ -215,19 +236,20 @@ function refresh(){
     var inputs = document.getElementsByTagName("input");
         for (var i = 0; i < inputs.length; i++) {
 
-           // if(inputs[i].id != 'datastoriaclinica')
+            if(!inputs[i].id.includes('disbld'))
     inputs[i].removeAttribute('disabled');
 }
 
 var inputs = document.getElementsByTagName("select");
         for (var i = 0; i < inputs.length; i++) {
+            if(!inputs[i].id.includes('disbld'))
             inputs[i].removeAttribute('disabled');
 }
 
 var inputs = document.getElementsByTagName("textarea");
         for (var i = 0; i < inputs.length; i++) {
 
-           // if(inputs[i].id != 'storiaclinica')
+            if(!inputs[i].id.includes('disbld'))
             inputs[i].removeAttribute('disabled');
 }
 
@@ -235,35 +257,39 @@ $('#idpaz').removeAttr('disabled');
 
 $('#pass').attr('disabled','disabled');
 $('#repass').attr('disabled','disabled');
-//$('#nuovastoria').removeAttr('disabled');
+$('#nuovastoria').removeAttr('disabled');
 
 
 }
     function disabilitaTutto(){
+
         var inputs = document.getElementsByTagName("input");
         for (var i = 0; i < inputs.length; i++) {
-            
-           // if(inputs[i].id != 'datastoriaclinicam')
-    inputs[i].setAttribute("disabled", "disabled");
+            if(inputs[i].id != 'datastoriaclinicam')
+            inputs[i].setAttribute("disabled", "disabled");
 }
 
 var inputs = document.getElementsByTagName("select");
         for (var i = 0; i < inputs.length; i++) {
-    inputs[i].setAttribute("disabled", "disabled");
+            if(inputs[i].id != 'scdiagnosi1m' && inputs[i].id != 'scdiagnosi2m')
+            inputs[i].setAttribute("disabled", "disabled");
+            else 
+                inputs[i].removeAttribute("disabled");
+
 }
 
 var inputs = document.getElementsByTagName("textarea");
         for (var i = 0; i < inputs.length; i++) {
-
-           // if(inputs[i].id != 'storiaclinicam')
-    inputs[i].setAttribute("disabled", "disabled");
+            if(inputs[i].id != 'storiaclinicam')
+             inputs[i].setAttribute("disabled", "disabled");
 }
+
 let a = "{{$paziente->recapitiPaziente->tipodocumento}}";
 let b = a.replace('&#039;', '\'')
 
 $('#tipodocumento').val(b)
 $('#sesso').val("{{$paziente->sesso}}")
-//$('#nuovastoria').attr('disabled', 'disabled');
+$('#nuovastoria').attr('disabled', 'disabled');
     }
 
 </script>

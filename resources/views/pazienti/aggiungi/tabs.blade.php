@@ -35,6 +35,18 @@
                         <tr>
                             <td class="datetd">
                                 <input class="form-control" type="date" id="datastoriaclinica" name="datastoriaclinica" value="{{old('datastoriaclinica')}}">
+                                <select class="form-control" id="scdiagnosi1" name="scdiagnosi1">
+                                    <option disabled selected> diagnosi 1 </option>
+                                    @foreach ($diagnosi as $a)
+                                    <option>{{$a->diagnosi}}</option>
+                                    @endforeach
+                                </select> 
+                                <select class="form-control" id="scdiagnosi2" name="scdiagnosi2">
+                                    <option disabled selected> diagnosi 2 </option>
+                                    @foreach ($diagnosi as $a)
+                                    <option>{{$a->diagnosi}}</option>
+                                    @endforeach
+                                </select> 
                             </td>
 
                             <td>

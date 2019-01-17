@@ -79,6 +79,8 @@ class PazienteController extends Controller {
         $storiaClinica = new StoriaClinica([
             'data'          => $request['datastoriaclinica'],
             'storiaclinica' => $request['storiaclinica'],
+            'diagnosi1'     => $request['scdiagnosi1'],
+            'diagnosi2'     => $request['scdiagnosi2'],
         ]);
 
         $diagnosi1 = new Diagnosi1([
@@ -121,11 +123,19 @@ class PazienteController extends Controller {
 
     public function createClinicStory(Request $request) {
 
+        $validator = $this->getValidatoreForStoriaClinica($request);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $paziente = Paziente::with('storiaClinica')->find($request['idpaz']);
 
         $storiaClinica = new StoriaClinica([
             'data'          => $request['datastoriaclinicam'],
             'storiaclinica' => $request['storiaclinicam'],
+            'diagnosi1'     => $request['scdiagnosi1m'],
+            'diagnosi2'     => $request['scdiagnosi2m'],
         ]);
 
         $paziente->storiaClinica()->save($storiaClinica);
@@ -225,7 +235,7 @@ class PazienteController extends Controller {
                 'password.same'                     => 'Le :attribute non coincidono.',
                 'datastoriaclinica.*.required_with' => 'Il campo :attribute è richiesto quando il campo :values è presente.',
                 'storiaclinica.*.required_with'     => 'Il campo :attribute è richiesto quando il campo :values è presente.',
-                'diagnosi1.different'                         => 'Il campo :attribute e il campo :other devono essere differenti.',
+                'diagnosi1.different'               => 'Il campo :attribute e il campo :other devono essere differenti.',
             ),
         );
 
@@ -265,6 +275,23 @@ class PazienteController extends Controller {
                 'password.same'                     => 'Le :attribute non coincidono.',
                 'datastoriaclinica.*.required_with' => 'Il campo :attribute è richiesto quando il campo :values è presente.',
                 'storiaclinica.*.required_with'     => 'Il campo :attribute è richiesto quando il campo :values è presente.',
+            ),
+        );
+
+        return Validator::make($request->all(), $validazione['regole'], $validazione['messaggi']);
+    }
+
+    public function getValidatoreForStoriaClinica($request) {
+
+        $validazione = array(
+            'regole'   => array(
+                'datastoriaclinicam' => 'required',
+                'storiaclinicam'     => 'required',
+            ),
+            'messaggi' => array(
+                
+                'datastoriaclinicam.required' => 'Il campo data storia clinica è richiesto.',
+                'storiaclinicam.required'     => 'Il campo storia clinica è richiesto.',
             ),
         );
 

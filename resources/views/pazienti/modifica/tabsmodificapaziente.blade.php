@@ -23,14 +23,14 @@
 </ul>
 
 <div class="container tabcontent-custom">
-        <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria" data-titolo="Aggiungi nuova storia clinica"
-        data-idpaziente="{{$paziente->id}}" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+
 
     <div class="tab-content" style="max-height: 23em; overflow-y: scroll" id="myTabContent">
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 
-            
+                <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria" data-titolo="Aggiungi nuova storia clinica"
+                data-idpaziente="{{$paziente->id}}" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
 
             <div id='nuovastoria'></div>
             @foreach ($paziente->storiaClinica as $storiaclinica)
@@ -40,11 +40,28 @@
                     <tbody id="tablestoriaclinica">
                         <tr>
                             <td class="datetd">
-                                <input id="datastoriaclinica" class="form-control customdate" type="text" name="datastoriaclinicaa" value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%B %Y')}}@endif">
+                                <input id="{{$storiaclinica->id}}datastoriaclinicadisbld" class="form-control customdate" type="text" name="datastoriaclinicaa" value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%B %Y')}}@endif">
+                               <p id="{{$storiaclinica->id}}scdiagnosi1disbld"></p>
+                               <p id="{{$storiaclinica->id}}scdiagnosi2disbld"></p>
+
+                                {{-- <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbld" name="scdiagnosi1" >
+                                    <option disabled selected> diagnosi 1 </option>
+                                    @foreach ($diagnosi as $a)
+                                    <option>{{$a->diagnosi}}</option>
+                                    @endforeach
+                                </select>      
+
+                                <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi2disbld" name="scdiagnosi2" >
+                                    <option disabled selected> diagnosi 2 </option>
+                                    @foreach ($diagnosi as $a)
+                                    <option>{{$a->diagnosi}}</option>
+                                    @endforeach
+                                </select>  --}}
+                    
                             </td>
 
                             <td>
-                                <textarea id="storiaclinica" class="form-control" rows="3" name="storiaclinicaa">
+                                <textarea id=""{{$storiaclinica->id}}storiaclinicadisbld" class="form-control" rows="3" name="storiaclinicaa">
                                       @if($storiaclinica){{$storiaclinica->storiaclinica}}@endif
                                     </textarea>
                             </td>
@@ -86,7 +103,7 @@
 
             <div class="form-group">
                 <label class="btn btn-success">
-                    Aggiungi immagini <input type="file" class="form-control-file" id="image" name="foto"
+                    Aggiungi immagini <input type="file" class="form-control-file" id="foto" name="foto"
                                              multiple accept="image/x-png ,image/jpeg" style="display:none;"
                                              onchange="$('#upload-file-info').html(this.files.length + ' File' )">
                 </label>
@@ -103,7 +120,7 @@
 
             <div class="form-group">
                 <label class="btn btn-success">
-                    Aggiungi radiografie<input type="file" class="form-control-file" id="image" name="radiografia"
+                    Aggiungi radiografie<input type="file" class="form-control-file" id="rx" name="radiografia"
                                                multiple accept="image/x-png ,image/jpeg" style="display:none;"
                                                onchange="$('#upload-file-info').html(this.files.length + ' File' )">
                 </label>
