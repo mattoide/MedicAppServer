@@ -7,9 +7,11 @@
     <form method="POST" action="/nuovopaziente">
         {{ csrf_field() }}
 
-        <h6>ANAGRAFICA</h6>
-
-        <hr>
+        <h6 data-toggle="collapse" href="#collapseAnagrafica" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
+        
+        <hr >
+          
+        <div class="collapse show" id="collapseAnagrafica">
 
         <div class="row formrow">
             <div class="col">
@@ -123,35 +125,43 @@
                 <input type="text" class="form-control" placeholder="Contatto medico curante" name="contattomedicocurante" value="{{old('contattomedicocurante')}}">
             </div>
         </div>
+    </div>
 
-        <h6>DIAGNOSI</h6>
-        <hr>
+        <h6 data-toggle="collapse" href="#collapseDiagnosi" aria-expanded="false" aria-controls="collapseDiagnosi" >DIAGNOSI +</h6>
+        <hr >
+          
+        <div class="collapse show" id="collapseDiagnosi">
 
 
         <div class="container" style="margin-left: 3%!important;">
 
             <div class="row formrow">
-
                 <select class="form-control" id="diagnosi1" name="diagnosi1" >
                             <option disabled selected> diagnosi 1 </option>
                             @foreach ($diagnosi as $a)
                             <option>{{$a->diagnosi}}</option>
                             @endforeach
                         </select>
+                    </div>
 
+                        <div class="row formrow">
                         <select class="form-control" id="diagnosi2" name="diagnosi2" >
                                 <option disabled selected value> diagnosi 2 </option>
                                 @foreach ($diagnosi as $a)
                                 <option>{{$a->diagnosi}}</option>
                                 @endforeach
                             </select>
+                        </div>
 
+                            <div class="row formrow">
                             <select class="form-control" id="diagnosi3" name="diagnosi3" >
                                     <option disabled selected> diagnosi 3 </option>
                                     @foreach ($diagnosi as $a)
                                     <option>{{$a->diagnosi}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+
                          {{-- <input type="text" class="form-control" placeholder="Diagnosi principale"
                     name="diagnosi1" value="{{old('diagnosi1')}}">
                 <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi2" value="{{old('diagnosi2')}}">
