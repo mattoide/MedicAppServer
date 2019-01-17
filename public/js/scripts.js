@@ -14,7 +14,7 @@ function verificaPass() {
     }
 
 
-}
+} 
 
 $(document).ready(function () {
 
