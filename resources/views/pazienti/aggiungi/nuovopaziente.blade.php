@@ -7,9 +7,11 @@
     <form method="POST" action="/nuovopaziente">
         {{ csrf_field() }}
 
-        <h6>ANAGRAFICA</h6>
-
-        <hr>
+        <h6 data-toggle="collapse" href="#collapseAnagrafica" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
+        
+        <hr >
+          
+        <div class="collapse show" id="collapseAnagrafica">
 
         <div class="row formrow">
             <div class="col">
@@ -123,9 +125,12 @@
                 <input type="text" class="form-control" placeholder="Contatto medico curante" name="contattomedicocurante" value="{{old('contattomedicocurante')}}">
             </div>
         </div>
+    </div>
 
-        <h6>DIAGNOSI</h6>
-        <hr>
+        <h6 data-toggle="collapse" href="#collapseDiagnosi" aria-expanded="false" aria-controls="collapseDiagnosi" >DIAGNOSI +</h6>
+        <hr >
+          
+        <div class="collapse show" id="collapseDiagnosi">
 
 
         <div class="container" style="margin-left: 3%!important;">
@@ -158,6 +163,7 @@
                 <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi3" value="{{old('diagnosi3')}}"> --}}
             </div>
 
+        </div>
         </div>
         {{-- <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val1"> --}} {{--
         <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val2"> --}} {{-- <input type="text"
