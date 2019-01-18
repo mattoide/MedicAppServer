@@ -14,7 +14,7 @@
                     <div class="form-group row">
                         <label for="nomereminder" class="col-sm-2 col-form-label">nome</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nomereminder">
+                            <input type="text" class="form-control" name="nomereminder" required>
                         </div>
                     </div>
 
@@ -22,13 +22,13 @@
                     <div class="form-group row">
                         <label for="testoreminder" class="col-sm-2 col-form-label">testo</label>
                         <div class="col-sm-10">
-                            <textarea id="testoreminder" class="form-control" rows="1" name="testoreminder"></textarea> </div>
+                            <textarea id="testoreminder" class="form-control" rows="1" name="testoreminder" required></textarea> </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="dopomesi" class="col-sm-2 col-form-label">dopo mesi</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name="dopomesi">
+                            <input type="number" class="form-control" name="dopomesi" required>
                         </div>
                     </div>
                 </div>

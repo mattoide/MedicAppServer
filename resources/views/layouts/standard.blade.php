@@ -47,7 +47,7 @@
   </li>
 
   <li class="nav-item">
-    <a id='reminder' class="nav-link navtext" href="/reminders"><i class="fas fa-bell"></i> Reminder</a>
+    <a id='reminders' class="nav-link navtext" href="/reminders"><i class="fas fa-bell"></i> Reminder</a>
   </li>
 
 </ul>

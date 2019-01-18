@@ -18,8 +18,22 @@ function verificaPass() {
 
 $(document).ready(function () {
 
-    let path = window.location.pathname.replace('/', '#');
-    $(path.toString()).addClass('custom-active');
+    // let path = window.location.pathname.replace('/', '#');
+    // $(path.toString()).addClass('custom-active');
+
+    let path = window.location.pathname;
+
+    if(path.includes('pazi')){
+        $('#pazienti').addClass('custom-active');
+    } else if(path.includes('medi')){
+        $('#medicinali').addClass('custom-active');
+    } else if(path.includes('aller')){
+        $('#allergie').addClass('custom-active');
+    } else if(path.includes('remind')){
+        $('#reminders').addClass('custom-active');
+    } else if(path.includes('diag')){
+        $('#diagnosi').addClass('custom-active');
+    }
 
     $('#datatable').DataTable({
 
