@@ -58,7 +58,7 @@ class ReminderController extends Controller
 
         $validazione = array(
             'regole'   => array(
-                'nomereminder' => 'required|max:32|unique:Reminder',
+                'nomereminder' => 'required|max:32|unique:reminder',
             ),
             'messaggi' => array(
                 'required' => 'Il campo :attribute è richiesto.',
