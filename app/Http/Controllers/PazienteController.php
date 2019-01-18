@@ -13,6 +13,7 @@ use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
 use MedicAppServer\StoriaClinica;
 use Validator;
+use Illuminate\Support\Facades\Input;
 
 class PazienteController extends Controller {
 
@@ -29,19 +30,24 @@ class PazienteController extends Controller {
 
     public function store(Request $request) {
 
-//         $datestoriecliniche = Input::get('datastoriaclinica');
-        //         $storiecliniche = Input::get('storiaclinica');
+                $datestoriecliniche = Input::get('datastoriaclinica');
+                $storiecliniche = Input::get('storiaclinica');
+                $scdiagnosi1 = Input::get('scdiagnosi1');
+                $scdiagnosi2 = Input::get('scdiagnosi2');
 
-//         print_r($datestoriecliniche .'<br>');
-        //         print_r($storiecliniche);
+                print_r($datestoriecliniche);
+                echo "<br>";
+                print_r($storiecliniche);
+                echo "<br>";   
+                print_r($scdiagnosi1);
+                echo "<br>";
+                print_r($scdiagnosi2);
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
 
-//         foreach ($datestoriecliniche as $quan) {
-        //             print_r($quan);
 
-//         }      foreach ($storiecliniche as $quan) {
-        //             print_r($quan);
-        //         }
-        // return;
+
         $validator = $this->getValidatore($request);
 
         if ($validator->fails()) {
@@ -76,12 +82,35 @@ class PazienteController extends Controller {
             'recapito' => $request['recapitomedicocurante'],
         ]);
 
-        $storiaClinica = new StoriaClinica([
-            'data'          => $request['datastoriaclinica'],
-            'storiaclinica' => $request['storiaclinica'],
-            'diagnosi1'     => $request['scdiagnosi1'],
-            'diagnosi2'     => $request['scdiagnosi2'],
-        ]);
+        $stories = [];
+        if(isset($storiecliniche)){
+        $i=0;
+        $stories = [];
+        foreach ($storiecliniche as $sc) {
+            if(!isset($scdiagnosi1[$i]));
+            $scdiagnosi1[$i] = '';
+
+            if(!isset($scdiagnosi2[$i]))
+            $scdiagnosi2[$i] = '';
+
+
+            $stories[]= new StoriaClinica([
+                'data'          => $datestoriecliniche[$i],
+                'storiaclinica' => $storiecliniche[$i],
+                'diagnosi1'     => $scdiagnosi1[$i],
+                'diagnosi2'     => $scdiagnosi2[$i],
+            ]);
+
+            $i++;
+        }
+    }
+
+        // $storiaClinica = new StoriaClinica([
+        //     'data'          => $request['datastoriaclinica'],
+        //     'storiaclinica' => $request['storiaclinica'],
+        //     'diagnosi1'     => $request['scdiagnosi1'],
+        //     'diagnosi2'     => $request['scdiagnosi2'],
+        // ]);
 
         $diagnosi1 = new Diagnosi1([
             'diagnosi' => $request['diagnosi1'],
@@ -102,9 +131,13 @@ class PazienteController extends Controller {
             $paziente->medico()->save($medico);
         }
 
-        if ($storiaClinica->data || $storiaClinica->storiaclinica) {
-            $paziente->storiaClinica()->save($storiaClinica);
-        }
+
+        foreach($stories as $s)            
+        $paziente->storiaClinica()->save($s);
+
+        // if ($storiaClinica->data || $storiaClinica->storiaclinica) {
+        //     $paziente->storiaClinica()->save($storiaClinica);
+        // }
 
         if ($diagnosi1->diagnosi) {
             $paziente->diagnosi1()->save($diagnosi1);
@@ -220,8 +253,8 @@ class PazienteController extends Controller {
                 'tipodocumento'       => 'required',
                 'iddocumento'         => 'required|unique:recapiti_paziente,iddocumento',
                 'password'            => 'required|same:repassword|min:4',
-                'datastoriaclinica.*' => 'required_with:storiaclinica',
-                'storiaclinica.*'     => 'required_with:datastoriaclinica',
+                // 'datastoriaclinica.*' => 'required_with:storiaclinica',
+                // 'storiaclinica.*'     => 'required_with:datastoriaclinica',
             ),
             'messaggi' => array(
                 'required'                          => 'Il campo :attribute è richiesto.',
@@ -233,8 +266,8 @@ class PazienteController extends Controller {
                 'tel1.unique'                       => 'Questo :attribute è già stato usato.',
                 'tel2.unique'                       => 'Questo :attribute è già stato usato.',
                 'password.same'                     => 'Le :attribute non coincidono.',
-                'datastoriaclinica.*.required_with' => 'Il campo :attribute è richiesto quando il campo :values è presente.',
-                'storiaclinica.*.required_with'     => 'Il campo :attribute è richiesto quando il campo :values è presente.',
+                // 'datastoriaclinica.*.required_with' => 'Il campo :attribute è richiesto quando il campo :values è presente.',
+                // 'storiaclinica.*.required_with'     => 'Il campo :attribute è richiesto quando il campo :values è presente.',
                 'diagnosi1.different'               => 'Il campo :attribute e il campo :other devono essere differenti.',
             ),
         );

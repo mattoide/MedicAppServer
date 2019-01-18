@@ -61,7 +61,7 @@
                             </td>
 
                             <td>
-                                <textarea id=""{{$storiaclinica->id}}storiaclinicadisbld" class="form-control" rows="3" name="storiaclinicaa">
+                                <textarea id="{{$storiaclinica->id}}storiaclinicadisbld" class="form-control" rows="3" name="storiaclinicaa">
                                       @if($storiaclinica){{$storiaclinica->storiaclinica}}@endif
                                     </textarea>
                             </td>
@@ -160,10 +160,10 @@
 </div>
 
 <script>
-    function nuovastoria(){
-        var storia = '<div style="width: 90%"><table class="table table-bordered"><tbody id="tablestoriaclinica"><tr><td class="datetd"><input class="form-control" type="date" name="datastoriaclinica[]" value="" required></td><td><textarea class="form-control" rows="3" name="storiaclinica[]"  value="" required></textarea></td></tr></tbody></table></div>';
-    $('#nuovastoria').append(storia);
+//     function nuovastoria(){
+//         var storia = '<div style="width: 90%"><table class="table table-bordered"><tbody id="tablestoriaclinica"><tr><td class="datetd"><input class="form-control" type="date" name="datastoriaclinica[]" value="" required></td><td><textarea class="form-control" rows="3" name="storiaclinica[]"  value="" required></textarea></td></tr></tbody></table></div>';
+//     $('#nuovastoria').append(storia);
 
-}
+// }
 
 </script>

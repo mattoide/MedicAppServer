@@ -28,20 +28,23 @@
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 
             <br>
+            <button id="nuovastoria" name="nuovastoria" onclick="nuovastoriaa()"  data-titolo="Aggiungi nuova storia clinica"
+            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
 
-            <div style="width: 90%">
+        <div id='nuovastoriaa'></div>
+            {{-- <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tablestoriaclinica">
                         <tr>
                             <td class="datetd">
-                                <input class="form-control" type="date" id="datastoriaclinica" name="datastoriaclinica" value="{{old('datastoriaclinica')}}">
-                                <select class="form-control" id="scdiagnosi1" name="scdiagnosi1">
+                                <input class="form-control" type="date" id="datastoriaclinica" name="datastoriaclinica[]" value="{{old('datastoriaclinica')}}">
+                                <select class="form-control" id="scdiagnosi1" name="scdiagnosi1[]">
                                     <option disabled selected> diagnosi 1 </option>
                                     @foreach ($diagnosi as $a)
                                     <option>{{$a->diagnosi}}</option>
                                     @endforeach
                                 </select> 
-                                <select class="form-control" id="scdiagnosi2" name="scdiagnosi2">
+                                <select class="form-control" id="scdiagnosi2" name="scdiagnosi2[]">
                                     <option disabled selected> diagnosi 2 </option>
                                     @foreach ($diagnosi as $a)
                                     <option>{{$a->diagnosi}}</option>
@@ -50,12 +53,12 @@
                             </td>
 
                             <td>
-                                <textarea class="form-control" rows="3" name="storiaclinica" value="{{old('storiaclinica')}}" onchange="insertdate(this.value)"></textarea>
+                                <textarea class="form-control" rows="3" name="storiaclinica[]" value="{{old('storiaclinica')}}" onchange="insertdate(this.value)"></textarea>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
         </div>
 
         <!-- TAB INTERVENTI-->
@@ -154,5 +157,13 @@
         $('#datastoriaclinica').val('');
        }
     }
+
+    function nuovastoriaa(){
+        var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] value='{{old('datastoriaclinica')}}' required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosi as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea class=form-control rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
+   
+    $('#nuovastoriaa').append(storia);
+
+}
+
 
 </script>
