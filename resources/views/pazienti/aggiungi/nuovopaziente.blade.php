@@ -1,6 +1,7 @@
 @extends('layouts.standard') 
 @section('content')
 
+
 <div class="container-fluid" style="margin-top: 2%">
     @include('layouts.errors')
 
@@ -8,8 +9,9 @@
         {{ csrf_field() }}
 
         <h6 data-toggle="collapse" href="#collapseAnagrafica" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
-        
-        <hr >
+
+
+            <hr >
           
         <div class="collapse show" id="collapseAnagrafica">
 

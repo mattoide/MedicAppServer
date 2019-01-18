@@ -39,11 +39,15 @@
   </li>
 
   <li class="nav-item">
+    <a id='allergie' class="nav-link navtext" href="/allergie"><i class="fas fa-exclamation-triangle"></i> Allergie</a>
+  </li>
+
+  <li class="nav-item">
     <a id='medicinali' class="nav-link navtext" href="/medicinali"><i class="fas fa-pills"></i> Medicinali </a>
   </li>
 
   <li class="nav-item">
-    <a id='reminder' class="nav-link navtext" href="/reminder"><i class="far fa-clock"></i> Reminder</a>
+    <a id='reminder' class="nav-link navtext" href="/reminders"><i class="fas fa-bell"></i> Reminder</a>
   </li>
 
 </ul>

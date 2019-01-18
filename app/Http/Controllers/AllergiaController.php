@@ -3,14 +3,14 @@
 namespace MedicAppServer\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MedicAppServer\Reminder;
+use MedicAppServer\Allergia;
 use Validator;
 
-class ReminderController extends Controller
+class AllergiaController extends Controller
 {
     public function index() {
-        $reminders = Reminder::all();
-        return view('reminder.reminders')->with('reminders', $reminders);
+        $allergie = Allergia::all();
+        return view('allergie.allergie')->with('allergie', $allergie);
     }
 
     public function store(Request $request) {
@@ -20,15 +20,13 @@ class ReminderController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $reminder = new Reminder([
-            'nomereminder' => $request['nomereminder'],
-            'testoreminder' => $request['testoreminder'],
-            'dopomesi' => $request['dopomesi'],
+        $allergia = new Allergia([
+            'allergia' => $request['allergia'],
         ]);
 
-        $reminder->save();
+        $allergia->save();
 
-        return redirect('/reminders');
+        return redirect('/allergie');
     }
 
     public function update(Request $request) {
@@ -38,27 +36,25 @@ class ReminderController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $reminder = Reminder::find($request['id']);
+        $allergia = Allergia::find($request['id']);
 
-        $reminder->nomereminder = $request['nomereminder'];
-        $reminder->testoreminder = $request['testoreminder'];
-        $reminder->dopomesi = $request['dopomesi'];
-        $reminder->save();
+        $allergia->allergia = $request['allergia'];
+        $allergia->save();
 
-        return redirect('/reminders');
+        return redirect('/allergie');
     }
 
     public function delete(Request $request) {
 
-        Reminder::destroy($request["idreminder"]);
-        return redirect('/reminders');
+        Allergia::destroy($request["idallergia"]);
+        return redirect('/allergie');
     }
 
     public function getValidatore($request) {
 
         $validazione = array(
             'regole'   => array(
-                'nomereminder' => 'required|max:32|unique:Reminder',
+                'allergia' => 'required|max:32|unique:allergia',
             ),
             'messaggi' => array(
                 'required' => 'Il campo :attribute è richiesto.',

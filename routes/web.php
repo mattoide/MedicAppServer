@@ -18,8 +18,9 @@ Route::get('/', function () {
 
 Route::get('/pazienti', 'PazienteController@index');
 Route::get('/diagnosi', 'DiagnosiController@index');
+Route::get('/allergie', 'AllergiaController@index');
 Route::get('/medicinali', 'MedicinaleController@index');
-Route::get('/reminder', 'ReminderController@index');
+Route::get('/reminders', 'ReminderController@index');
 
 Route::get('/nuovopaziente', 'PazienteController@create');
 Route::post('/nuovopaziente', 'PazienteController@store');
@@ -31,6 +32,16 @@ Route::get('/nuovadiagnosi', 'DiagnosiController@create');
 Route::post('/nuovadiagnosi', 'DiagnosiController@store');
 Route::post('/modificadiagnosi', 'DiagnosiController@update');
 Route::post('/eliminadiagnosi', 'DiagnosiController@delete');
+
+Route::get('/nuovaallergia', 'AllergiaController@create');
+Route::post('/nuovaallergia', 'AllergiaController@store');
+Route::post('/modificaallergia', 'AllergiaController@update');
+Route::post('/eliminaallergia', 'AllergiaController@delete');
+
+Route::get('/nuovoreminder', 'ReminderController@create');
+Route::post('/nuovoreminder', 'ReminderController@store');
+Route::post('/modificareminder', 'ReminderController@update');
+Route::post('/eliminareminder', 'ReminderController@delete');
 
 Route::get('/nuovomedicinale', 'MedicinaleController@create');
 Route::post('/nuovomedicinale', 'MedicinaleController@store');
