@@ -5,14 +5,18 @@
 @include('medicinali.modaleliminamedicinale')
 @include('layouts.errors')
 
-<div class="row" style="float:left">
 
-    <button id="nuovomedicinale" name="nuovomedicinale" onclick="" type="button" class="btn btn-success"
-        data-toggle="modal" data-target="#modalaggiungimedicinale" data-titolo="Nuovo Medicinale">+ aggiungi medicinale
-    </button>
-</div>
+{{-- <div class="container-fluid" style="width: 100%; float: right; margin-top: 2%"> --}}
 
-<div class="container-fluid" style="width: 100%; float: right; margin-top: 2%">
+        <div class="container-fluid" style="margin-top: 1%">
+            
+<div class="row" style="float:left; margin-bottom: 2%">
+
+        <button id="nuovomedicinale" name="nuovomedicinale" onclick="" type="button" class="btn btn-success"
+            data-toggle="modal" data-target="#modalaggiungimedicinale" data-titolo="Nuovo Medicinale">+ aggiungi medicinale
+        </button>
+    </div>
+
     <table id="datatable" class="table table-striped">
         <thead>
             <tr>
