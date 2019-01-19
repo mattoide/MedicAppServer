@@ -10,7 +10,7 @@
 
         <div class="container-fluid" style="margin-top: 1%">
             
-<div class="row" style="float:left; margin-bottom: 2%">
+<div class="row" style="float:right; margin-bottom: 2%; margin-right: 1%">
 
         <button id="nuovomedicinale" name="nuovomedicinale" onclick="" type="button" class="btn btn-success"
             data-toggle="modal" data-target="#modalaggiungimedicinale" data-titolo="Nuovo Medicinale">+ aggiungi medicinale
@@ -48,8 +48,8 @@
                     <button id="{{$medicinale->id}}" type="submit" onclick="" type="button" class="btn btn-icn"
                         data-toggle="modal" data-target="#modaleliminamedicinale" data-titolo="Conferma eliminazione medicinale" data-messaggioinizio="Vuoi eliminare il medicinale"
                     data-messaggiometa="{{$medicinale->nome}}" data-messaggiofine="?" data-idmedicinale="{{$medicinale->id}}">
-                         <i class="fas fa-times cstm-icn"></i>
-                        </button>
+                    <i class="far fa-times-circle cstm-icn"></i>
+                                        </button>
                 </td>
 
             </tr>

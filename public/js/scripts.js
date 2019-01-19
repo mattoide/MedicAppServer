@@ -8,12 +8,8 @@ function calcolaEta(data) {
 }
 
 function verificaPass() {
-
     if ($('#pass').val() != $('#repass').val()) {
-
     }
-
-
 } 
 
 $(document).ready(function () {
@@ -33,6 +29,38 @@ $(document).ready(function () {
         $('#reminders').addClass('custom-active');
     } else if(path.includes('diag')){
         $('#diagnosi').addClass('custom-active');
+    }
+
+    switch(path){
+        
+        case "/pazienti":
+        $('#titolo').text('Lista pazienti');
+        break;
+
+        case "/diagnosi":
+        $('#titolo').text('Lista diagnosi');
+        break;
+
+        case "/allergie":
+        $('#titolo').text('Lista allergie');
+        break;
+
+        case "/medicinali":
+        $('#titolo').text('Lista medicinali');
+        break;
+
+        case "/reminders":
+        $('#titolo').text('Lista reminders');
+        break;
+
+
+        case "/nuovopaziente":
+        $('#titolo').text('Nuovo paziente');
+        break;
+        
+        case "/modificapaziente":
+        $('#titolo').text('Modifica paziente');
+        break;
     }
 
     $('#datatable').DataTable({
@@ -64,7 +92,6 @@ $(document).ready(function () {
             }
         }
     });
-
 })
 
 $('#exampleModal').on('show.bs.modal', function (event) {

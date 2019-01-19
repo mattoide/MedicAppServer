@@ -1,5 +1,5 @@
 <div class="modal fade" id="modalaggiungireminder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -22,12 +22,12 @@
                     <div class="form-group row">
                         <label for="testoreminder" class="col-sm-2 col-form-label">testo</label>
                         <div class="col-sm-10">
-                            <textarea id="testoreminder" class="form-control" rows="1" name="testoreminder" required></textarea> </div>
+                            <textarea id="testoreminder" class="form-control" rows="7" name="testoreminder" required></textarea> </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="dopomesi" class="col-sm-2 col-form-label">dopo mesi</label>
-                        <div class="col-sm-10">
+                        <label for="dopomesi" class="col col-form-label">dopo giorni</label>
+                        <div class="col-8">
                             <input type="number" class="form-control" name="dopomesi" required>
                         </div>
                     </div>

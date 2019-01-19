@@ -6,7 +6,7 @@
 {{-- <div class="container-fluid" style="width: 100%; float: right; margin-top: 2%"> --}}
         <div class="container-fluid" style="margin-top: 1%">
     
-        <div class="row" style="float:left; margin-bottom: 2%">
+        <div class="row" style="float:right; margin-bottom: 2%;  margin-right: 1%">
                 <button onclick="location.href = '/nuovopaziente';" type="button" class="btn btn-success">+ aggiungi paziente </button>
             </div>
     <table id="datatable" class="table table-striped">
@@ -30,7 +30,7 @@
 
             <tr>
                 <td>{{$paziente->nome}} {{$paziente->cognome}}</td>
-                <th> @if($paziente->diagnosi1){{$paziente->diagnosi1->diagnosi}}@endif </th>
+                <td> @if($paziente->diagnosi1){{$paziente->diagnosi1->diagnosi}}@endif </td>
                 <td> @if($paziente->diagnosi2){{$paziente->diagnosi2->diagnosi}}@endif </td>
                 <td>{{$paziente->recapitiPaziente->centrovisita}}</td>
                 <td>{{$paziente->recapitiPaziente->iddocumento}}</td>
@@ -45,8 +45,8 @@
                     <button id="{{$paziente->id}}" name="idpaziente" value="{{$paziente->id}}"  type="button" class="btn btn-icn"
                         data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione paziente" data-messaggioinizio="Vuoi eliminare il paziente"
                         data-messaggiometa="{{$paziente->nome}} {{$paziente->cognome}}" data-messaggiofine="?" data-idpaziente="{{$paziente->id}}">
-                         <i class="fas fa-times  cstm-icn"></i>
-                        </button>
+                        <i class="far fa-times-circle cstm-icn"></i>
+                                            </button>
                         
                 </td>
 
