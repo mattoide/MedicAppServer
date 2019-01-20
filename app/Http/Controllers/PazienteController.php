@@ -12,6 +12,8 @@ use MedicAppServer\Medico;
 use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
 use MedicAppServer\StoriaClinica;
+use MedicAppServer\Allergia;
+use MedicAppServer\Medicinale;
 use Validator;
 use Illuminate\Support\Facades\Input;
 
@@ -25,7 +27,9 @@ class PazienteController extends Controller {
 
     public function create() {
         $diagnosi = Diagnosi::all();
-        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi);
+        $allergie = Allergia::all();
+        $medicinali = Medicinale::all();
+        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali);
     }
 
     public function store(Request $request) {

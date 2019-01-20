@@ -1,7 +1,12 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
+
     <li class="nav-item">
         <a class="nav-link navtext-tab active" id="storiaclinica-tab" data-toggle="tab" href="#storiaclinica" role="tab" aria-controls="storiaclinica"
             aria-selected="true">Storia Clinica</a>
+    </li>
+
+    <li class="nav-item">
+            <a class="nav-link navtext-tab" id="alrgie-tab" data-toggle="tab" href="#alrgie" role="tab" aria-controls="alrgie" aria-selected="true">Allergie</a>
     </li>
 
     <li class="nav-item">
@@ -23,7 +28,8 @@
 </ul>
 
 <div class="container tabcontent-custom">
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content" id="myTabContent" style="max-height: 23em; overflow-y: scroll">
+
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 
@@ -61,6 +67,26 @@
             </div> --}}
         </div>
 
+        {{-- TAB ALLERGIE --}}
+
+        <div class="tab-pane fade" id="alrgie" role="tabpanel" aria-labelledby="alrgie-tab">
+
+                <div style="width: 50%">
+
+                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaallergia()">
+                    <option disabled selected>allergia</option>
+                    @foreach ($allergie as $a)
+                    <option>{{$a->allergia}}</option>
+                    @endforeach
+                </select> 
+<br>
+            <div id="nuovaall"></div>
+        </div>
+
+            
+        </div>
+
+
         <!-- TAB INTERVENTI-->
 
         <div class="tab-pane fade" id="interventi" role="tabpanel" aria-labelledby="interventi-tab">
@@ -86,9 +112,7 @@
 
         <!-- TAB FOTO-->
         <div class="tab-pane fade" id="foto" role="tabpanel" aria-labelledby="foto-tab">
-
             <br>
-
             <div class="form-group">
                 <label class="btn btn-success">
                     Aggiungi immagini <input type="file" class="form-control-file" id="foto" name="foto"
@@ -132,14 +156,31 @@
             <br>
             <br>
 
-            <div class="row">
-                <div class="col-2">
+                {{-- <div class="col-2">
                     <input type="time" class="form-control custominputnotifica" placeholder="orari esercizi" name="oraesercizio">
-                </div>
-                <div class="col">
+                </div> --}}
+                <div class="row" style="width: 90%">
+                <div class="col-10">
                     <input type="text" class="form-control custominputnotifica" placeholder="testo" name="esercizio">
                 </div>
-                <button style="float:right" type="button" class="btn btn-light">invia notifica</button>
+                <div class="col">
+                        <button style="float:right" type="button" class="btn btn-light">invia notifica</button>
+
+                </div>
+            </div>
+
+<br>
+
+            <div class="row" style="width: 50%">
+
+                    <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovomedicinale()">
+                        <option disabled selected>medicinale</option>
+                        @foreach ($medicinali as $m)
+                        <option>{{$m->nome}}</option>
+                        @endforeach
+                    </select> 
+    <br>
+                <div id="nuovomed"></div>
             </div>
 
 
@@ -164,6 +205,17 @@
     $('#nuovastoriaa').append(storia);
 
 }
+
+function nuovaallergia(){
+    var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia()><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+    $('#nuovaall').append(alrgia);
+}
+
+function nuovomedicinale(){
+    var medicinale = " <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovomedicinale()"><option disabled selected>medicinale</option>@foreach ($medicinali as $m)<option>{{$m->nome}}</option> @endforeach</select> <br>"
+    $('#nuovomed').append(medicinale);
+}
+
 
 
 </script>
