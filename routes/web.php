@@ -49,3 +49,4 @@ Route::post('/modificamedicinale', 'MedicinaleController@update');
 Route::post('/eliminamedicinale', 'MedicinaleController@delete');
 
 Route::post('/aggiungistoriaclinica', 'PazienteController@createClinicStory');
+Route::post('/nuovaallergiapaziente', 'PazienteController@createAllergy');

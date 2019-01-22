@@ -14,6 +14,7 @@ use MedicAppServer\RecapitiPaziente;
 use MedicAppServer\StoriaClinica;
 use MedicAppServer\Allergia;
 use MedicAppServer\Medicinale;
+use MedicAppServer\AllergiePaziente;
 use Validator;
 use Illuminate\Support\Facades\Input;
 
@@ -39,17 +40,7 @@ class PazienteController extends Controller {
                 $scdiagnosi1 = Input::get('scdiagnosi1');
                 $scdiagnosi2 = Input::get('scdiagnosi2');
 
-                print_r($datestoriecliniche);
-                echo "<br>";
-                print_r($storiecliniche);
-                echo "<br>";   
-                print_r($scdiagnosi1);
-                echo "<br>";
-                print_r($scdiagnosi2);
-                echo "<br>";
-                echo "<br>";
-                echo "<br>";
-
+                $allergie = Input::get('allergie');
 
 
         $validator = $this->getValidatore($request);
@@ -89,7 +80,6 @@ class PazienteController extends Controller {
         $stories = [];
         if(isset($storiecliniche)){
         $i=0;
-        $stories = [];
         foreach ($storiecliniche as $sc) {
             if(!isset($scdiagnosi1[$i]));
             $scdiagnosi1[$i] = '';
@@ -107,6 +97,16 @@ class PazienteController extends Controller {
 
             $i++;
         }
+    }
+
+    $allergies = [];
+    if(isset($allergie)){
+        foreach ($allergie as $al) {
+            $allergies[] = new AllergiePaziente([
+                'allergia' => $al
+            ]);
+        }
+
     }
 
         // $storiaClinica = new StoriaClinica([
@@ -138,6 +138,10 @@ class PazienteController extends Controller {
 
         foreach($stories as $s)            
         $paziente->storiaClinica()->save($s);
+
+        
+        foreach($allergies as $a)            
+        $paziente->allergiePaziente()->save($a);
 
         // if ($storiaClinica->data || $storiaClinica->storiaclinica) {
         //     $paziente->storiaClinica()->save($storiaClinica);
@@ -180,10 +184,32 @@ class PazienteController extends Controller {
         return redirect()->back();
     }
 
+    public function createAllergy(Request $request){
+
+        $validator = $this->getValidatoreForAllergy($request);
+
+        if ($validator->fails()) {
+           // header('HTTP/1.1 500');
+            return('Hai già inserito questa allergia');
+        }
+
+        $paziente = Paziente::with('allergiePaziente')->find($request['idpaz']);
+
+        $allergia = new AllergiePaziente([
+            'allergia'          => $request['allergia']
+        ]);
+        $paziente->allergiePaziente()->save($allergia);
+
+        return 'success';
+    }
+
     public function edit(Request $request) {
         $paziente = Paziente::find($request['id']);
         $diagnosi = Diagnosi::all();
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi);
+        $allergie = Allergia::all();
+        $medicinali = Medicinale::all();
+        $allergiePaziente = AllergiePaziente::where('paziente_id',$request['id'])->get();;
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('allergiePaziente', $allergiePaziente);
     }
 
     public function update(Request $request) {
@@ -330,6 +356,21 @@ class PazienteController extends Controller {
                 'datastoriaclinicam.required' => 'Il campo data storia clinica è richiesto.',
                 'storiaclinicam.required'     => 'Il campo storia clinica è richiesto.',
             ),
+        );
+
+        return Validator::make($request->all(), $validazione['regole'], $validazione['messaggi']);
+    }
+
+    public function getValidatoreForAllergy($request) {
+
+        $validazione = array(
+            'regole'   => array(
+                'allergia' => 'unique:allergie_paziente,allergia'
+                        ),
+            'messaggi' => array(
+                
+                'unique' => 'Hai già inserito questa allergia.'
+                        ),
         );
 
         return Validator::make($request->all(), $validazione['regole'], $validazione['messaggi']);

@@ -11,6 +11,9 @@ class Paziente extends Model
     public function recapitiPaziente() {
         return $this->hasOne('MedicAppServer\RecapitiPaziente');
     }
+    public function allergiePaziente() {
+        return $this->hasMany('MedicAppServer\AllergiePaziente');
+    }
 
     public function medico() {
         return $this->hasOne('MedicAppServer\Medico');

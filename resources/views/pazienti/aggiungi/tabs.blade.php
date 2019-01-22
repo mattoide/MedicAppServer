@@ -37,7 +37,7 @@
             <button id="nuovastoria" name="nuovastoria" onclick="nuovastoriaa()"  data-titolo="Aggiungi nuova storia clinica"
             data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
 
-        <div id='nuovastoriaa'></div>
+        <div id='nuovastoriaaa'></div>
             {{-- <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tablestoriaclinica">
@@ -202,7 +202,7 @@
     function nuovastoriaa(){
         var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] value='{{old('datastoriaclinica')}}' required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosi as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea class=form-control rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
    
-    $('#nuovastoriaa').append(storia);
+    $('#nuovastoriaaa').append(storia);
 
 }
 
@@ -212,7 +212,7 @@ function nuovaallergia(){
 }
 
 function nuovomedicinale(){
-    var medicinale = " <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovomedicinale()"><option disabled selected>medicinale</option>@foreach ($medicinali as $m)<option>{{$m->nome}}</option> @endforeach</select> <br>"
+    var medicinale = "<select class=form-control id=medicinali name=medicinali[] onchange=nuovomedicinale()><option disabled selected>medicinale</option>@foreach ($medicinali as $m)<option>{{$m->nome}}</option> @endforeach</select> <br>"
     $('#nuovomed').append(medicinale);
 }
 
