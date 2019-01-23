@@ -8,12 +8,12 @@
     <form method="POST" action="/nuovopaziente">
         {{ csrf_field() }}
 
-        <h6 data-toggle="collapse" href="#collapseAnagrafica" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
+        <h6 data-toggle="collapse" href="#collapseAnagraficaAdd" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
 
 
             <hr >
           
-        <div class="collapse show" id="collapseAnagrafica">
+        <div class="collapse show" id="collapseAnagraficaAdd">
 
         <div class="row formrow">
             <div class="col">
@@ -129,10 +129,10 @@
         </div>
     </div>
 
-        <h6 data-toggle="collapse" href="#collapseDiagnosi" aria-expanded="false" aria-controls="collapseDiagnosi" >DIAGNOSI +</h6>
+        <h6 data-toggle="collapse" href="#collapseDiagnosiAdd" aria-expanded="false" aria-controls="collapseDiagnosi" >DIAGNOSI +</h6>
         <hr >
           
-        <div class="collapse show" id="collapseDiagnosi">
+        <div class="collapse show" id="collapseDiagnosiAdd">
 
 
         <div class="container" style="margin-left: 3%!important;">
