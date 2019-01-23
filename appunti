@@ -1,8 +1,4 @@
-creare tabella_medico_paziente se si possono inerire tabella_medico_paziente
-
-finire di fare update tabella_medico_paziente array storie cliniche
-
-impedire di creare storie cliniche con date prima di oggi
+##################################################
 
 User	root
 Password	Mnssb33EqiscNgCgkpNV
@@ -10,3 +6,14 @@ Password	Mnssb33EqiscNgCgkpNV
 mysql root_pass1234
 
 ssh root@appdev.novus.cc -p 20722
+###################################################
+
+
+creare tabella_medico_paziente se si possono inerire tabella_medico_paziente
+
+finire di fare update tabella_medico_paziente array storie cliniche
+
+impedire di creare storie cliniche con date prima di oggi ?
+
+a inserimento di allergie controllare se negli altri select c'e qualcosa di gia selezionato senza passare per db
+aggiunge elimina
