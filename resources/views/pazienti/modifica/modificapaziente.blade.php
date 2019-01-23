@@ -10,12 +10,7 @@
         {{ csrf_field() }}
         <h6 data-toggle="collapse" href="#collapseAnagraficaEdit" aria-expanded="false" aria-controls="collapseAnagraficaEdit">ANAGRAFICA +</h6>
 
-
-        <hr>
-
         <div class="collapse show" id="collapseAnagraficaEdit">
-
-            <hr>
 
             <div class="row formrow">
                 <div class="col">
