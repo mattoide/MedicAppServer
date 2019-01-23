@@ -214,17 +214,6 @@
 var a = '#'+id;
 val = $(a).val()
 
-var elem = document.getElementsByTagName('select');
-for (var i = 0; i < elem.length; i++) {
-    if(elem[i].id == a){
-        if(elem[i].val() == val)
-        alert('gia inserito')
-        return;
-    }
-}
-
-
-
  
 
 var id_paz = {{$paziente->id}};
@@ -254,7 +243,7 @@ for (var i = 0; i < elem.length; i++) {
     if(elem[i].id == 'disbld')
     elem[i].setAttribute('disabled', 'disabled');
 }
-                var alrgia ="<select class=form-control id=allergiedio name=allergie[] onchange=nuovaallergia(this.id)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+                var alrgia ="<select class=form-control id=allergiedio name=allergie onchange=nuovaallergia(this.id)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
     $('#nuovaall').append(alrgia);
         }
  },
