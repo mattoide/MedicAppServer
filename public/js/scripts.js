@@ -14,21 +14,29 @@ function verificaPass() {
 
 $(document).ready(function () {
 
+    alertPopup = function() {}
+    alertPopup.warning = function(id, message) {
+        $('#'+id).append('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+        setTimeout(function() {
+            $(".alert").alert('close')
+        }, 4000);
+    }
+
     // let path = window.location.pathname.replace('/', '#');
     // $(path.toString()).addClass('custom-active');
 
     let path = window.location.pathname;
 
     if(path.includes('pazi')){
-        $('#pazienti').addClass('custom-active');
+        $('#pazientii').addClass('custom-active');
     } else if(path.includes('medi')){
-        $('#medicinali').addClass('custom-active');
+        $('#medicinalii').addClass('custom-active');
     } else if(path.includes('aller')){
-        $('#allergie').addClass('custom-active');
+        $('#allergiee').addClass('custom-active');
     } else if(path.includes('remind')){
-        $('#reminders').addClass('custom-active');
+        $('#reminderss').addClass('custom-active');
     } else if(path.includes('diag')){
-        $('#diagnosi').addClass('custom-active');
+        $('#diagnosii').addClass('custom-active');
     }
 
     switch(path){

@@ -45,23 +45,23 @@
           {{--
           <p>Dummy Heading</p> --}}
           <li class="nav-item">
-            <a id='pazienti' class="nav-link navtext" href="/pazienti"><i class="fas fa-bed"></i> Pazienti </a>
+            <a id='pazientii' class="nav-link navtext" href="/pazienti"><i class="fas fa-bed"></i> Pazienti </a>
           </li>
 
           <li class="nav-item">
-            <a id='diagnosi' class="nav-link navtext" href="/diagnosi"><i class="far fa-address-card"></i> Diagnosi</a>
+            <a id='diagnosii' class="nav-link navtext" href="/diagnosi"><i class="far fa-address-card"></i> Diagnosi</a>
           </li>
 
           <li class="nav-item">
-            <a id='allergie' class="nav-link navtext" href="/allergie"><i class="fas fa-exclamation-triangle"></i> Allergie</a>
+            <a id='allergiee' class="nav-link navtext" href="/allergie"><i class="fas fa-exclamation-triangle"></i> Allergie</a>
           </li>
 
           <li class="nav-item">
-            <a id='medicinali' class="nav-link navtext" href="/medicinali"><i class="fas fa-pills"></i> Medicinali </a>
+            <a id='medicinalii' class="nav-link navtext" href="/medicinali"><i class="fas fa-pills"></i> Medicinali </a>
           </li>
 
           <li class="nav-item">
-            <a id='reminders' class="nav-link navtext" href="/reminders"><i class="far fa-bell"></i> Reminder</a>
+            <a id='reminderss' class="nav-link navtext" href="/reminders"><i class="far fa-bell"></i> Reminder</a>
           </li>
 
         </ul>

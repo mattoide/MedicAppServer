@@ -71,9 +71,9 @@
 
         <div class="tab-pane fade" id="alrgie" role="tabpanel" aria-labelledby="alrgie-tab">
 
-                <div style="width: 50%">
+                <div id="allergiepopup" style="width: 50%">
 
-                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaallergia()">
+                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaallergia()" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <option disabled selected>allergia</option>
                     @foreach ($allergie as $a)
                     <option>{{$a->allergia}}</option>
@@ -173,7 +173,7 @@
 
             <div class="row" style="width: 50%">
 
-                    <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovomedicinale()">
+                    <select id="medicinalipupup" class="form-control" id="medicinali" name="medicinali[]" onchange="nuovomedicinale()">
                         <option disabled selected>medicinale</option>
                         @foreach ($medicinali as $m)
                         <option>{{$m->nome}}</option>
@@ -188,6 +188,39 @@
     </div>
 </div>
 <script>
+
+    allergieSelezionate = [];
+    medicinaliSelezionati = [];
+
+    function nuovaallergia(arrai, inputName, idPopup){
+
+        inputName = "allergie[]";
+        idPopup = "#allergiepopup";
+        arrai = allergieSelezionate;
+
+        let elementi = document.getElementsByName(inputName);
+        elementi.forEach(function(elemento, indice, array){
+            if (indice === array.length - 1){
+                if(!arrai.includes(elemento.value)){
+                    if(arrai.includes("allergie"))
+                        var next ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia()><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+                    else
+                        var next ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia()><option disabled selected>DIOMERDA</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+
+
+                    $('#nuovaall').append(next);
+                    arrai.push(elemento.value)
+                    $(".alert").alert('close')
+
+                } else {
+                    var msg = ["Hai gia selezionato l'allergia al",elemento.value];
+                    elemento.value = 'allergia';
+                    alertPopup.warning(idPopup,msg.join(" "));
+                }
+            }
+        });
+    }
+
     function insertdate(val){
        let testo = $.trim(val)
        if(testo.length > 0){
@@ -206,14 +239,28 @@
 
 }
 
-function nuovaallergia(){
-    var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia()><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
-    $('#nuovaall').append(alrgia);
-}
+
 
 function nuovomedicinale(){
-    var medicinale = "<select class=form-control id=medicinali name=medicinali[] onchange=nuovomedicinale()><option disabled selected>medicinale</option>@foreach ($medicinali as $m)<option>{{$m->nome}}</option> @endforeach</select> <br>"
-    $('#nuovomed').append(medicinale);
+
+    allergie = document.getElementsByName("medicinali[]");
+    allergie.forEach(function(allergia, indice, array){
+        if (indice === array.length - 1){
+            if(!allergieSelezionate.includes(allergia.value)){
+                var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia()><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+
+                $('#nuovaall').append(alrgia);
+                allergieSelezionate.push(allergia.value)
+                $(".alert").alert('close')
+
+            } else {
+                var msg = ["Hai gia selezionato l'allergia al",allergia.value];
+                allergia.value = 'allergia';
+                alertPopup.warning('allergiepopup',msg.join(" "));
+            }
+        }
+    });
+
 }
 
 

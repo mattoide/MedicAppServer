@@ -1,29 +1,35 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab active" id="storiaclinica-tab" data-toggle="tab" href="#storiaclinica" role="tab" aria-controls="storiaclinica"
-            aria-selected="true">Storia Clinica</a>
+        <a class="nav-link navtext-tab active" id="storiaclinica-tab" data-toggle="tab" href="#storiaclinica" role="tab"
+           aria-controls="storiaclinica"
+           aria-selected="true">Storia Clinica</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="alrgie-tab" data-toggle="tab" href="#alrgie" role="tab" aria-controls="alrgie" aria-selected="true">Allergie</a>
+        <a class="nav-link navtext-tab" id="alrgie-tab" data-toggle="tab" href="#alrgie" role="tab"
+           aria-controls="alrgie" aria-selected="true">Allergie</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="interventi-tab" data-toggle="tab" href="#interventi" role="tab" aria-controls="interventi"
-            aria-selected="false">Interventi</a>
+        <a class="nav-link navtext-tab" id="interventi-tab" data-toggle="tab" href="#interventi" role="tab"
+           aria-controls="interventi"
+           aria-selected="false">Interventi</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto" aria-selected="false">Foto</a>
+        <a class="nav-link navtext-tab" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto"
+           aria-selected="false">Foto</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="rx-tab" data-toggle="tab" href="#rx" role="tab" aria-controls="rx" aria-selected="false">Rx</a>
+        <a class="nav-link navtext-tab" id="rx-tab" data-toggle="tab" href="#rx" role="tab" aria-controls="rx"
+           aria-selected="false">Rx</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link navtext-tab" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app" aria-selected="false">App</a>
+        <a class="nav-link navtext-tab" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app"
+           aria-selected="false">App</a>
     </li>
 </ul>
 
@@ -34,19 +40,23 @@
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 
-            <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria" data-titolo="Aggiungi nuova storia clinica"
-                data-idpaziente="{{$paziente->id}}" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+            <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria"
+                    data-titolo="Aggiungi nuova storia clinica"
+                    data-idpaziente="{{$paziente->id}}" type="button" class="btn btn-outline-success"
+                    style="margin: 1%">+
+            </button>
 
             <div id='nuovastoria'></div>
             @foreach ($paziente->storiaClinica as $storiaclinica)
 
-            <div style="width: 95%">
-                <table class="table table-bordered">
-                    <tbody id="tablestoriaclinica">
+                <div style="width: 95%">
+                    <table class="table table-bordered">
+                        <tbody id="tablestoriaclinica">
                         <tr>
                             <td class="datetd">
-                                <input id="{{$storiaclinica->id}}datastoriaclinicadisbld" class="form-control customdate" type="text" name="datastoriaclinicaa"
-                                    value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%B %Y')}}@endif">
+                                <input id="{{$storiaclinica->id}}datastoriaclinicadisbld"
+                                       class="form-control customdate" type="text" name="datastoriaclinicaa"
+                                       value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%B %Y')}}@endif">
                                 <p id="{{$storiaclinica->id}}scdiagnosi1disbld"></p>
                                 <p id="{{$storiaclinica->id}}scdiagnosi2disbld"></p>
 
@@ -67,14 +77,15 @@
                             </td>
 
                             <td>
-                                <textarea id="{{$storiaclinica->id}}storiaclinicadisbld" class="form-control" rows="3" name="storiaclinicaa">
+                                <textarea id="{{$storiaclinica->id}}storiaclinicadisbld" class="form-control" rows="3"
+                                          name="storiaclinicaa">
                                       @if($storiaclinica){{$storiaclinica->storiaclinica}}@endif
                                     </textarea>
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
 
             @endforeach
         </div>
@@ -87,18 +98,25 @@
 
                 @foreach ($paziente->allergiePaziente as $alPaz)
 
-                <p>{{$alPaz->allergia}}</p>
-
-                <br> @endforeach
-
-
-                <select class="form-control" id="allergiedio" name="allergie[]" onchange="nuovaallergia(this.id)">
+                    <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaallergia()">
                         <option disabled selected>allergia</option>
                         @foreach ($allergie as $a)
-                        <option>{{$a->allergia}}</option>
+                            <p>{{$alPaz->allergia}} // {{$a}}</p>
+                            @if ($alPaz->allergia == $a->allergia)
+                                <option selected>{{$alPaz->allergia}}</option>
+                            @else
+                                <option>{{$a->allergia}}</option>
+                            @endif
                         @endforeach
                     </select>
-                <br>
+                    <br>
+                @endforeach
+                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaallergia()">
+                    <option disabled selected>allergia</option>
+                    @foreach ($allergie as $a)
+                        <option>{{$a->allergia}}</option>
+                    @endforeach
+                </select>
 
 
                 <div id="nuovaall"></div>
@@ -116,15 +134,16 @@
             <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tableinterventi">
-                        <tr>
-                            <td class="datetd">
-                                <input class="form-control" type="date" id="date-input" name="dataintervento" value="">
-                            </td>
+                    <tr>
+                        <td class="datetd">
+                            <input class="form-control" type="date" id="date-input" name="dataintervento" value="">
+                        </td>
 
-                            <td>
-                                <textarea class="form-control" id="clinic-story-input" rows="3" name="intervento" value=""></textarea>
-                            </td>
-                        </tr>
+                        <td>
+                            <textarea class="form-control" id="clinic-story-input" rows="3" name="intervento"
+                                      value=""></textarea>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -195,11 +214,11 @@
             <div class="row" style="width: 50%">
 
                 <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovomedicinale()">
-                                <option disabled selected>medicinale</option>
-                                @foreach ($medicinali as $m)
-                                <option>{{$m->nome}}</option>
-                                @endforeach
-                            </select>
+                    <option disabled selected>medicinale</option>
+                    @foreach ($medicinali as $m)
+                        <option>{{$m->nome}}</option>
+                    @endforeach
+                </select>
                 <br>
                 <div id="nuovomed"></div>
             </div>
@@ -210,64 +229,82 @@
 </div>
 
 <script>
-    function nuovaallergia(id){
-var a = '#'+id;
-val = $(a).val()
 
-var elem = document.getElementsByTagName('select');
-for (var i = 0; i < elem.length; i++) {
-    if(elem[i].id == a){
-        if(elem[i].val() == val)
-        alert('gia inserito')
-        return;
+    allergieSelezionate = [];
+    allergie = document.getElementsByName("allergie[]");
+    allergie.forEach(allergia => allergieSelezionate.push(allergia.value));
+
+    function nuovaallergia() {
+        allergie = document.getElementsByName("allergie[]");
+        allergie.forEach(function (allergia, indice, array) {
+            if (indice === array.length - 1) {
+                if (!allergieSelezionate.includes(allergia.value)) {
+                    var alrgia = "<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia()><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+                    $('#nuovaall').append(alrgia);
+                    allergieSelezionate.push(allergia.value)
+                } else {
+                    alert("Allergia: " + allergia.value + " gia selezionata")
+                    allergia.value = 'allergia';
+                }
+            }
+        });
+
     }
-}
 
+    /* function nuovaallergia(id) {
+         var a = '#' + id;
+         val = $(a).val()
 
+         var elem = document.getElementsByTagName('select');
+         for (var i = 0; i < elem.length; i++) {
+             if (elem[i].id == a) {
+                 if (elem[i].val() == val)
+                     alert('gia inserito')
+                 return;
+             }
+         }
 
- 
+ */
+    /*
+            $.ajax({
+                url: '/nuovaallergiapaziente',
+                type: 'post',
+                data: {
+                    allergia: val,
+                    idpaz: id_paz
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
 
-var id_paz = {{$paziente->id}};
+                success: function (data, status) {
+                    console.log(status + '\n' + data)
+                    if (data != 'success') {
+                        // alert(data)
+                        // {{$errors = 'data'}}
+    alert({{$errors}})
+                } else {
+                    $(a).attr('id', 'disbld')
 
-  $.ajax({
-    url: '/nuovaallergiapaziente',
-    type: 'post',
-    data: {
-        allergia: val,
-        idpaz: id_paz
-    },
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    var elem = document.getElementsByTagName('select');
+                    for (var i = 0; i < elem.length; i++) {
+                        if (elem[i].id == 'disbld')
+                            elem[i].setAttribute('disabled', 'disabled');
+                    }
+                    var alrgia = "<select class=form-control id=allergiedio name=allergie[] onchange=nuovaallergia(this.id)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+                    $('#nuovaall').append(alrgia);
+                }
             },
+            error: function (data, status) {
+                console.log(status + '\n' + data)
 
-    success: function (data, status) {
-        console.log(status+'\n'+ data)
-        if(data != 'success'){
-           // alert(data)
-           // {{$errors = 'data'}}
-            alert({{$errors}})
-        } else {
-            $(a).attr('id', 'disbld')
+            },
+            complete: function (data, status) {
+            }
+        });
 
-var elem = document.getElementsByTagName('select');
-for (var i = 0; i < elem.length; i++) {
-    if(elem[i].id == 'disbld')
-    elem[i].setAttribute('disabled', 'disabled');
-}
-                var alrgia ="<select class=form-control id=allergiedio name=allergie[] onchange=nuovaallergia(this.id)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
-    $('#nuovaall').append(alrgia);
-        }
- },
- error: function(data, status){
-    console.log(status+'\n'+ data)
-
- },
- complete: function(data,status){
- }
-});
-
-    // var alrgia ="<select class=form-control id=allergiedio name=allergie onchange=nuovaallergia(this.id)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
-    // $('#nuovaall').append(alrgia);
-}
+        // var alrgia ="<select class=form-control id=allergiedio name=allergie onchange=nuovaallergia(this.id)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+        // $('#nuovaall').append(alrgia);
+    }*/
 
 </script>
