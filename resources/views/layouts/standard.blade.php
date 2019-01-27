@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="{{ URL::asset('js/scripts.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/pazientiscripts.js') }}"></script>
 
 
   <!-- Bootstrap css CDN -->

@@ -8,6 +8,9 @@
     <form method="POST" action="/nuovopaziente">
         {{ csrf_field() }}
 
+        <div id="generalpopup">
+
+        </div>
         <h6 data-toggle="collapse" href="#collapseAnagraficaAdd" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
 
 
@@ -17,7 +20,7 @@
 
         <div class="row formrow">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Nome" name="nome" value="{{old('nome')}}" maxlength="32" required>
+                <input type="text" class="form-control" placeholder="Nome" name="nome"  value="{{old('nome')}}" maxlength="32" required>
             </div>
 
             <div class="col">
@@ -50,19 +53,19 @@
 
         <div class="row formrow">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Indirizzo" name="indirizzo" value="{{old('indirizzo')}}" required>
+                <input type="text" class="form-control" placeholder="Indirizzo" name="indirizzo" value="{{old('indirizzo')}}" maxlength="32" required>
             </div>
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="Città" name="citta" value="{{old('citta')}}" required>
+                <input type="text" class="form-control" placeholder="Città" name="citta" value="{{old('citta')}}" maxlength="32" required>
             </div>
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="Paese" name="paese" value="{{old('paese')}}" required>
+                <input type="text" class="form-control" placeholder="Paese" name="paese" value="{{old('paese')}}" maxlength="32" required>
             </div>
 
             <div class="col">
-                <input type="number" class="form-control" placeholder="Zip" name="cap" value="{{old('cap')}}" min="0" required>
+                <input type="number" class="form-control" placeholder="Zip" name="cap" value="{{old('cap')}}" min="0" maxlength="10" required>
             </div>
         </div>
 
@@ -74,7 +77,7 @@
             </div>
 
             <div class="col">
-                <input type="tel" class="form-control" placeholder="Tel 2" name="tel2" value="{{old('tel2')}}" maxlength="11">
+                <input type="tel" class="form-control" placeholder="Tel 2" name="tel2" value="{{old('tel2')}}"  maxlength="11">
             </div>
         </div>
 
@@ -82,19 +85,23 @@
             <div class="col">
                 <input type="email" class="form-control" placeholder="E-mail" name="email" value="{{old('email')}}" required>
             </div>
+
+            <div id="passpopup">
+
+            </div>
             <div class="col">
-                <input id='pass' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
+                <input id='pass' type="password" class="form-control" placeholder="Password" name="password" minlength="4"
                     maxlength="16" required>
             </div>
             <div class="col">
-                <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
+                <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword"
                     minlength="4" maxlength="16" required>
             </div>
         </div>
 
         <div class="row formrow">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Centro visita" name="centrovisita" value="{{old('centrovisita')}}" required>
+                <input type="text" class="form-control" placeholder="Centro visita" name="centrovisita" value="{{old('centrovisita')}}" maxlength="64" required>
             </div>
 
             <div class="col">
@@ -109,22 +116,22 @@
 
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="ID documento" name="iddocumento" value="{{old('iddocumento')}}" required>
+                <input type="text" class="form-control" placeholder="ID documento" name="iddocumento" value="{{old('iddocumento')}}" maxlength="32" required>
             </div>
         </div>
 
 
         <div class="row formrow">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Medico curante" name="medicocurante" value="{{old('medicocurante')}}">
+                <input type="text" class="form-control" placeholder="Medico curante" name="medicocurante" value="{{old('medicocurante')}}" maxlength="32">
             </div>
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="Recapito medico curante" name="recapitomedicocurante" value="{{old('recapitomedicocurante')}}">
+                <input type="text" class="form-control" placeholder="Recapito medico curante" name="recapitomedicocurante" value="{{old('recapitomedicocurante')}}" maxlength="32">
             </div>
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="Contatto medico curante" name="contattomedicocurante" value="{{old('contattomedicocurante')}}">
+                <input type="text" class="form-control" placeholder="Contatto medico curante" name="contattomedicocurante" value="{{old('contattomedicocurante')}}" maxlength="32">
             </div>
         </div>
     </div>
@@ -178,8 +185,9 @@
 
 
 
+        <button type="submit"  class="btn btn-success">Aggiungi</button>
 
-        <button type="submit" class="btn btn-success">Aggiungi</button>
+        {{--<button type="button" onclick="verificaPass()" class="btn btn-success">Aggiungi</button>--}}
 
     </form>
 </div>

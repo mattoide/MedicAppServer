@@ -8,16 +8,26 @@ function calcolaEta(data) {
 }
 
 function verificaPass() {
-    if ($('#pass').val() != $('#repass').val()) {
+
+    // if ($('#pass').val() != $('#repass').val()) {
+    // }
+    if (!$('#pass').val().includes(" ")) {
+        $("form").submit();
+    } else {
+        alertPopup.warning("#passpopup", "Le password non possono contenere spazi")
     }
-} 
+
+
+}
 
 $(document).ready(function () {
 
-    alertPopup = function() {}
-    alertPopup.warning = function(id, message) {
-        $('#'+id).append('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
-        setTimeout(function() {
+    alertPopup = function () {
+    }
+    alertPopup.warning = function (id, message) {
+        // $('#'+id).append('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+        $(id).append('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><span>' + message + '</span></div>')
+        setTimeout(function () {
             $(".alert").alert('close')
         }, 4000);
     }
@@ -27,55 +37,55 @@ $(document).ready(function () {
 
     let path = window.location.pathname;
 
-    if(path.includes('pazi')){
+    if (path.includes('pazi')) {
         $('#pazientii').addClass('custom-active');
-    } else if(path.includes('medi')){
+    } else if (path.includes('medi')) {
         $('#medicinalii').addClass('custom-active');
-    } else if(path.includes('aller')){
+    } else if (path.includes('aller')) {
         $('#allergiee').addClass('custom-active');
-    } else if(path.includes('remind')){
+    } else if (path.includes('remind')) {
         $('#reminderss').addClass('custom-active');
-    } else if(path.includes('diag')){
+    } else if (path.includes('diag')) {
         $('#diagnosii').addClass('custom-active');
     }
 
-    switch(path){
-        
+    switch (path) {
+
         case "/pazienti":
-        $('#titolo').text('Lista pazienti');
-        break;
+            $('#titolo').text('Lista pazienti');
+            break;
 
         case "/diagnosi":
-        $('#titolo').text('Lista diagnosi');
-        break;
+            $('#titolo').text('Lista diagnosi');
+            break;
 
         case "/allergie":
-        $('#titolo').text('Lista allergie');
-        break;
+            $('#titolo').text('Lista allergie');
+            break;
 
         case "/medicinali":
-        $('#titolo').text('Lista medicinali');
-        break;
+            $('#titolo').text('Lista medicinali');
+            break;
 
         case "/reminders":
-        $('#titolo').text('Lista reminders');
-        break;
+            $('#titolo').text('Lista reminders');
+            break;
 
 
         case "/nuovopaziente":
-        $('#titolo').text('Nuovo paziente');
-        break;
-        
+            $('#titolo').text('Nuovo paziente');
+            break;
+
         case "/modificapaziente":
-        $('#titolo').text('Modifica paziente');
-        break;
+            $('#titolo').text('Modifica paziente');
+            break;
     }
 
     $('#datatable').DataTable({
 
         /*"language": {
             "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Italian.json"
-        },*/ 
+        },*/
         "oLanguage": {
             "sEmptyTable": "Nessun dato presente nella tabella",
             "sInfo": "Vista da _START_ a _END_ di _TOTAL_ elementi",
@@ -112,3 +122,4 @@ $('#exampleModal').on('show.bs.modal', function (event) {
     modal.find('.modal-title').text('New message to ' + recipient)
     modal.find('.modal-body input').val(recipient)
 })
+

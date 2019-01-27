@@ -9,6 +9,9 @@
         <?php echo e(csrf_field()); ?>
 
 
+        <div id="generalpopup">
+
+        </div>
         <h6 data-toggle="collapse" href="#collapseAnagraficaAdd" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
 
 
@@ -18,7 +21,7 @@
 
         <div class="row formrow">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Nome" name="nome" value="<?php echo e(old('nome')); ?>" maxlength="32" required>
+                <input type="text" class="form-control" placeholder="Nome" name="nome"  value="<?php echo e(old('nome')); ?>" maxlength="32" required>
             </div>
 
             <div class="col">
@@ -50,19 +53,19 @@
 
         <div class="row formrow">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Indirizzo" name="indirizzo" value="<?php echo e(old('indirizzo')); ?>" required>
+                <input type="text" class="form-control" placeholder="Indirizzo" name="indirizzo" value="<?php echo e(old('indirizzo')); ?>" maxlength="32" required>
             </div>
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="Città" name="citta" value="<?php echo e(old('citta')); ?>" required>
+                <input type="text" class="form-control" placeholder="Città" name="citta" value="<?php echo e(old('citta')); ?>" maxlength="32" required>
             </div>
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="Paese" name="paese" value="<?php echo e(old('paese')); ?>" required>
+                <input type="text" class="form-control" placeholder="Paese" name="paese" value="<?php echo e(old('paese')); ?>" maxlength="32" required>
             </div>
 
             <div class="col">
-                <input type="number" class="form-control" placeholder="Zip" name="cap" value="<?php echo e(old('cap')); ?>" min="0" required>
+                <input type="number" class="form-control" placeholder="Zip" name="cap" value="<?php echo e(old('cap')); ?>" min="0" maxlength="10" required>
             </div>
         </div>
 
@@ -74,7 +77,7 @@
             </div>
 
             <div class="col">
-                <input type="tel" class="form-control" placeholder="Tel 2" name="tel2" value="<?php echo e(old('tel2')); ?>" maxlength="11">
+                <input type="tel" class="form-control" placeholder="Tel 2" name="tel2" value="<?php echo e(old('tel2')); ?>"  maxlength="11">
             </div>
         </div>
 
@@ -82,19 +85,23 @@
             <div class="col">
                 <input type="email" class="form-control" placeholder="E-mail" name="email" value="<?php echo e(old('email')); ?>" required>
             </div>
+
+            <div id="passpopup">
+
+            </div>
             <div class="col">
-                <input id='pass' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
+                <input id='pass' type="password" class="form-control" placeholder="Password" name="password" minlength="4"
                     maxlength="16" required>
             </div>
             <div class="col">
-                <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
+                <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword"
                     minlength="4" maxlength="16" required>
             </div>
         </div>
 
         <div class="row formrow">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Centro visita" name="centrovisita" value="<?php echo e(old('centrovisita')); ?>" required>
+                <input type="text" class="form-control" placeholder="Centro visita" name="centrovisita" value="<?php echo e(old('centrovisita')); ?>" maxlength="64" required>
             </div>
 
             <div class="col">
@@ -109,22 +116,22 @@
 
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="ID documento" name="iddocumento" value="<?php echo e(old('iddocumento')); ?>" required>
+                <input type="text" class="form-control" placeholder="ID documento" name="iddocumento" value="<?php echo e(old('iddocumento')); ?>" maxlength="32" required>
             </div>
         </div>
 
 
         <div class="row formrow">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Medico curante" name="medicocurante" value="<?php echo e(old('medicocurante')); ?>">
+                <input type="text" class="form-control" placeholder="Medico curante" name="medicocurante" value="<?php echo e(old('medicocurante')); ?>" maxlength="32">
             </div>
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="Recapito medico curante" name="recapitomedicocurante" value="<?php echo e(old('recapitomedicocurante')); ?>">
+                <input type="text" class="form-control" placeholder="Recapito medico curante" name="recapitomedicocurante" value="<?php echo e(old('recapitomedicocurante')); ?>" maxlength="32">
             </div>
 
             <div class="col">
-                <input type="text" class="form-control" placeholder="Contatto medico curante" name="contattomedicocurante" value="<?php echo e(old('contattomedicocurante')); ?>">
+                <input type="text" class="form-control" placeholder="Contatto medico curante" name="contattomedicocurante" value="<?php echo e(old('contattomedicocurante')); ?>" maxlength="32">
             </div>
         </div>
     </div>
@@ -173,8 +180,9 @@
 
 
 
+        <button type="submit"  class="btn btn-success">Aggiungi</button>
 
-        <button type="submit" class="btn btn-success">Aggiungi</button>
+        
 
     </form>
 </div>
@@ -183,4 +191,5 @@
 <script>
 
 </script>
+
 <?php echo $__env->make('layouts.standard', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

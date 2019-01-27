@@ -12,11 +12,11 @@ giorn 9yqG5x1EMz7b6sFR1M
 ###################################################
 
 
-creare tabella_medico_paziente se si possono inerire tabella_medico_paziente
 
-finire di fare update tabella_medico_paziente array storie cliniche
 
 impedire di creare storie cliniche con date prima di oggi ?
 
-a inserimento di allergie controllare se negli altri select c'e qualcosa di gia selezionato senza passare per db
-aggiunge elimina
+aggiunge elimina a alleergie
+
+fare sblocco tab sequenziale
+mandare id paziente + id medicinale e inserirli nella tabella di relazione e quando vado a prendere faccio joinzzz

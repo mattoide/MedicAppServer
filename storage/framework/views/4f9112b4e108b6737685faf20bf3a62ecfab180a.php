@@ -45,9 +45,9 @@
 
         <div class="tab-pane fade" id="alrgie" role="tabpanel" aria-labelledby="alrgie-tab">
 
-                <div id="allergiepopup" style="width: 50%">
+                <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
-                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaallergia()" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia(<?php echo e($allergie); ?>)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <option disabled selected>allergia</option>
                     <?php $__currentLoopData = $allergie; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option><?php echo e($a->allergia); ?></option>
@@ -143,9 +143,9 @@
 
 <br>
 
-            <div class="row" style="width: 50%">
+            <div id="medicinalipopup" class="row" style="width: 50%; margin-left: 1%">
 
-                    <select id="medicinalipupup" class="form-control" id="medicinali" name="medicinali[]" onchange="nuovomedicinale()">
+                    <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale(<?php echo e($medicinali); ?>)">
                         <option disabled selected>medicinale</option>
                         <?php $__currentLoopData = $medicinali; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option><?php echo e($m->nome); ?></option>
@@ -160,7 +160,6 @@
     </div>
 </div>
 <script>
-
 
 
     function insertdate(val){
@@ -180,31 +179,6 @@
     $('#nuovastoriaaa').append(storia);
 
 }
-
-
-
-function nuovomedicinale(){
-
-    allergie = document.getElementsByName("medicinali[]");
-    allergie.forEach(function(allergia, indice, array){
-        if (indice === array.length - 1){
-            if(!allergieSelezionate.includes(allergia.value)){
-                var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia()><option disabled selected>allergia</option><?php $__currentLoopData = $allergie; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option><?php echo e($a->allergia); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></select> <br>"
-
-                $('#nuovaall').append(alrgia);
-                allergieSelezionate.push(allergia.value)
-                $(".alert").alert('close')
-
-            } else {
-                var msg = ["Hai gia selezionato l'allergia al",allergia.value];
-                allergia.value = 'allergia';
-                alertPopup.warning('allergiepopup',msg.join(" "));
-            }
-        }
-    });
-
-}
-
 
 
 </script>

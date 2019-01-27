@@ -215,26 +215,6 @@
 
 <script>
 
-    allergieSelezionate = [];
-    allergie = document.getElementsByName("allergie[]");
-    allergie.forEach(allergia => allergieSelezionate.push(allergia.value));
-
-    function nuovaallergia() {
-        allergie = document.getElementsByName("allergie[]");
-        allergie.forEach(function (allergia, indice, array) {
-            if (indice === array.length - 1) {
-                if (!allergieSelezionate.includes(allergia.value)) {
-                    var alrgia = "<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia()><option disabled selected>allergia</option><?php $__currentLoopData = $allergie; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option><?php echo e($a->allergia); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></select> <br>"
-                    $('#nuovaall').append(alrgia);
-                    allergieSelezionate.push(allergia.value)
-                } else {
-                    alert("Allergia: " + allergia.value + " gia selezionata")
-                    allergia.value = 'allergia';
-                }
-            }
-        });
-
-    }
 
     /* function nuovaallergia(id) {
          var a = '#' + id;
