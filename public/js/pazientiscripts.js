@@ -56,7 +56,8 @@ function nuovoMedicinale(pMedicinali){
 
                 pMedicinali.forEach(medc => {
                     if(medc)
-                    medicinalis = medicinalis+"<option>"+ medc.nome + "</option>";
+                    medicinalis = medicinalis+"<option value="+medc.id +">"+ medc.nome + "</option>";
+
                 });
                 // var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia(allergie)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
                 var mdecnl ="<select class=form-control id=medicinali name=medicinali[] onchange=nuovoMedicinale(a)><option disabled selected>medicinale</option>" + medicinalis + "</select> <br>"

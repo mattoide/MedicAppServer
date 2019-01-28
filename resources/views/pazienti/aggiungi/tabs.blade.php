@@ -176,7 +176,7 @@
                     <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
                         <option disabled selected>medicinale</option>
                         @foreach ($medicinali as $m)
-                        <option>{{$m->nome}}</option>
+                        <option value="{{$m->id}}">{{$m->nome}}</option>
                         @endforeach
                     </select> 
     <br>

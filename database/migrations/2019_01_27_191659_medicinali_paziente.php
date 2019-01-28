@@ -16,7 +16,7 @@ class MedicinaliPaziente extends Migration
         Schema::create('medicinali_paziente', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('paziente_id');
-            $table->unsignedInteger('meicinale_id');
+            $table->unsignedInteger('medicinale_id');
             $table->timestamps();
         });
     }
