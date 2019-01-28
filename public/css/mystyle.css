@@ -46,6 +46,18 @@ hr{
     color: green;
 } 
 
+td.sorting_1 {
+    background-color: transparent !important;
+}
+
+tr.even {
+    background-color: #E2E4FF !important;
+}
+
+tr.odd {
+    background-color: white !important;
+}
+
 .circle {
     display: inline-block;
     border-radius: 60px;
