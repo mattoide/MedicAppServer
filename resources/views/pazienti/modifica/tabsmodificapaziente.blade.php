@@ -214,7 +214,6 @@
             <div id="medicinalipopup" class="row" style="width: 50%; margin-left: 1%">
 
                 @foreach ($paziente->medicinaliPaziente as $medPaz)
-                {{-- @foreach ($medicinaliPaziente as $medPazFull) --}}
 
                 <select class="form-control" id="allergie" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
                     <option disabled selected>medicinale</option>
@@ -227,7 +226,6 @@
                         @endforeach
                     </select>
                 <br>
-                {{-- @endforeach --}}
 
             @endforeach
 

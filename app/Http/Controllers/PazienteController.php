@@ -229,11 +229,7 @@ class PazienteController extends Controller {
         $allergie         = Allergia::all();
         $medicinali       = Medicinale::all();
 
-        
-        $medPazi = Medicinale::all()->where('id', $paziente->medicinaliPaziente[0]->medicinale_id);
-
-
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('medicinaliPaziente', $medPazi);
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali);
     }
 
     public function update(Request $request) {
