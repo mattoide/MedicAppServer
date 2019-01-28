@@ -234,20 +234,14 @@ class PazienteController extends Controller {
 
     public function update(Request $request) {
 
-        // $datestoriecliniche = Input::get('datastoriaclinica');
-        // $storiecliniche = Input::get('storiaclinica');
+        $datestoriecliniche = Input::get('datastoriaclinica');
+        $storiecliniche     = Input::get('storiaclinica');
+        $scdiagnosi1        = Input::get('scdiagnosi1');
+        $scdiagnosi2        = Input::get('scdiagnosi2');
+        $allergie           = Input::get('allergie');
+        $medicinali         = Input::get('medicinali');
 
-        // print_r($datestoriecliniche);
-        // print_r('<br>');
-        // print_r($storiecliniche);
 
-        // foreach ($datestoriecliniche as $quan) {
-        //     print_r($quan);
-
-        // }      foreach ($storiecliniche as $quan) {
-        //     print_r($quan);
-        // }
-        // return;
         $validator = $this->getValidatoreForUpdate($request);
 
         if ($validator->fails()) {
@@ -274,6 +268,110 @@ class PazienteController extends Controller {
 
         $paziente->save();
         $paziente->recapitiPaziente()->save($paziente->recapitiPaziente);
+
+
+        /************************************************************/
+
+        $medico = new Medico([
+            'nome'     => $request['medicocurante'],
+            'cognome'  => $request['medicocurante'],
+            'contatto' => $request['contattomedicocurante'],
+            'recapito' => $request['recapitomedicocurante'],
+        ]);
+
+        $stories = [];
+        if (isset($storiecliniche)) {
+            $i = 0;
+            foreach ($storiecliniche as $sc) {
+                if (!isset($scdiagnosi1[$i]));
+                $scdiagnosi1[$i] = '';
+
+                if (!isset($scdiagnosi2[$i])) {
+                    $scdiagnosi2[$i] = '';
+                }
+
+                $stories[] = new StoriaClinica([
+                    'data'          => $datestoriecliniche[$i],
+                    'storiaclinica' => $storiecliniche[$i],
+                    'diagnosi1'     => $scdiagnosi1[$i],
+                    'diagnosi2'     => $scdiagnosi2[$i],
+                ]);
+
+                $i++;
+            }
+        }
+
+        $allergies = [];
+        if (isset($allergie)) {
+            foreach ($allergie as $al) {
+                $allergies[] = new AllergiePaziente([
+                    'allergia' => $al,
+                ]);
+            }
+        }
+
+        $medicinalis = [];
+
+        if (isset($medicinali)) {
+            foreach ($medicinali as $med) {
+                $medicinalis[] = new MedicinaliPaziente([
+                    'medicinale_id' => $med[0],
+                ]);
+            }
+        }
+
+        $diagnosi1 = new Diagnosi1([
+            'diagnosi' => $request['diagnosi1'],
+        ]);
+
+        $diagnosi2 = new Diagnosi2([
+            'diagnosi' => $request['diagnosi2'],
+        ]);
+
+        $diagnosi3 = new Diagnosi3([
+            'diagnosi' => $request['diagnosi3'],
+        ]);
+
+        if ($medico->nome || $medico->cognome || $medico->contatto || $medico->recapito) {
+            $paziente->medico()->save($medico);
+        }
+
+        StoriaClinica::where('paziente_id', $paziente->id)->delete();
+        AllergiePaziente::where('paziente_id', $paziente->id)->delete();
+        MedicinaliPaziente::where('paziente_id', $paziente->id)->delete();
+        Diagnosi1::where('paziente_id', $paziente->id)->delete();
+        Diagnosi2::where('paziente_id', $paziente->id)->delete();
+        Diagnosi3::where('paziente_id', $paziente->id)->delete();
+
+
+        foreach ($stories as $s) {
+            $paziente->storiaClinica()->save($s);
+        }
+
+        foreach ($allergies as $a) {
+            $paziente->allergiePaziente()->save($a);
+        }
+
+        foreach ($medicinalis as $m) {
+            $paziente->medicinaliPaziente()->save($m);
+        }
+
+
+        if ($diagnosi1->diagnosi) {
+            $paziente->diagnosi1()->save($diagnosi1);
+        }
+
+        if ($diagnosi2->diagnosi) {
+            $paziente->diagnosi2()->save($diagnosi2);
+        }
+
+        if ($diagnosi3->diagnosi) {
+            $paziente->diagnosi3()->save($diagnosi3);
+        }
+
+       // return redirect('/pazienti');
+
+        /*************************************************************/
 
         // return redirect('/pazienti');
         return redirect()->back();
