@@ -36,7 +36,7 @@
                 <td>{{$paziente->recapitiPaziente->iddocumento}}</td>
                 <td>{{$paziente->created_at->formatLocalized('%d %B %Y')}}</td>
 
-                <td style="display: inline">
+                <td>
                     <form style="display: inline" method="GET" action="/modificapaziente">
                         {{ csrf_field() }}
                         <button name='id' value="{{$paziente->id}}"  type="submit" class="btn btn-icn"><i class="far fa-edit cstm-icn"></i></button>

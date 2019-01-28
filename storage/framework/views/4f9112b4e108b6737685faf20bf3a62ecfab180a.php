@@ -148,7 +148,7 @@
                     <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale(<?php echo e($medicinali); ?>)">
                         <option disabled selected>medicinale</option>
                         <?php $__currentLoopData = $medicinali; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option><?php echo e($m->nome); ?></option>
+                        <option value="<?php echo e($m->id); ?>"><?php echo e($m->nome); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select> 
     <br>

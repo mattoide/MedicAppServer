@@ -36,7 +36,7 @@
                 <td><?php echo e($paziente->recapitiPaziente->iddocumento); ?></td>
                 <td><?php echo e($paziente->created_at->formatLocalized('%d %B %Y')); ?></td>
 
-                <td style="display: inline">
+                <td>
                     <form style="display: inline" method="GET" action="/modificapaziente">
                         <?php echo e(csrf_field()); ?>
 
@@ -58,4 +58,5 @@
     </table>
 </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.standard', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
