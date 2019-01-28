@@ -34,7 +34,7 @@
 
   <div class="row" style="height: 100%; margin-right: 0%; margin-left: 0%">
 
-    <div class="wrapper" style="background-color: #333333; width: 7%">
+    <div class="wrapper" style="background-color: #333333;">
       <!-- Sidebar -->
       <nav id="sidebar">
         {{--
