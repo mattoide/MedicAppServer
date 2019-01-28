@@ -94,11 +94,11 @@
 
         <div class="tab-pane fade" id="alrgie" role="tabpanel" aria-labelledby="alrgie-tab">
 
-            <div style="width: 50%">
+            <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
                 @foreach ($paziente->allergiePaziente as $alPaz)
 
-                    <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaallergia()">
+                    <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}})">
                         <option disabled selected>allergia</option>
                         @foreach ($allergie as $a)
                             <p>{{$alPaz->allergia}} // {{$a}}</p>
@@ -111,12 +111,12 @@
                     </select>
                     <br>
                 @endforeach
-                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaallergia()">
+                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}})" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <option disabled selected>allergia</option>
                     @foreach ($allergie as $a)
-                        <option>{{$a->allergia}}</option>
+                    <option>{{$a->allergia}}</option>
                     @endforeach
-                </select>
+                </select> 
 
 
                 <div id="nuovaall"></div>
@@ -211,17 +211,35 @@
 
             <br>
 
-            <div class="row" style="width: 50%">
+            <div id="medicinalipopup" class="row" style="width: 50%; margin-left: 1%">
 
-                <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovomedicinale()">
+                @foreach ($paziente->medicinaliPaziente as $medPaz)
+                {{-- @foreach ($medicinaliPaziente as $medPazFull) --}}
+
+                <select class="form-control" id="allergie" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
                     <option disabled selected>medicinale</option>
                     @foreach ($medicinali as $m)
-                        <option>{{$m->nome}}</option>
-                    @endforeach
-                </select>
+                        @if ($medPaz->medicinale_id == $m->id)
+                            <option value="{{$m->id}}" selected>{{$m->nome}}</option>
+                        @else
+                            <option value="{{$m->id}}">{{$m->nome}}</option>
+                        @endif
+                        @endforeach
+                    </select>
                 <br>
-                <div id="nuovomed"></div>
-            </div>
+                {{-- @endforeach --}}
+
+            @endforeach
+
+                <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
+                    <option disabled selected>medicinale</option>
+                    @foreach ($medicinali as $m)
+                    <option value="{{$m->id}}">{{$m->nome}}</option>
+                    @endforeach
+                </select> 
+<br>
+            <div id="nuovomed"></div>
+        </div>
 
 
         </div>

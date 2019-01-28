@@ -1,12 +1,16 @@
+
 allergieSelezionate = [];
 medicinaliSelezionati = [];
 
+$( document ).ready(function() {
 
-allergie = document.getElementsByName("allergie[]");
-allergie.forEach(allergia => allergieSelezionate.push(allergia.value));
+    allergie = document.getElementsByName("allergie[]");
+    allergie.forEach(allergia => allergieSelezionate.push(allergia.value));
+        
+    medicinali = document.getElementsByName("medicinali[]");
+    medicinali.forEach(medicinale => medicinaliSelezionati.push(medicinale.value));
+});
 
-medicinali = document.getElementsByName("medicinali[]");
-medicinali.forEach(medicinale => medicinaliSelezionati.push(medicinali.value));
 
 function nuovaAllergia(pAllergie){
 

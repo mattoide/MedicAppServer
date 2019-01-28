@@ -223,12 +223,17 @@ class PazienteController extends Controller {
     }
 
     public function edit(Request $request) {
+
         $paziente         = Paziente::find($request['id']);
         $diagnosi         = Diagnosi::all();
         $allergie         = Allergia::all();
         $medicinali       = Medicinale::all();
-        $allergiePaziente = AllergiePaziente::where('paziente_id', $request['id'])->get();
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('allergiePaziente', $allergiePaziente);
+
+        
+        $medPazi = Medicinale::all()->where('id', $paziente->medicinaliPaziente[0]->medicinale_id);
+
+
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('medicinaliPaziente', $medPazi);
     }
 
     public function update(Request $request) {
