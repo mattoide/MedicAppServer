@@ -34,7 +34,7 @@
 
   <div class="row" style="height: 100%; margin-right: 0%; margin-left: 0%">
 
-    <div class="wrapper" style="background-color: #333333;">
+    <div class="wrapper" style="background-color: #333333; width: 6%">
       <!-- Sidebar -->
       <nav id="sidebar">
         {{--
@@ -46,23 +46,23 @@
           {{--
           <p>Dummy Heading</p> --}}
           <li class="nav-item">
-            <a id='pazientii' class="nav-link navtext" href="/pazienti"><i class="fas fa-bed"></i> Pazienti </a>
+            <a id='pazientii' class="nav-link navtext" href="/pazienti"><i class="fas fa-bed fa-lg circle"></i> Pazienti </a>
           </li>
 
           <li class="nav-item">
-            <a id='diagnosii' class="nav-link navtext" href="/diagnosi"><i class="far fa-address-card"></i> Diagnosi</a>
+            <a id='diagnosii' class="nav-link navtext" href="/diagnosi"><i class="far fa-address-card fa-lg circle"></i> Diagnosi</a>
           </li>
 
           <li class="nav-item">
-            <a id='allergiee' class="nav-link navtext" href="/allergie"><i class="fas fa-exclamation-triangle"></i> Allergie</a>
+            <a id='allergiee' class="nav-link navtext" href="/allergie"><i class="fas fa-exclamation-triangle fa-lg circle"></i> Allergie</a>
           </li>
 
           <li class="nav-item">
-            <a id='medicinalii' class="nav-link navtext" href="/medicinali"><i class="fas fa-pills"></i> Medicinali </a>
+            <a id='medicinalii' class="nav-link navtext" href="/medicinali"><i class="fas fa-pills fa-lg circle"></i> Medicinali </a>
           </li>
 
           <li class="nav-item">
-            <a id='reminderss' class="nav-link navtext" href="/reminders"><i class="far fa-bell"></i> Reminder</a>
+            <a id='reminderss' class="nav-link navtext" href="/reminders"><i class="far fa-bell fa-lg circle"></i> Reminder</a>
           </li>
 
         </ul>
@@ -101,7 +101,7 @@
 
     <div class="col" style="padding: 0%">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <h1 id="titolo"></h1>
+        <h3 id="titolo"></h3>
       </nav>
 
       @yield('content')
