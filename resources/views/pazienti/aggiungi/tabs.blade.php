@@ -35,7 +35,7 @@
 
             <br>
             <button id="nuovastoria" name="nuovastoria" onclick="nuovastoriaa()"  data-titolo="Aggiungi nuova storia clinica"
-            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">Aggiungi storia clinica</button>
 
         <div id='nuovastoriaaa'></div>
             {{-- <div style="width: 90%">

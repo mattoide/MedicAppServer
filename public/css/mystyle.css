@@ -140,7 +140,7 @@ textarea{
 
 .customdate{
     color: black !important;
-    background: green !important;
+    background: transparent !important;
     border-radius: 20px !important;
 }
 

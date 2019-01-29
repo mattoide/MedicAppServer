@@ -44,7 +44,7 @@
             <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria"
                     data-titolo="Aggiungi nuova storia clinica"
                     data-idpaziente="{{$paziente->id}}" type="button" class="btn btn-outline-success"
-                    style="margin: 1%">+
+                    style="margin: 1%"> Aggiungi storia clinica
             </button>
 
             <div id='nuovastoria'></div>
@@ -55,9 +55,12 @@
                         <tbody id="tablestoriaclinica">
                         <tr>
                             <td class="datetd">
-                                <input id="{{$storiaclinica->id}}datastoriaclinicadisbld"
-                                       class="form-control customdate" type="text" name="datastoriaclinicaa"
-                                       value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%b %g')}}@endif">
+                                {{-- <input id="{{$storiaclinica->id}}datastoriaclinicadisbld"
+                                       class="form-control customdate" type="date" name="datastoriaclinicaa"
+                                       value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%b %g')}}@endif"> --}}
+                                       <input id="{{$storiaclinica->id}}datastoriaclinicadisbld"
+                                       class="form-control customdate" type="date" name="datastoriaclinicaa"
+                                       value="@if($storiaclinica->data){{$storiaclinica->data}}@endif">
                                 <p id="{{$storiaclinica->id}}scdiagnosi1disbld"></p>
                                 <p id="{{$storiaclinica->id}}scdiagnosi2disbld"></p>
 
