@@ -264,6 +264,8 @@ $('#idpaz').removeAttr('disabled');
 $('#pass').attr('disabled','disabled');
 $('#repass').attr('disabled','disabled');
 $('#nuovastoria').removeAttr('disabled');
+$('#btnnuovaall').removeAttr('disabled');
+
 
 
 }
@@ -296,6 +298,7 @@ let b = a.replace('&#039;', '\'')
 $('#tipodocumento').val(b)
 $('#sesso').val("{{$paziente->sesso}}")
 $('#nuovastoria').attr('disabled', 'disabled');
+$('#btnnuovaall').attr('disabled', 'disabled');
     }
 
 </script>

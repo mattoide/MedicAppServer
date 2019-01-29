@@ -73,12 +73,16 @@
 
                 <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
-                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}})" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                    
+                <button id="btnnuovaall"   onclick="al({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
+                data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+
+                {{-- <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergiaa({{$allergie}}, this)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <option disabled selected>allergia</option>
                     @foreach ($allergie as $a)
                     <option>{{$a->allergia}}</option>
                     @endforeach
-                </select> 
+                </select>  --}}
 <br>
             <div id="nuovaall"></div>
         </div>

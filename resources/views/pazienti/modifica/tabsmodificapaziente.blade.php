@@ -96,9 +96,13 @@
 
             <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
+                
+                <button id="btnnuovaall"   onclick="al({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
+            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%" disabled>+</button>
+
                 @foreach ($paziente->allergiePaziente as $alPaz)
 
-                    <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}})">
+                    <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergiaa({{$allergie}}, this)">
                         <option disabled selected>allergia</option>
                         @foreach ($allergie as $a)
                             <p>{{$alPaz->allergia}} // {{$a}}</p>
@@ -111,12 +115,13 @@
                     </select>
                     <br>
                 @endforeach
-                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}}, this.value)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                {{-- <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}}, this)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <option disabled selected>allergia</option>
                     @foreach ($allergie as $a)
                     <option>{{$a->allergia}}</option>
                     @endforeach
-                </select> 
+                </select>  --}}
+
 
 
                 <div id="nuovaall"></div>
@@ -245,6 +250,10 @@
 </div>
 
 <script>
+ 
+// b = JSON.parse(a)
+// getAllergie();
+
 
 
     /* function nuovaallergia(id) {
