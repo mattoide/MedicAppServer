@@ -35,6 +35,7 @@
     31 => 'MedicAppServer\\Providers\\AuthServiceProvider',
     32 => 'MedicAppServer\\Providers\\EventServiceProvider',
     33 => 'MedicAppServer\\Providers\\RouteServiceProvider',
+    34 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
   ),
   'eager' => 
   array (

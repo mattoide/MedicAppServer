@@ -29,7 +29,7 @@
                 <div class="col-1">
                     {{--<input type="text" class="form-control" placeholder="M/F" name="sesso" value="{{old('sesso')}}" maxlength="1"
                         required>--}}
-                    <select class="form-control" id="sesso" name="sesso" value="{{$paziente->sesso}}" required>
+                    <select class="form-control" id="sesso" name="sesso" value="{{$paziente->sesso}}"  required>
                             <option disabled selected value> -- M/F -- </option>
                             <option>F</option>
                             <option>M</option>
@@ -200,6 +200,13 @@
 
    // disabilitaTutto();
     calcolaEta('{{$paziente->datadinascita}}');
+
+    $('#sesso').val('{{$paziente->sesso}}');
+
+    let a = '{{$paziente->recapitiPaziente->tipodocumento}}';
+    a = a.replace('&#039;','\'');
+    $('#tipodocumento').val(a);
+
     
     @if ($paziente->diagnosi1)
         var dia1 ='{{$paziente->diagnosi1->diagnosi}}'
@@ -221,15 +228,13 @@
     @if ($sc->diagnosi1)
         var scdia1 ='{{$sc->diagnosi1}}'
         var scc1 =  '{{$sc->id}}'+'scdiagnosi1disbld';
-        console.log(scc1)
-        $('#'+scc1).text(scdia1)   
+        $('#'+scc1).val(scdia1)   
     @endif
 
     @if ($sc->diagnosi2)
         var scdia2 ='{{$sc->diagnosi2}}'
         var scc2 =  '{{$sc->id}}'+'scdiagnosi2disbld';
-        console.log(scdia2)
-        $('#'+scc2).text(scdia2)   
+        $('#'+scc2).val(scdia2)   
     @endif
 
 

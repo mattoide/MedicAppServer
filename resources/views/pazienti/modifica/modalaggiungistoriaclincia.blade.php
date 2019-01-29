@@ -31,7 +31,7 @@
                                     </td>
 
                                     <td>
-                                        <textarea class="form-control" rows="3" id="storiaclinicam" name="storiaclinicam" required></textarea>
+                                        <textarea class="form-control miatextarea" rows="3" id="storiaclinicam" name="storiaclinicam" required></textarea>
                                     </td>
                                 </tr>
                             </tbody>

@@ -3,7 +3,7 @@
     <?php echo $__env->make('pazienti.modifica.modalaggiungistoriaclincia', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 
-<div class="container-fluid" style="margin-top: 2%">
+<div class="container-fluid" style="background-color: white">
     <?php echo $__env->make('layouts.errors', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     <form method="POST" action="/modificapaziente">
@@ -29,7 +29,7 @@
 
                 <div class="col-1">
                     
-                    <select class="form-control" id="sesso" name="sesso" value="<?php echo e($paziente->sesso); ?>" required>
+                    <select class="form-control" id="sesso" name="sesso" value="<?php echo e($paziente->sesso); ?>"  required>
                             <option disabled selected value> -- M/F -- </option>
                             <option>F</option>
                             <option>M</option>
@@ -157,6 +157,9 @@
                             <option><?php echo e($a->diagnosi); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
+                    </div>
+
+                        <div class="row formrow">
 
                     <select class="form-control" id="diagnosi2" name="diagnosi2">
                                 <option disabled selected value> diagnosi 2 </option>
@@ -164,6 +167,9 @@
                                 <option><?php echo e($a->diagnosi); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
+                        </div>
+
+                            <div class="row formrow">
 
                     <select class="form-control" id="diagnosi3" name="diagnosi3">
                                     <option disabled selected> diagnosi 3 </option>
@@ -178,8 +184,9 @@
     <?php echo $__env->make('pazienti.modifica.tabsmodificapaziente', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 
-        <button type="button" onclick="abilitaTutto()" class="btn btn-success">Modifica</button>
-        <button name="idpaz" id="idpaz" value="<?php echo e($paziente->id); ?>" type="submit" class="btn btn-warning" disabled>Salva modifiche</button>
+        
+        
+        <button name="idpaz" id="idpaz" value="<?php echo e($paziente->id); ?>" type="submit" class="btn btn-warning" >Salva modifiche</button>
         <button type="button" onclick="refresh()" class="btn btn-danger">Annulla modifiche</button>
 
     </form>
@@ -188,8 +195,15 @@
 <script>
     $(document).ready(function () {
 
-    disabilitaTutto();
+   // disabilitaTutto();
     calcolaEta('<?php echo e($paziente->datadinascita); ?>');
+
+    $('#sesso').val('<?php echo e($paziente->sesso); ?>');
+
+    let a = '<?php echo e($paziente->recapitiPaziente->tipodocumento); ?>';
+    a = a.replace('&#039;','\'');
+    $('#tipodocumento').val(a);
+
     
     <?php if($paziente->diagnosi1): ?>
         var dia1 ='<?php echo e($paziente->diagnosi1->diagnosi); ?>'
@@ -211,15 +225,13 @@
     <?php if($sc->diagnosi1): ?>
         var scdia1 ='<?php echo e($sc->diagnosi1); ?>'
         var scc1 =  '<?php echo e($sc->id); ?>'+'scdiagnosi1disbld';
-        console.log(scc1)
-        $('#'+scc1).text(scdia1)   
+        $('#'+scc1).val(scdia1)   
     <?php endif; ?>
 
     <?php if($sc->diagnosi2): ?>
         var scdia2 ='<?php echo e($sc->diagnosi2); ?>'
         var scc2 =  '<?php echo e($sc->id); ?>'+'scdiagnosi2disbld';
-        console.log(scdia2)
-        $('#'+scc2).text(scdia2)   
+        $('#'+scc2).val(scdia2)   
     <?php endif; ?>
 
 
@@ -261,6 +273,8 @@ $('#idpaz').removeAttr('disabled');
 $('#pass').attr('disabled','disabled');
 $('#repass').attr('disabled','disabled');
 $('#nuovastoria').removeAttr('disabled');
+$('#btnnuovaall').removeAttr('disabled');
+
 
 
 }
@@ -293,6 +307,7 @@ let b = a.replace('&#039;', '\'')
 $('#tipodocumento').val(b)
 $('#sesso').val("<?php echo e($paziente->sesso); ?>")
 $('#nuovastoria').attr('disabled', 'disabled');
+$('#btnnuovaall').attr('disabled', 'disabled');
     }
 
 </script>

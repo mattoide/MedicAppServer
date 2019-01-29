@@ -35,47 +35,73 @@
 
 <div class="container tabcontent-custom">
 
-
-    <div class="tab-content" style="max-height: 23em; overflow-y: scroll" id="myTabContent">
+        
+    <div class="tab-content" id="myTabContent">
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 
-            <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria"
-                    data-titolo="Aggiungi nuova storia clinica"
-                    data-idpaziente="<?php echo e($paziente->id); ?>" type="button" class="btn btn-outline-success"
-                    style="margin: 1%">+
-            </button>
+<button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria"
+        data-titolo="Aggiungi nuova storia clinica"
+        data-idpaziente="<?php echo e($paziente->id); ?>" type="button" class="btn btn-outline-success"
+        style="margin: 1%"> Aggiungi storia clinica
+</button>
+<br>
+
+
+<div style="max-height: 23em; overflow-y: scroll">
+     
 
             <div id='nuovastoria'></div>
-            <?php $__currentLoopData = $paziente->storiaClinica; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $storiaclinica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+             <?php $__currentLoopData = $paziente->storiaClinica; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $storiaclinica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                 <div style="width: 95%">
                     <table class="table table-bordered">
                         <tbody id="tablestoriaclinica">
                         <tr>
                             <td class="datetd">
-                                <input id="<?php echo e($storiaclinica->id); ?>datastoriaclinicadisbld"
-                                       class="form-control customdate" type="text" name="datastoriaclinicaa"
-                                       value="<?php if($storiaclinica->data): ?><?php echo e($storiaclinica->created_at->formatLocalized('%B %Y')); ?><?php endif; ?>">
-                                <p id="<?php echo e($storiaclinica->id); ?>scdiagnosi1disbld"></p>
-                                <p id="<?php echo e($storiaclinica->id); ?>scdiagnosi2disbld"></p>
+                                
+                                       <input id="<?php echo e($storiaclinica->id); ?>datastoriaclinicadisbld"
+                                       class="form-control customdate" type="date" name="datastoriaclinica[]"
+                                       value="<?php if($storiaclinica->data): ?><?php echo e($storiaclinica->data); ?><?php endif; ?>">
 
                                 
+
+                                 <select class="form-control" id="<?php echo e($storiaclinica->id); ?>scdiagnosi1disbld" name="scdiagnosi1[]">
+                                    <option disabled selected> diagnosi 1 </option>
+                                    <?php $__currentLoopData = $diagnosi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option><?php echo e($a->diagnosi); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+
+                                <select class="form-control" id="<?php echo e($storiaclinica->id); ?>scdiagnosi2disbld" name="scdiagnosi2[]">
+                                    <option disabled selected> diagnosi 2 </option>
+                                    <?php $__currentLoopData = $diagnosi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option><?php echo e($a->diagnosi); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
 
                             </td>
 
                             <td>
-                                <textarea id="<?php echo e($storiaclinica->id); ?>storiaclinicadisbld" class="form-control" rows="3"
-                                          name="storiaclinicaa">
+                                <textarea class="miatextarea" id="<?php echo e($storiaclinica->id); ?>storiaclinicadisbld" class="form-control" rows="3"
+                                          name="storiaclinica[]">
                                       <?php if($storiaclinica): ?><?php echo e($storiaclinica->storiaclinica); ?><?php endif; ?>
                                     </textarea>
                             </td>
                         </tr>
+
+
                         </tbody>
                     </table>
-                </div>
+                </div> 
 
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+</div>
+
+
+           
+
         </div>
 
         
@@ -84,9 +110,14 @@
 
             <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
-                <?php $__currentLoopData = $paziente->allergiePaziente; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $alPaz): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <br>
+                <button id="btnnuovaall"   onclick="preparaAllergia(<?php echo e($allergie); ?>)"  data-titolo="Aggiungi nuova storia clinica"
+            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%" >+</button>
 
-                    <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia(<?php echo e($allergie); ?>)">
+            <?php ($i = 0); ?>
+                            <?php $__currentLoopData = $paziente->allergiePaziente; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $alPaz): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+            <select style="margin-bottom: 1%; margin-top: 1%" class="form-control" id="allergie<?php echo e($i); ?>" name="allergie[]" onchange="aggiungiAllergia(this)">
                         <option disabled selected>allergia</option>
                         <?php $__currentLoopData = $allergie; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <p><?php echo e($alPaz->allergia); ?> // <?php echo e($a); ?></p>
@@ -97,19 +128,16 @@
                             <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
-                    <br>
+
+                    <?php ($i++); ?>
+
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia(<?php echo e($allergie); ?>)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                    <option disabled selected>allergia</option>
-                    <?php $__currentLoopData = $allergie; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option><?php echo e($a->allergia); ?></option>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </select> 
+                
+
 
 
                 <div id="nuovaall"></div>
             </div>
-
 
         </div>
 
@@ -230,63 +258,7 @@
 </div>
 
 <script>
+ 
 
-
-    /* function nuovaallergia(id) {
-         var a = '#' + id;
-         val = $(a).val()
-
-         var elem = document.getElementsByTagName('select');
-         for (var i = 0; i < elem.length; i++) {
-             if (elem[i].id == a) {
-                 if (elem[i].val() == val)
-                     alert('gia inserito')
-                 return;
-             }
-         }
-
- */
-    /*
-            $.ajax({
-                url: '/nuovaallergiapaziente',
-                type: 'post',
-                data: {
-                    allergia: val,
-                    idpaz: id_paz
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-
-                success: function (data, status) {
-                    console.log(status + '\n' + data)
-                    if (data != 'success') {
-                        // alert(data)
-                        // <?php echo e($errors = 'data'); ?>
-
-    alert(<?php echo e($errors); ?>)
-                } else {
-                    $(a).attr('id', 'disbld')
-
-                    var elem = document.getElementsByTagName('select');
-                    for (var i = 0; i < elem.length; i++) {
-                        if (elem[i].id == 'disbld')
-                            elem[i].setAttribute('disabled', 'disabled');
-                    }
-                    var alrgia = "<select class=form-control id=allergiedio name=allergie[] onchange=nuovaallergia(this.id)><option disabled selected>allergia</option><?php $__currentLoopData = $allergie; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option><?php echo e($a->allergia); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></select> <br>"
-                    $('#nuovaall').append(alrgia);
-                }
-            },
-            error: function (data, status) {
-                console.log(status + '\n' + data)
-
-            },
-            complete: function (data, status) {
-            }
-        });
-
-        // var alrgia ="<select class=form-control id=allergiedio name=allergie onchange=nuovaallergia(this.id)><option disabled selected>allergia</option><?php $__currentLoopData = $allergie; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option><?php echo e($a->allergia); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></select> <br>"
-        // $('#nuovaall').append(alrgia);
-    }*/
 
 </script>

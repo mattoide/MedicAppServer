@@ -46,7 +46,8 @@ class PazienteController extends Controller {
         $scdiagnosi2        = Input::get('scdiagnosi2');
         $allergie           = Input::get('allergie');
         $medicinali         = Input::get('medicinali');
-    
+
+
 
         $validator = $this->getValidatore($request);
 
@@ -86,12 +87,12 @@ class PazienteController extends Controller {
         if (isset($storiecliniche)) {
             $i = 0;
             foreach ($storiecliniche as $sc) {
-                if (!isset($scdiagnosi1[$i]));
+                if (!isset($scdiagnosi1[$i]))
                 $scdiagnosi1[$i] = '';
 
-                if (!isset($scdiagnosi2[$i])) {
+                if (!isset($scdiagnosi2[$i]))
                     $scdiagnosi2[$i] = '';
-                }
+                
 
                 $stories[] = new StoriaClinica([
                     'data'          => $datestoriecliniche[$i],
@@ -103,6 +104,7 @@ class PazienteController extends Controller {
                 $i++;
             }
         }
+
 
         $allergies = [];
         if (isset($allergie)) {
@@ -280,15 +282,16 @@ class PazienteController extends Controller {
         ]);
 
         $stories = [];
+
         if (isset($storiecliniche)) {
             $i = 0;
             foreach ($storiecliniche as $sc) {
-                if (!isset($scdiagnosi1[$i]));
+                if (!isset($scdiagnosi1[$i]))
                 $scdiagnosi1[$i] = '';
 
-                if (!isset($scdiagnosi2[$i])) {
+                if (!isset($scdiagnosi2[$i])) 
                     $scdiagnosi2[$i] = '';
-                }
+                
 
                 $stories[] = new StoriaClinica([
                     'data'          => $datestoriecliniche[$i],

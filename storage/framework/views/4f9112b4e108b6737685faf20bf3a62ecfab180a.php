@@ -28,17 +28,22 @@
 </ul>
 
 <div class="container tabcontent-custom">
-    <div class="tab-content" id="myTabContent" style="max-height: 23em; overflow-y: scroll">
+    <div class="tab-content" id="myTabContent" >
 
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 
-            <br>
-            <button id="nuovastoria" name="nuovastoria" onclick="nuovastoriaa()"  data-titolo="Aggiungi nuova storia clinica"
-            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
 
+             <button id="nuovastoria" name="nuovastoria" onclick="nuovastoriaa()"  data-titolo="Aggiungi nuova storia clinica"
+            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">Aggiungi storia clinica</button>
+            <br>
+
+
+            <div style="max-height: 23em; overflow-y: scroll">
+           
         <div id='nuovastoriaaa'></div>
             
+        </div>
         </div>
 
         
@@ -47,12 +52,11 @@
 
                 <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
-                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia(<?php echo e($allergie); ?>)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                    <option disabled selected>allergia</option>
-                    <?php $__currentLoopData = $allergie; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option><?php echo e($a->allergia); ?></option>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </select> 
+                    <br>
+                <button id="btnnuovaall"   onclick="preparaAllergia(<?php echo e($allergie); ?>)"  data-titolo="Aggiungi nuova storia clinica"
+                data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+
+                
 <br>
             <div id="nuovaall"></div>
         </div>

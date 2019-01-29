@@ -2,8 +2,8 @@
 <?php $__env->startSection('content'); ?>
 
 
-<div class="container-fluid" style="margin-top: 2%">
-    <?php echo $__env->make('layouts.errors', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="container-fluid" style="background-color: white">
+        <?php echo $__env->make('layouts.errors', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     <form method="POST" action="/nuovopaziente">
         <?php echo e(csrf_field()); ?>

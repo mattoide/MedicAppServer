@@ -1,148 +1,93 @@
 allergieSelezionate = [];
 medicinaliSelezionati = [];
 
+
+allergieSelezionateNomeLabel = [];
+// medicinaliSelezionatiNomeLabel = [];
+
 $(document).ready(function () {
 
     allergie = document.getElementsByName("allergie[]");
     allergie.forEach(allergia => {
-        if (allergia.value != "allergia")
-            allergieSelezionate.push(allergia.value)
+        if (allergia.value != "allergia") {
+            let lower = allergia.value;
+            allergieSelezionate.push(lower.toLowerCase())
+            // allergieSelezionateNomeLabel.push(lower)
+        }
     });
 
     medicinali = document.getElementsByName("medicinali[]");
     medicinali.forEach(medicinale => {
-        if (medicinale.value != "medicinale")
-            medicinaliSelezionati.push(medicinale.value)
+        if (medicinale.value != "medicinale") {
+            let lower = medicinale.options[medicinale.selectedIndex].innerText;
+            medicinaliSelezionati.push(lower.toLowerCase())
+            // medicinaliSelezionatiNomeLabel.push(lower)
+        }
+
     });
+
 });
 
+/**************************************************************** */
 function preparaAllergia(pAllergie) {
 
     allergies = "";
     a = pAllergie;
-    pAllergie.forEach(alrg => {
+
+
+    pAllergie.forEach(function (alrg, indice, array) {
         allergies = allergies + "<option>" + alrg.allergia + "</option>";
     });
-    var alrgia = "<select class=form-control id=allergie name=allergie[] onchange=aggiungiAllergia("+'this'+")><option disabled selected>allergia</option>" + allergies + "</select> <br>"
+
+    var alrgia = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=allergie"+allergieSelezionate.length+" name=allergie[] onchange=aggiungiAllergia(" + 'this' + ")><option disabled selected>allergia</option>" + allergies + "</select>"
     $('#nuovaall').append(alrgia);
-   
+
     $('#btnnuovaall').attr('disabled', 'disabled');
 }
+/**************************************************************** */
 
 
+/**************************************************************** */
 function aggiungiAllergia(elem) {
 
     inputName = "allergie[]";
     idPopup = "#allergiepopup"
+    console.log(elem.id)
 
-        if (allergieSelezionate.includes(elem.value)) {  
+    if (allergieSelezionate.includes(elem.value.toLowerCase())) {
 
         $('#' + elem.id).remove();
 
         var msg = ["Hai gia selezionato l'allergia al", elem.value];
         alertPopup.warning(idPopup, msg.join(" "));
+
+    }
+
+    if (medicinaliSelezionati.includes(elem.value.toLowerCase())) {
+
+       $('#' + elem.id).remove();
+
+        var msg = ["Il paziente deve prendere questo medicinale: ", elem.value];
+        alertPopup.warning(idPopup, msg.join(" "));
+
     }
 
     allergieSelezionate = [];
-
+    // allergieSelezionateNomeLabel = [];
+    let lower
     let elementi = document.getElementsByName(inputName);
     elementi.forEach(function (elemento, indice, array) {
         console.log(elemento.value)
-        allergieSelezionate.push(elemento.value);
+
+        lower = elemento.value;
+        allergieSelezionate.push(lower.toLowerCase())
+        // allergieSelezionateNomeLabel.push(lower)
 
     });
     $('#btnnuovaall').removeAttr('disabled');
-}
-
-
-function nuovaAllergiaaa(pAllergie, val) {
-
-
-    inputName = "allergie[]";
-    idPopup = "#allergiepopup"
-    let elementi = document.getElementsByName(inputName);
-
-
-
-    elementi.forEach(function (elemento, indice, array) {
-
-
-        if (elemento.value == allergieSelezionate[indice]) {
-
-            console.log(elemento.value + " in posizione: " + indice + " c'e!")
-            var msg = ["Hai gia selezionato l'allergia al", elemento.value];
-            // elemento.value = array[indice].value;
-            allergieSelezionate.splice(allergieSelezionate.indexOf(elemento.value), 1);
-            console.log("dopo rimozione: " + allergieSelezionate)
-
-            $('#' + elemento.id).remove();
-
-            alertPopup.warning(idPopup, msg.join(" "));
-        } else {
-            console.log(elemento.value + " in posizione: " + indice + " non c'e!")
-            allergieSelezionate[indice] = elemento.value;
-        }
-    });
-
-    // console.log("breaaakkkkk \n\n")
-
-    allergieSelezionate.forEach(function (elemento, indice, array) {
-
-    });
-
-
-    // a = pAllergie;
-    // allergies = "";
-
-    // inputName = "allergie[]";
-    // idPopup = "#allergiepopup";
-
-    // //let elementi = document.getElementsByName(inputName);
-
-    // elementi.forEach(function (elemento, indice, array) {
-
-    //     if (indice === array.length -1) {
-
-    //         if (medicinaliSelezionati.includes(elemento.options[elemento.selectedIndex].innerText)) {
-    //             var msg = ["Il paziente deve prendere questo medicinale: ", elemento.options[elemento.selectedIndex].innerText];
-    //             elemento.value = 'allergia';
-    //             alertPopup.warning(idPopup, msg.join(" "));
-
-    //         } else {
-
-    //             if (!allergieSelezionate.includes(elemento.value)) {
-    //                 pAllergie.forEach(alrg => {
-    //                    // if(!allergieSelezionate.includes(alrg.allergia))
-    //                     allergies = allergies + "<option>" + alrg.allergia + "</option>";
-    //                 });
-    //                 var alrgia = "<select class=form-control id=allergie name=allergie[] onchange=nuovaAllergiaa(a,"+'this.value'+")><option disabled selected>allergia</option>" + allergies + "</select> <br>"
-    //                 $('#nuovaall').append(alrgia);
-
-    //                 if (elemento.value != "allergia") {
-    //                     allergieSelezionate.push(elemento.value)
-    //                     $(".alert").alert('close')
-    //                 }
-
-    //                 console.log("aggiunta: " + allergieSelezionate)
-
-
-    //             } else {
-    //                 var msg = ["Hai gia selezionato l'allergia al", elemento.value];
-    //                // elemento.value = array[indice].value;
-    //                 allergieSelezionate.splice( allergieSelezionate.indexOf(elemento.value), 1 );
-    //                 console.log("dopo rimozione: " + allergieSelezionate)
-
-    //                 $('#'+elemento.id).remove();
-
-    //                 alertPopup.warning(idPopup, msg.join(" "));
-    //             }
-
-    //         }
-    //     }
-    // });
-
 
 }
+/**************************************************************** */
 
 
 function nuovoMedicinale(pMedicinali, val) {

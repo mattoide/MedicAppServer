@@ -28,15 +28,19 @@
 </ul>
 
 <div class="container tabcontent-custom">
-    <div class="tab-content" id="myTabContent" style="max-height: 23em; overflow-y: scroll">
+    <div class="tab-content" id="myTabContent" >
 
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
 
-            <br>
-            <button id="nuovastoria" name="nuovastoria" onclick="nuovastoriaa()"  data-titolo="Aggiungi nuova storia clinica"
-            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">Aggiungi storia clinica</button>
 
+             <button id="nuovastoria" name="nuovastoria" onclick="nuovastoriaa()"  data-titolo="Aggiungi nuova storia clinica"
+            data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">Aggiungi storia clinica</button>
+            <br>
+
+
+            <div style="max-height: 23em; overflow-y: scroll">
+           
         <div id='nuovastoriaaa'></div>
             {{-- <div style="width: 90%">
                 <table class="table table-bordered">
@@ -66,6 +70,7 @@
                 </table>
             </div> --}}
         </div>
+        </div>
 
         {{-- TAB ALLERGIE --}}
 
@@ -83,7 +88,6 @@
                     <option>{{$a->allergia}}</option>
                     @endforeach
                 </select>  --}}
-<br>
             <div id="nuovaall"></div>
         </div>
 
@@ -206,7 +210,7 @@
     }
 
     function nuovastoriaa(){
-        var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] value='{{old('datastoriaclinica')}}' required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosi as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea class=form-control rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
+        var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] value='{{old('datastoriaclinica')}}' required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosi as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea class=form-control miatextarea rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
    
     $('#nuovastoriaaa').append(storia);
 
