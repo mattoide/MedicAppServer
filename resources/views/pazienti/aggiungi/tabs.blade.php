@@ -74,7 +74,7 @@
                 <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
                     
-                <button id="btnnuovaall"   onclick="al({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
+                <button id="btnnuovaall"   onclick="preparaAllergia({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
                 data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
 
                 {{-- <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergiaa({{$allergie}}, this)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">

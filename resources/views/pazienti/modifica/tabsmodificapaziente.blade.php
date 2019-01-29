@@ -97,12 +97,12 @@
             <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
                 
-                <button id="btnnuovaall"   onclick="al({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
+                <button id="btnnuovaall"   onclick="preparaAllergia({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
             data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%" disabled>+</button>
 
                 @foreach ($paziente->allergiePaziente as $alPaz)
 
-                    <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergiaa({{$allergie}}, this)">
+                    <select class="form-control" id="allergie" name="allergie[]" onchange="aggiungiAllergia(this)">
                         <option disabled selected>allergia</option>
                         @foreach ($allergie as $a)
                             <p>{{$alPaz->allergia}} // {{$a}}</p>

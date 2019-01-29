@@ -1,5 +1,3 @@
-/** ogni volta controlla tutti gli elementi in abse alla posizione e vedi quali sono diversi */
-
 allergieSelezionate = [];
 medicinaliSelezionati = [];
 
@@ -18,24 +16,21 @@ $(document).ready(function () {
     });
 });
 
-function al(pAllergie) {
+function preparaAllergia(pAllergie) {
+
     allergies = "";
     a = pAllergie;
-
     pAllergie.forEach(alrg => {
         allergies = allergies + "<option>" + alrg.allergia + "</option>";
     });
-    var alrgia = "<select class=form-control id=allergie name=allergie[] onchange=nuovaAllergiaa(a," + 'this' + ")><option disabled selected>allergia</option>" + allergies + "</select> <br>"
+    var alrgia = "<select class=form-control id=allergie name=allergie[] onchange=aggiungiAllergia("+'this'+")><option disabled selected>allergia</option>" + allergies + "</select> <br>"
     $('#nuovaall').append(alrgia);
-
-
+   
     $('#btnnuovaall').attr('disabled', 'disabled');
-
 }
 
 
-function nuovaAllergiaa(pAllergie, elem) {
-
+function aggiungiAllergia(elem) {
 
     inputName = "allergie[]";
     idPopup = "#allergiepopup"
@@ -56,10 +51,7 @@ function nuovaAllergiaa(pAllergie, elem) {
         allergieSelezionate.push(elemento.value);
 
     });
-
     $('#btnnuovaall').removeAttr('disabled');
-
-
 }
 
 
@@ -150,68 +142,6 @@ function nuovaAllergiaaa(pAllergie, val) {
     // });
 
 
-}
-
-
-function nuovaAllergia(pAllergie, val) {
-
-    console.log(allergieSelezionate)
-
-
-    a = pAllergie;
-    allergies = "";
-
-    inputName = "allergie[]";
-    idPopup = "#allergiepopup";
-
-    if (allergieSelezionate.includes(val.value)) {
-        var msg = ["Hai gia selezionato l'allergia al", val.value];
-        alertPopup.warning(idPopup, msg.join(" "));
-        // val.value = "allergia"
-
-
-        allergieSelezionate.splice(allergieSelezionate.indexOf(val.value), 0);
-        console.log(allergieSelezionate)
-
-        $('#' + val.id).remove();
-
-        return;
-    }
-
-    let elementi = document.getElementsByName(inputName);
-    elementi.forEach(function (elemento, indice, array) {
-        if (indice === array.length - 1) {
-
-            if (medicinaliSelezionati.includes(elemento.options[elemento.selectedIndex].innerText)) {
-                var msg = ["Il paziente deve prendere questo medicinale: ", elemento.options[elemento.selectedIndex].innerText];
-                elemento.value = 'allergia';
-                alertPopup.warning(idPopup, msg.join(" "));
-
-            } else {
-                if (!allergieSelezionate.includes(elemento.value)) {
-
-                    pAllergie.forEach(alrg => {
-                        allergies = allergies + "<option>" + alrg.allergia + "</option>";
-                    });
-                    // var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia(allergie)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
-                    var alrgia = "<select class=form-control id=allergie name=allergie[] onchange=nuovaAllergia(a," + 'this' + ")><option disabled selected>allergia</option>" + allergies + "</select> <br>"
-
-                    $('#nuovaall').append(alrgia);
-
-                    if (elemento.value != "allergia") {
-                        allergieSelezionate.push(elemento.value)
-                        $(".alert").alert('close')
-                    }
-
-                } else {
-                    var msg = ["Hai gia selezionato l'allergia al", elemento.value];
-                    elemento.value = 'allergia';
-                    alertPopup.warning(idPopup, msg.join(" "));
-                }
-
-            }
-        }
-    });
 }
 
 
