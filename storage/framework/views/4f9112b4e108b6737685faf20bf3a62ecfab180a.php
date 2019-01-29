@@ -57,7 +57,6 @@
                 data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
 
                 
-<br>
             <div id="nuovaall"></div>
         </div>
 
@@ -178,9 +177,10 @@
     }
 
     function nuovastoriaa(){
-        var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] value='<?php echo e(old('datastoriaclinica')); ?>' required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> <?php $__currentLoopData = $diagnosi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option><?php echo e($a->diagnosi); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option><?php $__currentLoopData = $diagnosi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <option><?php echo e($a->diagnosi); ?></option>  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></select>  </td> <td> <textarea class=form-control rows=3 name=storiaclinica[] value='<?php echo e(old('storiaclinica')); ?>' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
+        var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> <?php $__currentLoopData = $diagnosi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option><?php echo e($a->diagnosi); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option><?php $__currentLoopData = $diagnosi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <option><?php echo e($a->diagnosi); ?></option>  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></select>  </td> <td> <textarea  class=miatextara rows=3 name=storiaclinica[] value='<?php echo e(old('storiaclinica')); ?>' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
    
     $('#nuovastoriaaa').append(storia);
+
 
 }
 

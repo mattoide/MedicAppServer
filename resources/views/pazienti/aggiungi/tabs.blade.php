@@ -210,9 +210,10 @@
     }
 
     function nuovastoriaa(){
-        var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] value='{{old('datastoriaclinica')}}' required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosi as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea class=form-control miatextarea rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
+        var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosi as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
    
     $('#nuovastoriaaa').append(storia);
+
 
 }
 
