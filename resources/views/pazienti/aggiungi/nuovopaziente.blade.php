@@ -2,8 +2,8 @@
 @section('content')
 
 
-<div class="container-fluid" style="margin-top: 2%">
-    @include('layouts.errors')
+<div class="container-fluid" style="background-color: white">
+        @include('layouts.errors')
 
     <form method="POST" action="/nuovopaziente">
         {{ csrf_field() }}

@@ -36,6 +36,9 @@ hr{
 }
 .navtext{
     color: #9b8e6e;
+    font-size: 60%;
+    display: grid;
+    text-align: center;
 }
 
 .nav .nav-item > .nav-link.active  {
@@ -47,6 +50,7 @@ hr{
  a:hover {
     color: #9b8e6e;
 } 
+
 
 td.sorting_1 {
     background-color: transparent !important;
@@ -68,6 +72,7 @@ tr.odd {
     width: 1.7em!important;
     height: 1.7em!important;
     padding: 7%;
+    margin-left: 25%;
   
   }
 
@@ -113,7 +118,7 @@ table.dataTable thead th {
 }
 
 .tabcontent-custom{
-    background-color: #f3f2ed;
+    background-color: whitesmoke;
      margin-left: auto !important;
      margin-right: auto!important;
      max-width: unset !important;

@@ -39,6 +39,7 @@
     <div class="tab-content" style="max-height: 23em; overflow-y: scroll" id="myTabContent">
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
+<br>
 
             <button id="nuovastoria" name="nuovastoria" data-toggle="modal" data-target="#modalaggiungistoria"
                     data-titolo="Aggiungi nuova storia clinica"
@@ -56,7 +57,7 @@
                             <td class="datetd">
                                 <input id="{{$storiaclinica->id}}datastoriaclinicadisbld"
                                        class="form-control customdate" type="text" name="datastoriaclinicaa"
-                                       value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%B %Y')}}@endif">
+                                       value="@if($storiaclinica->data){{$storiaclinica->created_at->formatLocalized('%b %g')}}@endif">
                                 <p id="{{$storiaclinica->id}}scdiagnosi1disbld"></p>
                                 <p id="{{$storiaclinica->id}}scdiagnosi2disbld"></p>
 
@@ -96,7 +97,7 @@
 
             <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
-                
+                <br>
                 <button id="btnnuovaall"   onclick="preparaAllergia({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
             data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%" disabled>+</button>
 

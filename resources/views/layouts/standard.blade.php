@@ -32,6 +32,15 @@
 
 <body>
 
+    <nav class="navbar nav mx-auto" style="background-color: #9b8e6e; align-content: center">
+        {{--<a id="novus" class="navbar-brand" href="#">Chirurgia Estetica del Piede - by Novus Studios</a>--}}
+
+        <ul class="nav navbar-nav mx-auto">
+            <li class="nav-item"><a id="novus" class="nav-link" target="_blank" href="https://novusstudios.it/">Chirurgia Estetica del Piede - by Novus Studios</a></li>
+        </ul>
+
+    </nav>
+
   <div class="row" style="height: 100%; margin-right: 0%; margin-left: 0%">
 
     <div class="wrapper" style="background-color: #333333;">
@@ -100,14 +109,7 @@
 
 
     <div class="col" style="padding: 0%">
-        <nav class="navbar nav mx-auto" style="background-color: #9b8e6e; align-content: center">
-            {{--<a id="novus" class="navbar-brand" href="#">Chirurgia Estetica del Piede - by Novus Studios</a>--}}
-
-            <ul class="nav navbar-nav mx-auto">
-                <li class="nav-item"><a id="novus" class="nav-link" target="_blank" href="https://novusstudios.it/">Chirurgia Estetica del Piede - by Novus Studios</a></li>
-            </ul>
-
-        </nav>
+    
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <h3 id="titolo"></h3>

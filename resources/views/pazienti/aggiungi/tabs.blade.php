@@ -73,7 +73,7 @@
 
                 <div id="allergiepopup" style="width: 50%; margin-left: 1%">
 
-                    
+                    <br>
                 <button id="btnnuovaall"   onclick="preparaAllergia({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
                 data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
 

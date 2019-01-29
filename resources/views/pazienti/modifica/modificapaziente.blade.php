@@ -3,7 +3,7 @@
     @include('pazienti.modifica.modalaggiungistoriaclincia')
 
 
-<div class="container-fluid" style="margin-top: 2%">
+<div class="container-fluid" style="background-color: white">
     @include('layouts.errors')
 
     <form method="POST" action="/modificapaziente">
@@ -157,6 +157,9 @@
                             <option>{{$a->diagnosi}}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                        <div class="row formrow">
 
                     <select class="form-control" id="diagnosi2" name="diagnosi2">
                                 <option disabled selected value> diagnosi 2 </option>
@@ -164,6 +167,9 @@
                                 <option>{{$a->diagnosi}}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                            <div class="row formrow">
 
                     <select class="form-control" id="diagnosi3" name="diagnosi3">
                                     <option disabled selected> diagnosi 3 </option>
@@ -181,8 +187,9 @@
     @include('pazienti.modifica.tabsmodificapaziente')
 
 
-        <button type="button" onclick="abilitaTutto()" class="btn btn-success">Modifica</button>
-        <button name="idpaz" id="idpaz" value="{{$paziente->id}}" type="submit" class="btn btn-warning" disabled>Salva modifiche</button>
+        {{-- <button type="button" onclick="abilitaTutto()" class="btn btn-success">Modifica</button> --}}
+        {{-- <button name="idpaz" id="idpaz" value="{{$paziente->id}}" type="submit" class="btn btn-warning" disabled>Salva modifiche</button> --}}
+        <button name="idpaz" id="idpaz" value="{{$paziente->id}}" type="submit" class="btn btn-warning" >Salva modifiche</button>
         <button type="button" onclick="refresh()" class="btn btn-danger">Annulla modifiche</button>
 
     </form>
@@ -191,7 +198,7 @@
 <script>
     $(document).ready(function () {
 
-    disabilitaTutto();
+   // disabilitaTutto();
     calcolaEta('{{$paziente->datadinascita}}');
     
     @if ($paziente->diagnosi1)
