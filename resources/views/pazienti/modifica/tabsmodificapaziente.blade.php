@@ -111,7 +111,7 @@
                     </select>
                     <br>
                 @endforeach
-                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}})" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}}, this.value)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <option disabled selected>allergia</option>
                     @foreach ($allergie as $a)
                     <option>{{$a->allergia}}</option>
