@@ -60,7 +60,9 @@ class PazienteController extends Controller {
             'cognome'       => $request['cognome'],
             'sesso'         => $request['sesso'],
             'datadinascita' => $request['datadinascita'],
-            'password'      => Hash::make($request['password']),
+            'email'         => $request['email'],
+           // 'password'      => Hash::make($request['password']),
+            'password'      => $request['password'],
         ]);
 
         $recapitiPaziente = new RecapitiPaziente([
@@ -255,6 +257,7 @@ class PazienteController extends Controller {
         $paziente->nome                        = $request['nome'];
         $paziente->cognome                     = $request['cognome'];
         $paziente->sesso                       = $request['sesso'];
+        $paziente->email                       = $request['email'];
         $paziente->datadinascita               = $request['datadinascita'];
         $paziente->recapitiPaziente->indirizzo = $request['indirizzo'];
 
@@ -399,7 +402,7 @@ class PazienteController extends Controller {
                 'paese'         => 'required|max:64',
                 'tel1'          => 'required|numeric|unique:recapiti_paziente,tel1',
                 'tel2'          => 'nullable|numeric|unique:recapiti_paziente,tel2',
-                'email'         => 'required|unique:recapiti_paziente,email',
+                'email'         => 'required|unique:paziente,email',
                 'centrovisita'  => 'required|max:64',
                 'tipodocumento' => 'required',
                 'iddocumento'   => 'required|unique:recapiti_paziente,iddocumento',

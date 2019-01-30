@@ -54,7 +54,7 @@ class Paziente extends Model
     }
 
     protected $fillable = [
-        'nome', 'cognome', 'sesso', 'datadinascita', 'password'
+        'nome', 'cognome', 'sesso', 'datadinascita', 'password', 'email'
     ];
 
     protected $attributes = [];
