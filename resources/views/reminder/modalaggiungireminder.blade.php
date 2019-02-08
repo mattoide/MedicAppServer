@@ -14,7 +14,7 @@
                     <div class="form-group row">
                         <label for="nomereminder" class="col-sm-2 col-form-label">nome</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nomereminder" required>
+                            <input type="text" class="form-control" name="nomereminder" maxlength="20" required>
                         </div>
                     </div>
 
@@ -25,12 +25,12 @@
                             <textarea id="testoreminder" class="form-control" rows="7" name="testoreminder" required></textarea> </div>
                     </div>
 
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label for="dopomesi" class="col col-form-label">dopo giorni</label>
                         <div class="col-8">
                             <input type="number" class="form-control" name="dopomesi" required>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="modal-footer">

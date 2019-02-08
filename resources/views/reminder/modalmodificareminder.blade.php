@@ -13,7 +13,7 @@
                     <div class="form-group row">
                             <label for="nomereminder" class="col-sm-2 col-form-label">nome</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control nomereminder" name="nomereminder">
+                                <input type="text" class="form-control nomereminder" name="nomereminder" maxlength="20">
                             </div>
                         </div>
     
@@ -24,12 +24,12 @@
                                 <textarea id="testoreminder" class="form-control testoreminder" rows="3" name="testoreminder"></textarea> </div>
                         </div>
     
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="dopomesi" class="col col-form-label">dopo giorni</label>
                             <div class="col-8">
                                 <input type="number" class="form-control dopomesi" name="dopomesi">
                             </div>
-                        </div>
+                        </div> --}}
                     <input type="text" class="form-control idreminder" name="id" id="id" value="" hidden>
 
             </div>
@@ -55,7 +55,7 @@ console.log(reminder)
       modal.find('.modal-title').text(titolo)
       modal.find('.modal-body .nomereminder').val(reminder.nomereminder)
       modal.find('.modal-body .testoreminder').val(reminder.testoreminder)
-      modal.find('.modal-body .dopomesi').val(reminder.dopomesi)
+    //   modal.find('.modal-body .dopomesi').val(reminder.dopomesi)
       modal.find('.modal-body .idreminder').val(reminder.id)
     })
 

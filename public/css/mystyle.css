@@ -157,3 +157,7 @@ font-size: 80%;
 .cstm-icn{
     color: #a5956d;
 }
+
+.collapseclick{
+    cursor: pointer;
+}

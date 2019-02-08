@@ -11,7 +11,7 @@
         <div id="generalpopup">
 
         </div>
-        <h6 data-toggle="collapse" href="#collapseAnagraficaAdd" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
+        <h6 class="collapseclick" data-toggle="collapse" href="#collapseAnagraficaAdd" aria-expanded="false" aria-controls="collapseAnagrafica">ANAGRAFICA +</h6>
 
 
             <hr >
@@ -136,7 +136,7 @@
         </div>
     </div>
 
-        <h6 data-toggle="collapse" href="#collapseDiagnosiAdd" aria-expanded="false" aria-controls="collapseDiagnosi" >DIAGNOSI +</h6>
+        <h6 class="collapseclick" data-toggle="collapse" href="#collapseDiagnosiAdd" aria-expanded="false" aria-controls="collapseDiagnosi" >DIAGNOSI +</h6>
         <hr >
           
         <div class="collapse show" id="collapseDiagnosiAdd">

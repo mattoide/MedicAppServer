@@ -17,9 +17,9 @@
         <table id="datatable" class="table table-striped">
             <thead>
             <tr>
-                <th scope="col" style="width: 10%">Reminder</th>
-                <th scope="col" style="width: 60%" >Testo</th>
-                <th scope="col" >Attivato dopo mesi</th>
+                <th scope="col" >Reminder</th>
+                <th scope="col"  >Testo</th>
+                {{-- <th scope="col" >Attivato dopo mesi</th> --}}
                 <th scope="col">#</th>
             </tr>
         </thead>
@@ -31,7 +31,7 @@
             <tr>
                 <td>{{$a->nomereminder}}</td>
                 <td>{{$a->testoreminder}}</td>
-                <td>{{$a->dopomesi}}</td>
+                {{-- <td>{{$a->dopomesi}}</td> --}}
 
                 <td>
                         <button id="modificareminder" onclick="" type="button" class="btn btn-icn" data-toggle="modal"

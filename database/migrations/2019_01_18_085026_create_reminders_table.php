@@ -17,7 +17,7 @@ class CreateRemindersTable extends Migration
             $table->increments('id');
             $table->string('nomereminder');
             $table->string('testoreminder');
-            $table->string('dopomesi');
+            // $table->string('dopomesi');
             $table->timestamps();
         });
     }
