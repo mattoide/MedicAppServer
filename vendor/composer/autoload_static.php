@@ -2740,6 +2740,7 @@ class ComposerStaticInita1c7ed073853a37aa9387d6cc9a536a9
         'MedicAppServer\\Http\\Controllers\\MedicinaleController' => __DIR__ . '/../..' . '/app/Http/Controllers/MedicinaleController.php',
         'MedicAppServer\\Http\\Controllers\\MedicoController' => __DIR__ . '/../..' . '/app/Http/Controllers/MedicoController.php',
         'MedicAppServer\\Http\\Controllers\\PazienteController' => __DIR__ . '/../..' . '/app/Http/Controllers/PazienteController.php',
+        'MedicAppServer\\Http\\Controllers\\ProtocolliController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProtocolliController.php',
         'MedicAppServer\\Http\\Controllers\\ReminderController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReminderController.php',
         'MedicAppServer\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'MedicAppServer\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

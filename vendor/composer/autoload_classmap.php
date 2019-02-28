@@ -2257,6 +2257,7 @@ return array(
     'MedicAppServer\\Http\\Controllers\\MedicinaleController' => $baseDir . '/app/Http/Controllers/MedicinaleController.php',
     'MedicAppServer\\Http\\Controllers\\MedicoController' => $baseDir . '/app/Http/Controllers/MedicoController.php',
     'MedicAppServer\\Http\\Controllers\\PazienteController' => $baseDir . '/app/Http/Controllers/PazienteController.php',
+    'MedicAppServer\\Http\\Controllers\\ProtocolliController' => $baseDir . '/app/Http/Controllers/ProtocolliController.php',
     'MedicAppServer\\Http\\Controllers\\ReminderController' => $baseDir . '/app/Http/Controllers/ReminderController.php',
     'MedicAppServer\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'MedicAppServer\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

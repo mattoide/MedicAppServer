@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Diagnosi extends Migration
+class CreateEserciziTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class Diagnosi extends Migration
      */
     public function up()
     {
-        Schema::create('diagnosi', function (Blueprint $table) {
+        Schema::create('esercizi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("diagnosi");
-            $table->string("categoria");
+            $table->string('nome');
+            $table->string('immagine');
+            $table->string('descrizione');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class Diagnosi extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diagnosi');
+        Schema::dropIfExists('esercizi');
     }
 }

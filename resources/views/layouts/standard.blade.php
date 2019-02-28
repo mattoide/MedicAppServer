@@ -74,6 +74,10 @@
             <a id='reminderss' class="nav-link navtext" href="/reminders"><i class="far fa-bell fa-lg circle"></i> Reminder</a>
           </li>
 
+          <li class="nav-item">
+            <a id='protocollii' class="nav-link navtext" href="/protocolli"><i class="far fa-bell fa-lg circle"></i> Protocolli</a>
+          </li>
+
         </ul>
       </nav>
 

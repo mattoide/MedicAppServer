@@ -21,6 +21,7 @@ Route::get('/diagnosi', 'DiagnosiController@index');
 Route::get('/allergie', 'AllergiaController@index');
 Route::get('/medicinali', 'MedicinaleController@index');
 Route::get('/reminders', 'ReminderController@index');
+Route::get('/protocolli', 'ProtocolliController@index');
 
 Route::get('/nuovopaziente', 'PazienteController@create');
 Route::post('/nuovopaziente', 'PazienteController@store');
