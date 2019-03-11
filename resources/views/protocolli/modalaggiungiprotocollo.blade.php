@@ -22,7 +22,9 @@
 
            <!-- TODO: grid view medicinali, oppure colonne con tipo esercizi, tempo ecc-->
 
-           @include('protocolli.esercizi')
+           <br>
+
+           @include('protocolli.eserciziadd')
 
            
 
@@ -46,6 +48,8 @@
     $('#modalaggiungiprotocollo').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
       var titolo = button.data('titolo') // Extract info from data-* attributes
+      
+
 
       var modal = $(this)
       

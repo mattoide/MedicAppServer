@@ -1,8 +1,8 @@
 @extends('layouts.standard') 
 @section('content')
 @include('protocolli.modalaggiungiprotocollo')
-{{-- @include('protocolli.modalmodificaprotocollo') --}}
-{{-- @include('protocolli.modaleliminaprotocollo') --}}
+@include('protocolli.modalmodificaprotocollo')
+@include('protocolli.modaleliminaprotocollo')
 @include('layouts.errors')
 
 
@@ -19,7 +19,6 @@
         <thead>
             <tr>
                 <th scope="col">Protocollo</th>
-                <th scope="col">Esercizi</th>
               
                 <th scope="col">#</th>
 
@@ -33,7 +32,6 @@
 
             <tr>
                 <td>{{$protocollo->nome}}</td>
-                <td>{{$protocollo->esercizi}}</td>
                 
 
                 <td>

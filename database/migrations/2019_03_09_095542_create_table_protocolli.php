@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEserciziTable extends Migration
+class CreateTableProtocolli extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateEserciziTable extends Migration
      */
     public function up()
     {
-        Schema::create('esercizi', function (Blueprint $table) {
+        Schema::create('protocolli', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('protocollo_id');
             $table->string('nome');
-            $table->string('tipoesercizio');
-            //$table->string('immagine');
-            //$table->string('descrizione');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateEserciziTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('esercizi');
+        Schema::dropIfExists('protocolli');
     }
 }

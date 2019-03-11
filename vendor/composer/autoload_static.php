@@ -2755,6 +2755,7 @@ class ComposerStaticInita1c7ed073853a37aa9387d6cc9a536a9
         'MedicAppServer\\MedicinaliPaziente' => __DIR__ . '/../..' . '/app/MedicinaliPaziente.php',
         'MedicAppServer\\Medico' => __DIR__ . '/../..' . '/app/Medico.php',
         'MedicAppServer\\Paziente' => __DIR__ . '/../..' . '/app/Paziente.php',
+        'MedicAppServer\\Protocollo' => __DIR__ . '/../..' . '/app/Protocollo.php',
         'MedicAppServer\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'MedicAppServer\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'MedicAppServer\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

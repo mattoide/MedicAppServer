@@ -161,3 +161,7 @@ font-size: 80%;
 .collapseclick{
     cursor: pointer;
 }
+
+.mybadge{
+    background-color: #a5956d;
+}

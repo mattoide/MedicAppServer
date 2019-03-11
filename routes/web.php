@@ -49,5 +49,10 @@ Route::post('/nuovomedicinale', 'MedicinaleController@store');
 Route::post('/modificamedicinale', 'MedicinaleController@update');
 Route::post('/eliminamedicinale', 'MedicinaleController@delete');
 
+Route::post('/nuovoprotocollo', 'ProtocolliController@store');
+Route::post('/modificaprotocollo', 'ProtocolliController@update');
+Route::post('/eliminaprotocollo', 'ProtocolliController@remove');
+
+
 Route::post('/aggiungistoriaclinica', 'PazienteController@createClinicStory');
 Route::post('/nuovaallergiapaziente', 'PazienteController@createAllergy');
