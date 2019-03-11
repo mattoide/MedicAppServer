@@ -9,7 +9,7 @@ class Diagnosi extends Model
     protected $table = 'diagnosi';
 
     protected $fillable = [
-        'diagnosi'
+        'diagnosi', 'categoria'
     ];
 
     protected $attributes = [];

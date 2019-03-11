@@ -10,7 +10,30 @@
             <div class="modal-body">
                 <form method="POST" action="/modificadiagnosi" style="display: inline">
                     {{ csrf_field() }}
-                    <input type="text" class="form-control diagnosi" name="diagnosi" id="diagnosi" value="" placeholder="Nome diagnosi">
+
+                    <div class="form-group row">
+                       
+                            <div class="col">
+                                <select class="form-control categoria" id="categoria" name="categoria" required>
+                                                    <option disabled selected value>categoria</option>
+                                                    <option>Piede</option>
+                                                    <option>Mano</option>
+                                                    <option>Caviglia</option>
+                                                    <option>Polso</option>
+                                                    <option>Gomito</option>
+                                                    <option>Ginocchio</option>
+                                                    <option>Spalla</option>
+                                                    <option>Anca</option>
+                                                </select>
+                            </div>
+    
+                                <div class="col">
+    
+                                <input type="text" class="form-control diagnosi" name="diagnosi" placeholder="Nome diagnosi" required>
+                            </div>
+                        </div>
+
+                     
                     <input type="text" class="form-control iddiagnosi" name="id" id="id" value="" hidden>
 
             </div>
@@ -35,6 +58,7 @@
     
       modal.find('.modal-title').text(titolo)
       modal.find('.modal-body .diagnosi').val(diagnosi.diagnosi)
+      modal.find('.modal-body .categoria').val(diagnosi.categoria)
       modal.find('.modal-body .iddiagnosi').val(diagnosi.id)
     })
 

@@ -21,6 +21,7 @@ class DiagnosiController extends Controller {
 
         $diagnosi = new Diagnosi([
             'diagnosi' => $request['diagnosi'],
+            'categoria' => $request['categoria'],
         ]);
 
         $diagnosi->save();
@@ -38,6 +39,7 @@ class DiagnosiController extends Controller {
         $diagnosi = Diagnosi::find($request['id']);
 
         $diagnosi->diagnosi = $request['diagnosi'];
+        $diagnosi->categoria = $request['categoria'];
         $diagnosi->save();
 
         return redirect('/diagnosi');
@@ -53,7 +55,7 @@ class DiagnosiController extends Controller {
 
         $validazione = array(
             'regole'   => array(
-                'diagnosi' => 'required|max:32||unique:diagnosi',
+                'diagnosi' => 'required|max:32||unique:diagnosi,diagnosi'.$request['diagnosi'],
             ),
             'messaggi' => array(
                 'required' => 'Il campo :attribute è richiesto.',

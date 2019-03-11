@@ -18,8 +18,9 @@
         <table id="datatable" class="table table-striped">
             <thead>
             <tr>
-                <th scope="col" style="width: 90%">Diagnosi</th>
-                <th scope="col">#</th>
+                    <th scope="col" style="">Diagnosi</th>
+                    <th scope="col" style="">Categoria</th>
+                    <th scope="col">#</th>
             </tr>
         </thead>
         
@@ -28,7 +29,8 @@
             @foreach($diagnosi as $d)
 
             <tr>
-                <td>{{$d->diagnosi}}</td>
+                    <td>{{$d->diagnosi}}</td>
+                    <td>{{$d->categoria}}</td>
 
                 <td>
                         <button id="modificadiagnosi" onclick="" type="button" class="btn btn-icn" data-toggle="modal"
