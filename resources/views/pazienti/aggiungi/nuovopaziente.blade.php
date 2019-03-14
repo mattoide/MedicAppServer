@@ -136,10 +136,10 @@
         </div>
     </div>
 
-        <h6 class="collapseclick" data-toggle="collapse" href="#collapseDiagnosiAdd" aria-expanded="false" aria-controls="collapseDiagnosi" >DIAGNOSI +</h6>
-        <hr >
+        {{-- <h6 class="collapseclick" data-toggle="collapse" href="#collapseDiagnosiAdd" aria-expanded="false" aria-controls="collapseDiagnosi" >DIAGNOSI +</h6>
+        <hr > --}}
           
-        <div class="collapse show" id="collapseDiagnosiAdd">
+        <!-- <div class="collapse show" id="collapseDiagnosiAdd">
 
 
         <div class="container" style="margin-left: 3%!important;">
@@ -177,7 +177,7 @@
                 <input type="text" class="form-control" placeholder="Diagnosi principale" name="diagnosi3" value="{{old('diagnosi3')}}"> --}}
             </div>
 
-        </div>
+        </div>-->
         {{-- <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val1"> --}} {{--
         <input type="text" class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val2"> --}} {{-- <input type="text"
             class="form-control" placeholder="PROVA ARRAY" name="prova[]" value="val3"> --}}

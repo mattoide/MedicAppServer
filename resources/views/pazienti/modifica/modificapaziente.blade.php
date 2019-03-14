@@ -141,10 +141,10 @@
             </div>
         </div>
 
-        <h6 class="collapseclick" data-toggle="collapse" href="#collapseDiagnosiEdit" aria-expanded="false" aria-controls="collapseDiagnosiEdit">DIAGNOSI +</h6>
-        <hr>
+        {{-- <h6 class="collapseclick" data-toggle="collapse" href="#collapseDiagnosiEdit" aria-expanded="false" aria-controls="collapseDiagnosiEdit">DIAGNOSI +</h6>
+        <hr> --}}
 
-        <div class="collapse show" id="collapseDiagnosiEdit">
+       <!-- <div class="collapse show" id="collapseDiagnosiEdit">
 
 
             <div class="container" style="margin-left: 3%!important;">
@@ -183,7 +183,7 @@
                 </div>
             </div>
 
-        </div>
+        </div>-->
     @include('pazienti.modifica.tabsmodificapaziente')
 
 
