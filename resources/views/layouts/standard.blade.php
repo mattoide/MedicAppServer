@@ -75,7 +75,7 @@
           </li>
 
           <li class="nav-item">
-            <a id='protocollii' class="nav-link navtext" href="/protocolli"><i class="far fa-bell fa-lg circle"></i> Protocolli</a>
+            <a id='protocollii' class="nav-link navtext" href="/protocolli"><i class="fas fa-list-ul fa-lg circle"></i> Protocolli</a>
           </li>
 
         </ul>
