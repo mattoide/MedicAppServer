@@ -180,11 +180,12 @@
 <br>
 
             <div id="medicinalipopup" class="row" style="width: 50%; margin-left: 1%">
+                <h3><span class="badge mybadge">Medicinali</span></h3>
 
                     <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
                         <option disabled selected>medicinale</option>
                         @foreach ($medicinali as $m)
-                        <option value="{{$m->id}}">{{$m->nome}}</option>
+                        <option value="{{$m->id}}">{{$m->nome}} - {{$m->dosaggio}} - {{$m->posologia}} - {{$m->durata_terapia}}</option>
                         @endforeach
                     </select> 
     <br>
@@ -193,12 +194,17 @@
             
             <br>
 
+            <div  class="row" style="width: 50%; margin-left: 1%">
+
+            <h3><span class="badge mybadge">Protocolli</span></h3>
+
             <select class="form-control" id="protocollo" name="protocollo" >
                 <option disabled selected>protocolli</option>
                 @foreach ($protocolli as $prot)
                 <option value="{{$prot->id}}">{{$prot->nome}}</option>
                 @endforeach
             </select> 
+        </div>
 
 
         </div>
