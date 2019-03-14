@@ -17,6 +17,8 @@ use MedicAppServer\Medico;
 use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
 use MedicAppServer\StoriaClinica;
+use MedicAppServer\Protocollo;
+use MedicAppServer\PazienteProtocollo;
 use Validator;
 
 class PazienteController extends Controller {
@@ -30,11 +32,13 @@ class PazienteController extends Controller {
         $diagnosi   = Diagnosi::all();
         $allergie   = Allergia::all();
         $medicinali = Medicinale::all();
-        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali);
+        $protocolli = Protocollo::all();
+        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli);
     }
 
     public function store(Request $request) {
 
+    
 
         if (\strpos($request['password'], " ") !== false) {
             return redirect()->back()->withErrors(["La password non può contenere spazi."])->withInput();
@@ -182,6 +186,10 @@ class PazienteController extends Controller {
             $paziente->diagnosi3()->save($diagnosi3);
         }
 
+
+        PazienteProtocollo::create(['paziente_id' => $paziente->id, 'protocollo_id' => $request['protocollo']]);
+      
+
         return redirect('/pazienti');
     }
 
@@ -232,8 +240,21 @@ class PazienteController extends Controller {
         $diagnosi         = Diagnosi::all();
         $allergie         = Allergia::all();
         $medicinali       = Medicinale::all();
+        $protocolli = Protocollo::all();
+        $pazienteProto = PazienteProtocollo::where('paziente_id', $request['id'])->get();
+        $pazienteProtocollo = '';
 
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali);
+
+       
+        if(count($pazienteProto)<=0)
+       $pazienteProto = '';
+        
+        // $pazienteProtocollo = Protocollo::find($pazienteProto[0]->protocollo_id);
+      
+
+
+      
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProto[0]);
     }
 
     public function update(Request $request) {
@@ -349,7 +370,6 @@ class PazienteController extends Controller {
         Diagnosi2::where('paziente_id', $paziente->id)->delete();
         Diagnosi3::where('paziente_id', $paziente->id)->delete();
 
-
         foreach ($stories as $s) {
             $paziente->storiaClinica()->save($s);
         }
@@ -380,12 +400,18 @@ class PazienteController extends Controller {
         /*************************************************************/
 
         // return redirect('/pazienti');
+
+        PazienteProtocollo::where('paziente_id', $paziente->id)->delete();
+        PazienteProtocollo::create(['paziente_id' => $paziente->id, 'protocollo_id' => $request['protocollo']]);
+
         return redirect()->back();
     }
 
     public function delete(Request $request) {
 
         Paziente::destroy($request["idpaziente"]);
+        PazienteProtocollo::where('paziente_id', $request["idpaziente"])->delete();
+
         return redirect('/pazienti');
     }
 

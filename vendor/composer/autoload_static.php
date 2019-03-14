@@ -2726,6 +2726,7 @@ class ComposerStaticInita1c7ed073853a37aa9387d6cc9a536a9
         'MedicAppServer\\Diagnosi1' => __DIR__ . '/../..' . '/app/Diagnosi1.php',
         'MedicAppServer\\Diagnosi2' => __DIR__ . '/../..' . '/app/Diagnosi2.php',
         'MedicAppServer\\Diagnosi3' => __DIR__ . '/../..' . '/app/Diagnosi3.php',
+        'MedicAppServer\\Esercizio' => __DIR__ . '/../..' . '/app/Esercizio.php',
         'MedicAppServer\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'MedicAppServer\\Foto' => __DIR__ . '/../..' . '/app/Foto.php',
         'MedicAppServer\\Http\\Controllers\\AllergiaController' => __DIR__ . '/../..' . '/app/Http/Controllers/AllergiaController.php',

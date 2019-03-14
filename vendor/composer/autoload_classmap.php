@@ -2243,6 +2243,7 @@ return array(
     'MedicAppServer\\Diagnosi1' => $baseDir . '/app/Diagnosi1.php',
     'MedicAppServer\\Diagnosi2' => $baseDir . '/app/Diagnosi2.php',
     'MedicAppServer\\Diagnosi3' => $baseDir . '/app/Diagnosi3.php',
+    'MedicAppServer\\Esercizio' => $baseDir . '/app/Esercizio.php',
     'MedicAppServer\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'MedicAppServer\\Foto' => $baseDir . '/app/Foto.php',
     'MedicAppServer\\Http\\Controllers\\AllergiaController' => $baseDir . '/app/Http/Controllers/AllergiaController.php',

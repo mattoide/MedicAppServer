@@ -13,7 +13,11 @@ class DiagnosiController extends Controller {
     }
 
     public function store(Request $request) {
+
+
         $validator = $this->getValidatore($request);
+
+ 
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -30,6 +34,8 @@ class DiagnosiController extends Controller {
     }
 
     public function update(Request $request) {
+
+
         $validator = $this->getValidatore($request);
 
         if ($validator->fails()) {
@@ -53,9 +59,10 @@ class DiagnosiController extends Controller {
 
     public function getValidatore($request) {
 
+
         $validazione = array(
             'regole'   => array(
-                'diagnosi' => 'required|max:32||unique:diagnosi,diagnosi'.$request['diagnosi'],
+                'diagnosi' => 'required|max:32|unique:diagnosi,diagnosi,'.$request->diagnosi
             ),
             'messaggi' => array(
                 'required' => 'Il campo :attribute è richiesto.',

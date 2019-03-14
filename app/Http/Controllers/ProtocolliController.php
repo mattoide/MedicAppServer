@@ -7,6 +7,7 @@ use MedicAppServer\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use MedicAppServer\Protocollo;
 use MedicAppServer\Esercizio;
+use MedicAppServer\PazienteProtocollo;
 use Validator;
 
 
@@ -141,7 +142,9 @@ class ProtocolliController extends Controller
     }
 
     public function remove(Request $request) {
-    Protocollo::destroy($request->idprot);
+
+        PazienteProtocollo::where('protocollo_id', $request->idprot)->delete();
+        Protocollo::destroy($request->idprot);
         return redirect('/protocolli');
     }
     

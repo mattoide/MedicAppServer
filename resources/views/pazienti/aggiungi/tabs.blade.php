@@ -172,7 +172,7 @@
                     <input type="text" class="form-control custominputnotifica" placeholder="testo" name="esercizio">
                 </div>
                 <div class="col">
-                        <button style="float:right" type="button" class="btn btn-light">invia notifica</button>
+                        <button style="float:right" type="button" class="btn btn-success">invia notifica</button>
 
                 </div>
             </div>
@@ -190,6 +190,15 @@
     <br>
                 <div id="nuovomed"></div>
             </div>
+            
+            <br>
+
+            <select class="form-control" id="protocollo" name="protocollo" >
+                <option disabled selected>protocolli</option>
+                @foreach ($protocolli as $prot)
+                <option value="{{$prot->id}}">{{$prot->nome}}</option>
+                @endforeach
+            </select> 
 
 
         </div>
