@@ -1,5 +1,6 @@
 allergieSelezionate = [];
 medicinaliSelezionati = [];
+diagnosiSelezionate = [];
 
 
 allergieSelezionateNomeLabel = [];
@@ -26,6 +27,16 @@ $(document).ready(function () {
 
     });
 
+    diagnosi = document.getElementsByName("diagnosi[]");
+    diagnosi.forEach(diagnos => {
+        if (diagnos.value != "diagnosi") {
+            let lower = diagnos.options[diagnos.selectedIndex].innerText;
+            diagnosiSelezionate.push(lower.toLowerCase())
+            // medicinaliSelezionatiNomeLabel.push(lower)
+        }
+
+    });
+
 });
 
 /**************************************************************** */
@@ -46,6 +57,106 @@ function preparaAllergia(pAllergie) {
 }
 /**************************************************************** */
 
+/**************************************************************** */
+function preparaDiagnosiCategoria(pDiagnosi) {
+
+    diagnosis = "";
+    a = pDiagnosi;
+
+
+    pDiagnosi.forEach(function (diagn, indice, array) {
+        diagnosis = diagnosis + "<option>" + diagn.categoria + "</option>";
+    });
+
+    var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosicat"+diagnosiSelezionate.length+" name=diagnosicat[] onchange=getDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+    $('#nuovadiagncat').append(diagnsi);
+
+
+    $('#btnnuovadiagncat').attr('disabled', 'disabled');
+}
+/**************************************************************** */
+
+/**************************************************************** */
+
+function getDiagnosi(val){
+    let a = val.value;
+    $('#diagnosicat'+diagnosiSelezionate.length).attr('disabled', 'disabled');
+
+$.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+    $.post('/getsiagnosibycategoria/' + a, function(response) {
+        // handle your response here
+        console.log(response);
+
+        preparaDiagnosi(response);
+    })
+
+}
+
+/**************************************************************** */
+
+/**************************************************************** */
+
+function getDiagnosiMod(val){
+    let a = val.value;
+    $('#diagnosicat'+diagnosiSelezionate.length).attr('disabled', 'disabled');
+
+$.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+    $.post('/getsiagnosibycategoria/' + a, function(response) {
+        // handle your response here
+        console.log(response);
+
+        preparaDiagnosiMod(response, val.id);
+    })
+
+}
+
+/**************************************************************** */
+
+/**************************************************************** */
+function preparaDiagnosi(pDiagnosi) {
+
+    diagnosis = "";
+    a = pDiagnosi;
+
+
+    pDiagnosi.forEach(function (diagn, indice, array) {
+        diagnosis = diagnosis + "<option value="+diagn.id+">" + diagn.diagnosi + "</option>";
+    });
+
+    var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosi"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+    $('#nuovadiagn').append(diagnsi);
+
+    $('#btnnuovadiagn').attr('disabled', 'disabled');
+}
+/**************************************************************** */
+
+/**************************************************************** */
+function preparaDiagnosiMod(pDiagnosi, id) {
+    diagnosis = "";
+    a = pDiagnosi;
+
+
+    pDiagnosi.forEach(function (diagn, indice, array) {
+        diagnosis = diagnosis + "<option value="+diagn.id+">" + diagn.diagnosi + "</option>";
+    });
+    
+
+     var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosi"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+     $('#nuovadiagn').append(diagnsi);
+
+    $('#btnnuovadiagn').attr('disabled', 'disabled');
+}
+/**************************************************************** */
 
 /**************************************************************** */
 function aggiungiAllergia(elem) {
@@ -57,6 +168,7 @@ function aggiungiAllergia(elem) {
     if (allergieSelezionate.includes(elem.value.toLowerCase())) {
 
         $('#' + elem.id).remove();
+        $('#diagnosicat' + id).remove();
 
         var msg = ["Hai gia selezionato l'allergia al", elem.value];
         alertPopup.warning(idPopup, msg.join(" "));
@@ -85,6 +197,46 @@ function aggiungiAllergia(elem) {
 
     });
     $('#btnnuovaall').removeAttr('disabled');
+
+}
+/**************************************************************** */
+
+/**************************************************************** */
+function aggiungiDiagnosi(elem) {
+
+    inputName = "diagnosi[]";
+    idPopup = "#diagnosipopup"
+    console.log(elem.id)
+
+    if (diagnosiSelezionate.includes(elem.value.toLowerCase())) {
+
+        console.log(elem.id);
+
+
+        $('#' + elem.id).remove();
+        $('#diagnosicat' + elem.id[elem.id.length -1]).remove();
+
+
+        var msg = ["Hai gia selezionato la diagnosi ", elem.value];
+        alertPopup.warning(idPopup, msg.join(" "));
+
+    }
+
+    diagnosiSelezionate = [];
+    // allergieSelezionateNomeLabel = [];
+    let lower
+    let elementi = document.getElementsByName(inputName);
+    elementi.forEach(function (elemento, indice, array) {
+        console.log(elemento.value)
+
+        lower = elemento.value;
+        diagnosiSelezionate.push(lower.toLowerCase())
+        // allergieSelezionateNomeLabel.push(lower)
+
+    });
+
+    console.log('asdsa');
+    $('#btnnuovadiagncat').removeAttr('disabled');
 
 }
 /**************************************************************** */

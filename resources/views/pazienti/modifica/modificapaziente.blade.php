@@ -153,7 +153,7 @@
 
                     <select class="form-control" id="diagnosi1" name="diagnosi1">
                             <option disabled selected> diagnosi 1 </option>
-                            @foreach ($diagnosi as $a)
+                            @foreach ($diagnosiCat as $a)
                             <option>{{$a->diagnosi}}</option>
                             @endforeach
                         </select>
@@ -163,7 +163,7 @@
 
                     <select class="form-control" id="diagnosi2" name="diagnosi2">
                                 <option disabled selected value> diagnosi 2 </option>
-                                @foreach ($diagnosi as $a)
+                                @foreach ($diagnosiCat as $a)
                                 <option>{{$a->diagnosi}}</option>
                                 @endforeach
                             </select>
@@ -173,7 +173,7 @@
 
                     <select class="form-control" id="diagnosi3" name="diagnosi3">
                                     <option disabled selected> diagnosi 3 </option>
-                                    @foreach ($diagnosi as $a)
+                                    @foreach ($diagnosiCat as $a)
                                     <option>{{$a->diagnosi}}</option>
                                     @endforeach
                                 </select> {{-- <input type="text" class="form-control" placeholder="Diagnosi principale"

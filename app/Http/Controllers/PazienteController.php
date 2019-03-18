@@ -19,6 +19,7 @@ use MedicAppServer\RecapitiPaziente;
 use MedicAppServer\StoriaClinica;
 use MedicAppServer\Protocollo;
 use MedicAppServer\PazienteProtocollo;
+use MedicAppServer\PazienteDiagnosi;
 use Validator;
 
 class PazienteController extends Controller {
@@ -29,7 +30,7 @@ class PazienteController extends Controller {
     }
 
     public function create() {
-        $diagnosi   = Diagnosi::all();
+        $diagnosi   = Diagnosi::distinct()->get(['categoria']);
         $allergie   = Allergia::all();
         $medicinali = Medicinale::all();
         $protocolli = Protocollo::all();
@@ -50,6 +51,10 @@ class PazienteController extends Controller {
         $scdiagnosi2        = Input::get('scdiagnosi2');
         $allergie           = Input::get('allergie');
         $medicinali         = Input::get('medicinali');
+
+        $diagnosi =      Input::get('diagnosi');
+
+
 
 
 
@@ -131,6 +136,8 @@ class PazienteController extends Controller {
             }
         }
 
+
+
         // $storiaClinica = new StoriaClinica([
         //     'data'          => $request['datastoriaclinica'],
         //     'storiaclinica' => $request['storiaclinica'],
@@ -138,7 +145,7 @@ class PazienteController extends Controller {
         //     'diagnosi2'     => $request['scdiagnosi2'],
         // ]);
 
-        $diagnosi1 = new Diagnosi1([
+       /* $diagnosi1 = new Diagnosi1([
             'diagnosi' => $request['diagnosi1'],
         ]);
 
@@ -148,9 +155,21 @@ class PazienteController extends Controller {
 
         $diagnosi3 = new Diagnosi3([
             'diagnosi' => $request['diagnosi3'],
-        ]);
+        ]);*/
 
         $paziente->save();
+
+                
+        $diagnosis = [];
+
+        if (isset($diagnosi)) {
+            foreach ($diagnosi as $diag) {
+                $diagnosis[] = new PazienteDiagnosi([
+                    'paziente_id' => $paziente->id,
+                    'diagnosi_id' => $diag,
+                ]);
+            }
+        }
 
         $paziente->recapitiPaziente()->save($recapitiPaziente);
 
@@ -170,11 +189,15 @@ class PazienteController extends Controller {
             $paziente->medicinaliPaziente()->save($m);
         }
 
+        foreach ($diagnosis as $d) {
+            $d->save();
+        }
+
         // if ($storiaClinica->data || $storiaClinica->storiaclinica) {
         //     $paziente->storiaClinica()->save($storiaClinica);
         // }
 
-        if ($diagnosi1->diagnosi) {
+       /* if ($diagnosi1->diagnosi) {
             $paziente->diagnosi1()->save($diagnosi1);
         }
 
@@ -184,11 +207,11 @@ class PazienteController extends Controller {
 
         if ($diagnosi3->diagnosi) {
             $paziente->diagnosi3()->save($diagnosi3);
-        }
+        }*/
 
-
-        PazienteProtocollo::create(['paziente_id' => $paziente->id, 'protocollo_id' => $request['protocollo']]);
-      
+        if (isset($request['protocollo'])) 
+            PazienteProtocollo::create(['paziente_id' => $paziente->id, 'protocollo_id' => $request['protocollo']]);
+        
 
         return redirect('/pazienti');
     }
@@ -237,7 +260,10 @@ class PazienteController extends Controller {
     public function edit(Request $request) {
 
         $paziente         = Paziente::find($request['id']);
-        $diagnosi         = Diagnosi::all();
+        $diagnosiCat   = Diagnosi::distinct()->get(['categoria']);
+        $diagnosiSpec   = Diagnosi::all();
+        $diagnosiPaziente = PazienteDiagnosi::where('paziente_id', $request['id'])->get();
+
         $allergie         = Allergia::all();
         $medicinali       = Medicinale::all();
         $protocolli = Protocollo::all();
@@ -245,16 +271,29 @@ class PazienteController extends Controller {
         $pazienteProtocollo = '';
 
 
-       
-        if(count($pazienteProto)<=0)
-       $pazienteProto = '';
+        $pazienteDiagnosi = [];
+        foreach($diagnosiPaziente as $dp){
+            $pazienteDiagnosi[] = Diagnosi::find($dp->diagnosi_id);
+        }
         
+       /* foreach($pazienteDiagnosi as $dp){
+            print_r($dp->categoria . " - " .$dp->diagnosi ); 
+        }
+
+        return;*/
+
+
+        if(count($pazienteProto)<=0)
+            $pazienteProt = [];
+            else  $pazienteProt = $pazienteProto[0];
+
+           
         // $pazienteProtocollo = Protocollo::find($pazienteProto[0]->protocollo_id);
       
 
 
       
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProto[0]);
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosiCat', $diagnosiCat)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProt)->with('pazienteDiagnosi', $pazienteDiagnosi)->with('diagnosiSpec', $diagnosiSpec);
     }
 
     public function update(Request $request) {
@@ -401,8 +440,10 @@ class PazienteController extends Controller {
 
         // return redirect('/pazienti');
 
+        if(isset($request['protocollo'])){
         PazienteProtocollo::where('paziente_id', $paziente->id)->delete();
         PazienteProtocollo::create(['paziente_id' => $paziente->id, 'protocollo_id' => $request['protocollo']]);
+        }
 
         return redirect()->back();
     }
@@ -411,6 +452,8 @@ class PazienteController extends Controller {
 
         Paziente::destroy($request["idpaziente"]);
         PazienteProtocollo::where('paziente_id', $request["idpaziente"])->delete();
+        PazienteDiagnosi::where('paziente_id',$request["idpaziente"])->delete();
+
 
         return redirect('/pazienti');
     }

@@ -18,14 +18,14 @@
                                         <input class="form-control" type="date" id="datastoriaclinicam" name="datastoriaclinicam" required>
                                         <select class="form-control" id="scdiagnosi1m" name="scdiagnosi1m">
                                             <option disabled selected> diagnosi 1 </option>
-                                            @foreach ($diagnosi as $a)
-                                            <option>{{$a->diagnosi}}</option>
+                                            @foreach ($diagnosiCat as $a)
+                                            <option>{{$a->categoria}}</option>
                                             @endforeach
                                         </select> 
                                         <select class="form-control" id="scdiagnosi2m" name="scdiagnosi2m">
                                             <option disabled selected> diagnosi 2 </option>
-                                            @foreach ($diagnosi as $a)
-                                            <option>{{$a->diagnosi}}</option>
+                                            @foreach ($diagnosiCat as $a)
+                                            <option>{{$a->categoria}}</option>
                                             @endforeach
                                         </select> 
                                     </td>

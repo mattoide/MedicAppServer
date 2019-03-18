@@ -4,6 +4,7 @@ namespace MedicAppServer\Http\Controllers;
 
 use Illuminate\Http\Request;
 use MedicAppServer\Diagnosi;
+use MedicAppServer\PazienteDiagnosi;
 use Validator;
 
 class DiagnosiController extends Controller {
@@ -54,8 +55,16 @@ class DiagnosiController extends Controller {
     public function delete(Request $request) {
 
         Diagnosi::destroy($request["iddiagnosi"]);
+        PazienteDiagnosi::where('diagnosi_id', $request["iddiagnosi"])->delete();
         return redirect('/diagnosi');
     }
+
+    public function getDiagnosiByCategoria(Request $request, $categoriaDiagnosi){
+
+        $diagnosi = Diagnosi::where('categoria', $categoriaDiagnosi)->get();
+        return $diagnosi;
+  
+}
 
     public function getValidatore($request) {
 

@@ -2273,6 +2273,7 @@ return array(
     'MedicAppServer\\MedicinaliPaziente' => $baseDir . '/app/MedicinaliPaziente.php',
     'MedicAppServer\\Medico' => $baseDir . '/app/Medico.php',
     'MedicAppServer\\Paziente' => $baseDir . '/app/Paziente.php',
+    'MedicAppServer\\PazienteProtocollo' => $baseDir . '/app/PazienteProtocollo.php',
     'MedicAppServer\\Protocollo' => $baseDir . '/app/Protocollo.php',
     'MedicAppServer\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'MedicAppServer\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

@@ -11,6 +11,11 @@
            aria-controls="alrgie" aria-selected="true">Allergie</a>
     </li>
 
+    
+<li class="nav-item">
+    <a class="nav-link navtext-tab" id="diagnsi-tab" data-toggle="tab" href="#diagnsi" role="tab" aria-controls="diagnsi" aria-selected="true">Diagnosi</a>
+</li>
+
     <li class="nav-item">
         <a class="nav-link navtext-tab" id="interventi-tab" data-toggle="tab" href="#interventi" role="tab"
            aria-controls="interventi"
@@ -71,15 +76,15 @@
 
                                  <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbld" name="scdiagnosi1[]">
                                     <option disabled selected> diagnosi 1 </option>
-                                    @foreach ($diagnosi as $a)
-                                    <option>{{$a->diagnosi}}</option>
+                                    @foreach ($diagnosiCat as $a)
+                                    <option>{{$a->categoria}}</option>
                                     @endforeach
                                 </select>
 
                                 <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi2disbld" name="scdiagnosi2[]">
                                     <option disabled selected> diagnosi 2 </option>
-                                    @foreach ($diagnosi as $a)
-                                    <option>{{$a->diagnosi}}</option>
+                                    @foreach ($diagnosiCat as $a)
+                                    <option>{{$a->categoria}}</option>
                                     @endforeach
                                 </select>
 
@@ -115,7 +120,7 @@
 
                                                <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] >
                                                     <option disabled selected> diagnosi 1 </option> 
-                                                    @foreach ($diagnosi as $a)
+                                                    @foreach ($diagnosiCat as $a)
                                                     <option>{{$a->diagnosi}}</option
                                                         >@endforeach 
                                                 </select> 
@@ -124,7 +129,7 @@
                                                     
                                                     <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]>
                                                          <option disabled selected> diagnosi 2 </option>
-                                                         @foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>
+                                                         @foreach ($diagnosiCat as $a) <option>{{$a->diagnosi}}</option>
                                                            @endforeach
                                                     </select> 
 
@@ -180,6 +185,78 @@
             </div>
 
         </div>
+
+        
+                {{-- TAB DIAGNOSI --}}
+
+                <div class="tab-pane fade" id="diagnsi" role="tabpanel" aria-labelledby="diagnsi-tab">
+
+                    <div id="diagnosipopup" style="width: 50%; margin-left: 1%">
+    
+                        <br>
+                    <button id="btnnuovadiagncat"   onclick="preparaDiagnosiCategoria({{$diagnosiCat}})"  data-titolo="Aggiungi nuova diagnosi"
+                    data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+    
+            
+                    <div class="row">
+                        <div class="col">
+                            <div id="nuovadiagncat">
+{{--  --}}
+
+@php ($i = 0)
+
+@foreach ($pazienteDiagnosi as $pd)
+
+
+                            <select class="form-control" id="diagnosicat{{$i}}" name="diagnosicat[]" onchange="getDiagnosiMod(this)">
+    <option disabled >categoria</option>
+    @foreach ($diagnosiCat as $d)
+        @if ($pd->categoria == $d->categoria)
+        <option  selected>{{$d->categoria}}</option>
+        @else
+        <option >{{$d->categoria}}</option>
+        @endif
+        @endforeach
+    </select>
+<br>
+@php ($i++)
+
+@endforeach
+
+{{--  --}}
+                            </div>
+                    </div>
+                        <div class="col">
+                            <div id="nuovadiagn">
+                                    @php ($i = 0)
+
+                                @foreach ($pazienteDiagnosi as $pd)
+
+
+                            <select class="form-control" id="diagnosi{{$i}}" name="diagnosi[]" onchange="aggiungiDiagnosi(this)">
+                                    <option disabled >diagnosi</option>
+                                    @foreach ($diagnosiSpec as $d)
+                                        @if ($pd->categoria == $d->categoria)
+                                        @if($pd->diagnosi == $d->diagnosi)
+                                        <option value="{{$d->id}}" selected>{{$d->diagnosi}}</option>
+                                        @else
+                                        <option value="{{$d->id}}">{{$d->diagnosi}}</option>
+                                        @endif
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                <br>
+                                @php ($i++)
+
+                                @endforeach
+                            </div>
+                    </div>
+
+                    </div>
+                </div>
+    
+                
+            </div>
 
         <!-- TAB INTERVENTI-->
 
@@ -308,11 +385,19 @@
             @endforeach --}}
 
             @foreach ($protocolli as $prot)
+            @if (count($pazienteProtocollo)>0)
+
             @if ($pazienteProtocollo->protocollo_id == $prot->id)
                 <option value="{{$prot->id}}" selected>{{$prot->nome}}</option>
             @else
                 <option value="{{$prot->id}}">{{$prot->nome}}</option>
             @endif
+            @else
+            <option value="{{$prot->id}}">{{$prot->nome}}</option>
+
+            @endif
+
+
             @endforeach
         </select> 
     </div>

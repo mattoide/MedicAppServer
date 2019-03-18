@@ -56,3 +56,5 @@ Route::post('/eliminaprotocollo', 'ProtocolliController@remove');
 
 Route::post('/aggiungistoriaclinica', 'PazienteController@createClinicStory');
 Route::post('/nuovaallergiapaziente', 'PazienteController@createAllergy');
+
+Route::post('/getsiagnosibycategoria/{categoriadiagnosi}', 'DiagnosiController@getDiagnosiByCategoria');

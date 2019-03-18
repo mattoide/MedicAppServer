@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDiagnosi2 extends Migration
+class PazienteDiagnosi extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDiagnosi2 extends Migration
      */
     public function up()
     {
-        Schema::create('diagnosi2', function (Blueprint $table) {
+        Schema::create('paziente_diagnosi', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('paziente_id')->nullable();
             $table->unsignedInteger("diagnosi_id")->nullable();
@@ -28,6 +28,6 @@ class CreateDiagnosi2 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diagnosi2');
+        Schema::dropIfExists('paziente_diagnosi');
     }
 }

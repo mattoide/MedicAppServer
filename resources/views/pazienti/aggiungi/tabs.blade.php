@@ -6,8 +6,12 @@
     </li>
 
     <li class="nav-item">
-            <a class="nav-link navtext-tab" id="alrgie-tab" data-toggle="tab" href="#alrgie" role="tab" aria-controls="alrgie" aria-selected="true">Allergie</a>
-    </li>
+        <a class="nav-link navtext-tab" id="alrgie-tab" data-toggle="tab" href="#alrgie" role="tab" aria-controls="alrgie" aria-selected="true">Allergie</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link navtext-tab" id="diagnsi-tab" data-toggle="tab" href="#diagnsi" role="tab" aria-controls="diagnsi" aria-selected="true">Diagnosi</a>
+</li>
 
     <li class="nav-item">
         <a class="nav-link navtext-tab" id="interventi-tab" data-toggle="tab" href="#interventi" role="tab" aria-controls="interventi"
@@ -93,6 +97,33 @@
 
             
         </div>
+
+                {{-- TAB DIAGNOSI --}}
+
+                <div class="tab-pane fade" id="diagnsi" role="tabpanel" aria-labelledby="diagnsi-tab">
+
+                    <div id="diagnosipopup" style="width: 50%; margin-left: 1%">
+    
+                        <br>
+                    <button id="btnnuovadiagncat"   onclick="preparaDiagnosiCategoria({{$diagnosi}})"  data-titolo="Aggiungi nuova diagnosi"
+                    data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+    
+                    {{-- <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergiaa({{$allergie}}, this)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                        <option disabled selected>allergia</option>
+                        @foreach ($allergie as $a)
+                        <option>{{$a->allergia}}</option>
+                        @endforeach
+                    </select>  --}}
+                    <div class="row">
+                        <div class="col">                    <div id="nuovadiagncat"></div>
+                    </div>
+                        <div class="col">                    <div id="nuovadiagn"></div>
+                    </div>
+                    </div>
+                </div>
+    
+                
+            </div>
 
 
         <!-- TAB INTERVENTI-->
