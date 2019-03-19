@@ -308,11 +308,11 @@ function preparaReminder(pReminders) {
 
 
     pReminders.forEach(function (remndr, indice, array) {
-        reminderss = reminderss + "<option>" + remndr.nomereminder + "</option>";
+        reminderss = reminderss + "<option value="+remndr.id +">" + remndr.nomereminder + "</option>";
     });
 
     var remndr = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
-    var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date class=form-control placeholder=data avvio name=datareminder[]>";
+    var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date class=form-control placeholder=data avvio name=datareminder[] required>";
     $('#nuovoreminder').append(remndr);
     $('#datanuovoreminder').append(data);
 

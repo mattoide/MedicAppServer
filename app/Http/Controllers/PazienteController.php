@@ -21,6 +21,7 @@ use MedicAppServer\Protocollo;
 use MedicAppServer\PazienteProtocollo;
 use MedicAppServer\PazienteDiagnosi;
 use MedicAppServer\Reminder;
+use MedicAppServer\PazienteReminder;
 use Validator;
 
 class PazienteController extends Controller {
@@ -54,8 +55,9 @@ class PazienteController extends Controller {
         $scdiagnosi2        = Input::get('scdiagnosi2');
         $allergie           = Input::get('allergie');
         $medicinali         = Input::get('medicinali');
-
-        $diagnosi =      Input::get('diagnosi');
+        $reminder           = Input::get('reminder');
+        $datareminder       = Input::get('datareminder');
+        $diagnosi           = Input::get('diagnosi');
 
 
 
@@ -174,6 +176,29 @@ class PazienteController extends Controller {
             }
         }
 
+        
+        $reminderz = [];
+        if (isset($reminder)) {
+            $i = 0;
+            foreach ($reminder as $sc) {
+                if (!isset($datareminder[$i]))
+                $datareminder[$i] = '';
+
+                
+                
+
+                $reminderz [] = new PazienteReminder([
+                    
+                    'paziente_id'     => $paziente->id,
+                    'reminder_id'     => $sc,
+                    'data'          =>  $datareminder[$i],
+
+                ]);
+
+                $i++;
+            }
+        }
+
         $paziente->recapitiPaziente()->save($recapitiPaziente);
 
         if ($medico->nome || $medico->cognome || $medico->contatto || $medico->recapito) {
@@ -194,6 +219,10 @@ class PazienteController extends Controller {
 
         foreach ($diagnosis as $d) {
             $d->save();
+        }
+
+        foreach ($reminderz as $r) {
+            $r->save();
         }
 
         // if ($storiaClinica->data || $storiaClinica->storiaclinica) {
