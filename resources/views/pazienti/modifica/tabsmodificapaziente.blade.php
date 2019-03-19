@@ -296,12 +296,23 @@
                         <button id="btnnuovoreminder"   onclick="preparaReminder({{$reminder}})" 
                         data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
         
-                        {{-- <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergiaa({{$allergie}}, this)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
-                            <option disabled selected>allergia</option>
-                            @foreach ($allergie as $a)
-                            <option>{{$a->allergia}}</option>
-                            @endforeach
-                        </select>  --}}
+                         @foreach ($pazienteReminder as $pd)
+                                <select class="form-control" id="diagnosicat{{$i}}" name="reminder[]" onchange="getDiagnosiMod(this)">
+                                <option disabled >categoria</option>
+                                @foreach ($reminder as $d)
+                                    @if ($pd->nomereminder == $d->nomereminder)
+                                    <option  selected>{{$d->nomereminder}}</option>
+                                    @else
+                                    <option >{{$d->nomereminder}}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                            <br>
+
+                            @endforeach  
+
+                            {{-- TODO: FARE DATA --}}
+                    
                         <div class="row">
                             <div class="col"> <div id="nuovoreminder"></div></div>
                             <div class="col"> <div id="datanuovoreminder"></div></div>

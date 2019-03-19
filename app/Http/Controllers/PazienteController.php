@@ -295,7 +295,7 @@ class PazienteController extends Controller {
         $diagnosiCat   = Diagnosi::distinct()->get(['categoria']);
         $diagnosiSpec   = Diagnosi::all();
         $diagnosiPaziente = PazienteDiagnosi::where('paziente_id', $request['id'])->get();
-
+        $pazienteReminders = PazienteReminder::where('paziente_id', $request['id'])->get();
         $allergie         = Allergia::all();
         $reminder         = Reminder::all();
         $medicinali       = Medicinale::all();
@@ -307,6 +307,11 @@ class PazienteController extends Controller {
         $pazienteDiagnosi = [];
         foreach($diagnosiPaziente as $dp){
             $pazienteDiagnosi[] = Diagnosi::find($dp->diagnosi_id);
+        }
+
+        $pazienteReminder = [];
+        foreach($pazienteReminders as $pr){
+            $pazienteReminder[] = Reminder::find($pr->reminder_id);
         }
         
        /* foreach($pazienteDiagnosi as $dp){
@@ -326,7 +331,7 @@ class PazienteController extends Controller {
 
 
       
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosiCat', $diagnosiCat)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProt)->with('pazienteDiagnosi', $pazienteDiagnosi)->with('diagnosiSpec', $diagnosiSpec)->with('reminder', $reminder);
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosiCat', $diagnosiCat)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProt)->with('pazienteDiagnosi', $pazienteDiagnosi)->with('diagnosiSpec', $diagnosiSpec)->with('reminder', $reminder)->with('pazienteReminder', $pazienteReminder);
     }
 
     public function update(Request $request) {
@@ -337,6 +342,8 @@ class PazienteController extends Controller {
         $scdiagnosi2        = Input::get('scdiagnosi2');
         $allergie           = Input::get('allergie');
         $medicinali         = Input::get('medicinali');
+        $reminder           = Input::get('reminder');
+        $datareminder       = Input::get('datareminder');
 
 
         $validator = $this->getValidatoreForUpdate($request);
@@ -435,12 +442,37 @@ class PazienteController extends Controller {
             $paziente->medico()->save($medico);
         }
 
+        $reminderz = [];
+        if (isset($reminder)) {
+            $i = 0;
+            foreach ($reminder as $sc) {
+                if (!isset($datareminder[$i]))
+                $datareminder[$i] = '';
+
+                
+                
+
+                $reminderz [] = new PazienteReminder([
+                    
+                    'paziente_id'     => $paziente->id,
+                    'reminder_id'     => $sc,
+                    'data'          =>  $datareminder[$i],
+
+                ]);
+
+                $i++;
+            }
+        }
+
+        
+
         StoriaClinica::where('paziente_id', $paziente->id)->delete();
         AllergiePaziente::where('paziente_id', $paziente->id)->delete();
         MedicinaliPaziente::where('paziente_id', $paziente->id)->delete();
         Diagnosi1::where('paziente_id', $paziente->id)->delete();
         Diagnosi2::where('paziente_id', $paziente->id)->delete();
         Diagnosi3::where('paziente_id', $paziente->id)->delete();
+        PazienteReminder::where('paziente_id', $paziente->id)->delete();
 
         foreach ($stories as $s) {
             $paziente->storiaClinica()->save($s);
@@ -466,6 +498,11 @@ class PazienteController extends Controller {
         if ($diagnosi3->diagnosi) {
             $paziente->diagnosi3()->save($diagnosi3);
         }
+
+           foreach ($reminderz as $r) {
+            $r->save();
+        }
+
 
        // return redirect('/pazienti');
 
