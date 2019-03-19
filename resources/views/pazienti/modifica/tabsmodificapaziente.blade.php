@@ -296,26 +296,44 @@
                         <button id="btnnuovoreminder"   onclick="preparaReminder({{$reminder}})" 
                         data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
         
-                         @foreach ($pazienteReminder as $pd)
-                                <select class="form-control" id="diagnosicat{{$i}}" name="reminder[]" onchange="getDiagnosiMod(this)">
-                                <option disabled >categoria</option>
-                                @foreach ($reminder as $d)
-                                    @if ($pd->nomereminder == $d->nomereminder)
-                                    <option  selected>{{$d->nomereminder}}</option>
-                                    @else
-                                    <option >{{$d->nomereminder}}</option>
-                                    @endif
-                                    @endforeach
-                                </select>
-                            <br>
-
-                            @endforeach  
+                     
 
                             {{-- TODO: FARE DATA --}}
                     
                         <div class="row">
-                            <div class="col"> <div id="nuovoreminder"></div></div>
-                            <div class="col"> <div id="datanuovoreminder"></div></div>
+                            <div class="col"> <div id="nuovoreminder">
+                                    @php ($i = 0)
+
+                                    @foreach ($pazienteReminder as $pd)
+                                    <select class="form-control" id="reminder{{$i}}" name="reminder[]" onchange="aggiungiReminder(this)">
+                                    <option disabled >categoria</option>
+                                    @foreach ($reminder as $d)
+                                        @if ($pd->nomereminder == $d->nomereminder)
+                                        <option value={{$d->id}} selected>{{$d->nomereminder}}</option>
+                                        @else
+                                        <option  value={{$d->id}}>{{$d->nomereminder}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                <br>
+                                @php ($i++)
+
+                                @endforeach  
+                                </div>
+                            </div>
+
+                            <div class="col"> <div id="datanuovoreminder">
+                                    @php ($i = 0)
+
+                                    @foreach ($pazRemData as $pd)
+                                    <input id="datareminder{{$i}}" type="date" class="form-control" value={{$pd->data}}  name="datareminder[]" required>
+
+                                <br>
+                                @php ($i++)
+
+                                @endforeach  
+                                </div>
+                            </div>
                         </div>
                      </div>
                     </div>

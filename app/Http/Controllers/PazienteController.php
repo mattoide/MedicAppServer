@@ -296,6 +296,7 @@ class PazienteController extends Controller {
         $diagnosiSpec   = Diagnosi::all();
         $diagnosiPaziente = PazienteDiagnosi::where('paziente_id', $request['id'])->get();
         $pazienteReminders = PazienteReminder::where('paziente_id', $request['id'])->get();
+        
         $allergie         = Allergia::all();
         $reminder         = Reminder::all();
         $medicinali       = Medicinale::all();
@@ -331,7 +332,7 @@ class PazienteController extends Controller {
 
 
       
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosiCat', $diagnosiCat)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProt)->with('pazienteDiagnosi', $pazienteDiagnosi)->with('diagnosiSpec', $diagnosiSpec)->with('reminder', $reminder)->with('pazienteReminder', $pazienteReminder);
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosiCat', $diagnosiCat)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProt)->with('pazienteDiagnosi', $pazienteDiagnosi)->with('diagnosiSpec', $diagnosiSpec)->with('reminder', $reminder)->with('pazienteReminder', $pazienteReminder)->with('pazRemData', $pazienteReminders);
     }
 
     public function update(Request $request) {
