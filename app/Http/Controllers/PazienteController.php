@@ -20,6 +20,7 @@ use MedicAppServer\StoriaClinica;
 use MedicAppServer\Protocollo;
 use MedicAppServer\PazienteProtocollo;
 use MedicAppServer\PazienteDiagnosi;
+use MedicAppServer\Reminder;
 use Validator;
 
 class PazienteController extends Controller {
@@ -34,7 +35,9 @@ class PazienteController extends Controller {
         $allergie   = Allergia::all();
         $medicinali = Medicinale::all();
         $protocolli = Protocollo::all();
-        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli);
+        $reminder         = Reminder::all();
+
+        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('reminder', $reminder);
     }
 
     public function store(Request $request) {
@@ -265,6 +268,7 @@ class PazienteController extends Controller {
         $diagnosiPaziente = PazienteDiagnosi::where('paziente_id', $request['id'])->get();
 
         $allergie         = Allergia::all();
+        $reminder         = Reminder::all();
         $medicinali       = Medicinale::all();
         $protocolli = Protocollo::all();
         $pazienteProto = PazienteProtocollo::where('paziente_id', $request['id'])->get();
@@ -293,7 +297,7 @@ class PazienteController extends Controller {
 
 
       
-        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosiCat', $diagnosiCat)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProt)->with('pazienteDiagnosi', $pazienteDiagnosi)->with('diagnosiSpec', $diagnosiSpec);
+        return view('pazienti.modifica.modificapaziente')->with('paziente', $paziente)->with('diagnosiCat', $diagnosiCat)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('pazienteProtocollo', $pazienteProt)->with('pazienteDiagnosi', $pazienteDiagnosi)->with('diagnosiSpec', $diagnosiSpec)->with('reminder', $reminder);
     }
 
     public function update(Request $request) {

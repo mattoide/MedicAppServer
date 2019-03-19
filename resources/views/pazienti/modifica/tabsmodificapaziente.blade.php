@@ -22,6 +22,12 @@
            aria-selected="false">Interventi</a>
     </li>
 
+    
+<li class="nav-item">
+    <a class="nav-link navtext-tab" id="reminder-tab" data-toggle="tab" href="#remindr" role="tab" aria-controls="remindr"
+        aria-selected="false">Reminders</a>
+</li>
+
     <li class="nav-item">
         <a class="nav-link navtext-tab" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto"
            aria-selected="false">Foto</a>
@@ -281,6 +287,27 @@
                 </table>
             </div>
         </div>
+
+                      {{-- TAB REMINDER --}}
+
+                      <div class="tab-pane fade" id="remindr" role="tabpanel" aria-labelledby="remindr-tab">
+                        <div id="reminderpopup" style="width: 50%; margin-left: 1%">
+                            <br>
+                        <button id="btnnuovoreminder"   onclick="preparaReminder({{$reminder}})" 
+                        data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
+        
+                        {{-- <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergiaa({{$allergie}}, this)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+                            <option disabled selected>allergia</option>
+                            @foreach ($allergie as $a)
+                            <option>{{$a->allergia}}</option>
+                            @endforeach
+                        </select>  --}}
+                        <div class="row">
+                            <div class="col"> <div id="nuovoreminder"></div></div>
+                            <div class="col"> <div id="datanuovoreminder"></div></div>
+                        </div>
+                     </div>
+                    </div>
 
         <!-- TAB FOTO-->
         <div class="tab-pane fade" id="foto" role="tabpanel" aria-labelledby="foto-tab">

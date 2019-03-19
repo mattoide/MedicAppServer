@@ -1,6 +1,7 @@
 allergieSelezionate = [];
 medicinaliSelezionati = [];
 diagnosiSelezionate = [];
+reminderSelezionati = [];
 
 
 allergieSelezionateNomeLabel = [];
@@ -32,6 +33,16 @@ $(document).ready(function () {
         if (diagnos.value != "diagnosi") {
             let lower = diagnos.options[diagnos.selectedIndex].innerText;
             diagnosiSelezionate.push(lower.toLowerCase())
+            // medicinaliSelezionatiNomeLabel.push(lower)
+        }
+
+    });
+
+    reminder = document.getElementsByName("reminder[]");
+    reminder.forEach(remindr => {
+        if (remindr.value != "reminder") {
+            let lower = remindr.options[remindr.selectedIndex].innerText;
+            reminderSelezionati.push(lower.toLowerCase())
             // medicinaliSelezionatiNomeLabel.push(lower)
         }
 
@@ -90,7 +101,6 @@ $.ajaxSetup({
 
     $.post('/getsiagnosibycategoria/' + a, function(response) {
         // handle your response here
-        console.log(response);
 
         preparaDiagnosi(response);
     })
@@ -113,7 +123,6 @@ $.ajaxSetup({
 
     $.post('/getsiagnosibycategoria/' + a, function(response) {
         // handle your response here
-        console.log(response);
 
         preparaDiagnosiMod(response, val.id);
     })
@@ -163,7 +172,6 @@ function aggiungiAllergia(elem) {
 
     inputName = "allergie[]";
     idPopup = "#allergiepopup"
-    console.log(elem.id)
 
     if (allergieSelezionate.includes(elem.value.toLowerCase())) {
 
@@ -189,7 +197,6 @@ function aggiungiAllergia(elem) {
     let lower
     let elementi = document.getElementsByName(inputName);
     elementi.forEach(function (elemento, indice, array) {
-        console.log(elemento.value)
 
         lower = elemento.value;
         allergieSelezionate.push(lower.toLowerCase())
@@ -206,11 +213,9 @@ function aggiungiDiagnosi(elem) {
 
     inputName = "diagnosi[]";
     idPopup = "#diagnosipopup"
-    console.log(elem.id)
 
     if (diagnosiSelezionate.includes(elem.value.toLowerCase())) {
 
-        console.log(elem.id);
 
 
         $('#' + elem.id).remove();
@@ -227,7 +232,6 @@ function aggiungiDiagnosi(elem) {
     let lower
     let elementi = document.getElementsByName(inputName);
     elementi.forEach(function (elemento, indice, array) {
-        console.log(elemento.value)
 
         lower = elemento.value;
         diagnosiSelezionate.push(lower.toLowerCase())
@@ -235,7 +239,6 @@ function aggiungiDiagnosi(elem) {
 
     });
 
-    console.log('asdsa');
     $('#btnnuovadiagncat').removeAttr('disabled');
 
 }
@@ -294,4 +297,60 @@ function nuovoMedicinale(pMedicinali, val) {
             }
         }
     });
+}
+
+
+/**************************************************************** */
+function preparaReminder(pReminders) {
+
+    reminderss = "";
+    a = pReminders;
+
+
+    pReminders.forEach(function (remndr, indice, array) {
+        reminderss = reminderss + "<option>" + remndr.nomereminder + "</option>";
+    });
+
+    var remndr = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
+    var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date class=form-control placeholder=data avvio name=datareminder[]>";
+    $('#nuovoreminder').append(remndr);
+    $('#datanuovoreminder').append(data);
+
+    $('#btnnuovoreminder').attr('disabled', 'disabled');
+}
+
+/**************************************************************** */
+
+/**************************************************************** */
+function aggiungiReminder(elem) {
+
+    inputName = "reminder[]";
+    idPopup = "#reminderpopup"
+
+    if (reminderSelezionati.includes(elem.value.toLowerCase())) {
+
+        $('#' + elem.id).remove();
+        $('#' + 'data'+elem.id).remove();
+        //$('#reminder' + id).remove();
+
+        var msg = ["Hai gia selezionatoil reminder", elem.value];
+        alertPopup.warning(idPopup, msg.join(" "));
+
+    }
+
+  
+
+    reminderSelezionati = [];
+    // allergieSelezionateNomeLabel = [];
+    let lower
+    let elementi = document.getElementsByName(inputName);
+    elementi.forEach(function (elemento, indice, array) {
+
+        lower = elemento.value;
+        reminderSelezionati.push(lower.toLowerCase())
+        // allergieSelezionateNomeLabel.push(lower)
+
+    });
+    $('#btnnuovoreminder').removeAttr('disabled');
+
 }
