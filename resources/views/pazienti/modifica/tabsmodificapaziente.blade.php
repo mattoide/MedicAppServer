@@ -296,10 +296,7 @@
                         <button id="btnnuovoreminder"   onclick="preparaReminder({{$reminder}})" 
                         data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
         
-                     
-
-                            {{-- TODO: FARE DATA --}}
-                    
+                                         
                         <div class="row">
                             <div class="col"> <div id="nuovoreminder">
                                     @php ($i = 0)
