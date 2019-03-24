@@ -345,6 +345,8 @@ class PazienteController extends Controller {
         $medicinali         = Input::get('medicinali');
         $reminder           = Input::get('reminder');
         $datareminder       = Input::get('datareminder');
+        $diagnosi           = Input::get('diagnosi');
+
 
 
         $validator = $this->getValidatoreForUpdate($request);
@@ -443,6 +445,17 @@ class PazienteController extends Controller {
             $paziente->medico()->save($medico);
         }
 
+        $diagnosis = [];
+
+        if (isset($diagnosi)) {
+            foreach ($diagnosi as $diag) {
+                $diagnosis[] = new PazienteDiagnosi([
+                    'paziente_id' => $paziente->id,
+                    'diagnosi_id' => $diag,
+                ]);
+            }
+        }
+
         $reminderz = [];
         if (isset($reminder)) {
             $i = 0;
@@ -474,6 +487,7 @@ class PazienteController extends Controller {
         Diagnosi2::where('paziente_id', $paziente->id)->delete();
         Diagnosi3::where('paziente_id', $paziente->id)->delete();
         PazienteReminder::where('paziente_id', $paziente->id)->delete();
+        PazienteDiagnosi::where('paziente_id', $paziente->id)->delete();
 
         foreach ($stories as $s) {
             $paziente->storiaClinica()->save($s);
@@ -502,6 +516,10 @@ class PazienteController extends Controller {
 
            foreach ($reminderz as $r) {
             $r->save();
+        }
+
+        foreach ($diagnosis as $d) {
+            $d->save();
         }
 
 

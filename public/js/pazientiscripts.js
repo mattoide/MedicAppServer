@@ -4,6 +4,21 @@ diagnosiSelezionate = [];
 reminderSelezionati = [];
 
 
+/*storieClinicheSelezionate = [];
+
+
+
+diagnosi = document.getElementsByName("storiaclinica[]");
+diagnosi.forEach(diagnos => {
+    if (diagnos.value != "diagnosi") {
+        let lower = diagnos.options[diagnos.selectedIndex].innerText;
+        diagnosiSelezionate.push(lower.toLowerCase())
+        // medicinaliSelezionatiNomeLabel.push(lower)
+    }
+
+});*/
+
+
 allergieSelezionateNomeLabel = [];
 // medicinaliSelezionatiNomeLabel = [];
 
@@ -56,13 +71,31 @@ function preparaAllergia(pAllergie) {
     allergies = "";
     a = pAllergie;
 
+  
+    var select = $("<select style=margin-bottom:1%; margin-top:1% class=form-control id=allergie"+allergieSelezionate.length+" name=allergie[] onchange=aggiungiAllergia(" + 'this' + ")></select>");
+    var option = $('<option disabled></option>');
+    option.attr('selected', 'allergia');
+    option.text('allergia');
+    select.append(option);
 
     pAllergie.forEach(function (alrg, indice, array) {
+        var option = $('<option></option>');
+        option.attr('value', alrg.allergia);
+        option.text(alrg.allergia);
+        select.append(option);
+    });
+    $('#nuovaall').append(select);
+
+    var del = $("<button style=margin-top:70% id=delallergie"+allergieSelezionate.length+"  onclick=deleteAllergia("+'allergie'+allergieSelezionate.length+") type=button class=btn btn-icn><i class=far fa-times-circle cstm-icn></i></button>");
+    $('#nuovaalldel').append(del);
+
+
+  /*  pAllergie.forEach(function (alrg, indice, array) {
         allergies = allergies + "<option>" + alrg.allergia + "</option>";
     });
 
     var alrgia = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=allergie"+allergieSelezionate.length+" name=allergie[] onchange=aggiungiAllergia(" + 'this' + ")><option disabled selected>allergia</option>" + allergies + "</select>"
-    $('#nuovaall').append(alrgia);
+    $('#nuovaall').append(alrgia);*/
 
     $('#btnnuovaall').attr('disabled', 'disabled');
 }
@@ -79,8 +112,12 @@ function preparaDiagnosiCategoria(pDiagnosi) {
         diagnosis = diagnosis + "<option>" + diagn.categoria + "</option>";
     });
 
-    var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosicat"+diagnosiSelezionate.length+" name=diagnosicat[] onchange=getDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+    var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=catdiagnosi"+diagnosiSelezionate.length+" name=diagnosicat[] onchange=getDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
     $('#nuovadiagncat').append(diagnsi);
+
+    var del = $("<button style=margin-top:0% id=deldiagnosi"+diagnosiSelezionate.length+"  onclick=deleteDiagnosi("+diagnosiSelezionate.length+") type=button class=btn btn-icn><i class=far fa-times-circle cstm-icn></i></button>");
+
+    $('#deldiagn').append(del);
 
 
     $('#btnnuovadiagncat').attr('disabled', 'disabled');
@@ -91,7 +128,7 @@ function preparaDiagnosiCategoria(pDiagnosi) {
 
 function getDiagnosi(val){
     let a = val.value;
-    $('#diagnosicat'+diagnosiSelezionate.length).attr('disabled', 'disabled');
+    $('#catdiagnosi'+diagnosiSelezionate.length).attr('disabled', 'disabled');
 
 $.ajaxSetup({
     headers: {
@@ -176,7 +213,9 @@ function aggiungiAllergia(elem) {
     if (allergieSelezionate.includes(elem.value.toLowerCase())) {
 
         $('#' + elem.id).remove();
-        $('#diagnosicat' + id).remove();
+        $('#del'+elem.id).remove();
+
+       // $('#diagnosicat' + id).remove();
 
         var msg = ["Hai gia selezionato l'allergia al", elem.value];
         alertPopup.warning(idPopup, msg.join(" "));
@@ -219,7 +258,8 @@ function aggiungiDiagnosi(elem) {
 
 
         $('#' + elem.id).remove();
-        $('#diagnosicat' + elem.id[elem.id.length -1]).remove();
+        $('#catdiagnosi' + elem.id[elem.id.length -1]).remove();
+        $('#deldiagnosi'+elem.id[elem.id.length -1]).remove();
 
 
         var msg = ["Hai gia selezionato la diagnosi ", elem.value];
@@ -313,8 +353,11 @@ function preparaReminder(pReminders) {
 
     var remndr = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
     var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date class=form-control placeholder=data avvio name=datareminder[] required>";
+    var del = $("<button style=height:100%; id=delreminder"+reminderSelezionati.length+"  onclick=deleteReminder("+reminderSelezionati.length+") type=button class=btn btn-icn><i class=far fa-times-circle cstm-icn></i></button>");
     $('#nuovoreminder').append(remndr);
     $('#datanuovoreminder').append(data);
+    $('#delnuovoreminder').append(del);
+
 
     $('#btnnuovoreminder').attr('disabled', 'disabled');
 }
@@ -354,3 +397,89 @@ function aggiungiReminder(elem) {
     $('#btnnuovoreminder').removeAttr('disabled');
 
 }
+
+function deleteAllergia(val){
+
+    $('#'+val.id).remove();
+    $('#del'+val.id).remove();
+
+    inputName = "allergie[]";
+    allergieSelezionate = [];
+    // allergieSelezionateNomeLabel = [];
+    let lower
+    let elementi = document.getElementsByName(inputName);
+    elementi.forEach(function (elemento, indice, array) {
+
+        lower = elemento.value;
+        allergieSelezionate.push(lower.toLowerCase())
+        // allergieSelezionateNomeLabel.push(lower)
+
+    });
+
+    $('#btnnuovaall').removeAttr('disabled');
+
+
+}
+
+function deleteStoriaClinica(val){
+   
+$('#'+val.id).remove();
+
+
+}
+
+function deleteDiagnosi(val){
+
+
+
+    $('#diagnosi'+val).remove();
+    $('#catdiagnosi'+val).remove();
+    $('#deldiagnosi'+val).remove();
+
+    inputName = "diagnosi[]";
+    diagnosiSelezionate = [];
+    // allergieSelezionateNomeLabel = [];
+    let lower
+    let elementi = document.getElementsByName(inputName);
+    elementi.forEach(function (elemento, indice, array) {
+
+        lower = elemento.value;
+        diagnosiSelezionate.push(lower.toLowerCase())
+        // allergieSelezionateNomeLabel.push(lower)
+
+    });
+
+    $('#btnnuovadiagncat').removeAttr('disabled');
+
+
+
+}
+
+
+function deleteReminder(val){
+
+
+
+    $('#reminder'+val).remove();
+    $('#datareminder'+val).remove();
+    $('#delreminder'+val).remove();
+
+    inputName = "reminder[]";
+    reminderSelezionati = [];
+    // allergieSelezionateNomeLabel = [];
+    let lower
+    let elementi = document.getElementsByName(inputName);
+    elementi.forEach(function (elemento, indice, array) {
+
+        lower = elemento.value;
+        reminderSelezionati.push(lower.toLowerCase())
+        // allergieSelezionateNomeLabel.push(lower)
+
+    });
+
+    $('#btnnuovoreminder').removeAttr('disabled');
+
+
+
+}
+

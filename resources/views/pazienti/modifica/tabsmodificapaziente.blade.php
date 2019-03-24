@@ -63,9 +63,10 @@
      
 
             <div id='nuovastoria'></div>
+            @php ($i = 0)
              @foreach ($paziente->storiaClinica as $storiaclinica)
 
-                <div style="width: 95%">
+                <div id="storiaclinica{{$i}}" style="width: 95%">
                     <table class="table table-bordered">
                         <tbody id="tablestoriaclinica">
                         <tr>
@@ -101,6 +102,9 @@
                                           name="storiaclinica[]">
                                       @if($storiaclinica){{$storiaclinica->storiaclinica}}@endif
                                     </textarea>
+
+                                <button onclick="deleteStoriaClinica(storiaclinica{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+
                             </td>
                         </tr>
 
@@ -108,6 +112,7 @@
                         </tbody>
                     </table>
                 </div> 
+                @php ($i++)
 
            @endforeach
 
@@ -160,24 +165,7 @@
                 <button id="btnnuovaall"   onclick="preparaAllergia({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
             data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%" >+</button>
 
-            @php ($i = 0)
-                            @foreach ($paziente->allergiePaziente as $alPaz)
-
-            <select style="margin-bottom: 1%; margin-top: 1%" class="form-control" id="allergie{{$i}}" name="allergie[]" onchange="aggiungiAllergia(this)">
-                        <option disabled selected>allergia</option>
-                        @foreach ($allergie as $a)
-                            <p>{{$alPaz->allergia}} // {{$a}}</p>
-                            @if ($alPaz->allergia == $a->allergia)
-                                <option selected>{{$alPaz->allergia}}</option>
-                            @else
-                                <option>{{$a->allergia}}</option>
-                            @endif
-                        @endforeach
-                    </select>
-
-                    @php ($i++)
-
-                @endforeach
+      
                 {{-- <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}}, this)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <option disabled selected>allergia</option>
                     @foreach ($allergie as $a)
@@ -186,8 +174,44 @@
                 </select>  --}}
 
 
+                <div class="row">
+    <div class="col">
+        <div id="nuovaall">
+                @php ($i = 0)
+                @foreach ($paziente->allergiePaziente as $alPaz)
 
-                <div id="nuovaall"></div>
+<select style="margin-bottom: 1%; margin-top: 1%" class="form-control" id="allergie{{$i}}" name="allergie[]" onchange="aggiungiAllergia(this)">
+            <option disabled selected>allergia</option>
+            @foreach ($allergie as $a)
+                <p>{{$alPaz->allergia}} // {{$a}}</p>
+                @if ($alPaz->allergia == $a->allergia)
+                    <option selected>{{$alPaz->allergia}}</option>
+                @else
+                    <option>{{$a->allergia}}</option>
+                @endif
+            @endforeach
+        </select>
+
+        @php ($i++)
+
+    @endforeach
+        </div>
+
+    </div>
+    <div class="col">
+        <div id="nuovaalldel" style="width: 10%">
+                @php ($i = 0)
+                @foreach ($paziente->allergiePaziente as $alPaz)
+
+                <button style="margin-top:70%" id="delallergie{{$i}}" onclick="deleteAllergia(allergie{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle"></i></button>
+
+
+        @php ($i++)
+
+    @endforeach</div>
+
+    </div>
+</div>
             </div>
 
         </div>
@@ -214,7 +238,7 @@
 @foreach ($pazienteDiagnosi as $pd)
 
 
-                            <select class="form-control" id="diagnosicat{{$i}}" name="diagnosicat[]" onchange="getDiagnosiMod(this)">
+                            <select class="form-control" id="catdiagnosi{{$i}}" name="diagnosicat[]" onchange="getDiagnosiMod(this)" disabled>
     <option disabled >categoria</option>
     @foreach ($diagnosiCat as $d)
         @if ($pd->categoria == $d->categoria)
@@ -258,7 +282,25 @@
                             </div>
                     </div>
 
+                    <div class="col">
+                            <div id="deldiagn" style="width: 10%">
+                                    @php ($i = 0)
+
+                                    @foreach ($pazienteDiagnosi as $pd)
+    
+                            <button id="deldiagnosi{{$i}}" onclick="deleteDiagnosi({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+
+    
+                                    @php ($i++)
+    
+                                    @endforeach
+
+                            </div>
+
                     </div>
+
+                 
+                        </div>
                 </div>
     
                 
@@ -402,7 +444,7 @@
 
                 @foreach ($paziente->medicinaliPaziente as $medPaz)
 
-                <select class="form-control" id="allergie" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
+                <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
                     <option disabled selected>medicinale</option>
                     @foreach ($medicinali as $m)
                         @if ($medPaz->medicinale_id == $m->id)

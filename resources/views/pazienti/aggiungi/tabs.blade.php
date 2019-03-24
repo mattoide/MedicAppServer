@@ -97,8 +97,20 @@
                     <option>{{$a->allergia}}</option>
                     @endforeach
                 </select>  --}}
-            <div id="nuovaall"></div>
-        </div>
+                <div class="row">
+                        <div class="col">
+                            <div id="nuovaall">
+                                
+                            </div>
+                    
+                        </div>
+                        <div class="col">
+                            <div id="nuovaalldel" style="width: 10%"></div>
+                    
+                        </div>
+                </div>       
+                
+                </div>
 
             
         </div>
@@ -120,10 +132,21 @@
                         @endforeach
                     </select>  --}}
                     <div class="row">
-                        <div class="col">                    <div id="nuovadiagncat"></div>
+                        <div class="col">
+                            <div id="nuovadiagncat">
+
+                            </div>
                     </div>
-                        <div class="col">                    <div id="nuovadiagn"></div>
-                    </div>
+                        <div class="col">
+                            <div id="nuovadiagn">
+
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div id="deldiagn" style="width: 10%">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
     
@@ -171,6 +194,7 @@
                 <div class="row">
                     <div class="col"> <div id="nuovoreminder"></div></div>
                     <div class="col"> <div id="datanuovoreminder"></div></div>
+                    <div class="col"> <div id="delnuovoreminder"  style="width: 10%"></div></div>
                 </div>
              </div>
             </div>
@@ -283,7 +307,9 @@
     }
 
     function nuovastoriaa(){
-        var storia = "<div style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosi as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea></td> </tr> </tbody></table></div>";
+
+        var lng = document.getElementsByName("storiaclinica[]").length
+        var storia = "<div id=storiaclinica"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosi as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosi as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteStoriaClinica("+'storiaclinica'+lng+") type=button class=btn btn-icn><i class=far fa-times-circle cstm-icn></i></button></td>  </tr> </tbody></table> </div>";
    
     $('#nuovastoriaaa').append(storia);
 
