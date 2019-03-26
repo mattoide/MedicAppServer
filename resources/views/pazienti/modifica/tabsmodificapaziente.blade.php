@@ -373,6 +373,20 @@
                                 @endforeach  
                                 </div>
                             </div>
+
+                            <div class="col"> <div id="delnuovoreminder"  style="width: 10%">
+                                @php ($i = 0)
+                                @foreach ($pazienteReminder as $pd)
+
+                                <br>
+                                @php ($i++)
+                            <button style="height:100%;" id="delreminder{{$i}}"  onclick="deleteReminder({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+
+                                @endforeach  
+
+                            </div></div>
+
+
                         </div>
                      </div>
                     </div>
