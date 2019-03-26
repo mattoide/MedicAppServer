@@ -80,16 +80,22 @@
 
                                 {{-- <p id="{{$storiaclinica->id}}scdiagnosi1disbld"></p>
                                 <p id="{{$storiaclinica->id}}scdiagnosi2disbld"></p> --}}
-
-                                 <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbld" name="scdiagnosi1[]">
-                                    <option disabled selected> diagnosi 1 </option>
+                                 <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbldcat" name="catscdiagnosi1[]" onchange="getDiagnosiModSc(this)">
+                                  <option selected>{{$storiaclinica->categoria1}}</option>
+                                    {{-- <option disabled selected> categoria diagnosi 1 </option>
                                     @foreach ($diagnosiCat as $a)
                                     <option>{{$a->categoria}}</option>
-                                    @endforeach
+                                    @endforeach --}}
                                 </select>
-
-                                <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi2disbld" name="scdiagnosi2[]">
-                                    <option disabled selected> diagnosi 2 </option>
+                                <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbld" name="scdiagnosi1[]" onchange="getDiagnosiMod(this)">
+                                    <option disabled selected> diagnosi 1 </option>
+                                    {{-- @foreach ($diagnosiCat as $a)
+                                    <option>{{$a->categoria}}</option>
+                                    @endforeach --}}
+                                </select>
+                                    
+                                <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi2disbldcat" name="catscdiagnosi2[]" onchange="getDiagnosiMod(this)">
+                                    <option disabled selected> categoria diagnosi 2 </option>
                                     @foreach ($diagnosiCat as $a)
                                     <option>{{$a->categoria}}</option>
                                     @endforeach
@@ -203,7 +209,7 @@
                 @php ($i = 0)
                 @foreach ($paziente->allergiePaziente as $alPaz)
 
-                <button style="margin-top:70%" id="delallergie{{$i}}" onclick="deleteAllergia(allergie{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle"></i></button>
+                <button style="margin-top:10%" id="delallergie{{$i}}" onclick="deleteAllergia(allergie{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
 
 
         @php ($i++)
@@ -223,7 +229,6 @@
 
                     <div id="diagnosipopup" style="width: 50%; margin-left: 1%">
     
-                        <br>
                     <button id="btnnuovadiagncat"   onclick="preparaDiagnosiCategoria({{$diagnosiCat}})"  data-titolo="Aggiungi nuova diagnosi"
                     data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
     
@@ -248,7 +253,6 @@
         @endif
         @endforeach
     </select>
-<br>
 @php ($i++)
 
 @endforeach
@@ -275,7 +279,6 @@
                                         @endif
                                         @endforeach
                                     </select>
-                                <br>
                                 @php ($i++)
 
                                 @endforeach
@@ -354,7 +357,6 @@
                                         @endif
                                         @endforeach
                                     </select>
-                                <br>
                                 @php ($i++)
 
                                 @endforeach  
@@ -367,7 +369,6 @@
                                     @foreach ($pazRemData as $pd)
                                     <input id="datareminder{{$i}}" type="date" class="form-control" value={{$pd->data}}  name="datareminder[]" required>
 
-                                <br>
                                 @php ($i++)
 
                                 @endforeach  
@@ -378,9 +379,8 @@
                                 @php ($i = 0)
                                 @foreach ($pazienteReminder as $pd)
 
-                                <br>
-                                @php ($i++)
-                            <button style="height:100%;" id="delreminder{{$i}}"  onclick="deleteReminder({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+                            <button style="height:100%; margin-top: 10%" id="delreminder{{$i}}"  onclick="deleteReminder({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+                            @php ($i++)
 
                                 @endforeach  
 
@@ -487,6 +487,7 @@
 
         <h3><span class="badge mybadge">Protocolli</span></h3>
 
+        <div class="col">
         <select class="form-control" id="protocollo" name="protocollo" >
             <option disabled selected>protocolli</option>
             {{-- @foreach ($protocolli as $prot)
@@ -494,7 +495,7 @@
             @endforeach --}}
 
             @foreach ($protocolli as $prot)
-            @if (count($pazienteProtocollo)>0)
+            @if ($pazienteProtocollo)
 
             @if ($pazienteProtocollo->protocollo_id == $prot->id)
                 <option value="{{$prot->id}}" selected>{{$prot->nome}}</option>
@@ -504,11 +505,16 @@
             @else
             <option value="{{$prot->id}}">{{$prot->nome}}</option>
 
-            @endif
-
+@endif
 
             @endforeach
         </select> 
+
+    </div>
+
+    <div class="col">
+        <button style="margin-top: 1%" id="delprotocollo"  onclick="deleteProto()" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+    </div>
     </div>
 
 

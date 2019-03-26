@@ -529,9 +529,14 @@ class PazienteController extends Controller {
 
         // return redirect('/pazienti');
 
+       
+
         if(isset($request['protocollo'])){
         PazienteProtocollo::where('paziente_id', $paziente->id)->delete();
         PazienteProtocollo::create(['paziente_id' => $paziente->id, 'protocollo_id' => $request['protocollo']]);
+        } else {
+            PazienteProtocollo::where('paziente_id', $paziente->id)->delete();
+
         }
 
         return redirect()->back();

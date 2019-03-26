@@ -19,8 +19,11 @@ class StoriaClinica extends Migration
 
             $table->date("data")->nullable();
             $table->string("storiaclinica")->nullable();
+            $table->string("categoria1")->nullable();
             $table->string("diagnosi1")->nullable();
+            $table->string("categoria2")->nullable();
             $table->string("diagnosi2")->nullable();
+
 
             $table->timestamps();
         });

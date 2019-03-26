@@ -56,7 +56,7 @@ $(document).ready(function () {
     reminder = document.getElementsByName("reminder[]");
     reminder.forEach(remindr => {
         if (remindr.value != "reminder") {
-            let lower = remindr.options[remindr.selectedIndex].innerText;
+            let lower = remindr.options[remindr.selectedIndex].value;
             reminderSelezionati.push(lower.toLowerCase())
             // medicinaliSelezionatiNomeLabel.push(lower)
         }
@@ -72,7 +72,7 @@ function preparaAllergia(pAllergie) {
     a = pAllergie;
 
   
-    var select = $("<select style=margin-bottom:1%; margin-top:1% class=form-control id=allergie"+allergieSelezionate.length+" name=allergie[] onchange=aggiungiAllergia(" + 'this' + ")></select>");
+    var select = $("<select style=margin-top:0% class=form-control id=allergie"+allergieSelezionate.length+" name=allergie[] onchange=aggiungiAllergia(" + 'this' + ")></select>");
     var option = $('<option disabled></option>');
     option.attr('selected', 'allergia');
     option.text('allergia');
@@ -86,7 +86,7 @@ function preparaAllergia(pAllergie) {
     });
     $('#nuovaall').append(select);
 
-    var del = $("<button style=margin-top:70% id=delallergie"+allergieSelezionate.length+"  onclick=deleteAllergia("+'allergie'+allergieSelezionate.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
+    var del = $("<button style=margin-top:10% id=delallergie"+allergieSelezionate.length+"  onclick=deleteAllergia("+'allergie'+allergieSelezionate.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
     $('#nuovaalldel').append(del);
 
 
@@ -112,10 +112,10 @@ function preparaDiagnosiCategoria(pDiagnosi) {
         diagnosis = diagnosis + "<option>" + diagn.categoria + "</option>";
     });
 
-    var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=catdiagnosi"+diagnosiSelezionate.length+" name=diagnosicat[] onchange=getDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+    var diagnsi = "<select class=form-control id=catdiagnosi"+diagnosiSelezionate.length+" name=diagnosicat[] onchange=getDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
     $('#nuovadiagncat').append(diagnsi);
 
-    var del = $("<button style=margin-top:0% id=deldiagnosi"+diagnosiSelezionate.length+"  onclick=deleteDiagnosi("+diagnosiSelezionate.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
+    var del = $("<button style=margin-top:30% id=deldiagnosi"+diagnosiSelezionate.length+"  onclick=deleteDiagnosi("+diagnosiSelezionate.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
 
     $('#deldiagn').append(del);
 
@@ -127,8 +127,12 @@ function preparaDiagnosiCategoria(pDiagnosi) {
 /**************************************************************** */
 
 function getDiagnosi(val){
-    let a = val.value;
-    $('#catdiagnosi'+diagnosiSelezionate.length).attr('disabled', 'disabled');
+
+
+    let categoria = val.value;
+    let id = val.id;
+    //$('#catdiagnosi'+diagnosiSelezionate.length).attr('disabled', 'disabled');
+    $('#'+id).attr('disabled', 'disabled');
 
 $.ajaxSetup({
     headers: {
@@ -136,7 +140,7 @@ $.ajaxSetup({
     }
   });
 
-    $.post('/getsiagnosibycategoria/' + a, function(response) {
+    $.post('/getsiagnosibycategoria/' + categoria, function(response) {
         // handle your response here
 
         preparaDiagnosi(response);
@@ -149,6 +153,7 @@ $.ajaxSetup({
 /**************************************************************** */
 
 function getDiagnosiMod(val){
+
     let a = val.value;
     $('#diagnosicat'+diagnosiSelezionate.length).attr('disabled', 'disabled');
 
@@ -166,6 +171,27 @@ $.ajaxSetup({
 
 }
 
+
+function getDiagnosiModSc(val){
+
+    var id = val.id.replace('cat', '');
+    let a = val.value;
+    $('#'+val.id).attr('disabled', 'disabled');
+
+$.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+    $.post('/getsiagnosibycategoria/' + a, function(response) {
+        // handle your response here
+
+        preparaDiagnosiModSc(response, id);
+    })
+
+}
+
 /**************************************************************** */
 
 /**************************************************************** */
@@ -179,7 +205,7 @@ function preparaDiagnosi(pDiagnosi) {
         diagnosis = diagnosis + "<option value="+diagn.id+">" + diagn.diagnosi + "</option>";
     });
 
-    var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosi"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+    var diagnsi = "<select class=form-control id=diagnosi"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
     $('#nuovadiagn').append(diagnsi);
 
     $('#btnnuovadiagn').attr('disabled', 'disabled');
@@ -201,6 +227,35 @@ function preparaDiagnosiMod(pDiagnosi, id) {
      $('#nuovadiagn').append(diagnsi);
 
     $('#btnnuovadiagn').attr('disabled', 'disabled');
+}
+/**************************************************************** */
+
+/**************************************************************** */
+function preparaDiagnosiModSc(pDiagnosi, id) {
+    diagnosis = "";
+    a = pDiagnosi;
+
+
+    
+console.log(pDiagnosi)
+    pDiagnosi.forEach(function (diagns, indice, array) {
+        var option = $('<option></option>');
+        option.attr('value', diagns.diagnosi);
+        option.text(diagns.diagnosi);
+        $('#'+id).append(option);
+    });
+
+   // $('#nuovaall').append(select);
+
+   /* pDiagnosi.forEach(function (diagn, indice, array) {
+        diagnosis = diagnosis + "<option value="+diagn.id+">" + diagn.diagnosi + "</option>";
+    });
+    
+
+     var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosi"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+     $('#'+id).append(diagnsi);*/
+
+   // $('#btnnuovadiagn').attr('disabled', 'disabled');
 }
 /**************************************************************** */
 
@@ -351,9 +406,9 @@ function preparaReminder(pReminders) {
         reminderss = reminderss + "<option value="+remndr.id +">" + remndr.nomereminder + "</option>";
     });
 
-    var remndr = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
+    var remndr = "<select class=form-control id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
     var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date class=form-control placeholder=data avvio name=datareminder[] required>";
-    var del = $("<button style=height:100%; id=delreminder"+reminderSelezionati.length+"  onclick=deleteReminder("+reminderSelezionati.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
+    var del = $("<button style=margin-top:30%; id=delreminder"+reminderSelezionati.length+"  onclick=deleteReminder("+reminderSelezionati.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
     $('#nuovoreminder').append(remndr);
     $('#datanuovoreminder').append(data);
     $('#delnuovoreminder').append(del);
@@ -374,6 +429,9 @@ function aggiungiReminder(elem) {
 
         $('#' + elem.id).remove();
         $('#' + 'data'+elem.id).remove();
+        console.log(elem.id)
+        $('#'+'del'+elem.id).remove();
+
         //$('#reminder' + id).remove();
 
         var msg = ["Hai gia selezionatoil reminder", elem.value];
@@ -483,3 +541,7 @@ function deleteReminder(val){
 
 }
 
+function deleteProto(){
+    $('#protocollo').val('protocolli');
+   // $('#delprotocollo').remove();
+}
