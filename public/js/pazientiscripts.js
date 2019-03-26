@@ -86,7 +86,7 @@ function preparaAllergia(pAllergie) {
     });
     $('#nuovaall').append(select);
 
-    var del = $("<button style=margin-top:70% id=delallergie"+allergieSelezionate.length+"  onclick=deleteAllergia("+'allergie'+allergieSelezionate.length+") type=button class=btn btn-icn><i class=far fa-times-circle cstm-icn></i></button>");
+    var del = $("<button style=margin-top:70% id=delallergie"+allergieSelezionate.length+"  onclick=deleteAllergia("+'allergie'+allergieSelezionate.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
     $('#nuovaalldel').append(del);
 
 
@@ -115,7 +115,7 @@ function preparaDiagnosiCategoria(pDiagnosi) {
     var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=catdiagnosi"+diagnosiSelezionate.length+" name=diagnosicat[] onchange=getDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
     $('#nuovadiagncat').append(diagnsi);
 
-    var del = $("<button style=margin-top:0% id=deldiagnosi"+diagnosiSelezionate.length+"  onclick=deleteDiagnosi("+diagnosiSelezionate.length+") type=button class=btn btn-icn><i class=far fa-times-circle cstm-icn></i></button>");
+    var del = $("<button style=margin-top:0% id=deldiagnosi"+diagnosiSelezionate.length+"  onclick=deleteDiagnosi("+diagnosiSelezionate.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
 
     $('#deldiagn').append(del);
 
@@ -353,7 +353,7 @@ function preparaReminder(pReminders) {
 
     var remndr = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
     var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date class=form-control placeholder=data avvio name=datareminder[] required>";
-    var del = $("<button style=height:100%; id=delreminder"+reminderSelezionati.length+"  onclick=deleteReminder("+reminderSelezionati.length+") type=button class=btn btn-icn><i class=far fa-times-circle cstm-icn></i></button>");
+    var del = $("<button style=height:100%; id=delreminder"+reminderSelezionati.length+"  onclick=deleteReminder("+reminderSelezionati.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
     $('#nuovoreminder').append(remndr);
     $('#datanuovoreminder').append(data);
     $('#delnuovoreminder').append(del);
