@@ -16,8 +16,9 @@ class CreateDiagnosi1 extends Migration
         Schema::create('diagnosi1', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('paziente_id')->nullable();
-            $table->unsignedInteger("diagnosi_id")->nullable();
-            $table->timestamps();
+           // $table->unsignedInteger("diagnosi_id")->nullable();
+           $table->string("diagnosi")->nullable();
+           $table->timestamps();
         });
     }
 

@@ -330,6 +330,11 @@ function aggiungiDiagnosi(elem) {
 
         lower = elemento.value;
         diagnosiSelezionate.push(lower.toLowerCase())
+        if(indice == 0)
+            $('#diagnosi1s').val(elemento.options[elemento.selectedIndex].innerText);
+
+        if(indice == 1)
+            $('#diagnosi2s').val(elemento.options[elemento.selectedIndex].innerText);
         // allergieSelezionateNomeLabel.push(lower)
 
     });
@@ -496,6 +501,8 @@ function deleteDiagnosi(val){
 
     inputName = "diagnosi[]";
     diagnosiSelezionate = [];
+    $('#diagnosi1s').val('');
+    $('#diagnosi2s').val('');
     // allergieSelezionateNomeLabel = [];
     let lower
     let elementi = document.getElementsByName(inputName);
@@ -504,6 +511,11 @@ function deleteDiagnosi(val){
         lower = elemento.value;
         diagnosiSelezionate.push(lower.toLowerCase())
         // allergieSelezionateNomeLabel.push(lower)
+        if(indice == 0)
+        $('#diagnosi1s').val(elemento.options[elemento.selectedIndex].innerText);
+
+    if(indice == 1)
+        $('#diagnosi2s').val(elemento.options[elemento.selectedIndex].innerText);
 
     });
 

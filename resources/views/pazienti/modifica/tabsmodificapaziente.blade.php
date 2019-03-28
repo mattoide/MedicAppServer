@@ -78,20 +78,35 @@
                                        class="form-control customdate" type="date" name="datastoriaclinica[]"
                                        value="@if($storiaclinica->data){{$storiaclinica->data}}@endif">
 
+                                       <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbld" name="scdiagnosi1[]" onchange="aggiungiDiagnosi(this)">
+                                        <option disabled selected> diagnosi 1 </option>
+                                        @foreach ($diagnosiSpec as $a)
+                                        <option>{{$a->diagnosi}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    
+                                    <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi2disbld" name="scdiagnosi2[]" onchange="aggiungiDiagnosi(this)">
+                                        <option disabled selected> diagnosi 2 </option>
+                                        @foreach ($diagnosiSpec as $a)
+                                        <option>{{$a->diagnosi}}</option>
+                                        @endforeach
+                                    </select>
+
                                 {{-- <p id="{{$storiaclinica->id}}scdiagnosi1disbld"></p>
-                                <p id="{{$storiaclinica->id}}scdiagnosi2disbld"></p> --}}
+                                <p id="{{$storiaclinica->id}}scdiagnosi2disbld"></p>
                                  <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbldcat" name="catscdiagnosi1[]" onchange="getDiagnosiModSc(this)">
                                   <option selected>{{$storiaclinica->categoria1}}</option>
-                                    {{-- <option disabled selected> categoria diagnosi 1 </option>
+                                    <option disabled selected> categoria diagnosi 1 </option>
                                     @foreach ($diagnosiCat as $a)
                                     <option>{{$a->categoria}}</option>
-                                    @endforeach --}}
+                                    @endforeach
                                 </select>
                                 <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbld" name="scdiagnosi1[]" onchange="getDiagnosiMod(this)">
                                     <option disabled selected> diagnosi 1 </option>
-                                    {{-- @foreach ($diagnosiCat as $a)
+                                    @foreach ($diagnosiCat as $a)
                                     <option>{{$a->categoria}}</option>
-                                    @endforeach --}}
+                                    @endforeach
                                 </select>
                                     
                                 <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi2disbldcat" name="catscdiagnosi2[]" onchange="getDiagnosiMod(this)">
@@ -99,7 +114,7 @@
                                     @foreach ($diagnosiCat as $a)
                                     <option>{{$a->categoria}}</option>
                                     @endforeach
-                                </select>
+                                </select> --}}
 
                             </td>
 
@@ -232,6 +247,8 @@
                     <button id="btnnuovadiagncat"   onclick="preparaDiagnosiCategoria({{$diagnosiCat}})"  data-titolo="Aggiungi nuova diagnosi"
                     data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
     
+                    <input type="text" id="diagnosi1s" name="diagnosi1" hidden>
+                    <input type="text" id="diagnosi2s" name="diagnosi2" hidden>
             
                     <div class="row">
                         <div class="col">
@@ -314,13 +331,28 @@
         <div class="tab-pane fade" id="interventi" role="tabpanel" aria-labelledby="interventi-tab">
 
             <br>
+            {{-- @foreach ($paziente->intervento as $intervento) --}}
 
             <div style="width: 90%">
                 <table class="table table-bordered">
                     <tbody id="tableinterventi">
                     <tr>
                         <td class="datetd">
-                            <input class="form-control" type="date" id="date-input" name="dataintervento" value="">
+                             <input class="form-control" type="date" id="date-input" name="dataintervento[]" value="">
+                         {{-- <select class="form-control" id="{{$intervento->id}}scdiagnosi1disbld" name="scdiagnosi1[]" onchange="aggiungiDiagnosi(this)">
+                                <option disabled selected> diagnosi 1 </option>
+                                @foreach ($diagnosiSpec as $a)
+                                <option>{{$a->diagnosi}}</option>
+                                @endforeach
+                            </select>
+
+                            
+                            <select class="form-control" id="{{$intervento->id}}scdiagnosi2disbld" name="scdiagnosi2[]" onchange="aggiungiDiagnosi(this)">
+                                <option disabled selected> diagnosi 2 </option>
+                                @foreach ($diagnosiSpec as $a)
+                                <option>{{$a->diagnosi}}</option>
+                                @endforeach
+                            </select>  --}}
                         </td>
 
                         <td>
@@ -331,6 +363,7 @@
                     </tbody>
                 </table>
             </div>
+            {{-- @endforeach --}}
         </div>
 
                       {{-- TAB REMINDER --}}

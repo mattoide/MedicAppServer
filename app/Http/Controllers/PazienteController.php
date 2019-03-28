@@ -22,6 +22,7 @@ use MedicAppServer\PazienteProtocollo;
 use MedicAppServer\PazienteDiagnosi;
 use MedicAppServer\Reminder;
 use MedicAppServer\PazienteReminder;
+use MedicAppServer\Intervento;
 use Validator;
 
 class PazienteController extends Controller {
@@ -38,7 +39,9 @@ class PazienteController extends Controller {
         $protocolli = Protocollo::all();
         $reminder         = Reminder::all();
 
-        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('reminder', $reminder);
+        $diagnosiSpec   = Diagnosi::all();
+
+        return view('pazienti.aggiungi.nuovopaziente')->with('diagnosi', $diagnosi)->with('allergie', $allergie)->with('medicinali', $medicinali)->with('protocolli', $protocolli)->with('reminder', $reminder)->with('diagnosiSpec', $diagnosiSpec);
     }
 
     public function store(Request $request) {
@@ -150,7 +153,7 @@ class PazienteController extends Controller {
         //     'diagnosi2'     => $request['scdiagnosi2'],
         // ]);
 
-       /* $diagnosi1 = new Diagnosi1([
+        $diagnosi1 = new Diagnosi1([
             'diagnosi' => $request['diagnosi1'],
         ]);
 
@@ -158,7 +161,7 @@ class PazienteController extends Controller {
             'diagnosi' => $request['diagnosi2'],
         ]);
 
-        $diagnosi3 = new Diagnosi3([
+      /*  $diagnosi3 = new Diagnosi3([
             'diagnosi' => $request['diagnosi3'],
         ]);*/
 
@@ -173,6 +176,8 @@ class PazienteController extends Controller {
                     'paziente_id' => $paziente->id,
                     'diagnosi_id' => $diag,
                 ]);
+
+                
             }
         }
 
@@ -229,7 +234,7 @@ class PazienteController extends Controller {
         //     $paziente->storiaClinica()->save($storiaClinica);
         // }
 
-       /* if ($diagnosi1->diagnosi) {
+        if ($diagnosi1->diagnosi) {
             $paziente->diagnosi1()->save($diagnosi1);
         }
 
@@ -237,7 +242,7 @@ class PazienteController extends Controller {
             $paziente->diagnosi2()->save($diagnosi2);
         }
 
-        if ($diagnosi3->diagnosi) {
+       /* if ($diagnosi3->diagnosi) {
             $paziente->diagnosi3()->save($diagnosi3);
         }*/
 
@@ -336,6 +341,7 @@ class PazienteController extends Controller {
     }
 
     public function update(Request $request) {
+
 
         $datestoriecliniche = Input::get('datastoriaclinica');
         $storiecliniche     = Input::get('storiaclinica');
