@@ -1,3 +1,5 @@
+
+
 allergieSelezionate = [];
 medicinaliSelezionati = [];
 diagnosiSelezionate = [];
@@ -36,8 +38,8 @@ $(document).ready(function () {
     medicinali = document.getElementsByName("medicinali[]");
     medicinali.forEach(medicinale => {
         if (medicinale.value != "medicinale") {
-            let lower = medicinale.options[medicinale.selectedIndex].innerText;
-            medicinaliSelezionati.push(lower.toLowerCase())
+            let lower = medicinale.options[medicinale.selectedIndex].innerText.split(' ');
+            medicinaliSelezionati.push(lower[0].toLowerCase())
             // medicinaliSelezionatiNomeLabel.push(lower)
         }
 
@@ -344,60 +346,119 @@ function aggiungiDiagnosi(elem) {
 }
 /**************************************************************** */
 
+function creaMedicinale(pMedicinali) {
+    a = pMedicinali;
+    medicinalis = "";
+    
+    pMedicinali.forEach(medc => {
+        if (medc)
+            medicinalis = medicinalis + "<option value=" + medc.id + ">" + medc.nome + " - " + medc.dosaggio + " - " + medc.posologia +" - " + medc.durata_terapia +"</option>";
+
+    });
+    // var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia(allergie)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+    var mdecnl = "<select class=form-control id=medicinali"+medicinaliSelezionati.length+" name=medicinali[] onchange=nuovoMedicinale(a," + 'this' + ")><option disabled selected>medicinale</option>" + medicinalis + "</select> "
+    var del = $("<button id=delmedicinali"+medicinaliSelezionati.length+"  onclick=deleteMedicinale("+medicinaliSelezionati.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
+
+    $('#nuovomed').append(mdecnl);
+    $('#delnuovomed').append(del);
+
+    $('#btnnuovomed').attr('disabled', 'disabled');
+}
 
 function nuovoMedicinale(pMedicinali, val) {
 
+    var md = val.options[val.selectedIndex].innerText.split(' ');
+    var med = md[0].toLowerCase();
 
     a = pMedicinali;
     medicinalis = "";
+    idPopup = "#medicinalipopup";
 
-    if (medicinaliSelezionati.includes(val)) {
-        var msg = ["Hai gia selezionato il medicinale", val];
+
+    if (medicinaliSelezionati.includes(med)) {
+        var msg = ["Hai gia selezionato il medicinale", med];
         alertPopup.warning(idPopup, msg.join(" "));
+        val.remove();
+        $('#del'+val.id).remove();
+        $('#btnnuovomed').removeAttr('disabled');
+
         return;
     }
 
+    
+
     inputName = "medicinali[]";
-    idPopup = "#medicinalipopup";
 
     let elementi = document.getElementsByName(inputName);
     elementi.forEach(function (elemento, indice, array) {
         if (indice === array.length - 1) {
-            if (allergieSelezionate.includes(elemento.options[elemento.selectedIndex].innerText)) {
-                var msg = ["Il paziente è allergico al ", elemento.options[elemento.selectedIndex].innerText];
+
+            var md = elemento.options[elemento.selectedIndex].innerText.split(' ');
+            var med = md[0].toLowerCase();
+
+            if (allergieSelezionate.includes(med)) {
+                var msg = ["Il paziente è allergico al ", med];
                 elemento.value = 'medicinale';
+                        val.remove();
+                        $('#del'+val.id).remove();
+
+
                 alertPopup.warning(idPopup, msg.join(" "));
 
             } else {
 
+
                 if (!medicinaliSelezionati.includes(elemento.options[elemento.selectedIndex].innerText)) {
 
-                    pMedicinali.forEach(medc => {
-                        if (medc)
-                            medicinalis = medicinalis + "<option value=" + medc.id + ">" + medc.nome + " - " + medc.dosaggio + " - " + medc.posologia +" - " + medc.durata_terapia +"</option>";
-
-                    });
-                    // var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia(allergie)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
-                    var mdecnl = "<select class=form-control id=medicinali name=medicinali[] onchange=nuovoMedicinale(a)><option disabled selected>medicinale</option>" + medicinalis + "</select> <br>"
-
-                    $('#nuovomed').append(mdecnl);
-
+        
                     if (elemento.options[elemento.selectedIndex].innerText != "medicinale") {
 
-                        medicinaliSelezionati.push(elemento.options[elemento.selectedIndex].innerText)
+                        var md = elemento.options[elemento.selectedIndex].innerText.split(' ');
+                        medicinaliSelezionati.push(med)
+                        
                         $(".alert").alert('close')
                     }
 
                 } else {
-                    var msg = ["Hai gia selezionato il medicinale ", elemento.options[elemento.selectedIndex].innerText];
+                    var msg = ["Hai gia selezionato il medicinale ",med];
                     elemento.value = 'medicinale';
+                    elemento.remove();
+                    $('#del'+elemento.id).remove();
+
+                    //$('#'+elemento.id).remove();
                     alertPopup.warning(idPopup, msg.join(" "));
                 }
 
             }
         }
     });
+
+    $('#btnnuovomed').removeAttr('disabled');
+
 }
+
+function preparaMedicinale(pMedicinali) {
+
+    reminderss = "";
+    a = pMedicinali;
+
+    pMedicinali.forEach(medc => {
+        if (medc)
+            medicinalis = medicinalis + "<option value=" + medc.id + ">" + medc.nome + " - " + medc.dosaggio + " - " + medc.posologia +" - " + medc.durata_terapia +"</option>";
+
+    });
+    // var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia(allergie)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
+    var mdecnl = "<select class=form-control id=medicinali name=medicinali[]><option disabled selected>medicinale</option>" + medicinalis + "</select> <br>"
+
+    $('#nuovomed').append(mdecnl);
+
+
+
+
+    $('#btnnuovoreminder').attr('disabled', 'disabled');
+}
+
+/**************************************************************** */
 
 
 /**************************************************************** */
@@ -411,8 +472,10 @@ function preparaReminder(pReminders) {
         reminderss = reminderss + "<option value="+remndr.id +">" + remndr.nomereminder + "</option>";
     });
 
+    var date =  dateToToday();
+
     var remndr = "<select class=form-control id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
-    var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date class=form-control placeholder=data avvio name=datareminder[] required>";
+    var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date value="+date+" class=form-control placeholder=data avvio name=datareminder[] required>";
     var del = $("<button style=margin-top:30%; id=delreminder"+reminderSelezionati.length+"  onclick=deleteReminder("+reminderSelezionati.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
     $('#nuovoreminder').append(remndr);
     $('#datanuovoreminder').append(data);
@@ -491,6 +554,13 @@ $('#'+val.id).remove();
 
 }
 
+function deleteIntervento(val){
+   
+    $('#'+val.id).remove();
+    
+    
+    }
+
 function deleteDiagnosi(val){
 
 
@@ -556,4 +626,38 @@ function deleteReminder(val){
 function deleteProto(){
     $('#protocollo').val('protocolli');
    // $('#delprotocollo').remove();
+}
+
+function deleteMedicinale(val){
+
+    $('#medicinali'+val).remove();
+    $('#delmedicinali'+val).remove();
+
+    inputName = "medicinali[]";
+    medicinaliSelezionati = [];
+
+    let lower
+    let elementi = document.getElementsByName(inputName);
+    elementi.forEach(function (elemento, indice, array) {
+
+        lower = elemento.value;
+        medicinaliSelezionati.push(lower.toLowerCase())
+
+    });
+
+    $('#btnnuovomedicinale').removeAttr('disabled');
+
+}
+
+
+function dateToToday(){
+    var d = new Date(),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+
+if (month.length < 2) month = '0' + month;
+if (day.length < 2) day = '0' + day;
+
+return [year, month, day].join('-');
 }

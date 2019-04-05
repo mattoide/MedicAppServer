@@ -22,6 +22,13 @@ function verificaPass() {
 
 $(document).ready(function () {
 
+    function dateToToday(){
+        var options = {'weekday': 'long', 'month': 'long', 'day': '2-digit', 'year': '2-digit'};
+        var date = new Date().toLocaleString('it-IT', options);
+        return date;
+    }
+   
+
     alertPopup = function () {
     }
     alertPopup.warning = function (id, message) {

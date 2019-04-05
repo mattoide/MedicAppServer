@@ -330,41 +330,66 @@
 
         <div class="tab-pane fade" id="interventi" role="tabpanel" aria-labelledby="interventi-tab">
 
+           
+            <button id="nuovointervento" name="nuovointervento" onclick="nuovointerventoo()"  data-titolo="Aggiungi nuovo intervento"
+            type="button" class="btn btn-outline-success" style="margin: 1%">Aggiungi intervento</button>
             <br>
-            {{-- @foreach ($paziente->intervento as $intervento) --}}
 
-            <div style="width: 90%">
-                <table class="table table-bordered">
-                    <tbody id="tableinterventi">
-                    <tr>
-                        <td class="datetd">
-                             <input class="form-control" type="date" id="date-input" name="dataintervento[]" value="">
-                         {{-- <select class="form-control" id="{{$intervento->id}}scdiagnosi1disbld" name="scdiagnosi1[]" onchange="aggiungiDiagnosi(this)">
-                                <option disabled selected> diagnosi 1 </option>
-                                @foreach ($diagnosiSpec as $a)
-                                <option>{{$a->diagnosi}}</option>
-                                @endforeach
-                            </select>
 
-                            
-                            <select class="form-control" id="{{$intervento->id}}scdiagnosi2disbld" name="scdiagnosi2[]" onchange="aggiungiDiagnosi(this)">
-                                <option disabled selected> diagnosi 2 </option>
-                                @foreach ($diagnosiSpec as $a)
-                                <option>{{$a->diagnosi}}</option>
-                                @endforeach
-                            </select>  --}}
-                        </td>
+            <div style="max-height: 23em; overflow-y: scroll">
+           
+        <div id='nuovointervento'></div>
 
-                        <td>
-                            <textarea class="form-control" id="clinic-story-input" rows="3" name="intervento"
-                                      value=""></textarea>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            {{-- @endforeach --}}
+            @php ($i = 0)
+             @foreach ($paziente->intervento as $intervento)
+
+                <div id="intervento{{$i}}" style="width: 95%">
+                    <table class="table table-bordered">
+                        <tbody id="tableintervento">
+                        <tr>
+                            <td class="datetd">
+                                     <input id="{{$intervento->id}}dataintervento"
+                                       class="form-control customdate" type="date" name="dataintervento[]"
+                                       value="@if($intervento->data){{$intervento->data}}@endif">
+
+                                       <select class="form-control" id="{{$intervento->id}}intdiagnosi1disbld" name="intdiagnosi1[]" onchange="aggiungiDiagnosi(this)">
+                                        <option disabled selected> diagnosi 1 </option>
+                                        @foreach ($diagnosiSpec as $a)
+                                        <option>{{$a->diagnosi}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    
+                                    <select class="form-control" id="{{$intervento->id}}intdiagnosi2disbld" name="intdiagnosi2[]" onchange="aggiungiDiagnosi(this)">
+                                        <option disabled selected> diagnosi 2 </option>
+                                        @foreach ($diagnosiSpec as $a)
+                                        <option>{{$a->diagnosi}}</option>
+                                        @endforeach
+                                    </select>
+
+                            </td>
+
+                            <td>
+                                <textarea class="miatextarea" id="{{$intervento->id}}interventodisbld" class="form-control" rows="3"
+                                          name="intervento[]">
+                                      @if($intervento){{$intervento->intervento}}@endif
+                                    </textarea>
+
+                                <button onclick="deleteIntervento(intervento{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+
+                            </td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                </div> 
+                @php ($i++)
+
+           @endforeach
+          
         </div>
+    </div>
 
                       {{-- TAB REMINDER --}}
 
@@ -486,12 +511,18 @@
 
             <br>
 
-            <div id="medicinalipopup" class="row" style="width: 50%; margin-left: 1%">
+            <div id="medicinalipopup" class="row" style="width: 50%; margin-left: 1%"></div>
+
+
                 <h3><span class="badge mybadge">Medicinali</span></h3>
 
+                <button id="btnnuovomed"  onclick="creaMedicinale({{$medicinali}})" type="button" class="btn btn-outline-success" style="margin: 1%" >+</button>
+                
+                <div class="row">
+                    <div class="col">
+                @php ($i = 0)
                 @foreach ($paziente->medicinaliPaziente as $medPaz)
-
-                <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
+                    <select class="form-control" id="medicinali{{$i}}" name="medicinali[]">
                     <option disabled selected>medicinale</option>
                     @foreach ($medicinali as $m)
                         @if ($medPaz->medicinale_id == $m->id)
@@ -501,27 +532,49 @@
                         @endif
                         @endforeach
                     </select>
-                <br>
+                @php ($i++)
+                @endforeach
+                <div id="nuovomed"></div>
 
-            @endforeach
+            </div>
+        <br>
 
-                <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
-                    <option disabled selected>medicinale</option>
-                    @foreach ($medicinali as $m)
-                    <option value="{{$m->id}}">{{$m->nome}} - {{$m->dosaggio}} - {{$m->posologia}} - {{$m->durata_terapia}}</option>
-                    @endforeach
-                </select> 
-<br>
-            <div id="nuovomed"></div>
+        <div class="col"> 
+            <div id="delnuovomed" style="width: 10%">
+            @php ($i = 0)
+            @foreach ($paziente->medicinaliPaziente as $medPaz)
+                <button style="height:100%" id="delmedicinali{{$i}}"  onclick="deleteMedicinale({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+            @php ($i++)
+            @endforeach  
         </div>
+    </div>
+
+</div>
+
+    {{-- <div class="row">
+        <div class="col">
+            <div id="nuovomed">
+            </div>
+        </div>
+        <div class="col" style="width: 5%">
+            <div id="delnuovomeda">
+            </div>
+        </div>
+    </div> --}}
+
+
+        {{-- <div id="nuovomed"></div> --}}
+
 
         <br>
-        <div  class="row" style="width: 50%; margin-left: 1%">
+        <div  class="row" style="margin-left: 1%"></div>
+
 
         <h3><span class="badge mybadge">Protocolli</span></h3>
 
+        <div class="row">
         <div class="col">
-        <select class="form-control" id="protocollo" name="protocollo" >
+            <select class="form-control" id="protocollo" name="protocollo" >
             <option disabled selected>protocolli</option>
             {{-- @foreach ($protocolli as $prot)
             <option value="{{$prot->id}}">{{$prot->nome}}</option>

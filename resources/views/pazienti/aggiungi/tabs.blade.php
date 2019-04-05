@@ -161,24 +161,18 @@
 
         <div class="tab-pane fade" id="interventi" role="tabpanel" aria-labelledby="interventi-tab">
 
+            <button id="btnnuovointervento" name="nuovointerventoz" onclick="nuovointerventoo()"  data-titolo="Aggiungi nuovo intervento"
+            type="button" class="btn btn-outline-success" style="margin: 1%">Aggiungi intervento</button>
             <br>
 
-            <div style="width: 90%">
-                <table class="table table-bordered">
-                    <tbody id="tableinterventi">
-                        <tr>
-                            <td class="datetd">
-                                <input class="form-control" type="date" name="dataintervento" value="{{old('dataintervento')}}">
-                            </td>
 
-                            <td>
-                                <textarea class="form-control" rows="3" name="intervento" value="{{old('intervento')}}"></textarea>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+            <div style="max-height: 23em; overflow-y: scroll">
+           
+        <div id='nuovointervento'></div>
+
+            
+    </div>
+</div>
 
               {{-- TAB REMINDER --}}
 
@@ -264,44 +258,51 @@
 
 <br>
 
-            <div id="medicinalipopup" class="row" style="width: 50%; margin-left: 1%">            </div>
+            <div id="medicinalipopup" class="row" style="width: 50%; margin-left: 1%"> </div>
 
                 <h3><span class="badge mybadge">Medicinali</span></h3>
 
-                <div style="width: 50%">
-                    <select class="form-control" id="medicinali" name="medicinali[]" onchange="nuovoMedicinale({{$medicinali}})">
-                        <option disabled selected>medicinale</option>
-                        @foreach ($medicinali as $m)
-                        <option value="{{$m->id}}">{{$m->nome}} - {{$m->dosaggio}} - {{$m->posologia}} - {{$m->durata_terapia}}</option>
-                        @endforeach
-                    </select> 
-    <br>
-                <div id="nuovomed"></div>
+                <button id="btnnuovomed"  onclick="creaMedicinale({{$medicinali}})" type="button" class="btn btn-outline-success" style="margin: 1%" >+</button>
+
+        <div class="row">
+            <div class="col">
+                <div id="nuovomed">
+                </div>
             </div>
             <br>
+            <div class="col">
+                <div id="delnuovomed" style="width: 10%">
+                </div>
+            </div>
+        </div>     
+        
+        
+            <br>
 
-            <div  class="row" style="width: 50%; margin-left: 1%">        </div>
+            <div  class="row" style="width: 50%; margin-left: 1%"></div>
 
 
             <h3><span class="badge mybadge">Protocolli</span></h3>
 
-            <div  style="width: 50%">
-            <select class="form-control" id="protocollo" name="protocollo" >
+            <div class="row">
+                    <div class="col">
+                                    <select class="form-control" id="protocollo" name="protocollo" >
                 <option disabled selected>protocolli</option>
                 @foreach ($protocolli as $prot)
                 <option value="{{$prot->id}}">{{$prot->nome}}</option>
                 @endforeach
             </select> 
-
-            <div>
-                <button style="margin-top: 1%" id="delprotocollo"  onclick="deleteProto()" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
-            </div>
         </div>
+
+            <div class="col">
+                    <button style="margin-top: 1%" id="delprotocollo"  onclick="deleteProto()" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+            </div>
              
 
 
         </div>
     </div>
+</div>
 </div>
 <script>
 
@@ -321,12 +322,17 @@
     function nuovastoriaa(){
 
         var lng = document.getElementsByName("storiaclinica[]").length
-        var storia = "<div id=storiaclinica"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosiSpec as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosiSpec as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteStoriaClinica("+'storiaclinica'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
-   
-    $('#nuovastoriaaa').append(storia);
+        var storia = "<div id=storiaclinica"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tablestoriaclinica> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=datastoriaclinica name=datastoriaclinica[] required> <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosiSpec as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosiSpec as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteStoriaClinica("+'storiaclinica'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
+        $('#nuovastoriaaa').append(storia);
 
+    }
 
-}
+    function nuovointerventoo(){
+
+        var lng = document.getElementsByName("intervento[]").length
+        var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required> <select class=form-control id=intdiagnosi1 name=intdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosiSpec as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=intdiagnosi2 name=intdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosiSpec as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
+        $('#nuovointervento').append(intervento);
+    }
 
 
 </script>

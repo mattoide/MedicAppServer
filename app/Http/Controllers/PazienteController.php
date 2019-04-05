@@ -46,8 +46,10 @@ class PazienteController extends Controller {
 
     public function store(Request $request) {
 
-    
+    // print_r($request->all());
+    // return;
 
+        
         if (\strpos($request['password'], " ") !== false) {
             return redirect()->back()->withErrors(["La password non può contenere spazi."])->withInput();
         }
@@ -56,6 +58,14 @@ class PazienteController extends Controller {
         $storiecliniche     = Input::get('storiaclinica');
         $scdiagnosi1        = Input::get('scdiagnosi1');
         $scdiagnosi2        = Input::get('scdiagnosi2');
+
+        $dateinterventi      = Input::get('dataintervento');
+        $interventi          = Input::get('intervento');
+        $intdiagnosi1        = Input::get('intdiagnosi1');
+        $intdiagnosi2        = Input::get('intdiagnosi2');
+        $interventi           = Input::get('intervento');
+
+
         $allergie           = Input::get('allergie');
         $medicinali         = Input::get('medicinali');
         $reminder           = Input::get('reminder');
@@ -118,6 +128,28 @@ class PazienteController extends Controller {
                     'storiaclinica' => $storiecliniche[$i],
                     'diagnosi1'     => $scdiagnosi1[$i],
                     'diagnosi2'     => $scdiagnosi2[$i],
+                ]);
+
+                $i++;
+            }
+        }
+
+        $interventis = [];
+        if (isset($interventi)) {
+            $i = 0;
+            foreach ($interventi as $int) {
+                if (!isset($intdiagnosi1[$i]))
+                $intdiagnosi1[$i] = '';
+
+                if (!isset($intdiagnosi2[$i]))
+                    $intdiagnosi2[$i] = '';
+                
+
+                $interventis[] = new Intervento([
+                    'data'          => $dateinterventi[$i],
+                    'intervento'    => $interventi[$i],
+                    'diagnosi1'     => $intdiagnosi1[$i],
+                    'diagnosi2'     => $intdiagnosi2[$i],
                 ]);
 
                 $i++;
@@ -212,6 +244,10 @@ class PazienteController extends Controller {
 
         foreach ($stories as $s) {
             $paziente->storiaClinica()->save($s);
+        }    
+        
+        foreach ($interventis as $i) {
+            $paziente->intervento()->save($i);
         }
 
         foreach ($allergies as $a) {
@@ -329,7 +365,7 @@ class PazienteController extends Controller {
 
         if(count($pazienteProto)<=0)
             $pazienteProt = [];
-            else  $pazienteProt = $pazienteProto[0];
+        else  $pazienteProt = $pazienteProto[0];
 
            
         // $pazienteProtocollo = Protocollo::find($pazienteProto[0]->protocollo_id);

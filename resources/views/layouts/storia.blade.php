@@ -3,7 +3,7 @@
         <tbody id="tablestoriaclinica">
         <tr>
             <td class="datetd">
-                <input class="form-control" type="date" name="datastoriaclinica" value="{{old('datastoriaclinica')}}">
+                <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" name="datastoriaclinica" value="{{old('datastoriaclinica')}}">
             </td>
 
             <td>

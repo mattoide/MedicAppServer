@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Intervento extends Model {
 
-    protected $_table = 'intervento';
+    protected $table = 'intervento';
 
-    protected $_fillable = [
-        'data','intervento'
+    protected $fillable = [
+        'data','intervento','categoria1','diagnosi1', 'categoria2', 'diagnosi2'
     ];
 
-    protected $_attributes = [];
+    protected $attributes = [];
 }

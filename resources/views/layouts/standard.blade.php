@@ -51,7 +51,7 @@
           <h3>Bootstrap Sidebar</h3>
         </div>
         --}}
-        <ul class="list-unstyled components">
+        <ul class="list-unstyled components sticky-top sticky-offset">
           {{--
           <p>Dummy Heading</p> --}}
           <li class="nav-item">

@@ -39,7 +39,7 @@
 
 
             <div class="col">
-                <input type="date" class="form-control" placeholder="Data di nascita" name="datadinascita" value="{{old('datadinascita')}}"
+                <input type="date"  class="form-control" placeholder="Data di nascita" name="datadinascita" value="{{old('datadinascita')}}"
                     onchange="calcolaEta(this.value)" required>
             </div>
 

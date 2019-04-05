@@ -118,7 +118,7 @@
                     <tbody id="tableinterventi">
                         <tr>
                             <td class="datetd">
-                                <input class="form-control" type="date" id="date-input" name="dataintervento" value="">
+                                <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" id="date-input" name="dataintervento" value="">
                             </td>
 
                             <td>
