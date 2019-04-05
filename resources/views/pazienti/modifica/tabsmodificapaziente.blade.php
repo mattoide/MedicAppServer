@@ -331,7 +331,7 @@
         <div class="tab-pane fade" id="interventi" role="tabpanel" aria-labelledby="interventi-tab">
 
            
-            <button id="nuovointervento" name="nuovointervento" onclick="nuovointerventoo()"  data-titolo="Aggiungi nuovo intervento"
+            <button id="btnnuovointervento" name="nuovointervento" onclick="nuovointerventoo()"  data-titolo="Aggiungi nuovo intervento"
             type="button" class="btn btn-outline-success" style="margin: 1%">Aggiungi intervento</button>
             <br>
 
@@ -378,6 +378,10 @@
                                 <button onclick="deleteIntervento(intervento{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
 
                             </td>
+
+                            <td style="width: 2%"><button style="height:100%; margin-top: 10%" type="button" class="btn btn-icn"><i class="fas fa-print cstm-icn"></i></button>
+                            </td>
+
                         </tr>
 
 
@@ -611,6 +615,11 @@
 
 <script>
  
+ function nuovointerventoo(){
 
+var lng = document.getElementsByName("intervento[]").length
+var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required> <select class=form-control id=intdiagnosi1 name=intdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosiSpec as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=intdiagnosi2 name=intdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosiSpec as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
+$('#nuovointervento').append(intervento);
+}
 
 </script>

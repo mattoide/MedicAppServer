@@ -63,7 +63,7 @@ class PazienteController extends Controller {
         $interventi          = Input::get('intervento');
         $intdiagnosi1        = Input::get('intdiagnosi1');
         $intdiagnosi2        = Input::get('intdiagnosi2');
-        $interventi           = Input::get('intervento');
+        $interventi          = Input::get('intervento');
 
 
         $allergie           = Input::get('allergie');
@@ -388,7 +388,11 @@ class PazienteController extends Controller {
         $reminder           = Input::get('reminder');
         $datareminder       = Input::get('datareminder');
         $diagnosi           = Input::get('diagnosi');
-
+        $dateinterventi      = Input::get('dataintervento');
+        $interventi          = Input::get('intervento');
+        $intdiagnosi1        = Input::get('intdiagnosi1');
+        $intdiagnosi2        = Input::get('intdiagnosi2');
+        $interventi          = Input::get('intervento');
 
 
         $validator = $this->getValidatoreForUpdate($request);
@@ -446,6 +450,28 @@ class PazienteController extends Controller {
                     'storiaclinica' => $storiecliniche[$i],
                     'diagnosi1'     => $scdiagnosi1[$i],
                     'diagnosi2'     => $scdiagnosi2[$i],
+                ]);
+
+                $i++;
+            }
+        }
+
+        $interventis = [];
+        if (isset($interventi)) {
+            $i = 0;
+            foreach ($interventi as $int) {
+                if (!isset($intdiagnosi1[$i]))
+                $intdiagnosi1[$i] = '';
+
+                if (!isset($intdiagnosi2[$i]))
+                    $intdiagnosi2[$i] = '';
+                
+
+                $interventis[] = new Intervento([
+                    'data'          => $dateinterventi[$i],
+                    'intervento'    => $interventi[$i],
+                    'diagnosi1'     => $intdiagnosi1[$i],
+                    'diagnosi2'     => $intdiagnosi2[$i],
                 ]);
 
                 $i++;
@@ -529,10 +555,14 @@ class PazienteController extends Controller {
         Diagnosi2::where('paziente_id', $paziente->id)->delete();
         Diagnosi3::where('paziente_id', $paziente->id)->delete();
         PazienteReminder::where('paziente_id', $paziente->id)->delete();
-        PazienteDiagnosi::where('paziente_id', $paziente->id)->delete();
+        Intervento::where('paziente_id', $paziente->id)->delete();
 
         foreach ($stories as $s) {
             $paziente->storiaClinica()->save($s);
+        }
+
+        foreach ($interventis as $i) {
+            $paziente->intervento()->save($i);
         }
 
         foreach ($allergies as $a) {
