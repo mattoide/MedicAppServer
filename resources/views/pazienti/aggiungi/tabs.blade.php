@@ -210,10 +210,10 @@
 
             </div> --}}
 
-            <div class="custom-file-container" data-upload-id="myUniqueUploadId">
+            <div class="custom-file-container" data-upload-id="fta">
                 <label>Aggiungi immagini <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
                 <label class="custom-file-container__custom-file" >
-                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File">
+                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File" name="foto[]">
                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                 </label>
@@ -227,7 +227,7 @@
 
             <br>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="btn btn-success">
                     Aggiungi radiografie<input type="file" class="form-control-file" id="rx" name="radiografia"
                                                multiple accept="image/x-png ,image/jpeg" style="display:none;"
@@ -235,6 +235,18 @@
                 </label>
                 <span class='label label-info' id="upload-file-info"></span>
 
+            </div> --}}
+
+            <div class="form-group">
+                <div class="custom-file-container" data-upload-id="rxa">
+                    <label>Aggiungi immagini <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
+                    <label class="custom-file-container__custom-file" >
+                        <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File" name="radiografie[]">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
             </div>
         </div>
 
@@ -345,6 +357,10 @@
     }
 
     
+$(document).ready(function () {
 
-
+var fta = new FileUploadWithPreview('fta', {showDeleteButtonOnImages: true, text: {chooseFile: 'Foto...', browse: 'Scegli...'}})
+var rxa = new FileUploadWithPreview('rxa', {showDeleteButtonOnImages: true, text: {chooseFile: 'Radiografie...', browse: 'Scegli...'}})
+})
+    
 </script>

@@ -75,9 +75,8 @@ class PazienteController extends Controller {
         $diagnosi           = Input::get('diagnosi');
 
         
-        $foto                = Input::get('foto');
-        $rx                  = Input::get('radiografie');
-
+        $foto                = $request['foto'];
+        $rx                  = $request['radiografie'];
 
 
 
@@ -243,22 +242,22 @@ class PazienteController extends Controller {
         }
 
         $fotos = [];
-
-        print_r($foto);
-        return;
-        
+        if(isset($foto)){
         foreach ($foto as $ft){
             $fotos[] = new Foto([
                 'foto' => base64_encode(file_get_contents($ft))
             ]); 
         }
+    }
 
         $rxs = [];
+        if(isset($rx)){
         foreach ($rx as $r){
             $rxs[] = new Radiografia([
                 'radiografia' => base64_encode(file_get_contents($r))
             ]); 
         }
+    }
 
         $paziente->recapitiPaziente()->save($recapitiPaziente);
 

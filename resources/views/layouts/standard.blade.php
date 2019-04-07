@@ -132,10 +132,6 @@
 
     <script src="https://unpkg.com/file-upload-with-preview@3.4.3/dist/file-upload-with-preview.min.js"></script>
 
-    <script>
-    var ft = new FileUploadWithPreview('ft', {showDeleteButtonOnImages: true, text: {chooseFile: 'Foto...', browse: 'Scegli...'}})
-    var rx = new FileUploadWithPreview('rx', {showDeleteButtonOnImages: true, text: {chooseFile: 'Radiografie...', browse: 'Scegli...'}})
-    </script>
 
 </body>
 

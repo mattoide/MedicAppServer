@@ -651,4 +651,10 @@ window.addEventListener('fileUploadWithPreview:imageSelected', function(e) {
 })
 
 
+$(document).ready(function () {
+
+var ft = new FileUploadWithPreview('ft', {showDeleteButtonOnImages: true, text: {chooseFile: 'Foto...', browse: 'Scegli...'}})
+var rx = new FileUploadWithPreview('rx', {showDeleteButtonOnImages: true, text: {chooseFile: 'Radiografie...', browse: 'Scegli...'}})
+})
+   
 </script>
