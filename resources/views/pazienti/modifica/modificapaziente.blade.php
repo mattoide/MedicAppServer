@@ -6,7 +6,7 @@
 <div class="container-fluid" style="background-color: white">
     @include('layouts.errors')
 
-    <form method="POST" action="/modificapaziente">
+    <form method="POST" action="/modificapaziente" enctype="multipart/form-data">
         {{ csrf_field() }}
         <h6 class="collapseclick" data-toggle="collapse" href="#collapseAnagraficaEdit" aria-expanded="false" aria-controls="collapseAnagraficaEdit">ANAGRAFICA +</h6>
         

@@ -47,6 +47,9 @@
                         data-messaggiometa="{{$paziente->nome}} {{$paziente->cognome}}" data-messaggiofine="?" data-idpaziente="{{$paziente->id}}">
                         <i class="far fa-times-circle cstm-icn"></i>
                                             </button>
+
+                                        <button style="height:100%" type="button" class="btn btn-icn"><i class="fas fa-print cstm-icn"></i></button>
+
                         
                 </td>
 

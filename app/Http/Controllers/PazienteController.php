@@ -23,6 +23,8 @@ use MedicAppServer\PazienteDiagnosi;
 use MedicAppServer\Reminder;
 use MedicAppServer\PazienteReminder;
 use MedicAppServer\Intervento;
+use MedicAppServer\Foto;
+use MedicAppServer\Radiografia;
 use Validator;
 
 class PazienteController extends Controller {
@@ -71,6 +73,10 @@ class PazienteController extends Controller {
         $reminder           = Input::get('reminder');
         $datareminder       = Input::get('datareminder');
         $diagnosi           = Input::get('diagnosi');
+
+        
+        $foto                = Input::get('foto');
+        $rx                  = Input::get('radiografie');
 
 
 
@@ -236,6 +242,24 @@ class PazienteController extends Controller {
             }
         }
 
+        $fotos = [];
+
+        print_r($foto);
+        return;
+        
+        foreach ($foto as $ft){
+            $fotos[] = new Foto([
+                'foto' => base64_encode(file_get_contents($ft))
+            ]); 
+        }
+
+        $rxs = [];
+        foreach ($rx as $r){
+            $rxs[] = new Radiografia([
+                'radiografia' => base64_encode(file_get_contents($r))
+            ]); 
+        }
+
         $paziente->recapitiPaziente()->save($recapitiPaziente);
 
         if ($medico->nome || $medico->cognome || $medico->contatto || $medico->recapito) {
@@ -278,6 +302,13 @@ class PazienteController extends Controller {
             $paziente->diagnosi2()->save($diagnosi2);
         }
 
+        foreach ($fotos as $f) {
+            $paziente->foto()->save($f);
+        }
+
+        foreach ($rxs as $r) {
+            $paziente->radiografia()->save($r);
+        }
        /* if ($diagnosi3->diagnosi) {
             $paziente->diagnosi3()->save($diagnosi3);
         }*/
@@ -378,7 +409,6 @@ class PazienteController extends Controller {
 
     public function update(Request $request) {
 
-
         $datestoriecliniche = Input::get('datastoriaclinica');
         $storiecliniche     = Input::get('storiaclinica');
         $scdiagnosi1        = Input::get('scdiagnosi1');
@@ -393,6 +423,11 @@ class PazienteController extends Controller {
         $intdiagnosi1        = Input::get('intdiagnosi1');
         $intdiagnosi2        = Input::get('intdiagnosi2');
         $interventi          = Input::get('intervento');
+
+        $foto                = $request['foto'];
+        $rx                  = $request['radiografie'];
+
+
 
 
         $validator = $this->getValidatoreForUpdate($request);
@@ -546,6 +581,25 @@ class PazienteController extends Controller {
             }
         }
 
+
+        $fotos = [];
+        if(isset($foto)){
+        foreach ($foto as $ft){
+            $fotos[] = new Foto([
+                'foto' => base64_encode(file_get_contents($ft))
+            ]); 
+        }
+    }
+
+        $rxs = [];
+        if(isset($rx)){
+        foreach ($rx as $r){
+            $rxs[] = new Radiografia([
+                'radiografia' => base64_encode(file_get_contents($r))
+            ]); 
+        }
+    }
+        
         
 
         StoriaClinica::where('paziente_id', $paziente->id)->delete();
@@ -556,6 +610,8 @@ class PazienteController extends Controller {
         Diagnosi3::where('paziente_id', $paziente->id)->delete();
         PazienteReminder::where('paziente_id', $paziente->id)->delete();
         Intervento::where('paziente_id', $paziente->id)->delete();
+        Foto::where('paziente_id', $paziente->id)->delete();
+        Radiografia::where('paziente_id', $paziente->id)->delete();
 
         foreach ($stories as $s) {
             $paziente->storiaClinica()->save($s);
@@ -592,6 +648,14 @@ class PazienteController extends Controller {
 
         foreach ($diagnosis as $d) {
             $d->save();
+        }   
+        
+        foreach ($fotos as $f) {
+            $paziente->foto()->save($f);
+        }
+
+        foreach ($rxs as $r) {
+            $paziente->radiografia()->save($r);
         }
 
 

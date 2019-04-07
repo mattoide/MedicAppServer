@@ -458,16 +458,27 @@
 
             <br>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="btn btn-success">
-                    Aggiungi immagini <input type="file" class="form-control-file" id="foto" name="foto"
+                    Aggiungi immagini <input type="file" class="form-control-file" id="foto" name="fotoz"
                                              multiple accept="image/x-png ,image/jpeg" style="display:none;"
                                              onchange="$('#upload-file-info').html(this.files.length + ' File' )">
                 </label>
                 <span class='label label-info' id="upload-file-info"></span>
 
+            </div> --}}
+            <div class="form-group">
+            <div class="custom-file-container" data-upload-id="ft">
+                <label>Aggiungi immagini <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
+                <label class="custom-file-container__custom-file" >
+                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File" name="foto[]">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                </label>
+                <div class="custom-file-container__image-preview"></div>
             </div>
         </div>
+    </div>
 
 
         <!-- TAB RX-->
@@ -475,7 +486,7 @@
 
             <br>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="btn btn-success">
                     Aggiungi radiografie<input type="file" class="form-control-file" id="rx" name="radiografia"
                                                multiple accept="image/x-png ,image/jpeg" style="display:none;"
@@ -483,6 +494,18 @@
                 </label>
                 <span class='label label-info' id="upload-file-info"></span>
 
+            </div> --}}
+
+            <div class="form-group">
+                <div class="custom-file-container" data-upload-id="rx">
+                    <label>Aggiungi immagini <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
+                    <label class="custom-file-container__custom-file" >
+                        <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File" name="radiografie[]">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                    </label>
+                    <div class="custom-file-container__image-preview"></div>
+                </div>
             </div>
         </div>
 
@@ -621,5 +644,11 @@ var lng = document.getElementsByName("intervento[]").length
 var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required> <select class=form-control id=intdiagnosi1 name=intdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosiSpec as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=intdiagnosi2 name=intdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosiSpec as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
 $('#nuovointervento').append(intervento);
 }
+
+window.addEventListener('fileUploadWithPreview:imageSelected', function(e) {
+
+   // $('#fotos').val(e.detail.cachedFileArray)    
+})
+
 
 </script>
