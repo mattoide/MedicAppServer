@@ -17,7 +17,8 @@ class Foto extends Migration
             $table->increments('id');
             $table->unsignedInteger('paziente_id')->nullable();
 
-            $table->binary("foto")->nullable();
+            //$table->binary("foto")->nullable();
+            $table->longText("foto")->nullable();
             $table->timestamps();
         });
     }

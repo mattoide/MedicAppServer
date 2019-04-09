@@ -649,6 +649,20 @@ function deleteMedicinale(val){
 
 }
 
+function deleteFoto(id){
+
+    $('#foto'+id).remove();
+    $('#fotoval'+id).remove();
+    $('#fotodel'+id).remove();
+}
+
+function deleteRx(id){
+
+    $('#rx'+id).remove();
+    $('#rxval'+id).remove();
+    $('#rxdel'+id).remove();
+}
+
 
 function dateToToday(){
     var d = new Date(),

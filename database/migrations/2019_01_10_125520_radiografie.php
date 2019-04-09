@@ -17,7 +17,9 @@ class Radiografie extends Migration
             $table->increments('id');
             $table->unsignedInteger('paziente_id')->nullable();
 
-            $table->binary('radiografia')->nullable();
+            //$table->binary('radiografia')->nullable();
+            $table->longText("radiografia")->nullable();
+
             $table->timestamps();
         });
     }

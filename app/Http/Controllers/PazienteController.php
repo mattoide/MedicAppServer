@@ -400,6 +400,8 @@ class PazienteController extends Controller {
            
         // $pazienteProtocollo = Protocollo::find($pazienteProto[0]->protocollo_id);
       
+        // print_r($paziente->recapitiPaziente);
+        // return;
 
 
       
@@ -424,8 +426,9 @@ class PazienteController extends Controller {
         $interventi          = Input::get('intervento');
 
         $foto                = $request['foto'];
+        $fotoz                = $request['fotoz'];
         $rx                  = $request['radiografie'];
-
+        $rxz                  = $request['radiografiez'];
 
 
 
@@ -590,11 +593,30 @@ class PazienteController extends Controller {
         }
     }
 
+    if(isset($fotoz)){
+        foreach ($fotoz as $ft){
+            $fotos[] = new Foto([
+                'foto' => $ft
+            ]); 
+
+        }
+    }
+
+    
+
         $rxs = [];
         if(isset($rx)){
         foreach ($rx as $r){
             $rxs[] = new Radiografia([
                 'radiografia' => base64_encode(file_get_contents($r))
+            ]); 
+        }
+    }
+
+    if(isset($rxz)){
+        foreach ($rxz as $r){
+            $rxs[] = new Radiografia([
+                'radiografia' => $r
             ]); 
         }
     }

@@ -477,6 +477,19 @@
                 </label>
                 <div class="custom-file-container__image-preview"></div>
             </div>
+
+
+<div class="row">
+@foreach ($paziente->foto as $foto)
+ 
+        <img id="foto{{$foto->id}}" src="data:image/png;base64, {{$foto->foto}}" style="width: 30%; height: 30%; margin: 1%"/>
+        <input id="fotoval{{$foto->id}}" type="text" value="{{$foto->foto}}" name="fotoz[]" hidden>
+        <span>
+            <button style="" id="fotodel{{$foto->id}}"  onclick="deleteFoto({{$foto->id}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+        </span>
+@endforeach
+</div>
+    
         </div>
     </div>
 
@@ -506,6 +519,19 @@
                     </label>
                     <div class="custom-file-container__image-preview"></div>
                 </div>
+
+
+                
+<div class="row">
+        @foreach ($paziente->radiografia as $rx)
+         
+                <img id="rx{{$rx->id}}" src="data:image/png;base64, {{$rx->radiografia}}" style="width: 30%; height: 30%; margin: 1%"/>
+                <input id="rxval{{$rx->id}}" type="text" value="{{$rx->radiografia}}" name="radiografiez[]" hidden>
+                <span>
+                    <button style="" id="rxdel{{$rx->id}}"  onclick="deleteRx({{$rx->id}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+                </span>
+        @endforeach
+        </div>
             </div>
         </div>
 
