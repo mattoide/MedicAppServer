@@ -35,7 +35,10 @@
 
 <body>
 
-    <nav class="navbar nav mx-auto" style="background-color: #9b8e6e; align-content: center">
+  <div class="container-fluid" style=" max-height: 20em;  overflow-y: scroll"></div>
+
+
+    <nav class="navbar fixed-top nav mx-auto" style="background-color: #9b8e6e; align-content: center; z-index: -1">
         {{--<a id="novus" class="navbar-brand" href="#">Chirurgia Estetica del Piede - by Novus Studios</a>--}}
 
         <ul class="nav navbar-nav mx-auto">
@@ -44,19 +47,15 @@
 
     </nav>
 
-  <div class="row" style="height: 100%; margin-right: 0%; margin-left: 0%">
+
+
+  <div class="row" style="height: 100%; margin-right: 0%; margin-left: 0%;">
 
     <div class="wrapper" style="background-color: #333333;">
-      <!-- Sidebar -->
       <nav id="sidebar">
-        {{--
-        <div class="sidebar-header">
-          <h3>Bootstrap Sidebar</h3>
-        </div>
-        --}}
+     
         <ul class="list-unstyled components sticky-top sticky-offset">
-          {{--
-          <p>Dummy Heading</p> --}}
+      
           <li class="nav-item">
             <a id='pazientii' class="nav-link navtext" href="/pazienti"><i class="fas fa-bed fa-lg circle"></i> Pazienti</a>
           </li>
@@ -86,43 +85,15 @@
 
     </div>
 
-    {{--
-    <div class="col-1.7" style="padding-right: 0">
-      <ul class="nav flex-column lateralnav">
-
-        <li class="nav-item">
-          <a id='pazienti' class="nav-link navtext" href="/pazienti"><i class="fas fa-bed"></i> Pazienti </a>
-        </li>
-
-        <li class="nav-item">
-          <a id='diagnosi' class="nav-link navtext" href="/diagnosi"><i class="far fa-address-card"></i> Diagnosi</a>
-        </li>
-
-        <li class="nav-item">
-          <a id='allergie' class="nav-link navtext" href="/allergie"><i class="fas fa-exclamation-triangle"></i> Allergie</a>
-        </li>
-
-        <li class="nav-item">
-          <a id='medicinali' class="nav-link navtext" href="/medicinali"><i class="fas fa-pills"></i> Medicinali </a>
-        </li>
-
-        <li class="nav-item">
-          <a id='reminders' class="nav-link navtext" href="/reminders"><i class="far fa-bell"></i> Reminder</a>
-        </li>
-
-      </ul>
-    </div> --}}
-
-
-
-    <div class="col" style="padding: 0%">
+    <div class="col" style="padding: 0%; margin-top: 4%;">
     
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light" >
         <h3 id="titolo"></h3>
       </nav>
-
+<div class="container-fluid" style="max-height: 35em; overflow-y: scroll">
       @yield('content')
+    </div>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

@@ -165,3 +165,13 @@ font-size: 80%;
 .mybadge{
     background-color: #a5956d;
 }
+
+.wrapperg{
+    overflow-y: scroll
+}
+
+.h-scroll {
+    height: 100vh; /* %-height of the viewport */
+    position: fixed;
+    overflow-y: scroll;
+}
