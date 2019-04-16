@@ -7,6 +7,9 @@ use MedicAppServer\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
+use MedicAppServer\PazienteProtocollo;
+use MedicAppServer\Protocollo;
+
 
 use Response;
 use Validator;
@@ -23,10 +26,23 @@ class ApiPazienteController extends Controller
         $user = Paziente::where('email', $request->email)->where('password', $request->password)->with('recapitipaziente', 'allergiepaziente', 'medicinalipaziente')->first();
         
         
-        if($user)
-        return Response::json($user, 200);
+        if($user){
+
+            $protocol = PazienteProtocollo::where('paziente_id', $user->id)->first();
+
+            $protocollo = Protocollo::find($protocol->protocollo_id)->with('esercizi')->first();
+$user->protocollo = $protocollo;
+
+            return Response::json($user, 200);
+
+
+        }
         else
         return Response::json("Email o password errati.", 404);
+
+        //        return Response::json(['messaggio' => "Dispositivo non registrato"], 404);
+
+
 
         
 
