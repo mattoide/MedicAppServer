@@ -9,6 +9,7 @@ use MedicAppServer\Paziente;
 use MedicAppServer\RecapitiPaziente;
 use MedicAppServer\PazienteProtocollo;
 use MedicAppServer\Protocollo;
+use MedicAppServer\Esercizio;
 
 
 use Response;
@@ -30,8 +31,10 @@ class ApiPazienteController extends Controller
 
             $protocol = PazienteProtocollo::where('paziente_id', $user->id)->first();
 
-            $protocollo = Protocollo::find($protocol->protocollo_id)->with('esercizi')->first();
-$user->protocollo = $protocollo;
+            $protocoll = Protocollo::find($protocol->protocollo_id)->with('esercizi')->first();
+            $protocollo = Esercizio::where('protocollo_id', $protocoll->id)->get();
+
+            $user->esercizi = $protocollo;
 
             return Response::json($user, 200);
 
