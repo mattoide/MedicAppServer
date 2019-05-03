@@ -1,43 +1,40 @@
 <?php
-
 $eserciziATempo = array(
-    array("esercizio" => "Esercizio1", "immagine" => "defaultfeetexercise1.jpg"),
-    array("esercizio" => "Esercizio2", "immagine" => "defaultfeetexercise1.jpg"),
-    array("esercizio" => "Esercizio3", "immagine" => "defaultfeetexercise1.jpg"),
-    array("esercizio" => "Esercizio4", "immagine" => "defaultfeetexercise1.jpg"),
-    array("esercizio" => "Esercizio5", "immagine" => "defaultfeetexercise1.jpg"),
-    array("esercizio" => "Esercizio6", "immagine" => "defaultfeetexercise1.jpg"),
-    array("esercizio" => "Esercizio7", "immagine" => "defaultfeetexercise1.jpg"),
-    array("esercizio" => "Esercizio8", "immagine" => "defaultfeetexercise1.jpg"),
+    array("esercizio" => "Esercizio1", "immagine" => "defaultfeetexercise1_0.jpg"),
+    array("esercizio" => "Esercizio2", "immagine" => "defaultfeetexercise1_1.jpg"),
+    array("esercizio" => "Esercizio3", "immagine" => "defaultfeetexercise1_2.jpg"),
+    array("esercizio" => "Esercizio4", "immagine" => "defaultfeetexercise1_3.jpg"),
+    array("esercizio" => "Esercizio5", "immagine" => "defaultfeetexercise1_4.jpg"),
+    array("esercizio" => "Esercizio6", "immagine" => "defaultfeetexercise1_5.jpg"),
+    array("esercizio" => "Esercizio7", "immagine" => "defaultfeetexercise1_6.jpg"),
+    array("esercizio" => "Esercizio8", "immagine" => "defaultfeetexercise1_7.jpg"),
 
 );
 
 
 $eserciziARipetizioni = array(
-    array("esercizio" => "Esercizio1", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio2", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio3", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio4", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio5", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio6", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio7", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio8", "immagine" => "defaultfeetexercise2.jpg"),
+    array("esercizio" => "Esercizio1", "immagine" => "defaultfeetexercise2_0.jpg"),
+    array("esercizio" => "Esercizio2", "immagine" => "defaultfeetexercise2_1.jpg"),
+    array("esercizio" => "Esercizio3", "immagine" => "defaultfeetexercise2_2.jpg"),
+    array("esercizio" => "Esercizio4", "immagine" => "defaultfeetexercise2_3.jpg"),
+    array("esercizio" => "Esercizio5", "immagine" => "defaultfeetexercise2_4.jpg"),
+    array("esercizio" => "Esercizio6", "immagine" => "defaultfeetexercise2_5.jpg"),
+    array("esercizio" => "Esercizio7", "immagine" => "defaultfeetexercise2_6.jpg"),
+    array("esercizio" => "Esercizio8", "immagine" => "defaultfeetexercise2_7.jpg"),
 
 );
 
 $eserciziInterattivi = array(
-    array("esercizio" => "Esercizio1", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio2", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio3", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio4", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio5", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio6", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio7", "immagine" => "defaultfeetexercise2.jpg"),
-    array("esercizio" => "Esercizio8", "immagine" => "defaultfeetexercise2.jpg"),
+    array("esercizio" => "Esercizio1", "immagine" => "defaultfeetexercise3_0.jpg"),
+    array("esercizio" => "Esercizio2", "immagine" => "defaultfeetexercise3_1.jpg"),
+    array("esercizio" => "Esercizio3", "immagine" => "defaultfeetexercise3_2.jpg"),
+    array("esercizio" => "Esercizio4", "immagine" => "defaultfeetexercise3_3.jpg"),
+    array("esercizio" => "Esercizio5", "immagine" => "defaultfeetexercise3_4.jpg"),
+    array("esercizio" => "Esercizio6", "immagine" => "defaultfeetexercise3_5.jpg"),
+    array("esercizio" => "Esercizio7", "immagine" => "defaultfeetexercise3_6.jpg"),
+    array("esercizio" => "Esercizio8", "immagine" => "defaultfeetexercise3_7.jpg"),
 
 );
-
-
 ?>
 
 <div class="row">
