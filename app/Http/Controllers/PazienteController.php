@@ -94,8 +94,11 @@ class PazienteController extends Controller {
             'datadinascita' => $request['datadinascita'],
             'email'         => $request['email'],
            // 'password'      => Hash::make($request['password']),
-            'password'      => $request['password'],
-        ]);
+           'password'      => $request['password'],
+           'attivo'      => false,
+           'tokenfirebase'      => '',
+
+           ]);
 
         $recapitiPaziente = new RecapitiPaziente([
             'indirizzo'     => $request['indirizzo'],
@@ -707,6 +710,68 @@ class PazienteController extends Controller {
 
 
         return redirect('/pazienti');
+    }
+
+
+    public function enableApp(Request $request) {
+        $paziente = Paziente::find($request['idpaz']);
+
+        $paziente->attivo = true;
+        $paziente->save();
+
+        return $request['idpaz'];
+    }
+
+    public function disableApp(Request $request) {
+        $paziente = Paziente::find($request['idpaz']);
+
+        $paziente->attivo = false;
+        $paziente->save();
+        return $request['idpaz'];
+
+    }
+
+
+    public function notifica(Request $request){
+
+        $paziente = Paziente::find($request['idpaz']);
+
+        define( 'API_ACCESS_KEY', 'AAAAUHkAQ8I:APA91bGE2yTBj-O_4Hln2RXHDFIinesnWvlFzYz8UJofh9rGkK2fnhO2RjTamUuobsKYnUw0JDBrGPgKvHnY1PyXd03dXJiwgOI3PLsBaiEaqZBoGHIsTI4CgNcT3aLX_JnVrzZq1Se3' );
+
+        $token = $paziente->tokenfirebase;
+
+        $payload = array(
+
+            'to'=>$token,
+            'priority'=>'high',
+            'mutable_content'=>true,
+            'notification'=>array(
+                        'title'=> 'Ricorda',
+                        'body'=> $request['messaggio']
+                            ),
+            // 'data'=>array(
+            //     'a' => 'b',
+            //     'a' => 'b'
+            // )
+          );
+
+      $headers = array(
+        'Authorization:key=' . API_ACCESS_KEY,
+        'Content-Type: application/json'
+      );
+
+      $ch = curl_init();
+      curl_setopt( $ch,CURLOPT_URL, 'https://android.googleapis.com/gcm/send' );
+      curl_setopt( $ch,CURLOPT_POST, true );
+      curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+      curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+      curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+      curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $payload ) );
+      $result = curl_exec($ch );
+      curl_close( $ch );
+      var_dump($result);exit;
+
+                
     }
 
     public function getValidatore($request) {

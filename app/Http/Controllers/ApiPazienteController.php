@@ -54,6 +54,18 @@ class ApiPazienteController extends Controller
         
     }
 
+
+    public function storeFirebaseToken(Request $request){
+
+        $user = Paziente::where('email', $request->email)->where('password', $request->password)->first();
+
+        $user->tokenfirebase = $request->firebasetoken;
+
+        $user->save();
+        return Response::json('Ok', 200);
+
+    }
+
     
     public function getValidatore($request) {
 

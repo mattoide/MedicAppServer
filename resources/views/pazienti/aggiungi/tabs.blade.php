@@ -257,8 +257,8 @@
             <br>
 
 
-            <button type="button" class="btn btn-success">Avvia</button>
-            <button type="button" class="btn btn-danger">Blocca App</button>
+            <button type="button" class="btn btn-success" disabled>Avvia</button>
+            <button type="button" class="btn btn-danger" disabled>Blocca App</button>
 
 
             <br>

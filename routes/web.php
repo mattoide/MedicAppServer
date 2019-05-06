@@ -68,3 +68,8 @@ Route::post('/aggiungistoriaclinica', 'PazienteController@createClinicStory');
 Route::post('/nuovaallergiapaziente', 'PazienteController@createAllergy');
 
 Route::post('/getsiagnosibycategoria/{categoriadiagnosi}', 'DiagnosiController@getDiagnosiByCategoria');
+
+Route::post('/enableapp', 'PazienteController@enableApp');
+Route::post('/disableapp', 'PazienteController@disableApp');
+
+Route::post('/notifica', 'PazienteController@notifica');

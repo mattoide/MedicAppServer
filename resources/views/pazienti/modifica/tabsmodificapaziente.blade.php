@@ -542,8 +542,18 @@
             <br>
 
 
-            <button type="button" class="btn btn-success">Avvia</button>
-            <button type="button" class="btn btn-danger">Blocca App</button>
+            <button onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" >Avvia</button>
+            <button onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" >Blocca App</button>
+           
+            
+
+            {{-- @if($paziente->attivo == true)
+            <button onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" disabled>Avvia</button>
+            <button onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" >Blocca App</button>
+            @elseif($paziente->attivo == false)
+            <button onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success">Avvia</button>
+            <button onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" disabled>Blocca App</button>
+            @endif --}}
 
 
             <br>
@@ -554,10 +564,10 @@
             </div> --}}
             <div class="row" style="width: 90%">
                 <div class="col-10">
-                    <input type="text" class="form-control custominputnotifica" placeholder="testo" name="esercizio">
+                    <input id="notificamessaggio" type="text" class="form-control custominputnotifica" placeholder="testo" >
                 </div>
                 <div class="col">
-                    <button style="float:right" type="button" class="btn btn-success">invia notifica</button>
+                    <button onclick="notifica({{$paziente->id}})" style="float:right" type="button" class="btn btn-success">invia notifica</button>
 
                 </div>
             </div>
@@ -664,6 +674,60 @@
 
 <script>
  
+ function enableApp(idpaz){
+    $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data:{                
+            "idpaz":idpaz
+    }
+  });
+
+    $.post('/enableapp', function(response) {
+            // handle your response here
+            alert('App abilitata!');
+        })
+ }
+
+ function disableApp(idpaz){
+    $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data:{                
+            "idpaz":idpaz
+  }
+  });
+
+    $.post('/disableapp', function(response) {
+        // handle your response here
+        alert('App disabilitata!');
+
+    })
+ }
+
+ function notifica(idpaz){
+
+    let msg = $('#notificamessaggio').val();
+
+    console.log(msg)
+    $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data:{                
+            "idpaz":idpaz,
+            "messaggio": msg
+  }
+  });
+
+    $.post('/notifica', function(response) {
+        // handle your response here
+console.log(response)
+    })
+ }
+
  function nuovointerventoo(){
 
 var lng = document.getElementsByName("intervento[]").length
