@@ -10,7 +10,7 @@ class Esercizio extends Model
 
 
     protected $fillable = [
-        'nome', 'tipoesercizio'
+        'nome', 'tipoesercizio', 'immagine'
     ];
 
     protected $attributes = [];

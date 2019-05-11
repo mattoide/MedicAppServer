@@ -18,7 +18,7 @@ class CreateEserciziTable extends Migration
             $table->unsignedInteger('protocollo_id');
             $table->string('nome');
             $table->string('tipoesercizio');
-            //$table->string('immagine');
+            $table->string('immagine');
             //$table->string('descrizione');
             $table->timestamps();
         });

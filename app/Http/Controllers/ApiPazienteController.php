@@ -30,14 +30,23 @@ class ApiPazienteController extends Controller
         if($user){
 
             $protocol = PazienteProtocollo::where('paziente_id', $user->id)->first();
+            if($protocol){
 
-            $protocoll = Protocollo::find($protocol->protocollo_id)->with('esercizi')->first();
+                $protocoll = Protocollo::find($protocol->protocollo_id)->with('esercizi')->first();
             $protocollo = Esercizio::where('protocollo_id', $protocoll->id)->get();
 
             $user->esercizi = $protocollo;
 
             return Response::json($user, 200);
 
+            } else {
+
+                $user->esercizi = [];
+                return Response::json($user, 200);
+
+            }
+
+            
 
         }
         else

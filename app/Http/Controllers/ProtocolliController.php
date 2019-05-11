@@ -32,8 +32,13 @@ class ProtocolliController extends Controller
         
 
         $eserciziTempo = Input::get('esercizitempo');
+        $eserciziTempoImg = Input::get('esercizitempoimg');
+
         $eserciziRipetizioni = Input::get('eserciziripetizioni');
+        $eserciziRipetizioniImg = Input::get('eserciziripetizioniimg');
+
         $eserciziInterattivi = Input::get('eserciziinterattivi');
+        $eserciziInterattiviImg = Input::get('eserciziinterattiviimg');
 
 
         $protocollo = new Protocollo([
@@ -48,29 +53,38 @@ class ProtocolliController extends Controller
     
         
         if (isset($eserciziTempo)) {
+            $i = 0;
             foreach ($eserciziTempo as $es) {
                 $esercizi[] = new Esercizio([
                      'nome' => $es,
-                     'tipoesercizio' => 'tempo'
+                     'tipoesercizio' => 'tempo',
+                     'immagine' => $eserciziTempoImg[$i]
                     ]);
+                    $i++;
             }
         }
 
         
         if (isset($eserciziRipetizioni)) {
+            $i = 0;
             foreach ($eserciziRipetizioni as $es) {
                 $esercizi[] = new Esercizio([
                      'nome' => $es,
-                     'tipoesercizio' => 'ripetizioni'
+                     'tipoesercizio' => 'ripetizioni',
+                     'immagine' => $eserciziRipetizioniImg[$i]
                     ]);
+                    $i++;
             }
         }
         if (isset($eserciziInterattivi)) {
+            $i = 0;
             foreach ($eserciziInterattivi as $es) {
                 $esercizi[] = new Esercizio([
                      'nome' => $es,
-                     'tipoesercizio' => 'interattivi'
+                     'tipoesercizio' => 'interattivi',
+                     'immagine' => $eserciziInterattiviImg[$i]
                     ]);
+                    $i++;
             }
         }
         
@@ -94,8 +108,13 @@ class ProtocolliController extends Controller
         $protocollo = Protocollo::find($request->idprot);
 
         $eserciziTempo = Input::get('esercizitempoedit');
+        $eserciziTempoImg = Input::get('esercizitempoeditimg');
+
         $eserciziRipetizioni = Input::get('eserciziripetizioniedit');
+        $eserciziRipetizioniImg = Input::get('eserciziripetizionieditimg');
+
         $eserciziInterattivi = Input::get('eserciziinterattiviedit');
+        $eserciziInterattiviImg = Input::get('eserciziinterattivieditimg');
 
 
         $esercizi = [];
@@ -103,29 +122,38 @@ class ProtocolliController extends Controller
     
         
         if (isset($eserciziTempo)) {
+            $i = 0;
             foreach ($eserciziTempo as $es) {
                 $esercizi[] = new Esercizio([
                      'nome' => $es,
-                     'tipoesercizio' => 'tempo'
+                     'tipoesercizio' => 'tempo',
+                     'immagine' => $eserciziTempoImg[$i]
                     ]);
+                    $i++;
             }
         }
 
         
         if (isset($eserciziRipetizioni)) {
+            $i = 0;
             foreach ($eserciziRipetizioni as $es) {
                 $esercizi[] = new Esercizio([
                      'nome' => $es,
-                     'tipoesercizio' => 'ripetizioni'
+                     'tipoesercizio' => 'ripetizioni',
+                     'immagine' => $eserciziRipetizioniImg[$i]
                     ]);
+                    $i++;
             }
         }
         if (isset($eserciziInterattivi)) {
+            $i = 0;
             foreach ($eserciziInterattivi as $es) {
                 $esercizi[] = new Esercizio([
                      'nome' => $es,
-                     'tipoesercizio' => 'interattivi'
+                     'tipoesercizio' => 'interattivi',
+                     'immagine' => $eserciziInterattiviImg[$i]
                     ]);
+                    $i++;
             }
         }
         
