@@ -36,10 +36,30 @@ hr{
 }
 .navtext{
     color: #9b8e6e;
-    font-size: 60%;
-    display: grid;
-    text-align: center;
+    font-size: 70%;
+    /* display: grid;
+    text-align: center; */
+    
 }
+.navtm{
+    /* display: inline-block; */
+    text-align: center;
+    margin-top: 10%;
+}
+.circle {
+    /* display: inline-block; */
+    border-radius: 90em;
+    box-shadow: 0em 0em .1em #9B8E6E;
+    color: #9B8E6E;
+    /* padding: 0.3em 0.3em; */
+    width: 1.7em!important;
+    height: 1.7em!important;
+    padding: 7%;
+    /* margin-left: 25%; */
+    /* margin-bottom: 15%; */
+   
+  
+  }
 
 .nav .nav-item > .nav-link.active  {
     color:green;
@@ -64,17 +84,7 @@ tr.odd {
     background-color: white !important;
 }
 
-.circle {
-    display: inline-block;
-    border-radius: 60px;
-    box-shadow: 0px 0px 2px #888;
-    /* padding: 0.3em 0.3em; */
-    width: 1.7em!important;
-    height: 1.7em!important;
-    padding: 7%;
-    margin-left: 25%;
-  
-  }
+
 
 .form-control {
     border-top: 0;
@@ -102,7 +112,14 @@ background-color:white;
 
 table.dataTable thead th {
 
-    border-bottom: none;
+    /* border-bottom: none; */
+    border: none;
+}
+
+table.dataTable tbody td {
+
+    /* border-bottom: none; */
+    border: none;
 }
 .custom-active{
     background: #2b2b2b;

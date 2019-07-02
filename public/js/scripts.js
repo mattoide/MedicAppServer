@@ -108,7 +108,8 @@ $(document).ready(function () {
             "oPaginate": {
                 "sFirst": "Inizio",
                 "sPrevious": "Precedente",
-                "sNext": "Successivo",
+                // "sNext": "Successivo",
+                // "sNext": '<i class="fa fa-forward"></i>',
                 "sLast": "Fine"
             },
             "oAria": {

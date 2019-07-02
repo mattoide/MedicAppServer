@@ -89,16 +89,16 @@
                         required>
                 </div>
                 <div class="col">
-                    <input id='pass' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
+                    <input id='pass' type="password" class="form-control" placeholder="Password" name="password"  minlength="4"
                         maxlength="16" required value="{{$paziente->password}}">
-                    <input id='passv' type="password" class="form-control" placeholder="Password" name="password" onchange="verificaPass()" minlength="4"
-                        maxlength="16" required value="{{$paziente->password}}" hidden>
+                    {{-- <input id='passv' type="password" class="form-control" placeholder="Password" name="password"  minlength="4"
+                        maxlength="16" required value="{{$paziente->password}}" hidden> --}}
                 </div>
                 <div class="col">
-                    <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
+                    <input id='repass' type="password" class="form-control" placeholder="Ripeti password" name="repassword" 
                         minlength="4" maxlength="16" required value="{{$paziente->password}}">
-                    <input id='repassv' type="password" class="form-control" placeholder="Ripeti password" name="repassword" onchange="verificaPass()"
-                        minlength="4" maxlength="16" required value="{{$paziente->password}}" hidden>
+                    {{-- <input id='repassv' type="password" class="form-control" placeholder="Ripeti password" name="repassword" 
+                        minlength="4" maxlength="16" required value="{{$paziente->password}}" hidden> --}}
                 </div>
             </div>
 

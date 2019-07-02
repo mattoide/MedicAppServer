@@ -29,7 +29,9 @@
             @foreach($pazienti as $paziente)
 
             <tr>
-                <td>{{$paziente->nome}} {{$paziente->cognome}}</td>
+
+           
+                <td onmouseover="" style="cursor: pointer;" onclick="modificapaziente({{$paziente->id}})">{{$paziente->nome}} {{$paziente->cognome}}</td>
                 <td> @if($paziente->diagnosi1){{$paziente->diagnosi1->diagnosi}}@endif </td>
                 <td> @if($paziente->diagnosi2){{$paziente->diagnosi2->diagnosi}}@endif </td>
                 <td>{{$paziente->recapitiPaziente->centrovisita}}</td>
@@ -59,4 +61,15 @@
         </tbody>
     </table>
 </div>
+
+<script>
+function modificapaziente(val){
+
+    console.log(val)
+    let id = val
+    let tkn = $('meta[name="csrf-token"]').attr('content')
+    window.location = document.location.origin + '/modificapaziente?_token='+tkn+'&id='+id 
+
+}
+</script>
 @endsection

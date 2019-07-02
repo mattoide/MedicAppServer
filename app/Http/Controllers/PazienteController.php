@@ -413,6 +413,12 @@ class PazienteController extends Controller {
 
     public function update(Request $request) {
 
+    print_r($request->all());
+    // return;
+                if (\strpos($request['password'], " ") !== false) {
+            return redirect()->back()->withErrors(["La password non può contenere spazi."])->withInput();
+        }
+
         $datestoriecliniche = Input::get('datastoriaclinica');
         $storiecliniche     = Input::get('storiaclinica');
         $scdiagnosi1        = Input::get('scdiagnosi1');
@@ -447,6 +453,8 @@ class PazienteController extends Controller {
         $paziente->cognome                     = $request['cognome'];
         $paziente->sesso                       = $request['sesso'];
         $paziente->email                       = $request['email'];
+        $paziente->password                    = $request['password'];
+
         $paziente->datadinascita               = $request['datadinascita'];
         $paziente->recapitiPaziente->indirizzo = $request['indirizzo'];
 
