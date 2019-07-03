@@ -58,13 +58,13 @@ class PazienteController extends Controller {
 
         $datestoriecliniche = Input::get('datastoriaclinica');
         $storiecliniche     = Input::get('storiaclinica');
-        $scdiagnosi1        = Input::get('scdiagnosi1');
-        $scdiagnosi2        = Input::get('scdiagnosi2');
+        // $scdiagnosi1        = Input::get('scdiagnosi1');
+        // $scdiagnosi2        = Input::get('scdiagnosi2');
 
         $dateinterventi      = Input::get('dataintervento');
         $interventi          = Input::get('intervento');
-        $intdiagnosi1        = Input::get('intdiagnosi1');
-        $intdiagnosi2        = Input::get('intdiagnosi2');
+        // $intdiagnosi1        = Input::get('intdiagnosi1');
+        // $intdiagnosi2        = Input::get('intdiagnosi2');
         $interventi          = Input::get('intervento');
 
 
@@ -124,18 +124,18 @@ class PazienteController extends Controller {
         if (isset($storiecliniche)) {
             $i = 0;
             foreach ($storiecliniche as $sc) {
-                if (!isset($scdiagnosi1[$i]))
-                $scdiagnosi1[$i] = '';
+                // if (!isset($scdiagnosi1[$i]))
+                // $scdiagnosi1[$i] = '';
 
-                if (!isset($scdiagnosi2[$i]))
-                    $scdiagnosi2[$i] = '';
+                // if (!isset($scdiagnosi2[$i]))
+                //     $scdiagnosi2[$i] = '';
                 
 
                 $stories[] = new StoriaClinica([
                     'data'          => $datestoriecliniche[$i],
                     'storiaclinica' => $storiecliniche[$i],
-                    'diagnosi1'     => $scdiagnosi1[$i],
-                    'diagnosi2'     => $scdiagnosi2[$i],
+                    // 'diagnosi1'     => $scdiagnosi1[$i],
+                    // 'diagnosi2'     => $scdiagnosi2[$i],
                 ]);
 
                 $i++;
@@ -146,18 +146,18 @@ class PazienteController extends Controller {
         if (isset($interventi)) {
             $i = 0;
             foreach ($interventi as $int) {
-                if (!isset($intdiagnosi1[$i]))
-                $intdiagnosi1[$i] = '';
+                // if (!isset($intdiagnosi1[$i]))
+                // $intdiagnosi1[$i] = '';
 
-                if (!isset($intdiagnosi2[$i]))
-                    $intdiagnosi2[$i] = '';
+                // if (!isset($intdiagnosi2[$i]))
+                //     $intdiagnosi2[$i] = '';
                 
 
                 $interventis[] = new Intervento([
                     'data'          => $dateinterventi[$i],
                     'intervento'    => $interventi[$i],
-                    'diagnosi1'     => $intdiagnosi1[$i],
-                    'diagnosi2'     => $intdiagnosi2[$i],
+                    // 'diagnosi1'     => $intdiagnosi1[$i],
+                    // 'diagnosi2'     => $intdiagnosi2[$i],
                 ]);
 
                 $i++;
@@ -421,8 +421,8 @@ class PazienteController extends Controller {
 
         $datestoriecliniche = Input::get('datastoriaclinica');
         $storiecliniche     = Input::get('storiaclinica');
-        $scdiagnosi1        = Input::get('scdiagnosi1');
-        $scdiagnosi2        = Input::get('scdiagnosi2');
+        // // $scdiagnosi1        = Input::get('scdiagnosi1');
+        // $scdiagnosi2        = Input::get('scdiagnosi2');
         $allergie           = Input::get('allergie');
         $medicinali         = Input::get('medicinali');
         $reminder           = Input::get('reminder');
@@ -430,8 +430,8 @@ class PazienteController extends Controller {
         $diagnosi           = Input::get('diagnosi');
         $dateinterventi      = Input::get('dataintervento');
         $interventi          = Input::get('intervento');
-        $intdiagnosi1        = Input::get('intdiagnosi1');
-        $intdiagnosi2        = Input::get('intdiagnosi2');
+        // $intdiagnosi1        = Input::get('intdiagnosi1');
+        // $intdiagnosi2        = Input::get('intdiagnosi2');
         $interventi          = Input::get('intervento');
 
         $foto                = $request['foto'];
@@ -486,18 +486,18 @@ class PazienteController extends Controller {
         if (isset($storiecliniche)) {
             $i = 0;
             foreach ($storiecliniche as $sc) {
-                if (!isset($scdiagnosi1[$i]))
-                $scdiagnosi1[$i] = '';
+                // if (!isset($scdiagnosi1[$i]))
+                // $scdiagnosi1[$i] = '';
 
-                if (!isset($scdiagnosi2[$i])) 
-                    $scdiagnosi2[$i] = '';
+                // if (!isset($scdiagnosi2[$i])) 
+                //     $scdiagnosi2[$i] = '';
                 
 
                 $stories[] = new StoriaClinica([
                     'data'          => $datestoriecliniche[$i],
                     'storiaclinica' => $storiecliniche[$i],
-                    'diagnosi1'     => $scdiagnosi1[$i],
-                    'diagnosi2'     => $scdiagnosi2[$i],
+                    // 'diagnosi1'     => $scdiagnosi1[$i],
+                    // 'diagnosi2'     => $scdiagnosi2[$i],
                 ]);
 
                 $i++;
@@ -508,18 +508,18 @@ class PazienteController extends Controller {
         if (isset($interventi)) {
             $i = 0;
             foreach ($interventi as $int) {
-                if (!isset($intdiagnosi1[$i]))
-                $intdiagnosi1[$i] = '';
+                // if (!isset($intdiagnosi1[$i]))
+                // $intdiagnosi1[$i] = '';
 
-                if (!isset($intdiagnosi2[$i]))
-                    $intdiagnosi2[$i] = '';
+                // if (!isset($intdiagnosi2[$i]))
+                //     $intdiagnosi2[$i] = '';
                 
 
                 $interventis[] = new Intervento([
                     'data'          => $dateinterventi[$i],
                     'intervento'    => $interventi[$i],
-                    'diagnosi1'     => $intdiagnosi1[$i],
-                    'diagnosi2'     => $intdiagnosi2[$i],
+                    // 'diagnosi1'     => $intdiagnosi1[$i],
+                    // 'diagnosi2'     => $intdiagnosi2[$i],
                 ]);
 
                 $i++;

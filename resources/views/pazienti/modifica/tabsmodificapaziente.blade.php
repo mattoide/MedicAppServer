@@ -6,12 +6,7 @@
            aria-selected="true">Storia Clinica</a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link navtext-tab" id="alrgie-tab" data-toggle="tab" href="#alrgie" role="tab"
-           aria-controls="alrgie" aria-selected="true">Allergie</a>
-    </li>
-
-    
+        
 <li class="nav-item">
     <a class="nav-link navtext-tab" id="diagnsi-tab" data-toggle="tab" href="#diagnsi" role="tab" aria-controls="diagnsi" aria-selected="true">Diagnosi</a>
 </li>
@@ -22,11 +17,11 @@
            aria-selected="false">Interventi</a>
     </li>
 
-    
-<li class="nav-item">
-    <a class="nav-link navtext-tab" id="reminder-tab" data-toggle="tab" href="#remindr" role="tab" aria-controls="remindr"
-        aria-selected="false">Reminders</a>
-</li>
+    <li class="nav-item">
+        <a class="nav-link navtext-tab" id="alrgie-tab" data-toggle="tab" href="#alrgie" role="tab"
+           aria-controls="alrgie" aria-selected="true">Allergie</a>
+    </li>
+
 
     <li class="nav-item">
         <a class="nav-link navtext-tab" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto"
@@ -37,6 +32,13 @@
         <a class="nav-link navtext-tab" id="rx-tab" data-toggle="tab" href="#rx" role="tab" aria-controls="rx"
            aria-selected="false">Rx</a>
     </li>
+
+    
+<li class="nav-item">
+    <a class="nav-link navtext-tab" id="reminder-tab" data-toggle="tab" href="#remindr" role="tab" aria-controls="remindr"
+        aria-selected="false">Reminders</a>
+</li>
+
 
     <li class="nav-item">
         <a class="nav-link navtext-tab" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app"
@@ -78,7 +80,7 @@
                                        class="form-control customdate" type="date" name="datastoriaclinica[]"
                                        value="@if($storiaclinica->data){{$storiaclinica->data}}@endif">
 
-                                       <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbld" name="scdiagnosi1[]" onchange="aggiungiDiagnosi(this)">
+                                       {{-- <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi1disbld" name="scdiagnosi1[]" onchange="aggiungiDiagnosi(this)">
                                         <option disabled selected> diagnosi 1 </option>
                                         @foreach ($diagnosiSpec as $a)
                                         <option>{{$a->diagnosi}}</option>
@@ -91,7 +93,7 @@
                                         @foreach ($diagnosiSpec as $a)
                                         <option>{{$a->diagnosi}}</option>
                                         @endforeach
-                                    </select>
+                                    </select> --}}
 
                                 {{-- <p id="{{$storiaclinica->id}}scdiagnosi1disbld"></p>
                                 <p id="{{$storiaclinica->id}}scdiagnosi2disbld"></p>
@@ -352,7 +354,7 @@
                                        class="form-control customdate" type="date" name="dataintervento[]"
                                        value="@if($intervento->data){{$intervento->data}}@endif">
 
-                                       <select class="form-control" id="{{$intervento->id}}intdiagnosi1disbld" name="intdiagnosi1[]" onchange="aggiungiDiagnosi(this)">
+                                       {{-- <select class="form-control" id="{{$intervento->id}}intdiagnosi1disbld" name="intdiagnosi1[]" onchange="aggiungiDiagnosi(this)">
                                         <option disabled selected> diagnosi 1 </option>
                                         @foreach ($diagnosiSpec as $a)
                                         <option>{{$a->diagnosi}}</option>
@@ -365,7 +367,7 @@
                                         @foreach ($diagnosiSpec as $a)
                                         <option>{{$a->diagnosi}}</option>
                                         @endforeach
-                                    </select>
+                                    </select> --}}
 
                             </td>
 
@@ -730,7 +732,8 @@ console.log(response)
  function nuovointerventoo(){
 
 var lng = document.getElementsByName("intervento[]").length
-var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required> <select class=form-control id=intdiagnosi1 name=intdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosiSpec as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=intdiagnosi2 name=intdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosiSpec as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
+// var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required> <select class=form-control id=intdiagnosi1 name=intdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosiSpec as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=intdiagnosi2 name=intdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosiSpec as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
+var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required>   </td> <td> <textarea  class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
 $('#nuovointervento').append(intervento);
 }
 

@@ -16,7 +16,7 @@
                                 <tr>
                                     <td class="datetd">
                                         <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" id="datastoriaclinicam" name="datastoriaclinicam" required>
-                                        <select class="form-control" id="scdiagnosi1m" name="scdiagnosi1m">
+                                        {{-- <select class="form-control" id="scdiagnosi1m" name="scdiagnosi1m">
                                             <option disabled selected> diagnosi 1 </option>
                                             @foreach ($diagnosiSpec as $a)
                                             <option>{{$a->diagnosi}}</option>
@@ -27,7 +27,7 @@
                                             @foreach ($diagnosiSpec as $a)
                                             <option>{{$a->diagnosi}}</option>
                                             @endforeach
-                                        </select> 
+                                        </select>  --}}
                                     </td>
 
                                     <td>

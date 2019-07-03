@@ -189,8 +189,10 @@
 
         {{-- <button type="button" onclick="abilitaTutto()" class="btn btn-success">Modifica</button> --}}
         {{-- <button name="idpaz" id="idpaz" value="{{$paziente->id}}" type="submit" class="btn btn-warning" disabled>Salva modifiche</button> --}}
-        <button name="idpaz" id="idpaz" value="{{$paziente->id}}" type="submit" class="btn btn-warning" >Salva modifiche</button>
-        <button type="button" onclick="refresh()" class="btn btn-danger">Annulla modifiche</button>
+        <button style="float: right; margin-left: 1%" name="idpaz" id="idpaz" value="{{$paziente->id}}" type="submit" class="btn btn-success" >Salva</button>
+
+        <button style="float: right" type="button" onclick="refresh()" class="btn btn-success">Annulla</button>
+
 
     </form>
 </div>

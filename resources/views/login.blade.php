@@ -35,15 +35,21 @@
 
 <body>
 
-
+{{-- 
         <nav class="navbar nav mx-auto" style="background-color: #9b8e6e; align-content: center;">
-            {{--<a id="novus" class="navbar-brand" href="#">Chirurgia Estetica del Piede - by Novus Studios</a>--}}
     
             <ul class="nav navbar-nav mx-auto">
                 <li class="nav-item"><a id="novus" class="nav-link" target="_blank" href="https://novusstudios.it/">Chirurgia Estetica del Piede - by Novus Studios</a></li>
             </ul>
     
-        </nav>
+        </nav> --}}
+
+        <div class="d-flex p-2 sticky-top" style="background-color: #9b8e6e; justify-content: center">
+
+            <a id="novus"  class="nav-link" style="color: white" target="_blank" href="https://novusstudios.it/">Chirurgia Estetica del Piede - by Novus Studios</a>
+     
+        
+          </div>
 
 
 

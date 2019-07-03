@@ -9,7 +9,8 @@ class Intervento extends Model {
     protected $table = 'intervento';
 
     protected $fillable = [
-        'data','intervento','categoria1','diagnosi1', 'categoria2', 'diagnosi2'
+        // 'data','intervento','categoria1','diagnosi1', 'categoria2', 'diagnosi2'
+        'data','intervento'
     ];
 
     protected $attributes = [];

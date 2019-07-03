@@ -185,7 +185,7 @@
 
 
 
-        <button type="submit"  class="btn btn-success">Aggiungi</button>
+        <button style="float: right" type="submit"  class="btn btn-success">Salva</button>
 
         {{--<button type="button" onclick="verificaPass()" class="btn btn-success">Aggiungi</button>--}}
 
