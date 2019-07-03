@@ -37,6 +37,7 @@ hr{
 .navtext{
     color: #9b8e6e;
     font-size: 70%;
+    /* word-wrap: break-word; */
     /* display: grid;
     text-align: center; */
     
@@ -46,15 +47,28 @@ hr{
     text-align: center;
     margin-top: 10%;
 }
-.circle {
+/* .circle {
+    border-radius: 90em;
+    box-shadow: 0em 0em .1em #9B8E6E;
+    color: #9B8E6E;
+    width: 1.7em!important;
+    height: 1.7em!important;
+    padding: 7%;
+
+   
+  
+  } */
+
+  .circle {
     /* display: inline-block; */
     border-radius: 90em;
     box-shadow: 0em 0em .1em #9B8E6E;
     color: #9B8E6E;
     /* padding: 0.3em 0.3em; */
-    width: 1.7em!important;
-    height: 1.7em!important;
+    width: 40%!important;
+    height: 40%!important;
     padding: 7%;
+    
     /* margin-left: 25%; */
     /* margin-bottom: 15%; */
    
