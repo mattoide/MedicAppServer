@@ -218,6 +218,10 @@ a.paginate_disabled_previous{
 }
 
 
+.miocont{
+    margin-top: 3.5em;
+}
+
 
 @media (min-width: 768px) {
     body {
@@ -264,10 +268,10 @@ a.paginate_disabled_previous{
     /* body {
         margin: 0;
       } */
-
       .miocont{
-          margin-top: 3.5em;
-      }
+        margin-top: 7em;
+    }
+ 
     .navbar.fixed-left {
       /* width: 100px; */
       /* flex-flow: column nowrap; */
