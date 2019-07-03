@@ -192,3 +192,13 @@ font-size: 80%;
     position: fixed;
     overflow-y: scroll;
 }
+
+ 
+
+
+a.paginate_enabled_next,
+a.paginate_disabled_next,
+a.paginate_enabled_previous,
+a.paginate_disabled_previous{
+    background: none!important
+}

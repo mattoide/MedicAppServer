@@ -107,9 +107,8 @@ $(document).ready(function () {
             "sZeroRecords": "La ricerca non ha portato alcun risultato.",
             "oPaginate": {
                 "sFirst": "Inizio",
-                "sPrevious": "Precedente",
-                // "sNext": "Successivo",
-                // "sNext": '<i class="fa fa-forward"></i>',
+                "sPrevious": '<i class="far fa-arrow-alt-circle-left"></i> Precedente',
+                "sNext": 'Successivo <i class="far fa-arrow-alt-circle-right"></i>',
                 "sLast": "Fine"
             },
             "oAria": {
