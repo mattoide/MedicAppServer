@@ -544,9 +544,13 @@
             <br>
 
 
-            <button onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" >Avvia</button>
-            <button onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" >Blocca App</button>
-           
+            @if($paziente->attivo == true)
+            <button id="startapp" onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" disabled>Avvia</button>
+            <button id="stopapp" onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" >Blocca App</button>
+           @else
+           <button id="startapp" onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" >Avvia</button>
+           <button id="stopapp" onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" disabled>Blocca App</button>
+           @endif
             
 
             {{-- @if($paziente->attivo == true)
@@ -688,6 +692,8 @@
 
     $.post('/enableapp', function(response) {
             // handle your response here
+            $('#startapp').attr('disabled', 'disabled')
+            $('#stopapp').removeAttr('disabled')
             alert('App abilitata!');
         })
  }
@@ -704,6 +710,10 @@
 
     $.post('/disableapp', function(response) {
         // handle your response here
+        $('#stopapp').attr('disabled', 'disabled')
+        $('#startapp').removeAttr('disabled')
+
+
         alert('App disabilitata!');
 
     })
