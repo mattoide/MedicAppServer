@@ -121,12 +121,12 @@
                             </td>
 
                             <td>
-                                <textarea class="miatextarea" id="{{$storiaclinica->id}}storiaclinicadisbld" class="form-control" rows="3"
+                                <textarea style="width: 95%" class="miatextarea" id="{{$storiaclinica->id}}storiaclinicadisbld" class="form-control" rows="3"
                                           name="storiaclinica[]">
                                       @if($storiaclinica){{$storiaclinica->storiaclinica}}@endif
                                     </textarea>
 
-                                <button onclick="deleteStoriaClinica(storiaclinica{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+                                <button style='float:right; margin:0; padding:0;' onclick="deleteStoriaClinica(storiaclinica{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
 
                             </td>
                         </tr>
@@ -758,7 +758,7 @@ console.log(response)
 
 var lng = document.getElementsByName("intervento[]").length
 // var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required> <select class=form-control id=intdiagnosi1 name=intdiagnosi1[] > <option disabled selected> diagnosi 1 </option> @foreach ($diagnosiSpec as $a)<option>{{$a->diagnosi}}</option>@endforeach </select>  <select class=form-control id=intdiagnosi2 name=intdiagnosi2[]> <option disabled selected> diagnosi 2 </option>@foreach ($diagnosiSpec as $a) <option>{{$a->diagnosi}}</option>  @endforeach</select>  </td> <td> <textarea  class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
-var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required>   </td> <td> <textarea  class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button></td>  </tr> </tbody></table> </div>";
+var intervento= "<div id=intervento"+lng+" style=width: 90%> <table class=table table-bordered> <tbody id=tableintervento> <tr> <td class=datetd> <input class=form-control type=date value=<?php echo date('Y-m-d'); ?> id=dataintervento name=dataintervento[] required>   </td> <td> <textarea  style=width:95% class=miatextara rows=3 name=intervento[] value='{{old('intervento')}}' onchange=insertdate(this.value) required></textarea> <button style='float:right; margin:0; padding:0;' onclick=deleteIntervento("+'intervento'+lng+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn' ></i></button></td>  </tr> </tbody></table> </div>";
 $('#nuovointervento').append(intervento);
 }
 
