@@ -3,6 +3,7 @@
 
 
 <div class="container-fluid" style="background-color: white">
+
         @include('layouts.errors')
 
     <form method="POST" action="/nuovopaziente" enctype="multipart/form-data">

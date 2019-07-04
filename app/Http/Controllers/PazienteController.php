@@ -98,6 +98,9 @@ class PazienteController extends Controller {
            'attivo'      => false,
            'tokenfirebase'      => '',
 
+           'datattivapp' => 'N/A',
+
+
            ]);
 
         $recapitiPaziente = new RecapitiPaziente([
@@ -468,6 +471,7 @@ class PazienteController extends Controller {
         $paziente->recapitiPaziente->iddocumento   = $request['iddocumento'];
         $paziente->recapitiPaziente->centrovisita  = $request['centrovisita'];
 
+
         $paziente->save();
         $paziente->recapitiPaziente()->save($paziente->recapitiPaziente);
 
@@ -722,10 +726,15 @@ class PazienteController extends Controller {
 
 
     public function enableApp(Request $request) {
+
+        // print_r($request->all());
+        // return;
         $paziente = Paziente::find($request['idpaz']);
 
         $paziente->attivo = true;
+        $paziente->datattivapp = $request['datattivapp'];
         $paziente->save();
+        
 
         return $request['idpaz'];
     }

@@ -26,6 +26,7 @@ class CreatePaziente extends Migration
 
             $table->longText('tokenfirebase');
             $table->boolean('attivo');
+            $table->string('datattivapp');
 
 
             $table->timestamps();

@@ -545,9 +545,11 @@
 
 
             @if($paziente->attivo == true)
+            <span id="datattivapp" class="badge badge-success">Ultima attivazione: {{$paziente->datattivapp}}</span>
             <button id="startapp" onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" disabled>Avvia</button>
             <button id="stopapp" onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" >Blocca App</button>
            @else
+           <span id="datattivapp" class="badge badge-success" disabled>Ultima attivazione: {{$paziente->datattivapp}}</span>
            <button id="startapp" onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" >Avvia</button>
            <button id="stopapp" onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" disabled>Blocca App</button>
            @endif
@@ -681,22 +683,33 @@
 <script>
  
  function enableApp(idpaz){
+    var today = dateToToday();
+
     $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     data:{                
-            "idpaz":idpaz
+            "idpaz":idpaz,
+            "datattivapp": today
     }
   });
 
     $.post('/enableapp', function(response) {
             // handle your response here
             $('#startapp').attr('disabled', 'disabled')
+            $('#datattivap').attr('disabled', 'disabled')
+            document.getElementById('datattivapp').innerHTML = "Ultima attivazione: " + today;
             $('#stopapp').removeAttr('disabled')
             alert('App abilitata!');
         })
  }
+
+ function dateToToday(){
+        var options = {'weekday': 'long', 'month': 'long', 'day': '2-digit', 'year': '2-digit'};
+        var date = new Date().toLocaleString('it-IT', options);
+        return date;
+    }
 
  function disableApp(idpaz){
     $.ajaxSetup({
@@ -712,6 +725,8 @@
         // handle your response here
         $('#stopapp').attr('disabled', 'disabled')
         $('#startapp').removeAttr('disabled')
+        $('#datattivap').removeAttr('disabled')
+        
 
 
         alert('App disabilitata!');
