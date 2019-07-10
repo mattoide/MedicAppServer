@@ -13,14 +13,8 @@
             </div>
             <div class="modal-footer">
                     <div class="col">
-
-
-                <form method="POST" action="/eliminapaziente" style="display: inline">
-                    {{ csrf_field() }}
                         <button style="width: 100%" id="conferma" name="idpaziente" type="button" class="btn btn-danger">Conferma</button>
-                </form>
-
-            </div>
+                     </div>
 
                 <div class="col">
                     <button style="width: 100%" type="button" class="btn btn-success" data-dismiss="modal">Annulla</button>
@@ -88,10 +82,6 @@
         $('#exampleModal').modal('toggle');
         });
   } 
-
-
-
-
 
 
 //   $('#conferma').val(idpaziente)
