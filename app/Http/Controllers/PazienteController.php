@@ -416,7 +416,7 @@ class PazienteController extends Controller {
 
     public function update(Request $request) {
 
-    print_r($request->all());
+//    print_r($request->all());
     // return;
                 if (\strpos($request['password'], " ") !== false) {
             return redirect()->back()->withErrors(["La password non può contenere spazi."])->withInput();
@@ -648,6 +648,7 @@ class PazienteController extends Controller {
         Intervento::where('paziente_id', $paziente->id)->delete();
         Foto::where('paziente_id', $paziente->id)->delete();
         Radiografia::where('paziente_id', $paziente->id)->delete();
+        PazienteDiagnosi::where('paziente_id', $paziente->id)->delete();
 
         foreach ($stories as $s) {
             $paziente->storiaClinica()->save($s);

@@ -1,11 +1,3 @@
-
-
-allergieSelezionate = [];
-medicinaliSelezionati = [];
-diagnosiSelezionate = [];
-reminderSelezionati = [];
-
-
 /*storieClinicheSelezionate = [];
 
 
@@ -19,6 +11,14 @@ diagnosi.forEach(diagnos => {
     }
 
 });*/
+
+
+allergieSelezionate = [];
+medicinaliSelezionati = [];
+diagnosiSelezionate = [];
+reminderSelezionati = [];
+
+
 
 
 allergieSelezionateNomeLabel = [];
@@ -54,6 +54,9 @@ $(document).ready(function () {
         }
 
     });
+
+    console.log(diagnosiSelezionate)
+
 
     reminder = document.getElementsByName("reminder[]");
     reminder.forEach(remindr => {
@@ -570,7 +573,10 @@ function deleteDiagnosi(val){
     $('#deldiagnosi'+val).remove();
 
     inputName = "diagnosi[]";
+    console.log(diagnosiSelezionate);
     diagnosiSelezionate = [];
+
+    console.log(diagnosiSelezionate);
     $('#diagnosi1s').val('');
     $('#diagnosi2s').val('');
     // allergieSelezionateNomeLabel = [];
@@ -578,9 +584,17 @@ function deleteDiagnosi(val){
     let elementi = document.getElementsByName(inputName);
     elementi.forEach(function (elemento, indice, array) {
 
-        lower = elemento.value;
+        // lower = elemento.value;
+
+        lower = elemento.options[elemento.selectedIndex].innerText
+
+        console.log("lower")
+        console.log(lower)
+        console.log(indice)
+
         diagnosiSelezionate.push(lower.toLowerCase())
         // allergieSelezionateNomeLabel.push(lower)
+
         if(indice == 0)
         $('#diagnosi1s').val(elemento.options[elemento.selectedIndex].innerText);
 
