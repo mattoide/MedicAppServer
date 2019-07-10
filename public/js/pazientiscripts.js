@@ -81,7 +81,7 @@ function preparaAllergia(pAllergie) {
     a = pAllergie;
 
   
-    var select = $("<select style=margin-top:0% class=form-control id=allergie"+allergieSelezionate.length+" name=allergie[] onchange=aggiungiAllergia(" + 'this' + ")></select>");
+    var select = $("<select style=margin-top:0% class='form-control cstm-select' id=allergie"+allergieSelezionate.length+" name=allergie[] onchange=aggiungiAllergia(" + 'this' + ")></select>");
     var option = $('<option disabled></option>');
     option.attr('selected', 'allergia');
     option.text('allergia');
@@ -121,7 +121,7 @@ function preparaDiagnosiCategoria(pDiagnosi) {
         diagnosis = diagnosis + "<option>" + diagn.categoria + "</option>";
     });
 
-    var diagnsi = "<select class=form-control id=catdiagnosi"+diagnosiSelezionate.length+" name=diagnosicat[] onchange=getDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+    var diagnsi = "<select class='form-control cstm-select' id=catdiagnosi"+diagnosiSelezionate.length+" name=diagnosicat[] onchange=getDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
     $('#nuovadiagncat').append(diagnsi);
 
     var del = $("<button style=margin-top:30% id=deldiagnosi"+diagnosiSelezionate.length+"  onclick=deleteDiagnosi("+diagnosiSelezionate.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
@@ -214,7 +214,7 @@ function preparaDiagnosi(pDiagnosi) {
         diagnosis = diagnosis + "<option value="+diagn.id+">" + diagn.diagnosi + "</option>";
     });
 
-    var diagnsi = "<select class=form-control id=diagnosia"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+    var diagnsi = "<select class='form-control cstm-select' id=diagnosia"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
     $('#nuovadiagn').append(diagnsi);
 
     $('#btnnuovadiagn').attr('disabled', 'disabled');
@@ -232,7 +232,7 @@ function preparaDiagnosiMod(pDiagnosi, id) {
     });
     
 
-     var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosia"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+     var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class='form-control cstm-select' id=diagnosia"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
      $('#nuovadiagn').append(diagnsi);
 
     $('#btnnuovadiagn').attr('disabled', 'disabled');
@@ -363,7 +363,7 @@ function creaMedicinale(pMedicinali) {
 
     });
     // var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia(allergie)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
-    var mdecnl = "<select class=form-control id=medicinali"+medicinaliSelezionati.length+" name=medicinali[] onchange=nuovoMedicinale(a," + 'this' + ")><option disabled selected>medicinale</option>" + medicinalis + "</select> "
+    var mdecnl = "<select class='form-control cstm-select' id=medicinali"+medicinaliSelezionati.length+" name=medicinali[] onchange=nuovoMedicinale(a," + 'this' + ")><option disabled selected>medicinale</option>" + medicinalis + "</select> "
     var del = $("<button id=delmedicinali"+medicinaliSelezionati.length+"  onclick=deleteMedicinale("+medicinaliSelezionati.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
 
     $('#nuovomed').append(mdecnl);
@@ -455,7 +455,7 @@ function preparaMedicinale(pMedicinali) {
 
     });
     // var alrgia ="<select class=form-control id=allergie name=allergie[] onchange=nuovaallergia(allergie)><option disabled selected>allergia</option>@foreach ($allergie as $a)<option>{{$a->allergia}}</option>@endforeach</select> <br>"
-    var mdecnl = "<select class=form-control id=medicinali name=medicinali[]><option disabled selected>medicinale</option>" + medicinalis + "</select> <br>"
+    var mdecnl = "<select class='form-control cstm-select' id=medicinali name=medicinali[]><option disabled selected>medicinale</option>" + medicinalis + "</select> <br>"
 
     $('#nuovomed').append(mdecnl);
 
@@ -481,7 +481,7 @@ function preparaReminder(pReminders) {
 
     var date =  dateToToday();
 
-    var remndr = "<select class=form-control id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
+    var remndr = "<select class='form-control cstm-select' id=reminder"+reminderSelezionati.length+" name=reminder[] onchange=aggiungiReminder(" + 'this' + ")><option disabled selected>reminder</option>" + reminderss + "</select>"
     var data =  "<input id=datareminder"+reminderSelezionati.length+" type=date value="+date+" class=form-control placeholder=data avvio name=datareminder[] required>";
     var del = $("<button style=margin-top:30%; id=delreminder"+reminderSelezionati.length+"  onclick=deleteReminder("+reminderSelezionati.length+") type=button class='btn btn-icn'><i class='far fa-times-circle cstm-icn'></i></button>");
     $('#nuovoreminder').append(remndr);

@@ -431,7 +431,7 @@
                                     @php ($i = 0)
 
                                     @foreach ($pazienteReminder as $pd)
-                                    <select class="form-control" id="reminder{{$i}}" name="reminder[]" onchange="aggiungiReminder(this)">
+                                    <select class="form-control cstm-select" id="reminder{{$i}}" name="reminder[]" onchange="aggiungiReminder(this)">
                                     <option disabled >categoria</option>
                                     @foreach ($reminder as $d)
                                         @if ($pd->nomereminder == $d->nomereminder)
@@ -616,7 +616,7 @@
                     <div class="col">
                 @php ($i = 0)
                 @foreach ($paziente->medicinaliPaziente as $medPaz)
-                    <select class="form-control" id="medicinali{{$i}}" name="medicinali[]">
+                    <select class="form-control cstm-select" id="medicinali{{$i}}" name="medicinali[]">
                     <option disabled selected>medicinale</option>
                     @foreach ($medicinali as $m)
                         @if ($medPaz->medicinale_id == $m->id)
@@ -672,7 +672,7 @@
 
         <div class="row">
         <div class="col">
-            <select class="form-control" id="protocollo" name="protocollo" >
+            <select class="form-control cstm-select" id="protocollo" name="protocollo" >
             <option disabled selected>protocolli</option>
             {{-- @foreach ($protocolli as $prot)
             <option value="{{$prot->id}}">{{$prot->nome}}</option>
