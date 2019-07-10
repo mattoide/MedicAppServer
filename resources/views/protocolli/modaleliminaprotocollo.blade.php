@@ -15,7 +15,7 @@
                     <div class="col">
                     <form method="POST" action="/eliminaprotocollo" style="display: inline">
                         {{ csrf_field() }}
-                        <button style="width: 100%" id="conferma" name="idprot" type="submit" class="btn btn-danger">Conferma</button>
+                        <button style="width: 100%" id="idprotoz" name="idprotoz" type="submit" class="btn btn-danger">Conferma</button>
                     </form>
                 </div>
                 <div class="col">
@@ -42,8 +42,8 @@
   modal.find('.modal-body .messaggioInizio').text(messaggioInizio + ' ')
   modal.find('.modal-body .messaggioMeta').text(messaggioMeta + ' ')
   modal.find('.modal-body .messaggioFine').text(messaggioFine)
-  
-  $('#conferma').val(idprotocollo)
+  console.log(idprotocollo)
+  $('#idprotoz').val(idprotocollo)
     })
 
 </script>

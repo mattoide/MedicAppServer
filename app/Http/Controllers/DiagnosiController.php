@@ -54,6 +54,7 @@ class DiagnosiController extends Controller {
 
     public function delete(Request $request) {
 
+
         Diagnosi::destroy($request["iddiagnosi"]);
         PazienteDiagnosi::where('diagnosi_id', $request["iddiagnosi"])->delete();
         return redirect('/diagnosi');

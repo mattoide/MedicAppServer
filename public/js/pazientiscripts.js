@@ -59,7 +59,6 @@ $(document).ready(function () {
 
 
 
-    console.log(diagnosiSelezionate)
 
 
     reminder = document.getElementsByName("reminder[]");
@@ -316,10 +315,7 @@ function aggiungiDiagnosi(elem) {
 
     inputName = "diagnosi[]";
     idPopup = "#diagnosipopup"
-    console.log(elem.options[elem.selectedIndex].innerText )
 
-    console.log(elem.value)
-    console.log(diagnosiSelezionate)
 
     if (diagnosiSelezionate.includes(elem.options[elem.selectedIndex].innerText.toLowerCase())) {
 
@@ -536,7 +532,6 @@ function aggiungiReminder(elem) {
 
 function deleteAllergia(val){
 
-    console.log(val)
     $('#allergie'+val).remove();
     $('#delallergie'+val).remove();
 

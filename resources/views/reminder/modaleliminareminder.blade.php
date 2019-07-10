@@ -15,7 +15,7 @@
                     <div class="col">
                     <form method="POST" action="/eliminareminder" style="display: inline">
                         {{ csrf_field() }}
-                        <button style="width: 100%" id="conferma" name="idreminder" type="submit" class="btn btn-danger">Conferma</button>
+                        <button style="width: 100%" id="idreminder" name="idreminder" type="submit" class="btn btn-danger">Conferma</button>
                     </form>
                 </div>
                 <div class="col">
@@ -43,7 +43,7 @@
   modal.find('.modal-body .messaggioMeta').text(messaggioMeta + ' ')
   modal.find('.modal-body .messaggioFine').text(messaggioFine)
   
-  $('#conferma').val(idreminder)
+  $('#idreminder').val(idreminder)
     })
 
 </script>

@@ -16,7 +16,7 @@
 
                 <form method="POST" action="/eliminapaziente" style="display: inline">
                     {{ csrf_field() }}
-                        <button style="width: 100%" id="conferma" name="idpaziente" type="submit" class="btn btn-danger">Conferma</button>
+                        <button style="width: 100%" id="idpaziente" name="idpaziente" type="submit" class="btn btn-danger">Conferma</button>
                 </form>
             </div>
 
@@ -46,7 +46,7 @@
   modal.find('.modal-body .messaggioMeta').text(messaggioMeta + ' ')
   modal.find('.modal-body .messaggioFine').text(messaggioFine)
   
-  $('#conferma').val(idpaziente)
+  $('#idpaziente').val(idpaziente)
 })
 
 </script>

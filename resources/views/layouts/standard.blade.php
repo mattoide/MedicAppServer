@@ -34,6 +34,8 @@
 </head>
 
 <body>
+    @include('layouts.modalnavigate')
+
 {{-- 
   <div class="d-flex p-2 sticky-top" style="background-color: #9b8e6e; justify-content: center; z-index: 1031;">
 
@@ -67,32 +69,35 @@
                <p></p></a>
              </li >
           <li class="nav-item navtm">
-            <a href="/pazienti"> <i class="fas fa-bed fa-lg circle"></i>
-           <p id='pazientii' class="nav-link navtext" href="/pazienti">Pazienti</p></a>
+            {{-- <a href="/pazienti"> <i class="fas fa-bed fa-lg circle"></i>
+           <p id='pazientii' class="nav-link navtext" href="/pazienti">Pazienti</p></a> --}}
+
+           <a href="#" onclick="togglemodal('Vuoi andare nella sezione pazienti ?', 'pazienti')"> <i class="fas fa-bed fa-lg circle"></i>
+            <p id='pazientii' class="nav-link navtext" href="/pazienti">Pazienti</p></a>
          </li>
 
          <li class="nav-item navtm">
-             <a href="/diagnosi"> <i class="far fa-address-card fa-lg circle"></i>
+             <a href="#" onclick="togglemodal('Vuoi andare nella sezione diagnosi ?', 'diagnosi')"> <i class="far fa-address-card fa-lg circle"></i>
            <p id='diagnosii' class="nav-link navtext" href="/diagnosi">Diagnosi</p></a>
          </li>
 
          <li class="nav-item navtm">
-             <a href="/allergie"> <i class="fas fa-exclamation-triangle fa-lg circle"></i>
+             <a href="#" onclick="togglemodal('Vuoi andare nella sezione allergie ?', 'allergie')"> <i class="fas fa-exclamation-triangle fa-lg circle"></i>
            <p id='allergiee' class="nav-link navtext" href="/allergie">Allergie</p></a>
          </li>
 
          <li class="nav-item navtm">
-             <a href="/medicinali"> <i class="fas fa-pills fa-lg circle"></i>
+             <a href="#" onclick="togglemodal('Vuoi andare nella sezione medicinali ?', 'medicinali')"> <i class="fas fa-pills fa-lg circle"></i>
            <p id='medicinalii' class="nav-link navtext" href="/medicinali">Medicinali</p></a>
          </li>
 
          <li class="nav-item navtm">
-             <a href="/reminders">  <i class="far fa-bell fa-lg circle"></i>
+             <a href="#" onclick="togglemodal('Vuoi andare nella sezione reminders ?', 'reminders')">  <i class="far fa-bell fa-lg circle"></i>
            <p id='reminderss' class="nav-link navtext" href="/reminders">Reminder</p></a>
          </li>
 
          <li class="nav-item navtm">
-             <a href="/protocolli"> <i class="fas fa-list-ul fa-lg circle"></i>
+             <a href="#" onclick="togglemodal('Vuoi andare nella sezione protocolli ?', 'protocolli')"> <i class="fas fa-list-ul fa-lg circle"></i>
            <p id='protocollii' class="nav-link navtext" href="/protocolli">Protocolli</p></a>
          </li>
 
@@ -158,6 +163,18 @@
 
     <script src="https://unpkg.com/file-upload-with-preview@3.4.3/dist/file-upload-with-preview.min.js"></script>
 
+    <script>
+    function togglemodal(messaggio, scope){
+      let titolo = "Avviso cambio pagina";
+
+      $('#navigatemodal').find('.modal-title').text(titolo)
+      $('#navigatemodal').find('.modal-body .messaggioInizio').text(messaggio )
+      $('#navigatemodal').find('.modal-body .messaggioMeta').text()
+      $('#navigatemodal').find('.modal-body .messaggioFine').text()
+      $('#navigatemodal').find('.modal-body .scope').text(scope)
+      $('#navigatemodal').modal('toggle');
+    }
+    </script>
 
 </body>
 

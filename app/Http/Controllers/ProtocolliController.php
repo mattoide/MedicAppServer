@@ -171,8 +171,9 @@ class ProtocolliController extends Controller
 
     public function remove(Request $request) {
 
-        PazienteProtocollo::where('protocollo_id', $request->idprot)->delete();
-        Protocollo::destroy($request->idprot);
+
+        PazienteProtocollo::where('protocollo_id', $request->idprotoz)->delete();
+        Protocollo::destroy($request->idprotoz);
         return redirect('/protocolli');
     }
     

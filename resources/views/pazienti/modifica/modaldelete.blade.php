@@ -1,8 +1,8 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="deletemodalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="deletemodalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -13,7 +13,7 @@
             </div>
             <div class="modal-footer">
                     <div class="col">
-                        <button style="width: 100%" id="conferma" name="idpaziente" type="button" class="btn btn-danger">Conferma</button>
+                        <button style="width: 100%" id="confermaz" name="idpaziente" type="button" class="btn btn-danger">Conferma</button>
                      </div>
 
                 <div class="col">
@@ -26,7 +26,7 @@
 </div>
 
 <script>
-    $('#exampleModal').on('show.bs.modal', function (event) {
+    $('#deletemodal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var titolo = button.data('titolo') // Extract info from data-* attributes
   var messaggioInizio = button.data('messaggioinizio') // Extract info from data-* attributes
@@ -43,43 +43,44 @@
   modal.find('.modal-body .messaggioInizio').text(messaggioInizio + ' ')
   modal.find('.modal-body .messaggioMeta').text(messaggioMeta + ' ')
   modal.find('.modal-body .messaggioFine').text(messaggioFine)
+  console.log(scope)
 
   if(scope.includes("diagnosi")){
-    $("#conferma").click(function(){ 
+    $("#confermaz").click(function(){ 
         deleteDiagnosi(id)      
-        $('#exampleModal').modal('toggle');
+        $('#deletemodal').modal('toggle');
         });
   } else if(scope.includes("storiaclinica")){
-    $("#conferma").click(function(){ 
+    $("#confermaz").click(function(){ 
          deleteStoriaClinica(id) 
      
-        $('#exampleModal').modal('toggle');
+        $('#deletemodal').modal('toggle');
         });
   } else if(scope.includes("intervento")){
-    $("#conferma").click(function(){ 
+    $("#confermaz").click(function(){ 
         deleteIntervento(id)    
 
-        $('#exampleModal').modal('toggle');
+        $('#deletemodal').modal('toggle');
         });
   } else if(scope.includes("allergie")){
-    $("#conferma").click(function(){ 
+    $("#confermaz").click(function(){ 
         deleteAllergia(id)      
-        $('#exampleModal').modal('toggle');
+        $('#deletemodal').modal('toggle');
         });
   } else if(scope.includes("reminders")){
-    $("#conferma").click(function(){ 
+    $("#confermaz").click(function(){ 
         deleteReminder(id)      
-        $('#exampleModal').modal('toggle');
+        $('#deletemodal').modal('toggle');
         });
   } else if(scope.includes("medicinali")){
-    $("#conferma").click(function(){ 
+    $("#confermaz").click(function(){ 
         deleteMedicinale(id)      
-        $('#exampleModal').modal('toggle');
+        $('#deletemodal').modal('toggle');
         });
   } else if(scope.includes("protocolli")){
-    $("#conferma").click(function(){ 
+    $("#confermaz").click(function(){ 
         deleteProto(id)      
-        $('#exampleModal').modal('toggle');
+        $('#deletemodal').modal('toggle');
         });
   } 
 
