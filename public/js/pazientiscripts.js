@@ -536,8 +536,9 @@ function aggiungiReminder(elem) {
 
 function deleteAllergia(val){
 
-    $('#'+val.id).remove();
-    $('#del'+val.id).remove();
+    console.log(val)
+    $('#allergie'+val).remove();
+    $('#delallergie'+val).remove();
 
     inputName = "allergie[]";
     allergieSelezionate = [];
@@ -558,15 +559,12 @@ function deleteAllergia(val){
 }
 
 function deleteStoriaClinica(val){
-   
-$('#'+val.id).remove();
-
-
+    $('#storiaclinica'+val).remove();
 }
 
 function deleteIntervento(val){
    
-    $('#'+val.id).remove();
+    $('#intervento'+val).remove();
     
     
     }

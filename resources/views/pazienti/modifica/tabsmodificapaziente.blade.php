@@ -126,8 +126,11 @@
                                       @if($storiaclinica){{$storiaclinica->storiaclinica}}@endif
                                     </textarea>
 
-                                <button style='float:right; margin:0; padding:0;' onclick="deleteStoriaClinica(storiaclinica{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+                                {{-- <button style='float:right; margin:0; padding:0;' onclick="deleteStoriaClinica(storiaclinica{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button> --}}
 
+                                <button style='float:right; margin:0; padding:0;'  data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione storia clinica" data-messaggioinizio="Vuoi eliminare la storia clinica"
+                                data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="storiaclinica"
+                                 type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
                             </td>
                         </tr>
 
@@ -225,8 +228,11 @@
                 @php ($i = 0)
                 @foreach ($paziente->allergiePaziente as $alPaz)
 
-                <button style="margin-top:10%" id="delallergie{{$i}}" onclick="deleteAllergia(allergie{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
-
+                {{-- <button style="margin-top:10%" id="delallergie{{$i}}" onclick="deleteAllergia(allergie{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button> --}}
+                <button style="height:10%;"  data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione allergia" data-messaggioinizio="Vuoi eliminare l'allergia"
+                data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="allergie"
+                id="delallergie{{$i}}"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+           
 
         @php ($i++)
 
@@ -323,8 +329,14 @@
                             <div id="deldiagn" style="width: 10%">
                                     @php ($i = 0)
                                     @foreach ($pazienteDiagnosi as $pd)
-                                        <button id="deldiagnosi{{$i}}" onclick="deleteDiagnosi({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
-                                    @php ($i++)
+                                    {{-- <button id="deldiagnosi{{$i}}" onclick="deleteDiagnosi({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button> --}}
+                                    
+                                    <button  data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione diagnosi" data-messaggioinizio="Vuoi eliminare la diagnosi"
+                                    data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="diagnosi"
+                                    id="deldiagnosi{{$i}}"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+
+                                        
+                                        @php ($i++)
                                     @endforeach
                             </div>
                     </div>
@@ -382,7 +394,10 @@
                                       @if($intervento){{$intervento->intervento}}@endif
                                     </textarea>
 
-                                <button onclick="deleteIntervento(intervento{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+                                {{-- <button onclick="deleteIntervento(intervento{{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button> --}}
+                                <button  data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione intervento" data-messaggioinizio="Vuoi eliminare l'intervento"
+                                data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="intervento"
+                                  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
 
                             </td>
 
@@ -448,7 +463,10 @@
                                 @php ($i = 0)
                                 @foreach ($pazienteReminder as $pd)
 
-                            <button style="height:100%; margin-top: 10%" id="delreminder{{$i}}"  onclick="deleteReminder({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+                            {{-- <button style="height:100%; margin-top: 10%" id="delreminder{{$i}}"  onclick="deleteReminder({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button> --}}
+                            <button style="height:100%; margin-top: 10%"  data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione reminder" data-messaggioinizio="Vuoi eliminare il reminder"
+                            data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="reminders"
+                            id="delreminder{{$i}}"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
                             @php ($i++)
 
                                 @endforeach  
@@ -619,8 +637,12 @@
             <div id="delnuovomed" style="width: 10%">
             @php ($i = 0)
             @foreach ($paziente->medicinaliPaziente as $medPaz)
-                <button style="height:100%" id="delmedicinali{{$i}}"  onclick="deleteMedicinale({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
-            @php ($i++)
+                {{-- <button style="height:100%" id="delmedicinali{{$i}}"  onclick="deleteMedicinale({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button> --}}
+                <button style="height:100%;"  data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione medicinale" data-messaggioinizio="Vuoi eliminare il medicinale"
+                data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="medicinali"
+                id="delmedicinali{{$i}}"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+           
+                @php ($i++)
             @endforeach  
         </div>
     </div>
@@ -675,7 +697,10 @@
     </div>
 
     <div class="col">
-        <button style="margin-top: 1%" id="delprotocollo"  onclick="deleteProto()" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
+        {{-- <button style="margin-top: 1%" id="delprotocollo"  onclick="deleteProto()" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button> --}}
+        <button style="margin-top: 1%"  data-toggle="modal" data-target="#exampleModal" data-titolo="Conferma eliminazione protocollo" data-messaggioinizio="Vuoi eliminare il protocollo"
+        data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="protocolli"
+        id="delprotocollo"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
     </div>
     </div>
 

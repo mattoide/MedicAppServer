@@ -1,6 +1,8 @@
 @extends('layouts.standard') 
 @section('content')
     @include('pazienti.modifica.modalaggiungistoriaclincia')
+    @include('pazienti.modifica.modaldelete')
+
 
 
 <div class="container-fluid" style="background-color: white">
