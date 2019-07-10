@@ -18,8 +18,8 @@
             <thead>
             <tr>
                 <th scope="col" >Reminder</th>
-                <th scope="col"  >Testo</th>
-                {{-- <th scope="col" >Attivato dopo mesi</th> --}}
+                <th scope="col" >Testo</th>
+                <th scope="col" >Lingua</th>
                 <th scope="col">#</th>
             </tr>
         </thead>
@@ -31,11 +31,11 @@
             <tr>
                 <td>{{$a->nomereminder}}</td>
                 <td>{{$a->testoreminder}}</td>
-                {{-- <td>{{$a->dopomesi}}</td> --}}
+                <td>{{$a->linguareminder}}</td>
 
                 <td>
                         <button id="modificareminder" onclick="" type="button" class="btn btn-icn" data-toggle="modal"
-                        data-target="#modalmodificareminder" data-titolo="Modifica reminder" data-reminder="{{$a}}"><i class="far fa-edit cstm-icn"></i>
+                        data-target="#modalmodificareminder" data-titolo="Modifica reminder" data-linguareminder="{{$a->linguareminder}}" data-reminder="{{$a}}"><i class="far fa-edit cstm-icn"></i>
                     </button>
 
                     <button id="{{$a->id}}" type="submit" onclick="" type="button" class="btn btn-icn"

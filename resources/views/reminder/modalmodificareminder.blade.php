@@ -17,6 +17,19 @@
                             </div>
                         </div>
     
+                        <div class="form-group row">
+                                <label for="linguareminder" class="col-sm-2 col-form-label">nome</label>
+                                <div class="col-sm-10">
+                                        <select style="margin-bottom: 1%; margin-top: 1%" class="form-control" id="linguareminder" name="linguareminder" required>
+                                                <option disabled selected value >lingua</option>
+                                                <option>Inglese</option>
+                                                <option>Francesce</option>
+                                                <option>Italiano</option>
+                                                <option>Tedesco</option>
+                                                <option>Spagnolo</option>
+                                        </select>  
+                                 </div>
+                            </div>
     
                         <div class="form-group row">
                             <label for="testoreminder" class="col-sm-2 col-form-label">testo</label>
@@ -55,7 +68,8 @@ console.log(reminder)
       modal.find('.modal-title').text(titolo)
       modal.find('.modal-body .nomereminder').val(reminder.nomereminder)
       modal.find('.modal-body .testoreminder').val(reminder.testoreminder)
-    //   modal.find('.modal-body .dopomesi').val(reminder.dopomesi)
+    //   modal.find('.modal-body .linguareminder').val(reminder.linguareminder)
+     $('#linguareminder').val(reminder.linguareminder)
       modal.find('.modal-body .idreminder').val(reminder.id)
     })
 

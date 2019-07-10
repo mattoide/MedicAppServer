@@ -11,6 +11,21 @@
                 {{ csrf_field() }}
                 <div class="modal-body">
 
+
+                        <div class="form-group row">
+                                <label for="linguareminder" class="col-sm-2 col-form-label">nome</label>
+                                <div class="col-sm-10">
+                                        <select style="margin-bottom: 1%; margin-top: 1%" class="form-control" name="linguareminder" required>
+                                                <option disabled selected value >lingua</option>
+                                                <option>Inglese</option>
+                                                <option>Francesce</option>
+                                                <option>Italiano</option>
+                                                <option>Tedesco</option>
+                                                <option>Spagnolo</option>
+                                        </select>  
+                                 </div>
+                            </div>
+            
                     <div class="form-group row">
                         <label for="nomereminder" class="col-sm-2 col-form-label">nome</label>
                         <div class="col-sm-10">

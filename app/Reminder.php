@@ -9,7 +9,7 @@ class Reminder extends Model
     protected $table = 'reminder';
 
     protected $fillable = [
-        'nomereminder', 'testoreminder', 'dopomesi'
+        'nomereminder', 'testoreminder', 'linguareminder'
     ];
 
     protected $attributes = [];

@@ -23,6 +23,7 @@ class ReminderController extends Controller
         $reminder = new Reminder([
             'nomereminder' => $request['nomereminder'],
             'testoreminder' => $request['testoreminder'],
+            'linguareminder' => $request['linguareminder'],
             // 'dopomesi' => $request['dopomesi'],
         ]);
 
@@ -42,7 +43,7 @@ class ReminderController extends Controller
 
         $reminder->nomereminder = $request['nomereminder'];
         $reminder->testoreminder = $request['testoreminder'];
-        // $reminder->dopomesi = $request['dopomesi'];
+        $reminder->linguareminder = $request['linguareminder'];
         $reminder->save();
 
         return redirect('/reminders');
