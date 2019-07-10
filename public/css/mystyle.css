@@ -357,3 +357,8 @@ display: none
   .fa-times-circle{
     color: red
   }
+
+  .cstm-select{
+    margin-bottom: 1%; 
+    margin-top: 1%
+  }

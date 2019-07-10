@@ -49,11 +49,15 @@ $(document).ready(function () {
     diagnosi.forEach(diagnos => {
         if (diagnos.value != "diagnosi") {
             let lower = diagnos.options[diagnos.selectedIndex].innerText;
+            diagnos.options[diagnos.selectedIndex].selectedIndex = diagnos.selectedIndex
+
             diagnosiSelezionate.push(lower.toLowerCase())
             // medicinaliSelezionatiNomeLabel.push(lower)
         }
 
     });
+
+
 
     console.log(diagnosiSelezionate)
 
@@ -69,6 +73,7 @@ $(document).ready(function () {
     });
 
 });
+
 
 /**************************************************************** */
 function preparaAllergia(pAllergie) {
@@ -210,7 +215,7 @@ function preparaDiagnosi(pDiagnosi) {
         diagnosis = diagnosis + "<option value="+diagn.id+">" + diagn.diagnosi + "</option>";
     });
 
-    var diagnsi = "<select class=form-control id=diagnosi"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+    var diagnsi = "<select class=form-control id=diagnosia"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
     $('#nuovadiagn').append(diagnsi);
 
     $('#btnnuovadiagn').attr('disabled', 'disabled');
@@ -228,7 +233,7 @@ function preparaDiagnosiMod(pDiagnosi, id) {
     });
     
 
-     var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosi"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
+     var diagnsi = "<select style=margin-bottom:1%; margin-top:1% class=form-control id=diagnosia"+diagnosiSelezionate.length+" name=diagnosi[] onchange=aggiungiDiagnosi(" + 'this' + ")><option disabled selected>diagnosi</option>" + diagnosis + "</select>"
      $('#nuovadiagn').append(diagnsi);
 
     $('#btnnuovadiagn').attr('disabled', 'disabled');
@@ -242,7 +247,6 @@ function preparaDiagnosiModSc(pDiagnosi, id) {
 
 
     
-console.log(pDiagnosi)
     pDiagnosi.forEach(function (diagns, indice, array) {
         var option = $('<option></option>');
         option.attr('value', diagns.diagnosi);
@@ -312,8 +316,12 @@ function aggiungiDiagnosi(elem) {
 
     inputName = "diagnosi[]";
     idPopup = "#diagnosipopup"
+    console.log(elem.options[elem.selectedIndex].innerText )
 
-    if (diagnosiSelezionate.includes(elem.value.toLowerCase())) {
+    console.log(elem.value)
+    console.log(diagnosiSelezionate)
+
+    if (diagnosiSelezionate.includes(elem.options[elem.selectedIndex].innerText.toLowerCase())) {
 
 
 
@@ -322,7 +330,7 @@ function aggiungiDiagnosi(elem) {
         $('#deldiagnosi'+elem.id[elem.id.length -1]).remove();
 
 
-        var msg = ["Hai gia selezionato la diagnosi ", elem.value];
+        var msg = ["Hai gia selezionato la diagnosi ", elem.options[elem.selectedIndex].innerText];
         alertPopup.warning(idPopup, msg.join(" "));
 
     }
@@ -333,7 +341,7 @@ function aggiungiDiagnosi(elem) {
     let elementi = document.getElementsByName(inputName);
     elementi.forEach(function (elemento, indice, array) {
 
-        lower = elemento.value;
+        lower = elemento.options[elemento.selectedIndex].innerText
         diagnosiSelezionate.push(lower.toLowerCase())
         if(indice == 0)
             $('#diagnosi1s').val(elemento.options[elemento.selectedIndex].innerText);
@@ -500,7 +508,6 @@ function aggiungiReminder(elem) {
 
         $('#' + elem.id).remove();
         $('#' + 'data'+elem.id).remove();
-        console.log(elem.id)
         $('#'+'del'+elem.id).remove();
 
         //$('#reminder' + id).remove();
@@ -568,15 +575,13 @@ function deleteDiagnosi(val){
 
 
 
-    $('#diagnosi'+val).remove();
+    $('#diagnosia'+val).remove();
     $('#catdiagnosi'+val).remove();
     $('#deldiagnosi'+val).remove();
 
     inputName = "diagnosi[]";
-    console.log(diagnosiSelezionate);
     diagnosiSelezionate = [];
 
-    console.log(diagnosiSelezionate);
     $('#diagnosi1s').val('');
     $('#diagnosi2s').val('');
     // allergieSelezionateNomeLabel = [];
@@ -588,9 +593,6 @@ function deleteDiagnosi(val){
 
         lower = elemento.options[elemento.selectedIndex].innerText
 
-        console.log("lower")
-        console.log(lower)
-        console.log(indice)
 
         diagnosiSelezionate.push(lower.toLowerCase())
         // allergieSelezionateNomeLabel.push(lower)

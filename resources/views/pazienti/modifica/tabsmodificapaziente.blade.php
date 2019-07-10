@@ -258,7 +258,7 @@
                                 @php ($i = 0)
                                 @foreach ($pazienteDiagnosi as $pd)
 
-                                    <select class="form-control" id="catdiagnosi{{$i}}" name="diagnosicat[]" onchange="getDiagnosiMod(this)" disabled>
+                                    <select class="form-control cstm-select" id="catdiagnosi{{$i}}" name="diagnosicat[]" onchange="getDiagnosiMod(this)" disabled>
                                         <option disabled >categoria</option>
                                         @foreach ($diagnosiCat as $d)
                                             @if ($pd->categoria == $d->categoria)
@@ -278,6 +278,25 @@
 
                                     @php ($i = 0)
                                     @foreach ($pazienteDiagnosi as $pd)
+                                    <select class="form-control cstm-select" id="diagnosia{{$i}}" name="diagnosi[]" onchange="aggiungiDiagnosi(this)">
+                                        <option disabled selected>allergia</option>
+                                            @foreach ($diagnosiSpec as $d)
+                                            @if ($pd->categoria == $d->categoria)
+                                            @if ($pd->diagnosi == $d->diagnosi)
+                                                <option  value={{$d->id}} selected>{{$d->diagnosi}}</option>
+                                            @else
+                                                <option>{{$d->diagnosi}}</option>
+                                                @endif
+                                                @endif
+                                                @endforeach
+                                    </select>
+                    
+                                        @php ($i++)
+                    
+                                    @endforeach
+
+                                    {{-- @php ($i = 0)
+                                    @foreach ($pazienteDiagnosi as $pd)
 
                                         <select class="form-control" id="diagnosi{{$i}}" name="diagnosi[]" onchange="aggiungiDiagnosi(this)">
                                             <option disabled >diagnosi</option>
@@ -290,10 +309,14 @@
                                                     @endif
                                                 @endif
                                             @endforeach
+
+
                                         </select>
                                     @php ($i++)
-                                    @endforeach
+                                    @endforeach --}}
                             </div>
+
+
                     </div>
 
                     <div class="col">
