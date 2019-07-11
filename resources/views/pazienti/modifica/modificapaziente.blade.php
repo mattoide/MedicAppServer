@@ -18,6 +18,12 @@
 
 
             <div class="row formrow">
+
+                    <div class="col">
+                            <input id="we" type="text" class="form-control" placeholder="ID"  value="ID: {{$paziente->id}}" maxlength="32"
+                                disabled>
+                        </div>
+
                 <div class="col">
                     <input id="we" type="text" class="form-control" placeholder="Nome" name="nome" value="{{$paziente->nome}}" maxlength="32"
                         required>
