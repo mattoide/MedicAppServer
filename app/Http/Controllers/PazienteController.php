@@ -416,7 +416,10 @@ class PazienteController extends Controller {
 
     public function update(Request $request) {
 
-//    print_r($request->all());
+        // print_r($request->all());
+    //     print_r($request['foto']);
+
+   
     // return;
                 if (\strpos($request['password'], " ") !== false) {
             return redirect()->back()->withErrors(["La password non può contenere spazi."])->withInput();

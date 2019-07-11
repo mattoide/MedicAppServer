@@ -362,3 +362,19 @@ display: none
     margin-bottom: 1.5%; 
     margin-top: 1.5%
   }
+
+  .custom-image-preview{
+    background-image: none!important;
+    height: 10%!important;
+  }
+
+  .listimages{
+    width: 8%; 
+    height: 6%; 
+    margin: 0.1%;
+  } 
+/* 
+  img{
+    width: 10%!important;
+    height: 10%!important;
+  } */

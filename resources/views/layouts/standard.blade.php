@@ -11,7 +11,7 @@
   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="{{ URL::asset('js/scripts.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/pazientiscripts.js') }}"></script>
-
+  
 
   <!-- Bootstrap css CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -19,6 +19,8 @@
 
   <!-- custom css  -->
   <link href="{{ URL::asset('css/mystyle.css') }}" rel="stylesheet">
+  {{-- <link href="{{ URL::asset('css/customUploadList.css') }}" rel="stylesheet"> --}}
+  {{-- <link href="{{ URL::asset('css/bootstrap-italia/css/bootstrap-italia.min.css') }}" rel="stylesheet"> --}}
 
   <!-- FontAwesome CDN -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"

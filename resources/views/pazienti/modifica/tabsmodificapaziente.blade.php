@@ -6,7 +6,7 @@
            aria-selected="true">Storia Clinica</a>
     </li>
 
-        
+
 <li class="nav-item">
     <a class="nav-link navtext-tab" id="diagnsi-tab" data-toggle="tab" href="#diagnsi" role="tab" aria-controls="diagnsi" aria-selected="true">Diagnosi</a>
 </li>
@@ -33,7 +33,7 @@
            aria-selected="false">Rx</a>
     </li>
 
-    
+
 <li class="nav-item">
     <a class="nav-link navtext-tab" id="reminder-tab" data-toggle="tab" href="#remindr" role="tab" aria-controls="remindr"
         aria-selected="false">Reminders</a>
@@ -48,7 +48,7 @@
 
 <div class="container tabcontent-custom">
 
-        
+
     <div class="tab-content" id="myTabContent">
         <!-- TAB STORIA CLINICA-->
         <div class="tab-pane fade show active" id="storiaclinica" role="tabpanel" aria-labelledby="storiaclinica-tab">
@@ -62,7 +62,7 @@
 
 
 <div style="max-height: 23em; overflow-y: scroll">
-     
+
 
             <div id='nuovastoria'></div>
             @php ($i = 0)
@@ -87,7 +87,7 @@
                                         @endforeach
                                     </select>
 
-                                    
+
                                     <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi2disbld" name="scdiagnosi2[]" onchange="aggiungiDiagnosi(this)">
                                         <option disabled selected> diagnosi 2 </option>
                                         @foreach ($diagnosiSpec as $a)
@@ -110,7 +110,7 @@
                                     <option>{{$a->categoria}}</option>
                                     @endforeach
                                 </select>
-                                    
+
                                 <select class="form-control" id="{{$storiaclinica->id}}scdiagnosi2disbldcat" name="catscdiagnosi2[]" onchange="getDiagnosiMod(this)">
                                     <option disabled selected> categoria diagnosi 2 </option>
                                     @foreach ($diagnosiCat as $a)
@@ -137,7 +137,7 @@
 
                         </tbody>
                     </table>
-                </div> 
+                </div>
                 @php ($i++)
 
            @endforeach
@@ -145,35 +145,35 @@
 </div>
 
 
-           
-{{-- 
+
+{{--
                         @foreach ($paziente->storiaClinica as $storiaclinica)
                         <div style=width: 90%>
                              <table class=table table-bordered>
                                   <tbody id=tablestoriaclinica>
-                                       <tr> 
-                                           <td class=datetd> 
-                                               <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] value='{{old('datastoriaclinica')}}' required> 
+                                       <tr>
+                                           <td class=datetd>
+                                               <input class=form-control type=date id=datastoriaclinica name=datastoriaclinica[] value='{{old('datastoriaclinica')}}' required>
 
                                                <select class=form-control id=scdiagnosi1 name=scdiagnosi1[] >
-                                                    <option disabled selected> diagnosi 1 </option> 
+                                                    <option disabled selected> diagnosi 1 </option>
                                                     @foreach ($diagnosiCat as $a)
                                                     <option>{{$a->diagnosi}}</option
-                                                        >@endforeach 
-                                                </select> 
-                                                    
-                                                    
-                                                    
+                                                        >@endforeach
+                                                </select>
+
+
+
                                                     <select class=form-control id=scdiagnosi2 name=scdiagnosi2[]>
                                                          <option disabled selected> diagnosi 2 </option>
                                                          @foreach ($diagnosiCat as $a) <option>{{$a->diagnosi}}</option>
                                                            @endforeach
-                                                    </select> 
+                                                    </select>
 
                                                      </td>
-                                                      <td> 
+                                                      <td>
                                                           <textarea class=form-control rows=3 name=storiaclinica[] value='{{old('storiaclinica')}}' onchange=insertdate(this.value) required></textarea>
-                                                        </td> 
+                                                        </td>
                                                     </tr>
                                                  </tbody>
                                                 </table>
@@ -191,7 +191,7 @@
                 <button id="btnnuovaall"   onclick="preparaAllergia({{$allergie}})"  data-titolo="Aggiungi nuova storia clinica"
             data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%" >+</button>
 
-      
+
                 {{-- <select class="form-control" id="allergie" name="allergie[]" onchange="nuovaAllergia({{$allergie}}, this)" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
                     <option disabled selected>allergia</option>
                     @foreach ($allergie as $a)
@@ -232,7 +232,7 @@
                 <button style="height:10%;"  data-toggle="modal" data-target="#deletemodal" data-titolo="Conferma eliminazione allergia" data-messaggioinizio="Vuoi eliminare l'allergia"
                 data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="allergie"
                 id="delallergie{{$i}}"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
-           
+
 
         @php ($i++)
 
@@ -244,19 +244,19 @@
 
         </div>
 
-        
+
                 {{-- TAB DIAGNOSI --}}
 
                 <div class="tab-pane fade" id="diagnsi" role="tabpanel" aria-labelledby="diagnsi-tab">
 
                     <div id="diagnosipopup" style="width: 50%; margin-left: 1%">
-    
+
                     <button id="btnnuovadiagncat"   onclick="preparaDiagnosiCategoria({{$diagnosiCat}})"  data-titolo="Aggiungi nuova diagnosi"
                     data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
-    
+
                     <input type="text" id="diagnosi1s" name="diagnosi1" hidden>
                     <input type="text" id="diagnosi2s" name="diagnosi2" hidden>
-            
+
                     <div class="row">
                         <div class="col">
                             <div id="nuovadiagncat">
@@ -296,9 +296,9 @@
                                                 @endif
                                                 @endforeach
                                     </select>
-                    
+
                                         @php ($i++)
-                    
+
                                     @endforeach
 
                                     {{-- @php ($i = 0)
@@ -330,12 +330,12 @@
                                     @php ($i = 0)
                                     @foreach ($pazienteDiagnosi as $pd)
                                     {{-- <button id="deldiagnosi{{$i}}" onclick="deleteDiagnosi({{$i}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button> --}}
-                                    
+
                                     <button  data-toggle="modal" data-target="#deletemodal" data-titolo="Conferma eliminazione diagnosi" data-messaggioinizio="Vuoi eliminare la diagnosi"
                                     data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="diagnosi"
                                     id="deldiagnosi{{$i}}"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
 
-                                        
+
                                         @php ($i++)
                                     @endforeach
                             </div>
@@ -349,14 +349,14 @@
 
         <div class="tab-pane fade" id="interventi" role="tabpanel" aria-labelledby="interventi-tab">
 
-           
+
             <button id="btnnuovointervento" name="nuovointervento" onclick="nuovointerventoo()"  data-titolo="Aggiungi nuovo intervento"
             type="button" class="btn btn-outline-success" style="margin: 1%">Aggiungi intervento</button>
             <br>
 
 
             <div style="max-height: 23em; overflow-y: scroll">
-           
+
         <div id='nuovointervento'></div>
 
             @php ($i = 0)
@@ -378,7 +378,7 @@
                                         @endforeach
                                     </select>
 
-                                    
+
                                     <select class="form-control" id="{{$intervento->id}}intdiagnosi2disbld" name="intdiagnosi2[]" onchange="aggiungiDiagnosi(this)">
                                         <option disabled selected> diagnosi 2 </option>
                                         @foreach ($diagnosiSpec as $a)
@@ -409,11 +409,11 @@
 
                         </tbody>
                     </table>
-                </div> 
+                </div>
                 @php ($i++)
 
            @endforeach
-          
+
         </div>
     </div>
 
@@ -422,10 +422,10 @@
                       <div class="tab-pane fade" id="remindr" role="tabpanel" aria-labelledby="remindr-tab">
                         <div id="reminderpopup" style="width: 50%; margin-left: 1%">
                             <br>
-                        <button id="btnnuovoreminder"   onclick="preparaReminder({{$reminder}})" 
+                        <button id="btnnuovoreminder"   onclick="preparaReminder({{$reminder}})"
                         data-idpaziente="" type="button" class="btn btn-outline-success" style="margin: 1%">+</button>
-        
-                                         
+
+
                         <div class="row">
                             <div class="col"> <div id="nuovoreminder">
                                     @php ($i = 0)
@@ -443,7 +443,7 @@
                                     </select>
                                 @php ($i++)
 
-                                @endforeach  
+                                @endforeach
                                 </div>
                             </div>
 
@@ -455,7 +455,7 @@
 
                                 @php ($i++)
 
-                                @endforeach  
+                                @endforeach
                                 </div>
                             </div>
 
@@ -469,7 +469,7 @@
                             id="delreminder{{$i}}"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
                             @php ($i++)
 
-                                @endforeach  
+                                @endforeach
 
                             </div></div>
 
@@ -494,27 +494,31 @@
             </div> --}}
             <div class="form-group">
             <div class="custom-file-container" data-upload-id="ft">
-                <label>Aggiungi immagini <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
+                <label>Aggiungi immagini <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Pulisci"><i class="far fa-times-circle cstm-icn"></i></a></label>
                 <label class="custom-file-container__custom-file" >
-                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File" name="foto[]">
+                        {{-- <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" name="foto[]" multiple> --}}
+                        <input type="file" class="custom-file-container__custom-file__custom-file-input"  accept="image/*;capture=camera" name="foto[]" multiple>
+
+                       
+                    {{-- <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File" name="foto[]"> --}}
                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                 </label>
-                <div class="custom-file-container__image-preview"></div>
+                <div class="custom-file-container__image-preview custom-image-preview"></div>
             </div>
 
 
 <div class="row">
 @foreach ($paziente->foto as $foto)
- 
-        <img id="foto{{$foto->id}}" src="data:image/png;base64, {{$foto->foto}}" style="width: 30%; height: 30%; margin: 1%"/>
+
+        <img id="foto{{$foto->id}}" src="data:image/png;base64, {{$foto->foto}}" class="listimages"/>
         <input id="fotoval{{$foto->id}}" type="text" value="{{$foto->foto}}" name="fotoz[]" hidden>
         <span>
             <button style="" id="fotodel{{$foto->id}}"  onclick="deleteFoto({{$foto->id}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
         </span>
 @endforeach
 </div>
-    
+
         </div>
     </div>
 
@@ -536,21 +540,21 @@
 
             <div class="form-group">
                 <div class="custom-file-container" data-upload-id="rx">
-                    <label>Aggiungi immagini <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
+                    <label>Aggiungi immagini <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Pulisci"><i class="far fa-times-circle cstm-icn"></i></a></label>
                     <label class="custom-file-container__custom-file" >
                         <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File" name="radiografie[]">
                         <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                         <span class="custom-file-container__custom-file__custom-file-control"></span>
                     </label>
-                    <div class="custom-file-container__image-preview"></div>
+                    <div class="custom-file-container__image-preview custom-image-preview"></div>
                 </div>
 
 
-                
+
 <div class="row">
         @foreach ($paziente->radiografia as $rx)
-         
-                <img id="rx{{$rx->id}}" src="data:image/png;base64, {{$rx->radiografia}}" style="width: 30%; height: 30%; margin: 1%"/>
+
+                <img id="rx{{$rx->id}}" src="data:image/png;base64, {{$rx->radiografia}}" class="listimages"/>
                 <input id="rxval{{$rx->id}}" type="text" value="{{$rx->radiografia}}" name="radiografiez[]" hidden>
                 <span>
                     <button style="" id="rxdel{{$rx->id}}"  onclick="deleteRx({{$rx->id}})" type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
@@ -576,7 +580,7 @@
            <button id="startapp" onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" >Avvia</button>
            <button id="stopapp" onclick="disableApp({{$paziente->id}})" type="button" class="btn btn-danger" disabled>Blocca App</button>
            @endif
-            
+
 
             {{-- @if($paziente->attivo == true)
             <button onclick="enableApp({{$paziente->id}})" type="button" class="btn btn-success" disabled>Avvia</button>
@@ -611,7 +615,7 @@
                 <h3><span class="badge mybadge">Medicinali</span></h3>
 
                 <button id="btnnuovomed"  onclick="creaMedicinale({{$medicinali}})" type="button" class="btn btn-outline-success" style="margin: 1%" >+</button>
-                
+
                 <div class="row">
                     <div class="col">
                 @php ($i = 0)
@@ -633,7 +637,7 @@
             </div>
         <br>
 
-        <div class="col"> 
+        <div class="col">
             <div id="delnuovomed" style="width: 10%">
             @php ($i = 0)
             @foreach ($paziente->medicinaliPaziente as $medPaz)
@@ -641,9 +645,9 @@
                 <button style="height:100%;"  data-toggle="modal" data-target="#deletemodal" data-titolo="Conferma eliminazione medicinale" data-messaggioinizio="Vuoi eliminare il medicinale"
                 data-messaggiometa="" data-messaggiofine="?" data-id={{$i}} data-scope="medicinali"
                 id="delmedicinali{{$i}}"  type="button" class="btn btn-icn"><i class="far fa-times-circle cstm-icn"></i></button>
-           
+
                 @php ($i++)
-            @endforeach  
+            @endforeach
         </div>
     </div>
 
@@ -692,7 +696,7 @@
 @endif
 
             @endforeach
-        </select> 
+        </select>
 
     </div>
 
@@ -711,7 +715,7 @@
 </div>
 
 <script>
- 
+
  function enableApp(idpaz){
     var today = dateToToday();
 
@@ -719,7 +723,7 @@
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
-    data:{                
+    data:{
             "idpaz":idpaz,
             "datattivapp": today
     }
@@ -746,7 +750,7 @@
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
-    data:{                
+    data:{
             "idpaz":idpaz
   }
   });
@@ -756,7 +760,7 @@
         $('#stopapp').attr('disabled', 'disabled')
         $('#startapp').removeAttr('disabled')
         $('#datattivap').removeAttr('disabled')
-        
+
 
 
         alert('App disabilitata!');
@@ -772,7 +776,7 @@
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
-    data:{                
+    data:{
             "idpaz":idpaz,
             "messaggio": msg
   }
@@ -793,8 +797,18 @@ $('#nuovointervento').append(intervento);
 }
 
 window.addEventListener('fileUploadWithPreview:imageSelected', function(e) {
+console.log(e.detail.selectedFilesCount)
 
-   // $('#fotos').val(e.detail.cachedFileArray)    
+    // let pt =  "<input id='potor" + e.detail.selectedFilesCount + "' type='file'  accept='*'  name='foto[]'>"
+
+
+    // $('#potoz').append(pt);
+    // $('#potor'+e.selectedFilesCount).val(e.detail.cachedFileArray[e.detail.selectedFilesCount]);
+
+
+    // console.log(e.detail)
+    // console.log(e.detail.cachedFileArray[1])
+
 })
 
 
@@ -803,5 +817,5 @@ $(document).ready(function () {
 var ft = new FileUploadWithPreview('ft', {showDeleteButtonOnImages: true, text: {chooseFile: 'Foto...', browse: 'Scegli...'}})
 var rx = new FileUploadWithPreview('rx', {showDeleteButtonOnImages: true, text: {chooseFile: 'Radiografie...', browse: 'Scegli...'}})
 })
-   
+
 </script>
