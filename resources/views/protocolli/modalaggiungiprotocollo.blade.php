@@ -7,6 +7,48 @@
               <span aria-hidden="true">&times;</span>
             </button>
             </div>
+
+            {{-- <ul class="nav nav-tabs" id="myTabProt" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link navtext-tab active" id="piede-tab" data-toggle="tab" href="#piede" role="tab" aria-controls="piede"
+                        aria-selected="true">Piede</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link navtext-tab" id="mano-tab" data-toggle="tab" href="#mano" role="tab" aria-controls="mano" aria-selected="true">Mano</a>
+                </li>
+            
+                
+            <li class="nav-item">
+                <a class="nav-link navtext-tab" id="caviglia-tab" data-toggle="tab" href="#caviglia" role="tab" aria-controls="caviglia"
+                    aria-selected="false">Caviglia</a>
+            </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link navtext-tab" id="polso-tab" data-toggle="tab" href="#polso" role="tab" aria-controls="polso" aria-selected="true">Polso</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link navtext-tab" id="gomito-tab" data-toggle="tab" href="#gomito" role="tab" aria-controls="gomito" aria-selected="false">Gomito</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link navtext-tab" id="ginocchio-tab" data-toggle="tab" href="#ginocchio" role="tab" aria-controls="ginocchio" aria-selected="false">Ginocchio</a>
+            </li>
+            
+            
+            <li class="nav-item">
+                    <a class="nav-link navtext-tab" id="spalla-tab" data-toggle="tab" href="#spalla" role="tab" aria-controls="spalla"
+                        aria-selected="false">Spalla</a>
+                </li>
+
+                <li class="nav-item">
+                        <a class="nav-link navtext-tab" id="snca-tab" data-toggle="tab" href="#anca" role="tab" aria-controls="anca"
+                            aria-selected="false">Spalla</a>
+                    </li>
+            
+            </ul> --}}
             <form method="POST" action="/nuovoprotocollo" style="display: inline">
                 {{ csrf_field() }}
                 <div class="modal-body">
@@ -19,8 +61,6 @@
                         </div>
                     </div>
 
-
-           <!-- TODO: grid view medicinali, oppure colonne con tipo esercizi, tempo ecc-->
 
            <br>
 

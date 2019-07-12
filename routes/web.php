@@ -73,3 +73,5 @@ Route::post('/enableapp', 'PazienteController@enableApp');
 Route::post('/disableapp', 'PazienteController@disableApp');
 
 Route::post('/notifica', 'PazienteController@notifica');
+
+Route::get('/makePdf', 'PazienteController@makePdf');

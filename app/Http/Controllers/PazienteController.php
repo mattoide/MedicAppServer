@@ -27,6 +27,14 @@ use MedicAppServer\Foto;
 use MedicAppServer\Radiografia;
 use Validator;
 
+// dichiarare il percorso dei font
+define('FPDF_FONTPATH','../Controllers/fpdf181/font/');
+//questo file e la cartella font si trovano nella stessa directory
+// include('../Controllers/fpdf181/fpdf.php');
+// require_once 'Controllers/fpdf181/fpdf.php';
+require_once dirname(__FILE__).'/fpdf181/fpdf.php';
+
+
 class PazienteController extends Controller {
 
     public function index() {
@@ -910,5 +918,6 @@ class PazienteController extends Controller {
 
         return Validator::make($request->all(), $validazione['regole'], $validazione['messaggi']);
     }
+
 
 }

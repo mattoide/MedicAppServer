@@ -50,7 +50,7 @@
                         <i class="far fa-times-circle cstm-icn"></i>
                                             </button>
 
-                                        <button style="height:100%" type="button" class="btn btn-icn"><i class="fas fa-print cstm-icn"></i></button>
+                                        <button onclick="makePdf({{$paziente}})" style="height:100%" type="button" class="btn btn-icn"><i class="fas fa-print cstm-icn"></i></button>
 
                         
                 </td>
@@ -71,5 +71,7 @@ function modificapaziente(val){
     window.location = document.location.origin + '/modificapaziente?_token='+tkn+'&id='+id 
 
 }
+
+
 </script>
 @endsection

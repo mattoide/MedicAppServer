@@ -11,6 +11,10 @@
   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="{{ URL::asset('js/scripts.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/pazientiscripts.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/makePdf.js') }}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+
   
 
   <!-- Bootstrap css CDN -->
